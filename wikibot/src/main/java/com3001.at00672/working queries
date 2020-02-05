@@ -5,4 +5,3 @@
                 " ?uri rdfs:label ?txt ." +
                 " ?txt <bif:contains> \"'" + str + "'\" . } LIMIT 10";
 
-                

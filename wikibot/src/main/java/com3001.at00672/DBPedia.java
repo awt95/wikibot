@@ -26,6 +26,22 @@ public class DBPedia {
         }
     }
 
+    public static String UserQuery(String queryString) {
+        try {
+            Query query = QueryFactory.create(queryString);
+            QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
+            ResultSet results = qexec.execSelect();
+            for (; results.hasNext(); ) {
+                QuerySolution soln = results.nextSolution();
+                System.out.println(soln);
+            }
+            return "Hope that answers your query";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Sorry, I don't know";
+        }
+    }
+
     public static void ExampleQuery() {
         //org.apache.log4j.BasicConfigurator.configure();
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());

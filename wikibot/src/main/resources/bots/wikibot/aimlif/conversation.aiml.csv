@@ -1,0 +1,2 @@
+0,HELLO ^,*,*,<random>#Newline                <li> Hello! </li>#Newline                <li> Hi there </li>#Newline                <li> Hi#Comma how can I help? </li>#Newline            </random>,conversation.aiml
+0,HI ^,*,*,<srai>HELLO</srai>,conversation.aiml

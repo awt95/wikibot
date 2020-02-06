@@ -3,10 +3,33 @@ package com3001.at00672;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
+import org.apache.log4j.varia.NullAppender;
 
 public class DBPedia {
 
     public static void main(String[] args) {
+
+    }
+
+    public static void TestConnection() {
+        String service = "http://dbpedia.org/sparql";
+        String query = "ASK { }";
+        QueryExecution qe = QueryExecutionFactory.sparqlService(service, query);
+        try {
+            if (qe.execAsk()) {
+                System.out.println(service + " is UP");
+            } // end if
+        } catch (QueryExceptionHTTP e) {
+            System.out.println(service + " is DOWN");
+        } finally {
+            qe.close();
+        }
+    }
+
+    public static void ExampleQuery() {
+        //org.apache.log4j.BasicConfigurator.configure();
+        org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+
         String str = "Turing";
         String queryString = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
                 " PREFIX foaf: <http://xmlns.com/foaf/0.1/>" +
@@ -26,21 +49,6 @@ public class DBPedia {
             }
         } finally {
             qexec.close();
-        }
-    }
-
-    public static void TestConnection() {
-        String service = "http://dbpedia.org/sparql";
-        String query = "ASK { }";
-        QueryExecution qe = QueryExecutionFactory.sparqlService(service, query);
-        try {
-            if (qe.execAsk()) {
-                System.out.println(service + " is UP");
-            } // end if
-        } catch (QueryExceptionHTTP e) {
-            System.out.println(service + " is DOWN");
-        } finally {
-            qe.close();
         }
     }
 }

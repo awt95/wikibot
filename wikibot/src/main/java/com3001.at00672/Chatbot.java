@@ -2,6 +2,7 @@ package com3001.at00672;
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.text.WordUtils;
 
 import org.alicebot.ab.*;
 import org.alicebot.ab.utils.IOUtils;
@@ -36,7 +37,9 @@ public class Chatbot {
                     response = response.replace("&lt;", "<");
                 while (response.contains("&gt;"))
                     response = response.replace("&gt;", ">");
-                System.out.println("Bot: " + response);
+                System.out.println();
+                System.out.println("Bot: ");
+                System.out.println(WordUtils.wrap(response, 80));
                 System.out.println();
             }
 

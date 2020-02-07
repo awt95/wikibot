@@ -40,13 +40,13 @@ public class DBPedia {
             ResultSet results = qexec.execSelect();
             if (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
-                Literal l = soln.getLiteral("abstract");
+                Literal l = soln.getLiteral("comment");
                 returnString = l.getString();
 
             }
         } catch (Exception e) {
             e.printStackTrace();
-            returnString = "Sorry I don't know";
+            returnString = "Sorry I don't know. No results found.";
         }
         return returnString;
     }

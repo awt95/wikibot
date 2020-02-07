@@ -28,6 +28,7 @@ public class Chatbot {
                 System.out.print("You: ");
                 textLine = IOUtils.readInputTextLine();
                 String request = textLine;
+                processRequest(request);
                 //if (MagicBooleans.trace_mode)
                 //  System.out.println("STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0) + ":TOPIC=" + chatSession.predicates.get("topic"));
                 String response = chatSession.multisentenceRespond(request);
@@ -45,6 +46,12 @@ public class Chatbot {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void processRequest(String request) {
+        if (request.equals("quit") || request.equals("exit")) {
+            System.exit(0);
         }
     }
 

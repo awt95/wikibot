@@ -8,10 +8,13 @@ import org.apache.log4j.varia.NullAppender;
 public class DBPedia {
 
     public static void main(String[] args) {
-
+        TestConnection();
+        ExampleQuery();
     }
 
     public static void TestConnection() {
+        //org.apache.log4j.BasicConfigurator.configure();
+        org.apache.log4j.BasicConfigurator.configure(new NullAppender());
         String service = "http://dbpedia.org/sparql";
         String query = "ASK { }";
         QueryExecution qe = QueryExecutionFactory.sparqlService(service, query);

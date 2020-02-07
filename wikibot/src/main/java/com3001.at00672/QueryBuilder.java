@@ -9,7 +9,7 @@ public class QueryBuilder {
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
         sb.append(" SELECT ?abstract WHERE {");
         sb.append("  ?person rdfs:label ?label; a dbo:Person .");
-        sb.append("  ?label <bif:contains> \" 'Alan Turing' \".");
+        sb.append("  ?label <bif:contains> \" '" + query +"' \".");
         sb.append("  ?uri rdfs:label ?txt .");
         sb.append("  OPTIONAL { ?person dbo:abstract ?abstract . ");
         sb.append("    FILTER  langMatches(lang(?abstract), 'en') }");

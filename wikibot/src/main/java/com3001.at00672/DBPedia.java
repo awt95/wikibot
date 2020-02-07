@@ -8,8 +8,8 @@ import org.apache.log4j.varia.NullAppender;
 public class DBPedia {
 
     public static void main(String[] args) {
-        TestConnection();
-        ExampleQuery();
+        //TestConnection();
+        //ExampleQuery();
     }
 
     public static void TestConnection() {
@@ -29,25 +29,30 @@ public class DBPedia {
         }
     }
 
-    public static String UserQuery(String queryString) {
+    public static String UserQuery(String userQuery) {
+        String returnString = "";
         try {
+            org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+            String queryString = QueryBuilder.PersonQuery(userQuery);
+            //System.out.println(queryString);
             Query query = QueryFactory.create(queryString);
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            for (; results.hasNext(); ) {
+            if (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
-                System.out.println(soln);
+                Literal l = soln.getLiteral("abstract");
+                returnString = l.getString();
+
             }
-            return "Hope that answers your query";
         } catch (Exception e) {
             e.printStackTrace();
-            return "Sorry, I don't know";
+            returnString = "Sorry I don't know";
         }
+        return returnString;
     }
 
     public static void ExampleQuery() {
         //org.apache.log4j.BasicConfigurator.configure();
-        org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
         String str = "Turing";
         String queryString = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +

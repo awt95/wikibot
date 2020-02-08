@@ -1,0 +1,9 @@
+.container {
+    min-height: 100%;
+    overflow: hidden;
+}
+.message-input {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

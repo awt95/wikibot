@@ -1,7 +1,7 @@
-.container {
-    min-height: 100%;
-    overflow: hidden;
+html,body {
+    height: 100%;
 }
+
 .message-input {
     position: absolute;
     bottom: 0;

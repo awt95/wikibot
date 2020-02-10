@@ -10,21 +10,29 @@
     <link href="../static/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container h-100">
+<div class="container-fluid h-100">
     <div class="row h-100">
         <div class="col"></div>
-        <div class="col-6 mt-1 bg-light h-75">
-            <h3>Chat</h3>
-
-            <form>
-                <div class="message-input">
-                    <input type="text" placeholder="Write your message..." />
-                    <button class="submit">Send</button>
+        <div class="col-xl-8 col-10 my-auto h-75 p-0 bg-light">
+            <div class="h-100 d-flex flex-column">
+                <div class="row bg-light flex-grow-1">
+                    Messages
                 </div>
-            </form>
+                <div class="row bg-white">
+                    <!-- user input form -->
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Write your message..." />
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
         </div>
 
-        <div class="col"></div>
+
     </div>
 </div>
 </body>

@@ -2,8 +2,8 @@ html,body {
     height: 100%;
 }
 
-.message-input {
+.input_message {
     position: absolute;
     bottom: 0;
-    width: 100%;
+    background-color: lightblue;
 }

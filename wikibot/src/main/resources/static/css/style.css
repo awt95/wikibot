@@ -2,8 +2,19 @@ html,body {
     height: 100%;
 }
 
-.input_message {
-    position: absolute;
-    bottom: 0;
-    background-color: lightblue;
+.list-group li {
+    list-style: none;
+}
+.card {
+    margin-bottom:15px;
+}
+
+.card.chat-recv {
+    background-color: white;
+    float:left;
+}
+.card.chat-send {
+    background-color: #D7F6F6;
+    float: right;
+
 }

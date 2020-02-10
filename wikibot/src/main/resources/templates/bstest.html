@@ -15,11 +15,27 @@
         <div class="col"></div>
         <div class="col-xl-8 col-10 my-auto h-75 p-0 bg-light">
             <div class="h-100 d-flex flex-column">
-                <div class="row bg-light flex-grow-1">
-                    Messages
+                <div class="row bg-light flex-grow-1 overflow-auto p-4">
+                    <!-- Messages-->
+                    <ul class="list-group w-100">
+                        <li>
+                            <div class="card chat-send">
+                                <div class="card-body">
+                                    This is a message I sent
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card chat-recv">
+                                <div class="card-body">
+                                    This is a message I received
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="row bg-white">
-                    <!-- user input form -->
+                <div class="row">
+                    <!-- User input form -->
                     <div class="col-12">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Write your message..." />

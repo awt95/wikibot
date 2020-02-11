@@ -10,6 +10,9 @@ import org.apache.jena.reasoner.rulesys.builtins.Regex;
 import org.apache.log4j.varia.NullAppender;
 
 public class Chatbot {
+
+    //TODO: init class
+
     public static void main(String[] args) {
         try {
             //org.apache.log4j.BasicConfigurator.configure();

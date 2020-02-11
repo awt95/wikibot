@@ -23,27 +23,28 @@
                     <!-- Messages-->
                     <ul class="list-group w-100">
                         <li>
-                            <div class="card chat-send">
-                                <div class="card-body">
-                                    This is a message I send
-                                </div>
-                            </div>
-                        </li>
-                        <li>
                             <div class="card chat-recv">
                                 <div class="card-body">
                                     This is a message I received
                                 </div>
                             </div>
                         </li>
+                        <li th:each="m : ${chat}">
+                            <div class="card chat-send">
+                                <div class="card-body">
+                                    <p th:text="${m.content}"/>
+                                </div>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
                 <div class="row">
                     <!-- User input form -->
                     <div class="col-12">
-                        <form action="#" th:action="@{/message}" th:object="${message}" method="post">
+                        <form action="#" th:action="@{/}" th:object="${message}" method="post">
                             <div class="input-group">
-                                <input type="text" th:field="*{input}" class="form-control" placeholder="Write your message..." />
+                                <input type="text" th:field="*{content}" class="form-control" placeholder="Write your message..." />
                                 <button type="submit" class="btn btn-primary">Send</button>
                             </div>
                         </form>

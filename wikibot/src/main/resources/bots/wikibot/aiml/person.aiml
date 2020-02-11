@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category>
+        <pattern>WHO IS *</pattern>
+        <template>
+            <think><set name="topic">person</set></think>
+            <think><set name="query">comment</set></think>
+            <think><set name="value"><star/></set></think>
+            respond.
+        </template>
+    </category>
+
+    <topic name="person">
+        <category>
+            <pattern> * </pattern>
+            <template>
+              <srai>WHO IS <star/></srai>
+            </template>
+        </category>
+    </topic>
+</aiml>

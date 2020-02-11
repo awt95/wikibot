@@ -3,6 +3,7 @@
     <category>
         <pattern>HELLO ^</pattern>
         <template>
+            <think><set name="topic">conversation</set></think>
             <random>
                 <li> Hello! </li>
                 <li> Hi there </li>

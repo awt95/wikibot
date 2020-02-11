@@ -1,0 +1,2 @@
+0,WHO IS *,*,*,<think><set name="topic">person</set></think>#Newline            <think><set name="query">comment</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            respond.,person.aiml
+0,*,*,PERSON,<srai>WHO IS <star/></srai>,person.aiml

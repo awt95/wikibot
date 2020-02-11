@@ -29,13 +29,12 @@ public class DBPedia {
         }
     }
 
-    public static String UserQuery(String userQuery) {
+    public static String executeQuery(String userQuery) {
         String returnString = "";
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
-            String queryString = QueryBuilder.PersonQuery(userQuery);
             //System.out.println(queryString);
-            Query query = QueryFactory.create(queryString);
+            Query query = QueryFactory.create(userQuery);
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
             if (results.hasNext()) {

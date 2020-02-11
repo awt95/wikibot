@@ -11,6 +11,7 @@ public class WebApplication {
     private static final Logger logger = Logger.getLogger(WebController.class);
 
     public static void main(String[] args) {
+        org.apache.log4j.BasicConfigurator.configure();
         SpringApplication.run(WebApplication.class, args);
     }
 }

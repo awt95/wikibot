@@ -30,11 +30,19 @@
                             </div>
                         </li>
                         <li th:each="m : ${chat}">
-                            <div class="card chat-send">
-                                <div class="card-body">
-                                    <p th:text="${m.content}"/>
+                            <div th:switch="${m.sender}">
+                                <div th:case="${T(com3001.at00672.Sender).USER}" class="card chat-send">
+                                    <div class="card-body">
+                                        <span th:text="${m.content}"/>
+                                    </div>
+                                </div>
+                                <div th:case="${T(com3001.at00672.Sender).BOT}" class="card chat-recv">
+                                    <div class="card-body">
+                                        <span th:text="${m.content}"/>
+                                    </div>
                                 </div>
                             </div>
+
                         </li>
 
                     </ul>

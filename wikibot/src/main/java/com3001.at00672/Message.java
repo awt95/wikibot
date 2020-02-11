@@ -12,11 +12,13 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
+    private Sender sender;
 
     public Message() {}
 
-    public Message(String content) {
+    public Message(String content, Sender sender) {
         this.content = content;
+        this.sender = sender;
     }
 
     public Long getId() {
@@ -33,5 +35,13 @@ public class Message {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Sender getSender() {
+        return sender;
+    }
+
+    public void setSender(Sender sender) {
+        this.sender = sender;
     }
 }

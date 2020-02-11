@@ -25,7 +25,11 @@ public class WebController {
 
     @PostMapping("/")
     public String submitMessage(@ModelAttribute Message message, BindingResult result, Model model) {
+        message.setSender(Sender.USER);
         chatRepository.save(message);
+        // get response
+        Message response = new Message("Response to: " + message.getContent(), Sender.BOT);
+        chatRepository.save(response);
         model.addAttribute("chat", chatRepository.findAll());
         return "index";
     }

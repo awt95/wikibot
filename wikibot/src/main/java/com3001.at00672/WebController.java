@@ -12,6 +12,9 @@ public class WebController {
     private final ChatRepository chatRepository;
 
     @Autowired
+    ChatbotService chatbotService;
+
+    @Autowired
     public WebController(ChatRepository chatRepository) {
         this.chatRepository = chatRepository;
     }
@@ -28,7 +31,8 @@ public class WebController {
         message.setSender(Sender.USER);
         chatRepository.save(message);
         // get response
-        Message response = new Message("Response to: " + message.getContent(), Sender.BOT);
+        //Message response = new Message("Response to: " + message.getContent(), Sender.BOT);
+        Message response = chatbotService.chatbotRequest(message);
         chatRepository.save(response);
         model.addAttribute("chat", chatRepository.findAll());
         return "index";

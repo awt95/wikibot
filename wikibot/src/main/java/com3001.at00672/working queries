@@ -16,3 +16,11 @@
           OPTIONAL { ?person dbo:abstract ?abstract .
             FILTER  langMatches(lang(?abstract), 'en') }
         } LIMIT 1
+
+        SELECT ?comment WHERE {
+          ?person rdfs:label ?label; a dbo:Person .
+          ?label <bif:contains> "'alan turing'".
+          ?uri rdfs:label ?txt .
+          OPTIONAL { ?person rdfs:comment ?comment .
+             FILTER  langMatches(lang(?comment), 'en') }
+        } LIMIT 1

@@ -1,9 +1,23 @@
 package com3001.at00672;
 
+import org.apache.jena.datatypes.RDFDatatype;
+import org.apache.jena.datatypes.xsd.XSDDatatype;
+import org.apache.jena.datatypes.xsd.impl.XSDDateType;
+import org.apache.jena.ext.xerces.impl.dv.xs.XSSimpleTypeDecl;
+import org.apache.jena.ext.xerces.xs.datatypes.XSDateTime;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.riot.RDFParser;
 import org.apache.jena.sparql.engine.http.QueryExceptionHTTP;
 import org.apache.log4j.varia.NullAppender;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class DBPedia {
 
@@ -29,25 +43,56 @@ public class DBPedia {
         }
     }
 
-    public static String executeQuery(String userQuery) {
+    public static String executeQuery(UserQuery userQuery) {
         String returnString = "";
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
             //System.out.println(queryString);
-            Query query = QueryFactory.create(userQuery);
+            Query query = QueryFactory.create(userQuery.getQueryString());
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            if (results.hasNext()) {
-                QuerySolution soln = results.nextSolution();
-                Literal l = soln.getLiteral("comment");
-                returnString = l.getString();
-
+            // TODO: loop through all results
+            ArrayList<String> resultsList = new ArrayList();
+            while (results.hasNext()) {
+                QuerySolution solution = results.nextSolution();
+                RDFNode node = solution.get(userQuery.getProperty());
+                String result = processResource(node);
+                resultsList.add(result);
             }
+            // form return
+            for (String s : resultsList)
+                returnString += s + ", ";
+
         } catch (Exception e) {
             e.printStackTrace();
             returnString = "Sorry I don't know. No results found.";
         }
         return returnString;
+    }
+
+    private static String processResource(RDFNode node) throws ParseException {
+        Resource r = node.asResource();
+        String uri = r.getURI();
+        if (uri.contains("dbpedia.org")) {
+            if (uri.contains("resource")) {
+                RDFParser parser = RDFParser.create().source(uri).base("http://dbpedia.org/resource").build();
+                String[] urlParts = uri.split("/");
+                String resourceName = urlParts[urlParts.length - 1];
+                return resourceName.replace("_", " ");
+            } else {
+                return node.asLiteral().getString();
+            }
+        } else {
+            RDFDatatype dtype = node.asLiteral().getDatatype();
+            if (dtype instanceof XSDDateType) {
+                DateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = inFormat.parse(node.asLiteral().getLexicalForm());
+                DateFormat outFormat = new SimpleDateFormat("dd MMM yyyy");
+                return outFormat.format(date);
+            } else {
+                return node.asLiteral().getString();
+            }
+        }
     }
 
     public static void ExampleQuery() {

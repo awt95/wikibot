@@ -61,7 +61,7 @@ public class DBPedia {
             }
             // form return
             for (String s : resultsList)
-                returnString += s + ", ";
+                returnString += s + " ";
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,18 +71,22 @@ public class DBPedia {
     }
 
     private static String processResource(RDFNode node) throws ParseException {
-        Resource r = node.asResource();
-        String uri = r.getURI();
-        if (uri.contains("dbpedia.org")) {
-            if (uri.contains("resource")) {
-                RDFParser parser = RDFParser.create().source(uri).base("http://dbpedia.org/resource").build();
-                String[] urlParts = uri.split("/");
-                String resourceName = urlParts[urlParts.length - 1];
-                return resourceName.replace("_", " ");
+        String result = "";
+        // Check if it as resource
+        if (node.isResource()) {
+            Resource r = node.asResource();
+            String uri = r.getURI();
+            if (uri.contains("dbpedia.org")) {
+                if (uri.contains("resource")) {
+                    RDFParser parser = RDFParser.create().source(uri).base("http://dbpedia.org/resource").build();
+                    String[] urlParts = uri.split("/");
+                    String resourceName = urlParts[urlParts.length - 1];
+                    result = resourceName.replace("_", " ");
+                }
             } else {
-                return node.asLiteral().getString();
+                result = "Could not find resource value";
             }
-        } else {
+        } else if (node.isLiteral()) {
             RDFDatatype dtype = node.asLiteral().getDatatype();
             if (dtype instanceof XSDDateType) {
                 DateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,9 +94,12 @@ public class DBPedia {
                 DateFormat outFormat = new SimpleDateFormat("dd MMM yyyy");
                 return outFormat.format(date);
             } else {
-                return node.asLiteral().getString();
+                result = node.asLiteral().getString();
             }
+        } else {
+            result = "Error occurred parsing node";
         }
+        return result;
     }
 
     public static void ExampleQuery() {

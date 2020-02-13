@@ -23,6 +23,12 @@ public class UserQuery {
 
     }
 
+    private void SanitizeAttributes() {
+        topic = topic.replaceAll("[^a-zA-Z0-9]", "");
+        value = value.replaceAll("[^a-zA-Z0-9]", "");
+        property = property.replaceAll("[^a-zA-Z0-9]", "");
+    }
+
     public String getTopic() {
         return topic;
     }

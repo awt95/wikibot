@@ -39,15 +39,15 @@ public class QueryBuilder {
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(String.format(" SELECT ?%s ?comment WHERE {", userQuery.getProperty()));
+        sb.append(String.format(" SELECT DISTINCT ?%s ?comment WHERE {", userQuery.getProperty()));
         sb.append(String.format("  ?%s foaf:name ?name; a dbo:%s .", userQuery.getTopic(), userQuery.getTopic()));
-        sb.append(String.format("  ?name <bif:contains> \"'%s'\".", userQuery.getValue()));
+        sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.getValue()));
         sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.getTopic()));
         sb.append(String.format("  ?%s %s ?%s .", userQuery.getTopic(), userQuery.getIri(), userQuery.getProperty()));
         sb.append(" FILTER  langMatches(lang(?comment), 'en')");
-        sb.append("} ");
-        if (userQuery.getQueryProperties().containsKey("limit"))
-            sb.append("LIMIT " + userQuery.getQueryProperty("limit"));
+        sb.append("} LIMIT 1");
+        //if (userQuery.getQueryProperties().containsKey("limit"))
+        //    sb.append("LIMIT " + userQuery.getQueryProperty("limit"));
         System.out.println(sb.toString());
 
         return sb.toString();

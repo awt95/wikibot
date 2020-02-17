@@ -1,22 +1,40 @@
 package com3001.at00672;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+@Controller
 public class WebController {
-    private String appMode;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    private final ChatRepository chatRepository;
+
+    @Autowired
+    ChatbotService chatbotService;
+
+    @Autowired
+    public WebController(ChatRepository chatRepository) {
+        this.chatRepository = chatRepository;
+    }
+
+    @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("mode", appMode);
+        model.addAttribute("message", new Message());
+        model.addAttribute("chat", chatRepository.findAll());
+        return "index";
+    }
 
+    @PostMapping("/")
+    public String submitMessage(@ModelAttribute Message message, BindingResult result, Model model) {
+        message.setSender(Sender.USER);
+        chatRepository.save(message);
+        // get response
+        //Message response = new Message("Response to: " + message.getContent(), Sender.BOT);
+        Message response = chatbotService.chatbotRequest(message);
+        chatRepository.save(response);
+        model.addAttribute("chat", chatRepository.findAll());
         return "index";
     }
 }

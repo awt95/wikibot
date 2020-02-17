@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aiml>
-    <category>
-        <pattern>WHO IS *</pattern>
-        <template>
-            Let me find out who <star/> is. <oob><query type="person"><star/></query></oob>
-        </template>
-    </category>
-</aiml>

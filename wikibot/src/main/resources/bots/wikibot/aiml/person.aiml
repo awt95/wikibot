@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+    <category>
+        <pattern>WHO IS *</pattern>
+        <template>
+            <think><set name="topic">Person</set></think>
+            <think><set name="property">rdfs:comment</set></think>
+            <think><set name="value"><star/></set></think>
+            Here's what I found about
+        </template>
+    </category>
+
+    <category>
+        <pattern>* BIRTHDATE</pattern>
+        <template>
+            <think><set name="topic">Person</set></think>
+            <think><set name="property">dbo:birthDate</set></think>
+            <think><set name="value"><star/></set></think>
+            response
+        </template>
+    </category>
+
+    <category>
+        <pattern>* BIRTHPLACE</pattern>
+        <template>
+            <think><set name="topic">Person</set></think>
+            <think><set name="property">dbo:birthPlace</set></think>
+            <think><set name="value"><star/></set></think>
+            Here's what I found about
+        </template>
+    </category>
+
+    <topic name="Person">
+        <category>
+            <pattern> * </pattern>
+            <template>
+              <srai>WHO IS <star/></srai>
+            </template>
+        </category>
+    </topic>
+</aiml>

@@ -24,3 +24,12 @@
           OPTIONAL { ?person rdfs:comment ?comment .
              FILTER  langMatches(lang(?comment), 'en') }
         } LIMIT 1
+
+
+        SELECT ?place, ?label WHERE {
+         ?place a dbo:Country .
+         ?place rdfs:label ?label .
+         FILTER langMatches(lang(?label), 'en') .
+
+        }
+        ORDER BY ASC(?label)

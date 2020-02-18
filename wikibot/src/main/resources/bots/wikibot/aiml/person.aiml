@@ -19,6 +19,34 @@
             response
         </template>
     </category>
+    <category>
+        <pattern>WHEN WAS * BORN</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHEN * BORN</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* BIRTHDAY</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
+    <!--<category>
+        <pattern>*</pattern>
+        <template>
+            <condition name="property">
+                <li value="dbo:birthDate"><srai><star/> BIRTHDATE</srai></li>
+                <li value="dbo:birthPlace"><srai><star/> BIRTHDATE</srai></li>
+                <li value="*"><srai>WHO IS <star/></srai></li>
+            </condition>
+        </template>
+    </category>-->
 
     <category>
         <pattern>* BIRTHPLACE</pattern>
@@ -29,7 +57,24 @@
             Here's what I found about
         </template>
     </category>
+    <category>
+        <pattern>WHERE * BORN</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
 
+    <category>
+        <pattern>PEOPLE BORN IN *</pattern>
+        <template>
+            <think><set name="topic">Person</set></think>
+            <think><set name="property">dbo:birthDate</set></think>
+            <think><set name="queryType">list</set></think>
+            <think><set name="value"><star/></set></think>
+        </template>
+    </category>
+
+    <!--
     <topic name="Person">
         <category>
             <pattern> * </pattern>
@@ -37,5 +82,5 @@
               <srai>WHO IS <star/></srai>
             </template>
         </category>
-    </topic>
+    </topic> -->
 </aiml>

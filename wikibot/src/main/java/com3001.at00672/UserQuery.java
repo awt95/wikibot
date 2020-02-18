@@ -10,6 +10,7 @@ public class UserQuery {
     private String property;
     private HashMap<String,String> queryProperties = new HashMap<>();
     private String queryString;
+    private String queryType;
 
     public UserQuery() {}
 
@@ -96,6 +97,13 @@ public class UserQuery {
         queryProperties.put(key, value);
     }
 
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public void setQueryType(String queryType) {
+        this.queryType = queryType;
+    }
 
     public String getQueryProperty(String key) {
         return queryProperties.get(key);

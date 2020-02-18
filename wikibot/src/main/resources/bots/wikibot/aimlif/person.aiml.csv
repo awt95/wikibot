@@ -1,4 +1,8 @@
 0,WHO IS *,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">rdfs:comment</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            Here's what I found about,person.aiml
 0,* BIRTHDATE,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">dbo:birthDate</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            response,person.aiml
+0,WHEN WAS * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,WHEN * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,* BIRTHDAY,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
 0,* BIRTHPLACE,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">dbo:birthPlace</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            Here's what I found about,person.aiml
-0,*,*,PERSON,<srai>WHO IS <star/></srai>,person.aiml
+0,WHERE * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,PEOPLE BORN IN *,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">dbo:birthDate</set></think>#Newline            <think><set name="queryType">list</set></think>#Newline            <think><set name="value"><star/></set></think>,person.aiml

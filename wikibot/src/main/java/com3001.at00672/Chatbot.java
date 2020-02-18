@@ -44,7 +44,7 @@ public class Chatbot {
                 processRequest(request, chatSession.predicates);
 
                 // TODO: Expand to rich content, pictures etc
-                response = processResponse(response);
+                //response = processResponse(response);
                 while (response.contains("&lt;"))
                     response = response.replace("&lt;", "<");
                 while (response.contains("&gt;"))
@@ -61,20 +61,22 @@ public class Chatbot {
     }
 
     public static void processRequest(String request, Predicates predicates) {
-        String topic = predicates.get("topic");
-        String iri = predicates.get("property");
-        String value = predicates.get("value");
-        value = WordUtils.capitalize(value);
-        String[] properties = iri.split(":");
-        String namespace = null;
-        String property = null;
+        // utilities
+
+        UserQuery userQuery = new UserQuery();
+        userQuery.setTopic(predicates.get("topic"));
+        userQuery.setIri(predicates.get("property"));
+        userQuery.setQueryType(predicates.get("queryType"));
+        userQuery.setValue(WordUtils.capitalize(predicates.get("value")));
+        String[] properties = userQuery.getIri().split(":");
+
         if(properties.length == 2) {
-            namespace = properties[0];
-            property = properties[1];
-        } else {
-            property = predicates.get("property");
+            userQuery.setNamespace(properties[0]);
+            userQuery.setProperty(properties[1]);
         }
-        userQuery = new UserQuery(topic, iri, value, namespace, property);
+
+        System.out.println(String.format("TOPIC: %s, PROPERTY: %s, QUERYTYPE: %s VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getQueryType(), userQuery.getValue()));
+
         if (request.equals("quit") || request.equals("exit")) {
             System.exit(0);
         }

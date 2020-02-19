@@ -98,6 +98,7 @@
         </template>
     </category>
 
+    <!-- dbo:birthPlace -->
     <category>
         <pattern>* BIRTHPLACE</pattern>
         <template>
@@ -127,6 +128,11 @@
             <srai><star/> BIRTHPLACE</srai>
         </template>
     </category>
+
+    <!-- dbo:knownFor -->
+
+    <!-- dbo:deathDate -->
+
 
     <category>
         <pattern>PEOPLE BORN IN *</pattern>

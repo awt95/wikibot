@@ -10,30 +10,35 @@
 
 </head>
 <body>
-<div class="container-fluid h-100">
-    <div class="row h-100">
-        <div class="col"></div>
-        <div class="col-xl-8 col-10 my-auto h-75 p-0 bg-light">
+
+<div class="container-fluid main-container">
+    <nav class="navbar main-navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#" th:href="@{/}">Chatbot</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <form action="#" th:action="@{/clear}" method="post">
+                    <button class="btn btn-link nav-item text-white" type="submit">Clear Chat</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <div class="row h-100 main-body">
+        <div class="col">
+        </div>
+        <div class="col-xl-8 col-10 my-auto h-100 bg-chat shadow-sm p-3 mb-5 rounded">
             <div class="h-100 d-flex flex-column">
-                <div class="row bg-light flex-grow-1 overflow-auto p-4" id="messages_div">
+                <div class="row bg-chat flex-grow-1 overflow-auto p-4" id="messages_div">
                     <!-- Messages-->
                     <ul class="list-group w-100">
-                        <li>
-                            <div class="card chat-recv">
-                                <div class="card-body">
-                                    This is a message I received
-                                </div>
-                            </div>
-                        </li>
                         <li th:each="m : ${chat}">
                             <div th:switch="${m.sender}">
-                                <div th:case="${T(com3001.at00672.Sender).USER}" class="card chat-send">
-                                    <div class="card-body">
+                                <div th:case="${T(com3001.at00672.Sender).USER}" class="card chat-send shadow-sm rounded">
+                                    <div class="card-body py-3">
                                         <span th:text="${m.content}"/>
                                     </div>
                                 </div>
-                                <div th:case="${T(com3001.at00672.Sender).BOT}" class="card chat-recv">
-                                    <div class="card-body">
+                                <div th:case="${T(com3001.at00672.Sender).BOT}" class="card chat-recv shadow-sm rounded">
+                                    <div class="card-body py-3">
                                         <span th:text="${m.content}"/>
                                     </div>
                                 </div>

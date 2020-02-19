@@ -4,6 +4,7 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.log4j.varia.NullAppender;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class ChatbotUtils {
@@ -12,7 +13,11 @@ public class ChatbotUtils {
     }
 
     public static void loadPersonSubclasses() {
+        Writer writer;
         try {
+            String people = System.getProperty("user.dir") + "/src/main/resources/bots/wikibot/sets/person_type.txt";
+            File file = new File(people);
+            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(people)));
             org.apache.log4j.BasicConfigurator.configure();
             String queryString = " PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
                     " PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
@@ -30,7 +35,9 @@ public class ChatbotUtils {
             while (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
                 System.out.println(soln.getLiteral("type"));
+                writer.write(soln.getLiteral("type").toString().toLowerCase() + "\n");
             }
+            writer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

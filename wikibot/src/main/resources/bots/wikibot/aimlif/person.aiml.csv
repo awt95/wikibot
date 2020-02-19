@@ -1,11 +1,17 @@
-0,*,*,*,Star <star/>,person.aiml
-0,WHO IS *,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">rdfs:comment</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            Here's what I found about,person.aiml
-0,* BIRTHDATE,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">dbo:birthDate</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            Birthdate,person.aiml
-0,* BIRTHDAY,*,*,<srai>WHEN <star/> BORN</srai>,person.aiml
-0,WHEN WAS * BORN,*,*,<srai>WHEN <star/> BORN</srai>,person.aiml
-0,WHEN WERE * BORN,*,*,<srai>WHEN <star/> BORN</srai>,person.aiml
-0,WHAT IS * BIRTHDATE,*,*,<srai>WHEN <star/> BORN</srai>,person.aiml
-0,WHEN * BORN,*,*,<think>#Newline                <set name="topic">Person</set>#Newline                <set name="property">dbo:birthDate</set>#Newline                <set name="subject"><map name="pronouns"><star/></map></set>#Newline            </think>#Newline            <condition name="subject">#Newline                <li value="they">#Newline                    <condition name="value">#Newline                        <li value="unknown">#Newline                            When was who born?#Newline                        </li>#Newline                        <li>#Newline                            <srai><get name="value"/> BIRTHDATE</srai>#Newline                        </li>#Newline                    </condition>#Newline                </li>#Newline                <li>#Newline                    <think>#Newline                        <set name="value"><star/></set>#Newline                    </think>#Newline                    <srai><get name="value"/> BIRTHDATE</srai>#Newline                </li>#Newline            </condition>,person.aiml
-0,* BIRTHPLACE,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">dbo:birthPlace</set></think>#Newline            <think><set name="value"><star/></set></think>#Newline            Birthplace,person.aiml
-0,WHERE * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,*,WHO ARE WE TALKING ABOUT,*,<condition name="property">#Newline                <li value="dbo:birthDate">#Newline                    <srai><star/> BIRTHDATE</srai>#Newline                </li>#Newline                <li value="dbo:birthPlace">#Newline                    <srai><star/> BIRTHPLACE</srai>#Newline                </li>#Newline                <li>#Newline                    I've gotten a bit confused#Comma there. Let's start again.#Newline                    <srai>BOT_CLEAR_ALL</srai>#Newline                </li>#Newline            </condition>,person.aiml
+0,GET_CONTEXT,*,*,Who are we talking about?,person.aiml
+0,WHO IS *,*,*,<think>#Newline                <set name="topic">Person</set>#Newline                <set name="property">rdfs:comment</set>#Newline            </think>#Newline            <srai>BOT_QUERY_CONTEXT <star/></srai>,person.aiml
+0,TELL ME ABOUT *,*,*,<srai>WHO IS <star/></srai>,person.aiml
+0,LETS TALK ABOUT *,*,*,<srai>WHO IS <star/></srai>,person.aiml
+0,* BIRTHDATE,*,*,<think>#Newline                <set name="topic">Person</set>#Newline                <set name="property">dbo:birthDate</set>#Newline            </think>#Newline            <srai>BOT_QUERY_CONTEXT <star/></srai>,person.aiml
+0,* BIRTHDAY,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,WHEN WAS * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,WHEN WERE * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,WHAT IS * BIRTHDATE,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,WHAT YEAR WAS * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,* BIRTHPLACE,*,*,<think>#Newline                <set name="topic">Person</set>#Newline                <set name="property">dbo:birthPlace</set>#Newline            </think>#Newline            <srai>BOT_QUERY_CONTEXT <star/></srai>,person.aiml
+0,WHERE WAS * BORN,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml
+0,WHERE WERE * BORN,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml
+0,WHERE * BORN,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml
 0,PEOPLE BORN IN *,*,*,<think><set name="topic">Person</set></think>#Newline            <think><set name="property">dbo:birthDate</set></think>#Newline            <think><set name="queryType">list</set></think>#Newline            <think><set name="value"><star/></set></think>,person.aiml
+0,BOT_QUERY_CONTEXT *,*,*,<think>#Newline                <set name="subject"><map name="pronouns"><star/></map></set>#Newline            </think>#Newline            <condition name="subject">#Newline                <li value="they">#Newline                    <condition name="value">#Newline                        <li value="unknown">#Newline                            <srai>GET_CONTEXT</srai>#Newline                        </li>#Newline                        <li>#Newline                            RUN_QUERY on <get name="topic"/>#Comma <get name="property"/> subject= <get name="value"/>#Newline                        </li>#Newline                    </condition>#Newline                </li>#Newline                <li>#Newline                    <think>#Newline                        <set name="value"><star/></set>#Newline                    </think>#Newline                    RUN_QUERY on <get name="topic"/>#Comma <get name="property"/> subject= <get name="value"/>#Newline                </li>#Newline            </condition>,person.aiml

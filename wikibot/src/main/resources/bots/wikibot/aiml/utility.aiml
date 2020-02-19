@@ -18,4 +18,16 @@
             <srai>CLEAR</srai>
         </template>
     </category>
+
+    <category>
+        <pattern>BOT_CLEAR_ALL</pattern>
+        <template>
+            <think>
+                <set name="topic">unknown</set>
+                <set name="property">unknown</set>
+                <set name="querytype">unknown</set>
+                <set name="value">unknown</set>
+            </think>
+        </template>
+    </category>
 </aiml>

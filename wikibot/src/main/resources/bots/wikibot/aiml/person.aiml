@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aiml>
+<aiml version="2.0">
+
+    <!-- TODO: * context -->
+
+    <!-- dbo:comment -->
     <category>
         <pattern>WHO IS *</pattern>
         <template>
@@ -9,44 +13,86 @@
             Here's what I found about
         </template>
     </category>
+    <category>
+        <pattern>TELL ME ABOUT *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>LETS TALK ABOUT *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
 
+    <!-- dbo:birthDate -->
     <category>
         <pattern>* BIRTHDATE</pattern>
         <template>
             <think><set name="topic">Person</set></think>
             <think><set name="property">dbo:birthDate</set></think>
             <think><set name="value"><star/></set></think>
-            response
+            Birthdate
+        </template>
+    </category>
+    <!-- Synonyms -->
+    <category>
+        <pattern>* BIRTHDAY</pattern>
+        <template>
+            <srai>WHEN <star/> BORN</srai>
         </template>
     </category>
     <category>
         <pattern>WHEN WAS * BORN</pattern>
         <template>
-            <srai><star/> BIRTHDATE</srai>
+            <srai>WHEN <star/> BORN</srai>
         </template>
     </category>
+    <category>
+        <pattern>WHEN WERE * BORN</pattern>
+        <template>
+            <srai>WHEN <star/> BORN</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT IS * BIRTHDATE</pattern>
+        <template>
+            <srai>WHEN <star/> BORN</srai>
+        </template>
+    </category>
+    <!-- dbo:birthDate context -->
+    <!-- TODO: Pronoun subsitution/condition  -->
     <category>
         <pattern>WHEN * BORN</pattern>
         <template>
-            <srai><star/> BIRTHDATE</srai>
-        </template>
-    </category>
-    <category>
-        <pattern>* BIRTHDAY</pattern>
-        <template>
-            <srai><star/> BIRTHDATE</srai>
-        </template>
-    </category>
-    <!--<category>
-        <pattern>*</pattern>
-        <template>
-            <condition name="property">
-                <li value="dbo:birthDate"><srai><star/> BIRTHDATE</srai></li>
-                <li value="dbo:birthPlace"><srai><star/> BIRTHDATE</srai></li>
-                <li value="*"><srai>WHO IS <star/></srai></li>
+            <think>
+                <set name="topic">Person</set>
+                <set name="property">dbo:birthDate</set>
+                <set name="subject"><map name="pronouns"><star/></map></set>
+            </think>
+            <condition name="subject">
+                <li value="they">
+                    <condition name="value">
+                        <li value="unknown">
+                            When was who born?
+                        </li>
+                        <li>
+                            <srai><get name="value"/> BIRTHDATE</srai>
+                        </li>
+                    </condition>
+                </li>
+                <li>
+                    <think>
+                        <set name="value"><star/></set>
+                    </think>
+                    <srai><get name="value"/> BIRTHDATE</srai>
+                </li>
             </condition>
         </template>
-    </category>-->
+    </category>
+
+
 
     <category>
         <pattern>* BIRTHPLACE</pattern>
@@ -54,13 +100,14 @@
             <think><set name="topic">Person</set></think>
             <think><set name="property">dbo:birthPlace</set></think>
             <think><set name="value"><star/></set></think>
-            Here's what I found about
+            <set name="subject"><map name="pronouns"><star/></map></set>
+            Birthplace
         </template>
     </category>
     <category>
         <pattern>WHERE * BORN</pattern>
         <template>
-            <srai><star/> BIRTHDATE</srai>
+            <srai><star/> BIRTHPLACE</srai>
         </template>
     </category>
 

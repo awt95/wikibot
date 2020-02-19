@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>^ CLEAR ^</pattern>
+        <template>
+            <think>
+                <set name="topic">unknown</set>
+                <set name="property">unknown</set>
+                <set name="querytype">unknown</set>
+                <set name="value">unknown</set>
+            </think>
+            Okay, let's stop talking about that.
+        </template>
+    </category>
+    <category>
+        <pattern>^ STOP ^</pattern>
+        <template>
+            <srai>CLEAR</srai>
+        </template>
+    </category>
+</aiml>

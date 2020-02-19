@@ -1,0 +1,5 @@
+Person:who
+Country:where
+he:who
+she:who
+they:who

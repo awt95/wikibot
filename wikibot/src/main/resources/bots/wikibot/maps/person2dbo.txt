@@ -1,0 +1,368 @@
+person:Person
+persons:Person
+actor:Actor
+actors:Actor
+adult actor:AdultActor
+adult actors:AdultActor
+amateur boxer:AmateurBoxer
+amateur boxers:AmateurBoxer
+ambassador:Ambassador
+ambassadors:Ambassador
+american football coach:AmericanFootballCoach
+american football coaches:AmericanFootballCoach
+american football player:AmericanFootballPlayer
+american football players:AmericanFootballPlayer
+animanga character:AnimangaCharacter
+animanga characters:AnimangaCharacter
+archeologist:Archeologist
+archeologists:Archeologist
+archer player:ArcherPlayer
+archer players:ArcherPlayer
+architect:Architect
+architects:Architect
+aristocrat:Aristocrat
+aristocrats:Aristocrat
+artist:Artist
+artists:Artist
+astronaut:Astronaut
+astronauts:Astronaut
+athlete:Athlete
+athletes:Athlete
+athletics player:AthleticsPlayer
+athletics players:AthleticsPlayer
+australian rules football player:AustralianRulesFootballPlayer
+australian rules football players:AustralianRulesFootballPlayer
+back scene:BackScene
+back scenes:BackScene
+badminton player:BadmintonPlayer
+badminton players:BadmintonPlayer
+baronet:Baronet
+baronets:Baronet
+baseball player:BaseballPlayer
+baseball players:BaseballPlayer
+basketball player:BasketballPlayer
+basketball players:BasketballPlayer
+beach volleyball player:BeachVolleyballPlayer
+beach volleyball players:BeachVolleyballPlayer
+beauty queen:BeautyQueen
+beauty queens:BeautyQueen
+biathlete:Biathlete
+biathletes:Biathlete
+biologist:Biologist
+biologists:Biologist
+bobsleighathlete:BobsleighAthlete
+bobsleighathletes:BobsleighAthlete
+bodybuilder:Bodybuilder
+bodybuilders:Bodybuilder
+boxer:Boxer
+boxers:Boxer
+british royalty:BritishRoyalty
+british royalties:BritishRoyalty
+bullfighter:BullFighter
+bullfighters:BullFighter
+businessperson:BusinessPerson
+businesspersons:BusinessPerson
+canadian football player:CanadianFootballPlayer
+canadian football players:CanadianFootballPlayer
+canoeist:Canoeist
+canoeists:Canoeist
+cardinal:Cardinal
+cardinals:Cardinal
+celebrity:Celebrity
+celebrities:Celebrity
+chancellor:Chancellor
+chancellors:Chancellor
+chef:Chef
+chefs:Chef
+chess player:ChessPlayer
+chess players:ChessPlayer
+christian bishop:ChristianBishop
+christian bishops:ChristianBishop
+christian patriarch:ChristianPatriarch
+christian patriarches:ChristianPatriarch
+classical music artist:ClassicalMusicArtist
+classical music artists:ClassicalMusicArtist
+cleric:Cleric
+clerics:Cleric
+coach:Coach
+coaches:Coach
+college coach:CollegeCoach
+college coaches:CollegeCoach
+comedian:Comedian
+comedians:Comedian
+comics character:ComicsCharacter
+comics characters:ComicsCharacter
+comics creator:ComicsCreator
+comics creators:ComicsCreator
+congressman:Congressman
+congressmen:Congressman
+cricketer:Cricketer
+cricketers:Cricketer
+criminal:Criminal
+criminals:Criminal
+cross-country skier:CrossCountrySkier
+cross-country skiers:CrossCountrySkier
+curler:Curler
+curlers:Curler
+cyclist:Cyclist
+cyclists:Cyclist
+dtm racer:DTMRacer
+dtm racers:DTMRacer
+dancer:Dancer
+dancers:Dancer
+darts player:DartsPlayer
+darts players:DartsPlayer
+deputy:Deputy
+deputies:Deputy
+disney character:DisneyCharacter
+disney characters:DisneyCharacter
+economist:Economist
+economists:Economist
+egyptologist:Egyptologist
+egyptologists:Egyptologist
+engineer:Engineer
+engineers:Engineer
+entomologist:Entomologist
+entomologists:Entomologist
+farmer:Farmer
+farmers:Farmer
+fashion designer:FashionDesigner
+fashion designers:FashionDesigner
+fencer:Fencer
+fencers:Fencer
+fictional character:FictionalCharacter
+fictional characters:FictionalCharacter
+figure skater:FigureSkater
+figure skaters:FigureSkater
+formula one racer:FormulaOneRacer
+formula one racers:FormulaOneRacer
+gaelic games player:GaelicGamesPlayer
+gaelic games players:GaelicGamesPlayer
+golf player:GolfPlayer
+golf players:GolfPlayer
+governor:Governor
+governors:Governor
+gridiron football player:GridironFootballPlayer
+gridiron football players:GridironFootballPlayer
+guitarist:Guitarist
+guitarists:Guitarist
+gymnast:Gymnast
+gymnasts:Gymnast
+handball player:HandballPlayer
+handball players:HandballPlayer
+high diver:HighDiver
+high divers:HighDiver
+historian:Historian
+historians:Historian
+horse rider:HorseRider
+horse riders:HorseRider
+horse trainer:HorseTrainer
+horse trainers:HorseTrainer
+host:Host
+hosts:Host
+humorist:Humorist
+humorists:Humorist
+ice hockey player:IceHockeyPlayer
+ice hockey players:IceHockeyPlayer
+instrumentalist:Instrumentalist
+instrumentalists:Instrumentalist
+jockey:Jockey
+jockeys:Jockey
+journalist:Journalist
+journalists:Journalist
+judge:Judge
+judges:Judge
+lacrosse player:LacrossePlayer
+lacrosse players:LacrossePlayer
+lawyer:Lawyer
+lawyers:Lawyer
+lieutenant:Lieutenant
+lieutenants:Lieutenant
+linguist:Linguist
+linguists:Linguist
+martial artist:MartialArtist
+martial artists:MartialArtist
+mayor:Mayor
+mayors:Mayor
+medician:Medician
+medicians:Medician
+member of parliament:MemberOfParliament
+member of parliaments:MemberOfParliament
+member of a resistance movement:MemberResistanceMovement
+member of a resistance movements:MemberResistanceMovement
+military person:MilitaryPerson
+military persons:MilitaryPerson
+model:Model
+models:Model
+monarch:Monarch
+monarches:Monarch
+motocycle racer:MotocycleRacer
+motocycle racers:MotocycleRacer
+motorcycle rider:MotorcycleRider
+motorcycle riders:MotorcycleRider
+motorsport racer:MotorsportRacer
+motorsport racers:MotorsportRacer
+movie director:MovieDirector
+movie directors:MovieDirector
+murderer:Murderer
+murderers:Murderer
+music composer:MusicComposer
+music composers:MusicComposer
+music director:MusicDirector
+music directors:MusicDirector
+musical artist:MusicalArtist
+musical artists:MusicalArtist
+mythological figure:MythologicalFigure
+mythological figures:MythologicalFigure
+naruto character:NarutoCharacter
+naruto characters:NarutoCharacter
+nascar driver:NascarDriver
+nascar drivers:NascarDriver
+national collegiate athletic association athlete:NationalCollegiateAthleticAssociationAthlete
+national collegiate athletic association athletes:NationalCollegiateAthleticAssociationAthlete
+netball player:NetballPlayer
+netball players:NetballPlayer
+noble:Noble
+nobles:Noble
+nordic combined:NordicCombined
+nordic combineds:NordicCombined
+office holder:OfficeHolder
+office holders:OfficeHolder
+organisation member:OrganisationMember
+organisation members:OrganisationMember
+orphan:Orphan
+orphans:Orphan
+painter:Painter
+painters:Painter
+philosopher:Philosopher
+philosophers:Philosopher
+photographer:Photographer
+photographers:Photographer
+playwright:PlayWright
+playwrights:PlayWright
+playboy playmate:PlayboyPlaymate
+playboy playmates:PlayboyPlaymate
+poet:Poet
+poets:Poet
+poker player:PokerPlayer
+poker players:PokerPlayer
+politician:Politician
+politicians:Politician
+politician spouse:PoliticianSpouse
+politician spouses:PoliticianSpouse
+pope:Pope
+popes:Pope
+presenter:Presenter
+presenters:Presenter
+president:President
+presidents:President
+priest:Priest
+priests:Priest
+prime minister:PrimeMinister
+prime ministers:PrimeMinister
+producer:Producer
+producers:Producer
+professor:Professor
+professors:Professor
+psychologist:Psychologist
+psychologists:Psychologist
+racing driver:RacingDriver
+racing drivers:RacingDriver
+radio host:RadioHost
+radio hosts:RadioHost
+rally driver:RallyDriver
+rally drivers:RallyDriver
+referee:Referee
+referees:Referee
+religious:Religious
+religiouses:Religious
+roman emperor:RomanEmperor
+roman emperors:RomanEmperor
+rower:Rower
+rowers:Rower
+royalty:Royalty
+royalties:Royalty
+rugby player:RugbyPlayer
+rugby players:RugbyPlayer
+saint:Saint
+saints:Saint
+scientist:Scientist
+scientists:Scientist
+screenwriter:ScreenWriter
+screenwriters:ScreenWriter
+sculptor:Sculptor
+sculptors:Sculptor
+senator:Senator
+senators:Senator
+serial killer:SerialKiller
+serial killers:SerialKiller
+singer:Singer
+singers:Singer
+skater:Skater
+skaters:Skater
+ski jumper:Ski_jumper
+ski jumpers:Ski_jumper
+skier:Skier
+skiers:Skier
+snooker world champion:SnookerChamp
+snooker world champions:SnookerChamp
+snooker player:SnookerPlayer
+snooker players:SnookerPlayer
+soap character:SoapCharacter
+soap characters:SoapCharacter
+soccer manager:SoccerManager
+soccer managers:SoccerManager
+soccer player:SoccerPlayer
+soccer players:SoccerPlayer
+songwriter:SongWriter
+songwriters:SongWriter
+speed skater:SpeedSkater
+speed skaters:SpeedSkater
+speedway rider:SpeedwayRider
+speedway riders:SpeedwayRider
+sports manager:SportsManager
+sports managers:SportsManager
+sports team member:SportsTeamMember
+sports team members:SportsTeamMember
+squash player:SquashPlayer
+squash players:SquashPlayer
+sumo wrestler:SumoWrestler
+sumo wrestlers:SumoWrestler
+surfer:Surfer
+surfers:Surfer
+swimmer:Swimmer
+swimmers:Swimmer
+table tennis player:TableTennisPlayer
+table tennis players:TableTennisPlayer
+team member:TeamMember
+team members:TeamMember
+television director:TelevisionDirector
+television directors:TelevisionDirector
+television host:TelevisionHost
+television hosts:TelevisionHost
+television personality:TelevisionPersonality
+television personalities:TelevisionPersonality
+tennis player:TennisPlayer
+tennis players:TennisPlayer
+theatre director:TheatreDirector
+theatre directors:TheatreDirector
+vicar:Vicar
+vicars:Vicar
+vice president:VicePresident
+vice presidents:VicePresident
+vice prime minister:VicePrimeMinister
+vice prime ministers:VicePrimeMinister
+voice actor:VoiceActor
+voice actors:VoiceActor
+volleyball coach:VolleyballCoach
+volleyball coaches:VolleyballCoach
+volleyball player:VolleyballPlayer
+volleyball players:VolleyballPlayer
+water polo player:WaterPoloPlayer
+water polo players:WaterPoloPlayer
+winter sport player:WinterSportPlayer
+winter sport players:WinterSportPlayer
+wrestler:Wrestler
+wrestlers:Wrestler
+writer:Writer
+writers:Writer

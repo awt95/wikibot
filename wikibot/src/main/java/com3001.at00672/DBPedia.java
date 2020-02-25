@@ -60,8 +60,12 @@ public class DBPedia {
                 resultsList.add(result);
             }
             // form return
-            for (String s : resultsList)
-                returnString += s + " ";
+            if (resultsList.size() > 1) {
+
+            } else {
+                returnString = resultsList.get(0);
+            }
+            returnString = resultsList.toString();
 
         } catch (Exception e) {
             e.printStackTrace();

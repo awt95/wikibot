@@ -1,1 +1,3 @@
-0,*,*,*,*,people.aiml
+0,LIST <SET>PERSON_TYPE</SET>,*,*,<think>#Newline                <set name="function">list</set>#Newline                <set name="value"><star/></set>#Newline                <set name="property">dbo:<map name="person2dbo"><star/></map></set>#Newline            </think>#Newline            FOUND <get name="property"/>,people.aiml
+0,SIMILAR TO *,*,*,PEOPLE SIMILAR TO <star/>,people.aiml
+0,RELATED *,*,*,,people.aiml

@@ -6,7 +6,7 @@
             <think>
                 <set name="topic">unknown</set>
                 <set name="property">unknown</set>
-                <set name="querytype">unknown</set>
+                <set name="function">unknown</set>
                 <set name="value">unknown</set>
             </think>
             Okay, let's stop talking about that.
@@ -25,7 +25,7 @@
             <think>
                 <set name="topic">unknown</set>
                 <set name="property">unknown</set>
-                <set name="querytype">unknown</set>
+                <set name="function">unknown</set>
                 <set name="value">unknown</set>
             </think>
         </template>

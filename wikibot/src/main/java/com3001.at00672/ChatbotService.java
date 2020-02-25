@@ -40,7 +40,7 @@ public class ChatbotService {
         userQuery = new UserQuery();
         userQuery.setTopic(predicates.get("topic"));
         userQuery.setIri(predicates.get("property"));
-        userQuery.setQueryType(predicates.get("queryType"));
+        userQuery.setFunction(predicates.get("function"));
         userQuery.setValue(WordUtils.capitalize(predicates.get("value")));
         String[] properties = userQuery.getIri().split(":");
 
@@ -49,7 +49,7 @@ public class ChatbotService {
             userQuery.setProperty(properties[1]);
         }
 
-        System.out.println(String.format("TOPIC: %s, PROPERTY: %s, QUERYTYPE: %s VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getQueryType(), userQuery.getValue()));
+        System.out.println(String.format("TOPIC: %s, PROPERTY: %s, FUNCTION: %s VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getFunction(), userQuery.getValue()));
 
         if (request.equals("quit") || request.equals("exit")) {
             System.exit(0);
@@ -57,7 +57,7 @@ public class ChatbotService {
     }
 
     public String processResponse(String response) {
-        if (response.contains("RUN_QUERY")) {
+        if (userQuery.getFunction().equals("query")) {
             System.out.println(userQuery.toString());
             System.out.println(String.format("TOPIC: %s, PROPERTY: %s, VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getValue()));
             // generate query

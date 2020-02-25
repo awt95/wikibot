@@ -12,7 +12,7 @@ public class UserQuery {
     private String property;
     private HashMap<String,String> queryProperties = new HashMap<>();
     private String queryString;
-    private String queryType;
+    private String function;
     private Predicates predicates;
 
     public UserQuery() {}
@@ -100,14 +100,6 @@ public class UserQuery {
         queryProperties.put(key, value);
     }
 
-    public String getQueryType() {
-        return queryType;
-    }
-
-    public void setQueryType(String queryType) {
-        this.queryType = queryType;
-    }
-
     public String getQueryProperty(String key) {
         return queryProperties.get(key);
     }
@@ -118,5 +110,13 @@ public class UserQuery {
 
     public void setPredicates(Predicates predicates) {
         this.predicates = predicates;
+    }
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
     }
 }

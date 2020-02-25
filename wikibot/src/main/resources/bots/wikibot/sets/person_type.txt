@@ -1,0 +1,184 @@
+person
+actor
+adult (pornographic) actor
+amateur boxer
+ambassador
+american football coach
+american football player
+animanga character
+archeologist
+archer player
+architect
+aristocrat
+artist
+astronaut
+athlete
+athletics player
+australian rules football player
+back scene
+badminton player
+baronet
+baseball player
+basketball player
+beach volleyball player
+beauty queen
+biathlete
+biologist
+bobsleighathlete
+bodybuilder
+boxer
+british royalty
+bullfighter
+businessperson
+canadian football player
+canoeist
+cardinal
+celebrity
+chancellor
+chef
+chess player
+christian bishop
+christian patriarch
+classical music artist
+cleric
+coach
+college coach
+comedian
+comics character
+comics creator
+congressman
+cricketer
+criminal
+cross-country skier
+curler
+cyclist
+dtm racer
+dancer
+darts player
+deputy
+disney character
+economist
+egyptologist
+engineer
+entomologist
+farmer
+fashion designer
+fencer
+fictional character
+figure skater
+formula one racer
+gaelic games player
+golf player
+governor
+gridiron football player
+guitarist
+gymnast
+handball player
+high diver
+historian
+horse rider
+horse trainer
+host
+humorist
+ice hockey player
+instrumentalist
+jockey (horse racer)
+journalist
+judge
+lacrosse player
+lawyer
+lieutenant
+linguist
+martial artist
+mayor
+medician
+member of parliament
+member of a resistance movement
+military person
+model
+monarch
+motocycle racer
+motorcycle rider
+motorsport racer
+movie director
+murderer
+music composer
+music director
+musical artist
+mythological figure
+naruto character
+nascar driver
+national collegiate athletic association athlete
+netball player
+noble
+nordic combined
+office holder
+organisation member
+orphan
+painter
+philosopher
+photographer
+playwright
+playboy playmate
+poet
+poker player
+politician
+politician spouse
+pope
+presenter
+president
+priest
+prime minister
+producer
+professor
+psychologist
+racing driver
+radio host
+rally driver
+referee
+religious
+roman emperor
+rower
+royalty
+rugby player
+saint
+scientist
+screenwriter
+sculptor
+senator
+serial killer
+singer
+skater
+ski jumper
+skier
+snooker world champion
+snooker player
+soap character
+soccer manager
+soccer player
+songwriter
+speed skater
+speedway rider
+sports manager
+sports team member
+squash player
+sumo wrestler
+surfer
+swimmer
+table tennis player
+team member
+television director
+television host
+television personality
+tennis player
+theatre director
+vicar
+vice president
+vice prime minister
+voice actor
+volleyball coach
+volleyball player
+water polo player
+winter sport player
+wrestler
+writer

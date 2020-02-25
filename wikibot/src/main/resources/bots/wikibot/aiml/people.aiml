@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml version="2.0">
     <category>
-        <pattern>FIND <set>person_type</set></pattern>
+        <pattern>LIST <set>person_type</set></pattern>
         <template>
-            FOUND <star/>
+            <think>
+                <set name="function">list</set>
+                <set name="value"><star/></set>
+                <set name="property">dbo:<map name="person2dbo"><star/></map></set>
+            </think>
+            FOUND <get name="property"/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>SIMILAR TO *</pattern>
+        <template>
+            PEOPLE SIMILAR TO <star/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>RELATED *</pattern>
+        <template>
+
         </template>
     </category>
 </aiml>

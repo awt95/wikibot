@@ -34,6 +34,41 @@ public class QueryBuilder {
         //System.out.println(DBPedia.executeQuery(query, property, propertyName));
     }
     public static String generateQuery(UserQuery userQuery) {
+        String result = "";
+        switch (userQuery.getFunction()) {
+            case "query": result = generatePersonQuery(userQuery); break;
+            case "list": result = generateListQuery(userQuery); break;
+            default: result = "Sorry, I don't know";
+        }
+        return result;
+
+    }
+
+    public static String generatePersonQuery(UserQuery userQuery) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
+        sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
+        sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
+        sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        sb.append(String.format(" SELECT DISTINCT ?%s ?comment WHERE {", userQuery.getProperty()));
+        sb.append(String.format("  ?%s foaf:name ?name; a dbo:%s .", userQuery.getTopic(), userQuery.getTopic()));
+        sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.getValue()));
+        sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.getTopic()));
+        sb.append(String.format("  ?%s %s ?%s .", userQuery.getTopic(), userQuery.getIri(), userQuery.getProperty()));
+        sb.append(" FILTER  langMatches(lang(?comment), 'en')");
+        sb.append("}");
+        if (userQuery.getProperty().equals("birthPlace")) {
+            // TODO: expand to other queries
+        } else {
+            sb.append(" LIMIT 1");
+        }
+
+        System.out.println(sb.toString());
+
+        return sb.toString();
+    }
+
+    public static String generateListQuery(UserQuery userQuery) {
         StringBuilder sb = new StringBuilder();
         sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
@@ -46,10 +81,7 @@ public class QueryBuilder {
         sb.append(String.format("  ?%s %s ?%s .", userQuery.getTopic(), userQuery.getIri(), userQuery.getProperty()));
         sb.append(" FILTER  langMatches(lang(?comment), 'en')");
         sb.append("} LIMIT 1");
-        //if (userQuery.getQueryProperties().containsKey("limit"))
-        //    sb.append("LIMIT " + userQuery.getQueryProperty("limit"));
         System.out.println(sb.toString());
-
         return sb.toString();
     }
 

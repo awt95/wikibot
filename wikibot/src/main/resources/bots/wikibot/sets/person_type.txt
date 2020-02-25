@@ -1,184 +1,368 @@
 person
+persons
 actor
-adult (pornographic) actor
+actors
+adult actor
+adult actors
 amateur boxer
+amateur boxers
 ambassador
+ambassadors
 american football coach
+american football coaches
 american football player
+american football players
 animanga character
+animanga characters
 archeologist
+archeologists
 archer player
+archer players
 architect
+architects
 aristocrat
+aristocrats
 artist
+artists
 astronaut
+astronauts
 athlete
+athletes
 athletics player
+athletics players
 australian rules football player
+australian rules football players
 back scene
+back scenes
 badminton player
+badminton players
 baronet
+baronets
 baseball player
+baseball players
 basketball player
+basketball players
 beach volleyball player
+beach volleyball players
 beauty queen
+beauty queens
 biathlete
+biathletes
 biologist
+biologists
 bobsleighathlete
+bobsleighathletes
 bodybuilder
+bodybuilders
 boxer
+boxers
 british royalty
+british royalties
 bullfighter
+bullfighters
 businessperson
+businesspersons
 canadian football player
+canadian football players
 canoeist
+canoeists
 cardinal
+cardinals
 celebrity
+celebrities
 chancellor
+chancellors
 chef
+chefs
 chess player
+chess players
 christian bishop
+christian bishops
 christian patriarch
+christian patriarches
 classical music artist
+classical music artists
 cleric
+clerics
 coach
+coaches
 college coach
+college coaches
 comedian
+comedians
 comics character
+comics characters
 comics creator
+comics creators
 congressman
+congressmen
 cricketer
+cricketers
 criminal
+criminals
 cross-country skier
+cross-country skiers
 curler
+curlers
 cyclist
+cyclists
 dtm racer
+dtm racers
 dancer
+dancers
 darts player
+darts players
 deputy
+deputies
 disney character
+disney characters
 economist
+economists
 egyptologist
+egyptologists
 engineer
+engineers
 entomologist
+entomologists
 farmer
+farmers
 fashion designer
+fashion designers
 fencer
+fencers
 fictional character
+fictional characters
 figure skater
+figure skaters
 formula one racer
+formula one racers
 gaelic games player
+gaelic games players
 golf player
+golf players
 governor
+governors
 gridiron football player
+gridiron football players
 guitarist
+guitarists
 gymnast
+gymnasts
 handball player
+handball players
 high diver
+high divers
 historian
+historians
 horse rider
+horse riders
 horse trainer
+horse trainers
 host
+hosts
 humorist
+humorists
 ice hockey player
+ice hockey players
 instrumentalist
-jockey (horse racer)
+instrumentalists
+jockey
+jockeys
 journalist
+journalists
 judge
+judges
 lacrosse player
+lacrosse players
 lawyer
+lawyers
 lieutenant
+lieutenants
 linguist
+linguists
 martial artist
+martial artists
 mayor
+mayors
 medician
+medicians
 member of parliament
+member of parliaments
 member of a resistance movement
+member of a resistance movements
 military person
+military persons
 model
+models
 monarch
+monarches
 motocycle racer
+motocycle racers
 motorcycle rider
+motorcycle riders
 motorsport racer
+motorsport racers
 movie director
+movie directors
 murderer
+murderers
 music composer
+music composers
 music director
+music directors
 musical artist
+musical artists
 mythological figure
+mythological figures
 naruto character
+naruto characters
 nascar driver
+nascar drivers
 national collegiate athletic association athlete
+national collegiate athletic association athletes
 netball player
+netball players
 noble
+nobles
 nordic combined
+nordic combineds
 office holder
+office holders
 organisation member
+organisation members
 orphan
+orphans
 painter
+painters
 philosopher
+philosophers
 photographer
+photographers
 playwright
+playwrights
 playboy playmate
+playboy playmates
 poet
+poets
 poker player
+poker players
 politician
+politicians
 politician spouse
+politician spouses
 pope
+popes
 presenter
+presenters
 president
+presidents
 priest
+priests
 prime minister
+prime ministers
 producer
+producers
 professor
+professors
 psychologist
+psychologists
 racing driver
+racing drivers
 radio host
+radio hosts
 rally driver
+rally drivers
 referee
+referees
 religious
+religiouses
 roman emperor
+roman emperors
 rower
+rowers
 royalty
+royalties
 rugby player
+rugby players
 saint
+saints
 scientist
+scientists
 screenwriter
+screenwriters
 sculptor
+sculptors
 senator
+senators
 serial killer
+serial killers
 singer
+singers
 skater
+skaters
 ski jumper
+ski jumpers
 skier
+skiers
 snooker world champion
+snooker world champions
 snooker player
+snooker players
 soap character
+soap characters
 soccer manager
+soccer managers
 soccer player
+soccer players
 songwriter
+songwriters
 speed skater
+speed skaters
 speedway rider
+speedway riders
 sports manager
+sports managers
 sports team member
+sports team members
 squash player
+squash players
 sumo wrestler
+sumo wrestlers
 surfer
+surfers
 swimmer
+swimmers
 table tennis player
+table tennis players
 team member
+team members
 television director
+television directors
 television host
+television hosts
 television personality
+television personalities
 tennis player
+tennis players
 theatre director
+theatre directors
 vicar
+vicars
 vice president
+vice presidents
 vice prime minister
+vice prime ministers
 voice actor
+voice actors
 volleyball coach
+volleyball coaches
 volleyball player
+volleyball players
 water polo player
+water polo players
 winter sport player
+winter sport players
 wrestler
+wrestlers
 writer
+writers

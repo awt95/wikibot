@@ -1,6 +1,8 @@
 package com3001.at00672;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Message {

@@ -74,13 +74,14 @@ public class QueryBuilder {
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(String.format(" SELECT DISTINCT ?%s ?comment WHERE {", userQuery.getProperty()));
-        sb.append(String.format("  ?%s foaf:name ?name; a dbo:%s .", userQuery.getTopic(), userQuery.getTopic()));
-        sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.getValue()));
-        sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.getTopic()));
-        sb.append(String.format("  ?%s %s ?%s .", userQuery.getTopic(), userQuery.getIri(), userQuery.getProperty()));
-        sb.append(" FILTER  langMatches(lang(?comment), 'en')");
-        sb.append("} LIMIT 1");
+        sb.append(" SELECT ?name ?person WHERE {");
+        sb.append(String.format("  ?person a %s .\n", userQuery.getIri()));
+        sb.append("?person foaf:name ?name .");
+        sb.append("?person rdfs:comment ?comment .");
+        sb.append(" FILTER  langMatches(lang(?comment), 'en') .");
+        sb.append(" FILTER (REGEX(?name, \"^[A-Z]\", \"i\"))\n");
+        sb.append(" } ORDER BY ?name LIMIT 100");
+
         System.out.println(sb.toString());
         return sb.toString();
     }

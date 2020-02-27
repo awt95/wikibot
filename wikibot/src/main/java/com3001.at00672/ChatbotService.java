@@ -1,5 +1,7 @@
 package com3001.at00672;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.text.WordUtils;
@@ -18,6 +20,7 @@ public class ChatbotService {
     public Bot bot;
     public Chat chatSession;
     public UserQuery userQuery;
+    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list"));
 
     public ChatbotService() {
         String botName = "wikibot";
@@ -39,17 +42,10 @@ public class ChatbotService {
 
         userQuery = new UserQuery();
         userQuery.setTopic(predicates.get("topic"));
-        userQuery.setIri(predicates.get("property"));
+        userQuery.setIri(predicates.get("iri"));
+        userQuery.setProperty(predicates.get("property"));
         userQuery.setFunction(predicates.get("function"));
         userQuery.setValue(WordUtils.capitalize(predicates.get("value")));
-        String[] properties = userQuery.getIri().split(":");
-
-        if(properties.length == 2) {
-            userQuery.setNamespace(properties[0]);
-            userQuery.setProperty(properties[1]);
-        }
-
-        System.out.println(String.format("TOPIC: %s, PROPERTY: %s, FUNCTION: %s VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getFunction(), userQuery.getValue()));
 
         if (request.equals("quit") || request.equals("exit")) {
             System.exit(0);
@@ -57,9 +53,8 @@ public class ChatbotService {
     }
 
     public String processResponse(String response) {
-        if (userQuery.getFunction().equals("query")) {
+        if (queryKeywords.contains(userQuery.getFunction())) {
             System.out.println(userQuery.toString());
-            System.out.println(String.format("TOPIC: %s, PROPERTY: %s, VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getValue()));
             // generate query
             String dbQuery = generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);

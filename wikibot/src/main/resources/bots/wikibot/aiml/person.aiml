@@ -40,7 +40,8 @@
             <think>
                 <set name="function">query</set>
                 <set name="topic">Person</set>
-                <set name="property">rdfs:comment</set>
+                <set name="iri">rdfs:comment</set>
+                <set name="property">comment</set>
             </think>
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
@@ -66,7 +67,8 @@
             <think>
                 <set name="function">query</set>
                 <set name="topic">Person</set>
-                <set name="property">dbo:birthDate</set>
+                <set name="iri">dbo:birthDate</set>
+                <set name="property">birthDate</set>
             </think>
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
@@ -110,7 +112,8 @@
             <think>
                 <set name="function">query</set>
                 <set name="topic">Person</set>
-                <set name="property">dbo:birthPlace</set>
+                <set name="iri">dbo:birthPlace</set>
+                <set name="property">birthPlace</set>
             </think>
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>

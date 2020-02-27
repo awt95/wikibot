@@ -6,9 +6,28 @@
             <think>
                 <set name="function">list</set>
                 <set name="value"><star/></set>
-                <set name="property">dbo:<map name="person2dbo"><star/></map></set>
+                <set name="iri">dbo:<map name="person2dbo"><star/></map></set>
+                <set name="property">name</set>
+                <set name="value">unknown</set>
             </think>
             FOUND <get name="property"/>
+        </template>
+    </category>
+
+    <!-- TODO: conditional list -->
+    <category>
+        <pattern>PEOPLE BORN IN *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:Person</set>
+                <set name="property">name</set>
+                <set name="condition_property">birthDate</set>
+                <set name="condition_operator">EQUALS</set>
+                <set name="condition_value"><star/></set>
+            </think>
+
         </template>
     </category>
 

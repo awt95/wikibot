@@ -33,3 +33,14 @@
 
         }
         ORDER BY ASC(?label)
+
+
+         PREFIX dbo: <http://dbpedia.org/ontology/>
+         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT distinct ?label WHERE {
+          ?class rdfs:subClassOf dbo:Person .
+          ?class rdfs:label ?label .
+          FILTER langMatches(lang(?label), 'en') .
+        }
+
+        BIND (STR(?title)  AS ?stripped_title)

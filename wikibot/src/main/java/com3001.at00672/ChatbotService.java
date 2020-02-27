@@ -1,5 +1,7 @@
 package com3001.at00672;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.text.WordUtils;
@@ -14,10 +16,11 @@ import static com3001.at00672.QueryBuilder.generateQuery;
 @Service
 public class ChatbotService {
     @Autowired
-    private ChatRepository chatRepository;
-    private Bot bot;
-    private Chat chatSession;
-    private UserQuery userQuery;
+    public ChatRepository chatRepository;
+    public Bot bot;
+    public Chat chatSession;
+    public UserQuery userQuery;
+    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list"));
 
     public ChatbotService() {
         String botName = "wikibot";
@@ -35,33 +38,31 @@ public class ChatbotService {
     }
 
     public void processRequest(String request, Predicates predicates) {
-        String topic = predicates.get("topic");
-        String iri = predicates.get("property");
-        String value = predicates.get("value");
-        value = WordUtils.capitalize(value);
-        String[] properties = iri.split(":");
-        String namespace = null;
-        String property = null;
-        if(properties.length == 2) {
-            namespace = properties[0];
-            property = properties[1];
-        } else {
-            property = predicates.get("property");
+        // utilities
+
+        userQuery = new UserQuery();
+        userQuery.setTopic(predicates.get("topic"));
+        userQuery.setIri(predicates.get("iri"));
+        userQuery.setProperty(predicates.get("property"));
+        userQuery.setFunction(predicates.get("function"));
+        userQuery.setValue(WordUtils.capitalize(predicates.get("value")));
+
+        if (request.equals("quit") || request.equals("exit")) {
+            System.exit(0);
         }
-        userQuery = new UserQuery(topic, iri, value, namespace, property);
     }
 
     public String processResponse(String response) {
-        System.out.println(userQuery.toString());
-        System.out.println(String.format("TOPIC: %s, PROPERTY: %s, VALUE: %s", userQuery.getTopic(), userQuery.getProperty(), userQuery.getValue()));
-        if (userQuery.getTopic().equals("conversation")) {
-            return response;
-        } else {
+        if (queryKeywords.contains(userQuery.getFunction())) {
+            System.out.println(userQuery.toString());
+            // generate query
             String dbQuery = generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
             System.out.println(dbQuery);
             String serverResponse = DBPedia.executeQuery(userQuery);
             return serverResponse;
+        } else {
+            return response;
         }
 
     }

@@ -1,5 +1,7 @@
 package com3001.at00672;
 
+import org.alicebot.ab.Predicates;
+
 import java.util.HashMap;
 
 public class UserQuery {
@@ -10,7 +12,8 @@ public class UserQuery {
     private String property;
     private HashMap<String,String> queryProperties = new HashMap<>();
     private String queryString;
-    private String queryType;
+    private String function;
+    private Predicates predicates;
 
     public UserQuery() {}
 
@@ -97,15 +100,23 @@ public class UserQuery {
         queryProperties.put(key, value);
     }
 
-    public String getQueryType() {
-        return queryType;
-    }
-
-    public void setQueryType(String queryType) {
-        this.queryType = queryType;
-    }
-
     public String getQueryProperty(String key) {
         return queryProperties.get(key);
+    }
+
+    public Predicates getPredicates() {
+        return predicates;
+    }
+
+    public void setPredicates(Predicates predicates) {
+        this.predicates = predicates;
+    }
+
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
     }
 }

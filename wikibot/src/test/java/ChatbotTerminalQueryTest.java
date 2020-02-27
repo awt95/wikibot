@@ -15,7 +15,7 @@ import static com3001.at00672.QueryBuilder.generateQuery;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class ChatbotQueryTest {
+class ChatbotTerminalQueryTest {
 
     private static Bot bot;
     private static Chat chatSession;

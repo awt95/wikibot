@@ -37,4 +37,11 @@ public class WebController {
         model.addAttribute("chat", chatRepository.findAll());
         return "index";
     }
+
+    // Clear chat
+    @PostMapping("/clear")
+    public String clear(Model model) {
+        chatRepository.deleteAll();
+        return "redirect:/";
+    }
 }

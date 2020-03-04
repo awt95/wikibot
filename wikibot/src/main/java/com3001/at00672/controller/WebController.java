@@ -1,5 +1,7 @@
 package com3001.at00672;
 
+import com3001.at00672.model.Message;
+import com3001.at00672.model.Sender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

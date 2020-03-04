@@ -1,4 +1,4 @@
-package com3001.at00672;
+package com3001.at00672.service;
 
 import com3001.at00672.model.UserQuery;
 import org.apache.jena.datatypes.RDFDatatype;

@@ -1,4 +1,4 @@
-package com3001.at00672;
+package com3001.at00672.util;
 
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;

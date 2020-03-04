@@ -1,5 +1,6 @@
 person
 persons
+people
 actor
 actors
 adult actor

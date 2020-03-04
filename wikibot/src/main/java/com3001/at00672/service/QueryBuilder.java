@@ -6,6 +6,7 @@ import static org.eclipse.rdf4j.sparqlbuilder.rdf.Rdf.iri;
 
 public class QueryBuilder {
     public static void main(String[] args) {
+        // TODO: Remove this test function
         String topic = "Person";
         String iri = "dbo:birthPlace";
         String namespace = "dbo";
@@ -24,7 +25,8 @@ public class QueryBuilder {
         switch (userQuery.getFunction()) {
             case "query": result = generatePersonQuery(userQuery); break;
             case "list": result = generateListQuery(userQuery); break;
-            default: result = "Sorry, I don't know";
+            case "list_conditional": result = generateListConditionalQuery(userQuery); break;
+            default: result = "";
         }
         return result;
 
@@ -55,22 +57,56 @@ public class QueryBuilder {
     }
 
     public static String generateListQuery(UserQuery userQuery) {
+        // TODO: FIX me
         StringBuilder sb = new StringBuilder();
         sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(" SELECT ?name ?person WHERE {");
-        sb.append(String.format("  ?person a %s .\n", userQuery.getIri()));
-        sb.append("?person foaf:name ?name .");
-        sb.append("?person rdfs:comment ?comment .");
-        sb.append(" FILTER  langMatches(lang(?comment), 'en') .");
-        sb.append(" FILTER (REGEX(?name, \"^[A-Z]\", \"i\"))\n");
-        sb.append(" } ORDER BY ?name LIMIT 100");
+        sb.append(" PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>");
+        sb.append(" PREFIX vrank:<http://purl.org/voc/vrank#>");
+        sb.append(" SELECT ?person ?name ?v");
+        sb.append(" FROM <http://dbpedia.org>");
+        sb.append(" FROM <http://people.aifb.kit.edu/ath/#DBpedia_PageRank>");
+        sb.append(" WHERE {");
+        sb.append("   {");
+        sb.append("     SELECT ?person (SAMPLE(?name) as ?name) WHERE {");
+        sb.append("       ?person a dbo:Actor . ?person foaf:name ?name .");
+        sb.append("     } GROUP BY ?person ");
+        sb.append("   }");
+        sb.append("   ?person vrank:hasRank/vrank:rankValue ?v .");
+        sb.append(" }");
+        sb.append(" GROUP BY ?person");
+        sb.append(" ORDER BY DESC(?v)");
+        sb.append(" LIMIT 10");
 
         System.out.println(sb.toString());
         return sb.toString();
     }
+
+    public static String generateListConditionalQuery(UserQuery userQuery) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
+        sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
+        sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
+        sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        sb.append(" PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>");
+        sb.append(" PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>");
+        //sb.append(" PREFIX vrank:<http://purl.org/voc/vrank#>");
+        sb.append(" SELECT ?person ?name");
+        sb.append(" FROM <http://dbpedia.org>");
+        sb.append(" WHERE {");
+        sb.append("   ?person a dbo:Person . ?person foaf:name ?name .");
+        sb.append("   ?person dbo:birthDate ?date .");
+        sb.append("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))");
+        sb.append(" }");
+        sb.append(" LIMIT 10");
+
+        System.out.println(sb.toString());
+        return sb.toString();
+    }
+
+
 
         /*
 

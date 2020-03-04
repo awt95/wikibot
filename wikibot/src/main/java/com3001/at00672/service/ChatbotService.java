@@ -22,7 +22,7 @@ public class ChatbotService {
     public Bot bot;
     public Chat chatSession;
     public UserQuery userQuery;
-    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list"));
+    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list", "list_conditional"));
 
     public ChatbotService() {
         String botName = "wikibot";
@@ -56,12 +56,17 @@ public class ChatbotService {
 
     public String processResponse(String response) {
         if (queryKeywords.contains(userQuery.getFunction())) {
+            String serverResponse = "";
             System.out.println(userQuery.toString());
             // generate query
             String dbQuery = generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
             System.out.println(dbQuery);
-            String serverResponse = DBPedia.executeQuery(userQuery);
+
+            if (userQuery.getQueryString() != "")
+                serverResponse = DBPedia.executeQuery(userQuery);
+            else
+                serverResponse = "Sorry, I don't know";
             return serverResponse;
         } else {
             return response;

@@ -23,7 +23,7 @@
                 <set name="value"><star/></set>
                 <set name="iri">dbo:Person</set>
                 <set name="property">name</set>
-                <set name="condition_property">birthDate</set>
+                <set name="condition_property">dbo:birthDate</set>
                 <set name="condition_operator">EQUALS</set>
                 <set name="condition_value"><star/></set>
             </think>

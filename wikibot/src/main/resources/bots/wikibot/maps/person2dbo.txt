@@ -1,5 +1,6 @@
 person:Person
 persons:Person
+people:Person
 actor:Actor
 actors:Actor
 adult actor:AdultActor

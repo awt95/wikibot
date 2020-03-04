@@ -5,6 +5,7 @@ import org.alicebot.ab.Predicates;
 import java.util.HashMap;
 
 public class UserQuery {
+    // TODO: Refactor to map for conciseness
     private String topic;
     private String iri;
     private String value;
@@ -87,6 +88,7 @@ public class UserQuery {
         sb.append("Topic: " + topic + "\r\n");
         sb.append("IRI: " + iri + "\r\n");
         sb.append("Namespace: " + namespace + "\r\n");
+        sb.append("Function: " + function + "\r\n");
         sb.append("Property: " + property + "\r\n");
         sb.append("Value: " + value + "\r\n");
         return sb.toString();

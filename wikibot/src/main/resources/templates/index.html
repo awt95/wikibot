@@ -32,14 +32,14 @@
                     <ul class="list-group w-100">
                         <li th:each="m : ${chat}">
                             <div th:switch="${m.sender}">
-                                <div th:case="${T(com3001.at00672.Sender).USER}" class="card chat-send shadow-sm rounded">
+                                <div th:case="${T(com3001.at00672.model.Sender).USER}" class="card chat-send shadow-sm rounded">
                                     <div class="card-body py-3">
-                                        <span th:text="${m.content}"/>
+                                        <span th:text="${m.content}"></span>
                                     </div>
                                 </div>
-                                <div th:case="${T(com3001.at00672.Sender).BOT}" class="card chat-recv shadow-sm rounded">
+                                <div th:case="${T(com3001.at00672.mode.Sender).BOT}" class="card chat-recv shadow-sm rounded">
                                     <div class="card-body py-3">
-                                        <span th:text="${m.content}"/>
+                                        <span th:text="${m.content}"></span>
                                     </div>
                                 </div>
                             </div>
@@ -75,6 +75,7 @@
         var scroll = $('#messages_div');
         var height = scroll[0].scrollHeight;
         scroll.scrollTop(height);
+        $('input:text').val('').focus();
     });
 </script>
 </html>

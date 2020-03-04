@@ -1,17 +1,19 @@
-package com3001.at00672;
+package com3001.at00672.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import com3001.at00672.model.ChatRepository;
+import com3001.at00672.model.UserQuery;
+import com3001.at00672.model.Message;
+import com3001.at00672.model.Sender;
 import org.apache.commons.text.WordUtils;
 
 import org.alicebot.ab.*;
-import org.alicebot.ab.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com3001.at00672.QueryBuilder.generateQuery;
+import static com3001.at00672.service.QueryBuilder.generateQuery;
 
 @Service
 public class ChatbotService {

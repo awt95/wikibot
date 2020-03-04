@@ -1,17 +1,10 @@
 package com3001.at00672;
-import java.io.File;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.ArrayUtils;
+import com3001.at00672.model.UserQuery;
+import com3001.at00672.service.ChatbotService;
 import org.apache.commons.text.WordUtils;
 import org.alicebot.ab.*;
 import org.alicebot.ab.utils.IOUtils;
-import org.apache.jena.reasoner.rulesys.builtins.Regex;
-import org.apache.log4j.varia.NullAppender;
-
-import static com3001.at00672.QueryBuilder.*;
 
 public class ChatbotTerminal {
 

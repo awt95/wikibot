@@ -1,4 +1,4 @@
-package com3001.at00672;
+package com3001.at00672.model;
 
 import org.alicebot.ab.Predicates;
 

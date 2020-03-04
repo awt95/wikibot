@@ -1,4 +1,4 @@
-package com3001.at00672;
+package com3001.at00672.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

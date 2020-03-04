@@ -1,12 +1,9 @@
-package com3001.at00672;
+package com3001.at00672.service;
 
+import com3001.at00672.model.UserQuery;
 import org.apache.jena.datatypes.RDFDatatype;
-import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.datatypes.xsd.impl.XSDDateType;
-import org.apache.jena.ext.xerces.impl.dv.xs.XSSimpleTypeDecl;
-import org.apache.jena.ext.xerces.xs.datatypes.XSDateTime;
 import org.apache.jena.query.*;
-import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.RDFParser;

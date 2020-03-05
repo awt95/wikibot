@@ -5,24 +5,9 @@ import com3001.at00672.model.UserQuery;
 import static org.eclipse.rdf4j.sparqlbuilder.rdf.Rdf.iri;
 
 public class QueryBuilder {
-    public static void main(String[] args) {
-        // TODO: Remove this test function
-        String topic = "Person";
-        String iri = "dbo:birthPlace";
-        String namespace = "dbo";
-        String property = "birthPlace";
-        String value = "Alan Turing";
-        UserQuery userQuery = new UserQuery(topic, iri, value, namespace, property);
-        String dbQuery = generateQuery(userQuery);
-        userQuery.setQueryString(dbQuery);
-        System.out.println(dbQuery);
-        String serverResponse = DBPedia.executeQuery(userQuery);
-        System.out.println(serverResponse);
-        //System.out.println(DBPedia.executeQuery(query, property, propertyName));
-    }
     public static String generateQuery(UserQuery userQuery) {
         String result = "";
-        switch (userQuery.getFunction()) {
+        switch (userQuery.get("function")) {
             case "query": result = generatePersonQuery(userQuery); break;
             case "list": result = generateListQuery(userQuery); break;
             case "list_conditional": result = generateListConditionalQuery(userQuery); break;
@@ -33,23 +18,19 @@ public class QueryBuilder {
     }
 
     public static String generatePersonQuery(UserQuery userQuery) {
+        System.out.println("Person query");
         StringBuilder sb = new StringBuilder();
         sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(String.format(" SELECT DISTINCT ?%s ?comment WHERE {", userQuery.getProperty()));
-        sb.append(String.format("  ?%s foaf:name ?name; a dbo:%s .", userQuery.getTopic(), userQuery.getTopic()));
-        sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.getValue()));
-        sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.getTopic()));
-        sb.append(String.format("  ?%s %s ?%s .", userQuery.getTopic(), userQuery.getIri(), userQuery.getProperty()));
+        sb.append(String.format(" SELECT DISTINCT ?%s ?comment WHERE {", userQuery.get("property")));
+        sb.append(String.format("  ?%s foaf:name ?name; a dbo:%s .", userQuery.get("topic"), userQuery.get("topic")));
+        sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
+        sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.get("topic")));
+        sb.append(String.format("  ?%s %s ?%s .", userQuery.get("topic"), userQuery.get("iri"), userQuery.get("property")));
         sb.append(" FILTER  langMatches(lang(?comment), 'en')");
-        sb.append("}");
-        if (userQuery.getProperty().equals("birthPlace")) {
-            // TODO: expand to other queries
-        } else {
-            sb.append(" LIMIT 1");
-        }
+        sb.append(String.format("} LIMIT %s", (userQuery.get("rlimit") == "") ? "1" : userQuery.get("rlimit")));
 
         System.out.println(sb.toString());
 
@@ -70,13 +51,13 @@ public class QueryBuilder {
         sb.append(" FROM <http://people.aifb.kit.edu/ath/#DBpedia_PageRank>");
         sb.append(" WHERE {");
         sb.append("   {");
-        sb.append("     SELECT ?person (SAMPLE(?name) as ?name) WHERE {");
-        sb.append("       ?person a dbo:Actor . ?person foaf:name ?name .");
-        sb.append("     } GROUP BY ?person ");
+        sb.append("     SELECT ?person (SAMPLE(?names) as ?name) WHERE {");
+        sb.append(String.format(" ?person a %s . ?person foaf:name ?names .", userQuery.get("iri")));
+        sb.append(" FILTER (langMatches(lang(?names), \"EN\"))");
+        sb.append("     } GROUP BY ?person");
         sb.append("   }");
         sb.append("   ?person vrank:hasRank/vrank:rankValue ?v .");
         sb.append(" }");
-        sb.append(" GROUP BY ?person");
         sb.append(" ORDER BY DESC(?v)");
         sb.append(" LIMIT 10");
 
@@ -85,6 +66,7 @@ public class QueryBuilder {
     }
 
     public static String generateListConditionalQuery(UserQuery userQuery) {
+        System.out.println("List conditional query");
         StringBuilder sb = new StringBuilder();
         sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
@@ -92,20 +74,41 @@ public class QueryBuilder {
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
         sb.append(" PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>");
         sb.append(" PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>");
-        //sb.append(" PREFIX vrank:<http://purl.org/voc/vrank#>");
-        sb.append(" SELECT ?person ?name");
+        sb.append(" PREFIX vrank:<http://purl.org/voc/vrank#>");
+        sb.append(" SELECT  ?person ?name ?date");
         sb.append(" FROM <http://dbpedia.org>");
+        sb.append(" FROM <http://people.aifb.kit.edu/ath/#DBpedia_PageRank>");
         sb.append(" WHERE {");
-        sb.append("   ?person a dbo:Person . ?person foaf:name ?name .");
+        sb.append("   {");
+        sb.append("     SELECT ?person (SAMPLE(?names) as ?name) WHERE {");
+        sb.append(String.format(" ?person a %s . ?person foaf:name ?names .", userQuery.get("iri")));
+        sb.append(" FILTER (langMatches(lang(?names), \"EN\"))");
+        sb.append("     } GROUP BY ?person");
+        sb.append("   }");
+        sb.append("   ?person vrank:hasRank/vrank:rankValue ?v .");
         sb.append("   ?person dbo:birthDate ?date .");
-        sb.append("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))");
+        if (userQuery.get("condition_property_type").equals("date")) {
+            int year = Integer.parseInt(userQuery.get("condition_value"));
+            sb.append(String.format("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))",year,year+1));
+        }
         sb.append(" }");
+        sb.append(" ORDER BY DESC(?v)");
         sb.append(" LIMIT 10");
 
+        /*
+        sb.append("   ?person a dbo:Person . ?person foaf:name ?name .");
+        sb.append("   ?person dbo:birthDate ?date .");
+        if (userQuery.get("condition_property_type").equals("date")) {
+            int year = Integer.parseInt(userQuery.get("condition_value"));
+            sb.append(String.format("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))",year,year+1));
+            sb.append(" FILTER (langMatches(lang(?name), \"EN\"))");
+        }
+        sb.append(" } GROUP BY ?person ?name ?date");
+        sb.append(" LIMIT 10");
+*/
         System.out.println(sb.toString());
         return sb.toString();
     }
-
 
 
         /*

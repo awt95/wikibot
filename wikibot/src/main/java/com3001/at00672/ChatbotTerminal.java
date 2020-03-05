@@ -6,14 +6,16 @@ import org.apache.commons.text.WordUtils;
 import org.alicebot.ab.*;
 import org.alicebot.ab.utils.IOUtils;
 
+import java.util.HashMap;
+
 public class ChatbotTerminal {
 
-    private static UserQuery userQuery;
-    private static ChatbotService chatbotService;
+    //private static UserQuery userQuery;
+    //private static ChatbotService chatbotService;
 
     public static void main(String[] args) {
         try {
-            chatbotService = new ChatbotService();
+            ChatbotService chatbotService = new ChatbotService();
             org.apache.log4j.BasicConfigurator.configure();
             //org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
@@ -33,10 +35,13 @@ public class ChatbotTerminal {
                 //if (MagicBooleans.trace_mode)
                 //  System.out.println("STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0) + ":TOPIC=" + chatSession.predicates.get("topic"));
                 String response = chatbotService.chatSession.multisentenceRespond(request);
-                chatbotService.processRequest(request, chatbotService.chatSession.predicates);
+                UserQuery userQuery = new UserQuery(chatbotService.chatSession.predicates);
+                if (request.equals("quit") || request.equals("exit")) {
+                    System.exit(0);
+                }
 
                 // TODO: Expand to rich content, pictures etc
-                response = chatbotService.processResponse(response);
+                response = chatbotService.processResponse(userQuery, response);
                 while (response.contains("&lt;"))
                     response = response.replace("&lt;", "<");
                 while (response.contains("&gt;"))

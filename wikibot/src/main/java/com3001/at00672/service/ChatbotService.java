@@ -15,13 +15,11 @@ import org.springframework.stereotype.Service;
 
 import static com3001.at00672.service.QueryBuilder.generateQuery;
 
-@Service
+//@Service
 public class ChatbotService {
-    @Autowired
     public ChatRepository chatRepository;
     public Bot bot;
     public Chat chatSession;
-    public UserQuery userQuery;
     public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list", "list_conditional"));
 
     public ChatbotService() {
@@ -33,29 +31,14 @@ public class ChatbotService {
 
     public Message chatbotRequest(Message request) {
         Message response = new Message(chatSession.multisentenceRespond(request.getContent()), Sender.BOT);
-        processRequest(request.getContent(), chatSession.predicates);
-        String serverResponse = processResponse(response.getContent());
+        UserQuery userQuery = new UserQuery(chatSession.predicates);
+        String serverResponse = processResponse(userQuery, response.getContent());
         response.setContent(serverResponse);
         return response;
     }
 
-    public void processRequest(String request, Predicates predicates) {
-        // utilities
-
-        userQuery = new UserQuery();
-        userQuery.setTopic(predicates.get("topic"));
-        userQuery.setIri(predicates.get("iri"));
-        userQuery.setProperty(predicates.get("property"));
-        userQuery.setFunction(predicates.get("function"));
-        userQuery.setValue(WordUtils.capitalize(predicates.get("value")));
-
-        if (request.equals("quit") || request.equals("exit")) {
-            System.exit(0);
-        }
-    }
-
-    public String processResponse(String response) {
-        if (queryKeywords.contains(userQuery.getFunction())) {
+    public String processResponse(UserQuery userQuery, String response) {
+        if (queryKeywords.contains(userQuery.get("function"))) {
             String serverResponse = "";
             System.out.println(userQuery.toString());
             // generate query

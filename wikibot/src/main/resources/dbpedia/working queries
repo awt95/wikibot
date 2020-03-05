@@ -111,9 +111,8 @@
           # This subquery selects all the persons and
           # selects just one of their names .
           {
-            SELECT ?person (SAMPLE(?name) as ?name) WHERE {
-              ?person a dbo:Scientist ;
-                           foaf:name ?name .
+            SELECT ?person (SAMPLE(?names) as ?name) WHERE {
+              ?person a dbo:Actor . ?person foaf:name ?names .
             }
             GROUP BY ?person
           }
@@ -121,4 +120,4 @@
         }
         GROUP BY ?person
         ORDER BY DESC(?v)
-        LIMIT 100
+        LIMIT 10

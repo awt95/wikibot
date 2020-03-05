@@ -16,16 +16,17 @@
 
     <!-- TODO: conditional list -->
     <category>
-        <pattern>PEOPLE BORN IN *</pattern>
+        <pattern><set>person_type</set> BORN IN *</pattern>
         <template>
             <think>
                 <set name="function">list_conditional</set>
                 <set name="value"><star/></set>
-                <set name="iri">dbo:Person</set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
                 <set name="property">name</set>
                 <set name="condition_property">dbo:birthDate</set>
+                <set name="condition_property_type">date</set>
                 <set name="condition_operator">EQUALS</set>
-                <set name="condition_value"><star/></set>
+                <set name="condition_value"><star index="2"/></set>
             </think>
 
         </template>

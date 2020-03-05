@@ -52,7 +52,7 @@ public class DBPedia {
             ArrayList<String> resultsList = new ArrayList();
             while (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
-                RDFNode node = solution.get(userQuery.getProperty());
+                RDFNode node = solution.get(userQuery.get("property"));
                 String result = processResource(node);
                 resultsList.add(result);
             }

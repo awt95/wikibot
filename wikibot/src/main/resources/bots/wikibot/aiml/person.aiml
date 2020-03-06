@@ -42,6 +42,8 @@
                 <set name="topic">Person</set>
                 <set name="iri">rdfs:comment</set>
                 <set name="property">comment</set>
+                <set name="limit">1</set>
+
             </think>
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
@@ -69,6 +71,7 @@
                 <set name="topic">Person</set>
                 <set name="iri">dbo:birthDate</set>
                 <set name="property">birthDate</set>
+                <set name="rlimit">1</set>
             </think>
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
@@ -114,6 +117,8 @@
                 <set name="topic">Person</set>
                 <set name="iri">dbo:birthPlace</set>
                 <set name="property">birthPlace</set>
+                <set name="rlimit">3</set>
+
             </think>
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
@@ -139,21 +144,37 @@
     </category>
 
     <!-- dbo:knownFor -->
+    <category>
+        <pattern>* KNOWN FOR</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:knownFor</set>
+                <set name="property">knownFor</set>
+                <set name="rlimit">5</set>
+
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>NOT WHO I MEANT</pattern>
+        <template>
+            <think>
+                <set name="function">conversation</set>
+            </think>
+            Who did you mean
+
+        </template>
+    </category>
 
     <!-- dbo:deathDate -->
 
+    <!-- influeced by -->
 
-    <category>
-        <pattern>PEOPLE BORN IN *</pattern>
-        <template>
-            <think>
-                <set name="function">list</set>
-                <set name="topic">Person</set>
-                <set name="property">dbo:birthDate</set>
-                <set name="value"><star/></set>
-            </think>
-        </template>
-    </category>
+    <!-- influenced -->
 
     <category>
         <pattern>BOT_QUERY_CONTEXT *</pattern>
@@ -168,6 +189,7 @@
                             <srai>GET_CONTEXT</srai>
                         </li>
                         <li>
+                            <!-- Outputting this initially for testing -->
                             RUN_QUERY on <get name="topic"/>, <get name="property"/> subject= <get name="value"/>
                         </li>
                     </condition>

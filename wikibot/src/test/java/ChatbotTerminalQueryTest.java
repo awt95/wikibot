@@ -1,17 +1,9 @@
-import com3001.at00672.UserQuery;
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
-import org.apache.log4j.varia.NullAppender;
-import org.assertj.core.internal.Numbers;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
-import com3001.at00672.*;
 
-import static com3001.at00672.QueryBuilder.generateQuery;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -22,7 +14,7 @@ class ChatbotTerminalQueryTest {
 
     @BeforeAll
     static void initialize() {
-        //org.apache.log4j.BasicConfigurator.configure();
+/*        //org.apache.log4j.BasicConfigurator.configure();
         org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 
         System.out.println("Starting chatbot");
@@ -32,7 +24,7 @@ class ChatbotTerminalQueryTest {
         bot = new Bot(botName, dir + "/src/main/resources");
         chatSession = new Chat(bot);
         assertNotNull(bot, "Bot is running");
-        //bot.brain.nodeStats();
+        //bot.brain.nodeStats();*/
     }
     @ParameterizedTest(name = "query #{index} with [{arguments}]")
     @CsvSource({
@@ -41,7 +33,7 @@ class ChatbotTerminalQueryTest {
             "Person, dbo:birthdate, dbo, birthdate, Alan Turing"
     })
     void runMultipleQueries(String topic, String iri, String namespace, String property, String value) {
-        UserQuery userQuery = new UserQuery();
+/*        UserQuery userQuery = new UserQuery();
         userQuery.setTopic(topic);
         userQuery.setIri(iri);
         userQuery.setNamespace(namespace);
@@ -55,6 +47,6 @@ class ChatbotTerminalQueryTest {
         userQuery.setQueryString(queryString);
         // Execute query
         String response = DBPedia.executeQuery(userQuery);
-        System.out.println(response);
+        System.out.println(response);*/
     }
 }

@@ -1,0 +1,21 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: dissertation.aux
+The style file: IEEEtran.bst
+A level-1 auxiliary file: frontmatter/abstract.aux
+A level-1 auxiliary file: frontmatter/acknowledgements.aux
+A level-1 auxiliary file: frontmatter/abbreviations.aux
+A level-1 auxiliary file: chapters/1_introduction.aux
+A level-1 auxiliary file: chapters/2_review.aux
+A level-1 auxiliary file: chapters/3_analysis.aux
+A level-1 auxiliary file: chapters/4_design.aux
+A level-1 auxiliary file: chapters/5_implementation.aux
+A level-1 auxiliary file: chapters/6_testing.aux
+A level-1 auxiliary file: chapters/7_evaluation.aux
+A level-1 auxiliary file: chapters/8_conclusion.aux
+Database file #1: references.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in weizenbaum1976computer
+
+Done.
+(There was 1 warning)

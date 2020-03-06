@@ -1,5 +1,6 @@
 package com3001.at00672.service;
 
+import com3001.at00672.model.ChatContext;
 import com3001.at00672.model.UserQuery;
 import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.datatypes.xsd.impl.XSDDateType;
@@ -40,7 +41,7 @@ public class DBPedia {
         }
     }
 
-    public static String executeQuery(UserQuery userQuery) {
+    public static void executeQuery(UserQuery userQuery) {
         String returnString = "";
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -53,54 +54,60 @@ public class DBPedia {
             while (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 RDFNode node = solution.get(userQuery.get("property"));
-                String result = processResource(node);
-                resultsList.add(result);
+                RDFNode resource = solution.get("r");
+                if (resource != null && resource.isResource()) {
+                    //context.setSubjectURI(resource.asResource().getURI());
+                    //context.setSubject(resource.asResource().getLocalName());
+                }
+                //String result = processResource(node);
+                //processResource(node);
+                //resultsList.add(result);
             }
-            // form return
-            if (resultsList.size() > 1) {
-
-            } else {
-                returnString = resultsList.get(0);
+            if (resultsList.size() == 0) {
+                resultsList.add("I don't know yet.");
             }
             returnString = resultsList.toString();
 
         } catch (Exception e) {
-            e.printStackTrace();
-            returnString = "Sorry I don't know. No results found.";
+            returnString = "Something went wrong.";
         }
-        return returnString;
+        // Chatcontext stuff
     }
 
-    private static String processResource(RDFNode node) throws ParseException {
+    private static String[] processResource(RDFNode node) throws ParseException {
         String result = "";
+        //String uri = node.ge;
         // Check if it as resource
         if (node.isResource()) {
             Resource r = node.asResource();
-            String uri = r.getURI();
-            if (uri.contains("dbpedia.org")) {
-                if (uri.contains("resource")) {
-                    RDFParser parser = RDFParser.create().source(uri).base("http://dbpedia.org/resource").build();
-                    String[] urlParts = uri.split("/");
+            String rURI = r.getURI();
+            if (rURI.contains("dbpedia.org")) {
+                if (rURI.contains("resource")) {
+                    RDFParser parser = RDFParser.create().source(rURI).base("http://dbpedia.org/resource").build();
+                    String[] urlParts = rURI.split("/");
                     String resourceName = urlParts[urlParts.length - 1];
                     result = resourceName.replace("_", " ");
                 }
             } else {
                 result = "Could not find resource value";
+                //uri = "RESPONSE";
             }
         } else if (node.isLiteral()) {
+            //uri = node.u
             RDFDatatype dtype = node.asLiteral().getDatatype();
             if (dtype instanceof XSDDateType) {
                 DateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = inFormat.parse(node.asLiteral().getLexicalForm());
                 DateFormat outFormat = new SimpleDateFormat("dd MMM yyyy");
-                return outFormat.format(date);
             } else {
                 result = node.asLiteral().getString();
             }
         } else {
             result = "Error occurred parsing node";
         }
-        return result;
+        //return result;
+        String[] results = new String[]{"test", "test"};
+        return results;
     }
 
     public static void ExampleQuery() {

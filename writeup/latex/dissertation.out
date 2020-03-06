@@ -1,0 +1,43 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Overview}{chapter.1}% 2
+\BOOKMARK [0][-]{chapter.2}{Literature Review}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Introduction}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Chatbots}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{Chatbot Models}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.3.1}{Pattern Matching}{section.2.3}% 7
+\BOOKMARK [2][-]{subsection.2.3.2}{Neural Networks}{section.2.3}% 8
+\BOOKMARK [1][-]{section.2.4}{Datasets}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.4.1}{Ubuntu Dialogue Corpus}{section.2.4}% 10
+\BOOKMARK [2][-]{subsection.2.4.2}{DBPedia}{section.2.4}% 11
+\BOOKMARK [2][-]{subsection.2.4.3}{Other Candidates}{section.2.4}% 12
+\BOOKMARK [1][-]{section.2.5}{Programming Languages}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.5.1}{Python}{section.2.5}% 14
+\BOOKMARK [2][-]{subsection.2.5.2}{Java}{section.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.5.3}{Clojure}{section.2.5}% 16
+\BOOKMARK [2][-]{subsection.2.5.4}{Analysis}{section.2.5}% 17
+\BOOKMARK [1][-]{section.2.6}{Existing Solutions}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.6.1}{Google Assistant}{section.2.6}% 19
+\BOOKMARK [2][-]{subsection.2.6.2}{DBPedia Chatbot}{section.2.6}% 20
+\BOOKMARK [2][-]{subsection.2.6.3}{Mitsuku}{section.2.6}% 21
+\BOOKMARK [2][-]{subsection.2.6.4}{DBPedia Spotlight}{section.2.6}% 22
+\BOOKMARK [1][-]{section.2.7}{Related Work}{chapter.2}% 23
+\BOOKMARK [1][-]{section.2.8}{Conclusion}{chapter.2}% 24
+\BOOKMARK [0][-]{chapter.3}{System Analysis}{}% 25
+\BOOKMARK [1][-]{section.3.1}{Introduction}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.2}{Feasibility Study}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.3}{System Requirements}{chapter.3}% 28
+\BOOKMARK [0][-]{chapter.4}{Design}{}% 29
+\BOOKMARK [1][-]{section.4.1}{Methodology}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.2}{Architecture}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.3}{User Interface}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.4}{Experimentation}{chapter.4}% 33
+\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 34
+\BOOKMARK [0][-]{chapter.6}{Testing}{}% 35
+\BOOKMARK [0][-]{chapter.7}{Evaluation}{}% 36
+\BOOKMARK [0][-]{chapter.8}{Conclusion}{}% 37
+\BOOKMARK [1][-]{section.8.1}{Overview}{chapter.8}% 38
+\BOOKMARK [1][-]{section.8.2}{Conclusions}{chapter.8}% 39
+\BOOKMARK [1][-]{section.8.3}{Future Work}{chapter.8}% 40
+\BOOKMARK [1][-]{section.8.4}{Final Statement}{chapter.8}% 41
+\BOOKMARK [0][-]{chapter*.7}{Appendices}{}% 42
+\BOOKMARK [0][-]{appendix.A}{Chatting with Mitsuku}{}% 43

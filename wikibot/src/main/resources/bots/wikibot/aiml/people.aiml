@@ -31,6 +31,38 @@
 
         </template>
     </category>
+    <category>
+        <pattern><set>person_type</set> BORN BEFORE *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
+                <set name="property">name</set>
+                <set name="condition_property">dbo:birthDate</set>
+                <set name="condition_property_type">date</set>
+                <set name="condition_operator">LESS_THAN</set>
+                <set name="condition_value"><star index="2"/></set>
+            </think>
+
+        </template>
+    </category>
+    <category>
+        <pattern><set>person_type</set> BORN AFTER *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
+                <set name="property">name</set>
+                <set name="condition_property">dbo:birthDate</set>
+                <set name="condition_property_type">date</set>
+                <set name="condition_operator">GREATER_THAN</set>
+                <set name="condition_value"><star index="2"/></set>
+            </think>
+
+        </template>
+    </category>
 
     <category>
         <pattern>SIMILAR TO *</pattern>

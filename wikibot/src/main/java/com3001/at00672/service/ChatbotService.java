@@ -3,10 +3,7 @@ package com3001.at00672.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com3001.at00672.model.ChatRepository;
-import com3001.at00672.model.UserQuery;
-import com3001.at00672.model.Message;
-import com3001.at00672.model.Sender;
+import com3001.at00672.model.*;
 import org.apache.commons.text.WordUtils;
 
 import org.alicebot.ab.*;
@@ -32,7 +29,7 @@ public class ChatbotService {
     public Message chatbotRequest(Message request) {
         Message response = new Message(chatSession.multisentenceRespond(request.getContent()), Sender.BOT);
         UserQuery userQuery = new UserQuery(chatSession.predicates);
-        String serverResponse = processResponse(userQuery, response.getContent());
+        String serverResponse = "Fix me";//processResponse(userQuery, response.getContent());
         response.setContent(serverResponse);
         return response;
     }
@@ -47,7 +44,7 @@ public class ChatbotService {
             System.out.println(dbQuery);
 
             if (userQuery.getQueryString() != "")
-                serverResponse = DBPedia.executeQuery(userQuery);
+                DBPedia.executeQuery(userQuery);
             else
                 serverResponse = "Sorry, I don't know";
             return serverResponse;

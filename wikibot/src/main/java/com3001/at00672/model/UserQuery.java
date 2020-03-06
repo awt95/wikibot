@@ -2,10 +2,7 @@ package com3001.at00672.model;
 
 import org.alicebot.ab.Predicates;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserQuery {

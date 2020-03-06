@@ -24,8 +24,8 @@ public class QueryBuilder {
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(String.format(" SELECT DISTINCT ?%s ?comment WHERE {", userQuery.get("property")));
-        sb.append(String.format("  ?%s foaf:name ?name; a dbo:%s .", userQuery.get("topic"), userQuery.get("topic")));
+        sb.append(String.format(" SELECT DISTINCT ?r ?%s ?comment WHERE {", userQuery.get("property")));
+        sb.append(String.format("  ?r foaf:name ?name; a dbo:%s .", userQuery.get("topic")));
         sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
         sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.get("topic")));
         sb.append(String.format("  ?%s %s ?%s .", userQuery.get("topic"), userQuery.get("iri"), userQuery.get("property")));
@@ -56,7 +56,7 @@ public class QueryBuilder {
         sb.append(" FILTER (langMatches(lang(?names), \"EN\"))");
         sb.append("     } GROUP BY ?person");
         sb.append("   }");
-        sb.append("   ?person vrank:hasRank/vrank:rankValue ?v .");
+        sb.append("   OPTIONAL { ?person vrank:hasRank/vrank:rankValue ?v }");
         sb.append(" }");
         sb.append(" ORDER BY DESC(?v)");
         sb.append(" LIMIT 10");
@@ -86,26 +86,22 @@ public class QueryBuilder {
         sb.append("     } GROUP BY ?person");
         sb.append("   }");
         sb.append("   ?person vrank:hasRank/vrank:rankValue ?v .");
-        sb.append("   ?person dbo:birthDate ?date .");
         if (userQuery.get("condition_property_type").equals("date")) {
             int year = Integer.parseInt(userQuery.get("condition_value"));
-            sb.append(String.format("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))",year,year+1));
+            sb.append("   ?person dbo:birthDate ?date .");
+            if (userQuery.get("condition_operator").equals("LESS_THAN")) {
+                sb.append(String.format("   FILTER (?date < xsd:date(\"%s-01-01\"))",year));
+            } else if (userQuery.get("condition_operator").equals("GREATER_THAN")) {
+                sb.append(String.format("   FILTER (?date >= xsd:date(\"%s-01-01\"))",year));
+            } else {
+                // equal to
+                sb.append(String.format("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))",year,year+1));
+            }
         }
         sb.append(" }");
         sb.append(" ORDER BY DESC(?v)");
         sb.append(" LIMIT 10");
 
-        /*
-        sb.append("   ?person a dbo:Person . ?person foaf:name ?name .");
-        sb.append("   ?person dbo:birthDate ?date .");
-        if (userQuery.get("condition_property_type").equals("date")) {
-            int year = Integer.parseInt(userQuery.get("condition_value"));
-            sb.append(String.format("   FILTER (?date >= xsd:date(\"%s-01-01\") && ?date < xsd:date(\"%s-01-01\"))",year,year+1));
-            sb.append(" FILTER (langMatches(lang(?name), \"EN\"))");
-        }
-        sb.append(" } GROUP BY ?person ?name ?date");
-        sb.append(" LIMIT 10");
-*/
         System.out.println(sb.toString());
         return sb.toString();
     }

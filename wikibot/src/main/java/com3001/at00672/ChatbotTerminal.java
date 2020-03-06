@@ -1,5 +1,6 @@
 package com3001.at00672;
 
+import com3001.at00672.model.ChatContext;
 import com3001.at00672.model.UserQuery;
 import com3001.at00672.service.ChatbotService;
 import org.apache.commons.text.WordUtils;
@@ -12,10 +13,12 @@ public class ChatbotTerminal {
 
     //private static UserQuery userQuery;
     //private static ChatbotService chatbotService;
+    private static ChatContext chatContext;
 
     public static void main(String[] args) {
         try {
             ChatbotService chatbotService = new ChatbotService();
+            chatContext = new ChatContext();
             org.apache.log4j.BasicConfigurator.configure();
             //org.apache.log4j.BasicConfigurator.configure(new NullAppender());
 

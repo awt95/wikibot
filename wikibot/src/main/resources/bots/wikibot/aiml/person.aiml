@@ -159,6 +159,17 @@
         </template>
     </category>
 
+    <category>
+        <pattern>NOT WHO I MEANT</pattern>
+        <template>
+            <think>
+                <set name="function">conversation</set>
+            </think>
+            Who did you mean
+
+        </template>
+    </category>
+
     <!-- dbo:deathDate -->
 
     <!-- influeced by -->

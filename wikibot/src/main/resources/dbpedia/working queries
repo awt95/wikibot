@@ -121,3 +121,9 @@
         GROUP BY ?person
         ORDER BY DESC(?v)
         LIMIT 10
+
+        SELECT ?person ?name WHERE {
+          ?person a dbo:Person .
+          ?person foaf:name ?name .
+          ?person dbo:influencedBy <http://dbpedia.org/resource/Alan_Turing>
+        }

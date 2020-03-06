@@ -14,7 +14,7 @@ Intelligent virtual assistants (IVA) are conversation agents that allow users to
 
 Industries are seeing a growing trend in chatbot integration in their business. Autodesk integrated IBM’s Watson Assistant \cite{ibm2017watson} to process 100,000 user support conversations, reducing the resolution time of enquiries from 38 hours to 5.4 minutes \cite{ibm2017autodesk}. Many technology companies offer AI cloud services, many of which allow the integration of chatbots including Watson Assistant and Microsoft Azure Bot Service \cite{microsoft2019azure}. The next section will explore and discuss techniques for implementing chatbots and explore technologies that can be used.
 
-\cleardoublepage
+\newpage
 \section{Chatbot Models}
 A chatbot usually consists of three key components – natural language processing (NLP), response generation (RG) and the knowledge base \cite{cahn2017chatbot}. Generating a response given the context of a conversation is one of the fundamentals of a chatbot system. These models are usually rule-based or learning-based \cite{wang2013dataset}, and each has its advantages and challenges which will be explored in this section.
 
@@ -30,7 +30,7 @@ When dealing with open-domain conversations, we can use neural networks to train
 
 The neural network approach has a clear advantage in open-domain conversations, and training from multiple datasets, however the results can be unexpected and can require rigorous debugging.
 
-\cleardoublepage
+\newpage
 \section{Datasets}
 Typically, chatbots are divided into two groups, open-domain and closed-domain \cite{ilievski2018building}. In an open-domain system, the conversation can go in any direction, and the user can talk to the chatbot about any topic. A closed-domain system is restricted to a narrower topic area or set of function – these are the chatbots we see most in real-world applications such as customer service and banking. For this project, the focus will be on a closed-domain system as the goal is to create a chatbot that can achieve a goal – these are often called Goal-Oriented (GO) Chatbots \cite{ilievski2018building}. However, to create a GO chatbot, one must have a goal the chatbot should achieve, and a dataset from which to learn. The selection criteria for this project includes a dataset that is large enough to allow querying and searching, as well as conditionally selecting records that fit the user query. The dataset should also be open to use for research projects, and readily available to access online or download.
 
@@ -58,13 +58,12 @@ DBpedia is a crowd-sourced effort to extract structured content from various Wik
 
 The DBpedia extraction framework is responsible for extracting data from Wikipedia into a structured knowledge base, an overview of which is shown in Figure~\ref{fig:extraction}. This extraction is structured into four phases, as described in \cite{lehmann2015dbpedia}:
 
-Input: Wikipedia pages are read from an external source, either from a Wikipedia dump, or using the MediaWiki API.
-
-Parsing: Each Wikipedia page is parsed, which transforms the source code of the Wikipedia page into an Abstract Syntax Tree (AST). An AST is a tree representation of the syntactic structure of the source code.
-
-Extraction: The Abstract Syntax Tree of each page is forwarded to the extractors. There are many types of extractors, which will later be described, which extract data such as labels, images and infoboxes. Each extractor takes an AST as input and yields a set of Resource Description Framework (RDF) statements. These are XML statements which describe properties and values of resources.
-
-Output: These RDF statements are written into sinks, which receive the data.
+\begin{itemize}[label={},itemindent=-2em,leftmargin=2em]
+	\item {\bf Input:} Wikipedia pages are read from an external source, either from a Wikipedia dump, or using the MediaWiki API.
+	\item {\bf Parsing:} Each Wikipedia page is parsed, which transforms the source code of the Wikipedia page into an Abstract Syntax Tree (AST). An AST is a tree representation of the syntactic structure of the source code.
+	\item {\bf Extraction:} The Abstract Syntax Tree of each page is forwarded to the extractors. There are many types of extractors, which will later be described, which extract data such as labels, images and infoboxes. Each extractor takes an AST as input and yields a set of Resource Description Framework (RDF) statements. These are XML statements which describe properties and values of resources.
+	\item {\bf Output:} These RDF statements are written into sinks, which receive the data.
+\end{itemize}
 
 \begin{figure}[h]
 	\begin{center}
@@ -75,7 +74,7 @@ Output: These RDF statements are written into sinks, which receive the data.
 \end{figure}
 
 The DBPedia ontology organises its entities using RDF models, each of which has many properties and are linked to subclasses and super-classes where necessary. This can be seen in Table~\ref{tab:ontology}, where a subclass may inherit the properties of its parent class. This can assist querying and searching, as we can query based on properties of a given class, as well as filtering and matching with conditional queries. 
-
+\newpage
 \begin{table}[h]
 	\centering
 	\begin{tabular}{{@{}lll@{}}}
@@ -101,7 +100,7 @@ The data extracted is mapped to the ontology classes and properties to provide s
 
 \subsection{Other Candidates}
 
-\cleardoublepage
+\newpage
 \section{Programming Languages}
 At its core, the language used to implement a chatbot has few criteria; it needs to be able to process natural language, provide a user interface for input and output, and can optionally interact with a data source. A bare minimum chatbot could therefore be implemented with virtually any programming language. However, it is important to consider the capabilities of the language, including support for machine learning, database interactions and user interface designs. This section will compare programming technologies based on their performance, their compatibility with the chatbot models previously discussed in the report, and the availability of libraries and functionality which may be useful for implementing a fully-featured, extensible chatbot.
  

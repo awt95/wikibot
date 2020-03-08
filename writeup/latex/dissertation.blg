@@ -12,10 +12,35 @@ A level-1 auxiliary file: chapters/6_testing.aux
 A level-1 auxiliary file: chapters/7_evaluation.aux
 A level-1 auxiliary file: chapters/8_conclusion.aux
 Database file #1: references.bib
+I was expecting an "="---line 341 of file references.bib
+ :  year 
+ :       {2019},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 350 of file references.bib
+ :  year 
+ :       {2020},
+I'm skipping whatever remains of this entry
+Repeated entry---line 354 of file references.bib
+ : @misc{microsoft2019azure
+ :                         ,
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 391 of file references.bib
+ :  year 
+ :       {2013},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 399 of file references.bib
+ :  year 
+ :       {2018},
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 407 of file references.bib
+ :  year 
+ :       {2017},
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 Warning--empty journal in weizenbaum1976computer
+Warning--empty journal in kovalev2016deep
 
 Done.
-(There was 1 warning)
+(There were 6 error messages)

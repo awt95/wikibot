@@ -135,9 +135,8 @@ O.~Medelyan, D.~Milne, C.~Legg, and I.~H. Witten, ``Mining meaning from
 
 \bibitem{wikimedia2019}
 \BIBentryALTinterwordspacing
-{Wikimedia Foundation}, ``List of wikipedias,'' 2019, [Online; accessed 6 Mar
-  2020]. [Online]. Available:
-  \url{https://meta.wikimedia.org/wiki/List_of_Wikipedias}
+{Wikimedia Foundation}, ``List of wikipedias,'' 2019, [Accessed 6 Mar 2020].
+  [Online]. Available: \url{https://meta.wikimedia.org/wiki/List_of_Wikipedias}
 \BIBentrySTDinterwordspacing
 
 \bibitem{wu2007autonomously}
@@ -147,7 +146,7 @@ F.~Wu and D.~S. Weld, ``Autonomously semantifying wikipedia,'' in
 
 \bibitem{dbpedia2019about}
 \BIBentryALTinterwordspacing
-DBPedia, ``{About | DBpedia},'' 2019, [Online; accessed 6 Mar 2020]. [Online].
+DBPedia, ``{About | DBpedia},'' 2019, [Accessed 6 Mar 2020]. [Online].
   Available: \url{https://wiki.dbpedia.org/about}
 \BIBentrySTDinterwordspacing
 
@@ -168,5 +167,121 @@ J.~Lehmann, R.~Isele, M.~Jakob, A.~Jentzsch, D.~Kontokostas, P.~N. Mendes,
 C.~Bizer, J.~Lehmann, G.~Kobilarov, S.~Auer, C.~Becker, R.~Cyganiak, and
   S.~Hellmann, ``Dbpedia-a crystallization point for the web of data,''
   \emph{Journal of web semantics}, vol.~7, no.~3, pp. 154--165, 2009.
+
+\bibitem{bird2009natural}
+S.~Bird, E.~Klein, and E.~Loper, \emph{Natural language processing with Python:
+  analyzing text with the natural language toolkit}.\hskip 1em plus 0.5em minus
+  0.4em\relax " O'Reilly Media, Inc.", 2009.
+
+\bibitem{koepke2011python}
+H.~Koepke, ``Why python rocks for research,'' \emph{Hacker Monthly}, vol.~8,
+  2011.
+
+\bibitem{cass2019}
+\BIBentryALTinterwordspacing
+S.~Cass, ``The top programming languages 2019,'' Sep 2019. [Online]. Available:
+  \url{https://spectrum.ieee.org/computing/software/the-top-programming-languages-2019}
+\BIBentrySTDinterwordspacing
+
+\bibitem{nltk2019}
+\BIBentryALTinterwordspacing
+N.~Project, ``Natural language toolkit,'' Aug 2019. [Online]. Available:
+  \url{https://www.nltk.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{pedregosa2011scikit}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg \emph{et~al.},
+  ``Scikit-learn: Machine learning in python,'' \emph{Journal of machine
+  learning research}, vol.~12, no. Oct, pp. 2825--2830, 2011.
+
+\bibitem{abadi2016tensorflow}
+M.~Abadi, P.~Barham, J.~Chen, Z.~Chen, A.~Davis, J.~Dean, M.~Devin,
+  S.~Ghemawat, G.~Irving, M.~Isard \emph{et~al.}, ``Tensorflow: A system for
+  large-scale machine learning,'' in \emph{12th $\{$USENIX$\}$ Symposium on
+  Operating Systems Design and Implementation ($\{$OSDI$\}$ 16)}, 2016, pp.
+  265--283.
+
+\bibitem{polzin2019}
+\BIBentryALTinterwordspacing
+J.~A. Polzin, ``Intelligent scanning using deep learning for mri,'' Mar 2019.
+  [Online]. Available:
+  \url{https://blog.tensorflow.org/2019/03/intelligent-scanning-using-deep-learning.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{pichai2015}
+\BIBentryALTinterwordspacing
+S.~Pichai, ``Tensorflow: smarter machine learning, for everyone,'' Nov 2015.
+  [Online]. Available:
+  \url{https://googleblog.blogspot.com/2015/11/tensorflow-smarter-machine-learning-for.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{villegas2019}
+\BIBentryALTinterwordspacing
+P.~Villegas, ``python-aiml,'' 2019. [Online]. Available:
+  \url{https://github.com/paulovn/python-aiml}
+\BIBentrySTDinterwordspacing
+
+\bibitem{cox2019}
+\BIBentryALTinterwordspacing
+G.~Cox, ``About chatterbot,'' Jan 2019. [Online]. Available:
+  \url{https://chatterbot.readthedocs.io/en/stable}
+\BIBentrySTDinterwordspacing
+
+\bibitem{vermuelen2019}
+{Vermeulen, Andreas Fran\c{c}ois}, \emph{Industrial machine learning: using
+  artificial intelligence as a transformational disruptor}.\hskip 1em plus
+  0.5em minus 0.4em\relax Apress, 2019.
+
+\bibitem{python2017db}
+\BIBentryALTinterwordspacing
+M.-A. Lemburg, ``Pep 249 -- python database api specification v2.0,'' Nov 2017.
+  [Online]. Available: \url{https://www.python.org/dev/peps/pep-0249/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{rdf2019}
+\BIBentryALTinterwordspacing
+{RDFLib Team}, ``rdflib 4.2.2.'' [Online]. Available:
+  \url{https://rdflib.readthedocs.io/en/stable}
+\BIBentrySTDinterwordspacing
+
+\bibitem{python2020web}
+\BIBentryALTinterwordspacing
+{Python Wiki}, ``Web frameworks for python.'' [Online]. Available:
+  \url{https://wiki.python.org/moin/WebFrameworks}
+\BIBentrySTDinterwordspacing
+
+\bibitem{witten2005practical}
+I.~H. Witten, E.~Frank, and M.~A. Hall, ``Practical machine learning tools and
+  techniques,'' \emph{Morgan Kaufmann}, p. 578, 2005.
+
+\bibitem{abeel2009java}
+T.~Abeel, Y.~V.~d. Peer, and Y.~Saeys, ``Java-ml: A machine learning library,''
+  \emph{Journal of Machine Learning Research}, vol.~10, no. Apr, pp. 931--934,
+  2009.
+
+\bibitem{kovalev2016deep}
+V.~Kovalev, A.~Kalinovsky, and S.~Kovalev, ``Deep learning with theano, torch,
+  caffe, tensorflow, and deeplearning4j: Which one is the best in speed and
+  accuracy?'' 2016.
+
+\bibitem{alice2013}
+\BIBentryALTinterwordspacing
+{ALICE A.I. Foundation}, ``Google code archive - program-ab.'' [Online].
+  Available: \url{https://code.google.com/archive/p/program-ab/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{google2018dominos}
+\BIBentryALTinterwordspacing
+{Google}, ``Domino’s simplifies ordering pizza using dialogflow's
+  conversational technology.'' [Online]. Available:
+  \url{https://dialogflow.com/case-studies/dominos/Domino's-case-study.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{yourmd2017}
+\BIBentryALTinterwordspacing
+{Your.MD}, ``About us - your.md.'' [Online]. Available:
+  \url{https://www.your.md/about}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

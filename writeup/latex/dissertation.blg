@@ -9,8 +9,8 @@ A level-1 auxiliary file: chapters/3_analysis.aux
 A level-1 auxiliary file: chapters/4_design.aux
 A level-1 auxiliary file: chapters/5_implementation.aux
 A level-1 auxiliary file: chapters/6_testing.aux
-A level-1 auxiliary file: chapters/7_evaluation.aux
-A level-1 auxiliary file: chapters/8_conclusion.aux
+A level-1 auxiliary file: chapters/7_conclusion.aux
+A level-1 auxiliary file: chapters/8_ethics.aux
 Database file #1: references.bib
 I was expecting an "="---line 341 of file references.bib
  :  year 

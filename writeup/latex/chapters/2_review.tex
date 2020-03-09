@@ -8,7 +8,7 @@ When discussing chatbots, the beginning of their history is usually cited as Ala
 
 One of the first programs to attempt the Turing test was ELIZA, created by Joseph Weizenbaum between 1964 and 1966 \cite{weizenbaum1976computer}. ELIZA consisted of a language analyser and a set of rules by which the ‘chatterbot’ followed. ELIZA used a script called DOCTOR was designed to simulate responses of a psychotherapist during a psychiatric interview – predominantly achieved by the therapist mirroring the responses of the patient  \cite{weizenbaum1976computer}. ELIZA may be considered rudimentary and narrow by today’s standards, it forms the basis of our understanding of chatbots and human computer interaction, and how we can teach machines to mimic human characteristics in dialogue.
 
-Another notable development in chatbots and natural language processing is ALICE (Artificial Linguistic Internet Computer Entity), originally implemented in 1995 by Richard Wallace \cite{wallace2009anatomy}. The system won the Loebner Prize three times, a competition inspired by the Turing Test to judge how well a machine can mimic human responses \cite{keedwell2014loebner}. Although the prize itself was met with some criticism -- Shieber critiques that the goal of the Turing Test is lost on the competition \cite{shieber1994lessons} -- ALICE provides a framework for many of the fundamentals we see in modern chatbots and artificial intelligence.
+Another notable development in chatbots and natural language processing is ALICE (Artificial Linguistic Internet Computer Entity), originally implemented in 1995 by Richard Wallace \cite{wallace2009anatomy}. The system won the Loebner Prize three times, a competition inspired by the Turing Test to judge how well a machine can mimic human responses \cite{keedwell2014loebner}. Although the prize itself was met with some criticism -- Shieber critiques that the goal of the Turing Test is lost on the competition \cite{shieber1994lessons}. ALICE provides a framework for many of the fundamentals we see in modern chatbots and artificial intelligence.
 
 Intelligent virtual assistants (IVA) are conversation agents that allow users to interact with services and Internet of Things (IoT) devices \cite{chung2018intelligent}. IVAs are ubiquitous in modern life, with most smartphones pre-equipped with a virtual assistant such as Google Assistant or Apple Siri. In many ways, IVAs incorporate many functions of chatbots, as well as providing additional features such as voice input and communication with IoT “smart devices”.
 \hilight{continue}
@@ -116,22 +116,57 @@ Python has been used extensively in the machine learning field, and can be seen 
 Java is widely used in machine learning implementations \cite{witten2005practical} \cite{abeel2009java}, and is prevalent in research and enterprise solutions. Many libraries exist to implement machine learning frameworks \cite{kovalev2016deep}, natural language processing \cite{nltk2019}, and AIML interpreters \cite{alice2013}. Java has the advantage of being truly cross-platform since the Java program is compiled into byte-code to be interpreted by the Java virtual machine \cite{witten2005practical}; this may beneficial to this project if it is deployed to a Linux web server, for example.\\
 \hilight{RDF/Jena, Web, Performance}
 
-\subsection{Clojure}
-Lisp - Pandorabots
+\subsection{Ruby on Rails}
+
 
 \subsection{Analysis}
+Having explored a number of programming languages, it is evident that a project of this scope could be implemented in any of these languages, and countless more, due to the abundance of relevant libraries. The choice of programming language will be further explored in Section~\ref{sec:lang}.
 
 \cleardoublepage
 \section{Existing Solutions}
+\label{sec:existing}
 Dialogue systems are abundant in business and consumer use, from ordering pizza with your Google Home device \cite{google2018dominos} to diagnosing and managing patients’ medical conditions \cite{yourmd2017}. This section will explore existing solutions that are relevant to the scope of this project, as well as broader chatbot platforms currently in use.
 
 \subsection{Google Assistant}
+Google assistant
+
+\begin{figure}[h]
+	\centering
+    \subfloat[Querying Google Assistant]{{\includegraphics[width=5cm]{assistant1} }}%
+    \qquad
+	\subfloat[Google Assistant's Continued Conversation]{{\includegraphics[width=5cm]{assistant2} }}%	
+	\caption{A conversation with Google Assistant}
+	\label{fig:assistant}
+\end{figure}
+
+\newpage
 \subsection{DBPedia Chatbot}
+DBPedia chatbot
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=.5\paperwidth]{dbchatbot}
+	\caption{DBPedia Chatbot implementation}
+	\label{fig:dbchatbot}
+\end{figure}
+
+\newpage
 \subsection{Mitsuku}
 \label{subsec:Mitsuku}
+Mitsuku
 
-\subsection{DBPedia Spotlight}
+\begin{figure}[h]
+	\centering
+	\subfloat[Querying Mitsuku]{{\includegraphics[width=5cm]{mitsuku1} }}%
+	\qquad
+	\subfloat[Mitsuku known result]{{\includegraphics[width=5cm]{mitsuku2} }}%	
+	\caption{A conversation with Mitsuku}
+	\label{fig:mitsuku}
+\end{figure}
 
+%\subsection{DBPedia Spotlight}
+
+\newpage
 \section{Related Work}
 
 \section{Conclusion}

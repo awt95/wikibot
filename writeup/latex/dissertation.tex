@@ -11,6 +11,8 @@
 \usepackage{enumitem}
 \usepackage{tabularx}
 \usepackage[justification=centering]{caption}
+\usepackage{pdfpages}
+\usepackage{subfig}
 
 
 \graphicspath{ {./figures/} }
@@ -19,8 +21,7 @@
 
 \newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
 \def\UrlBreaks{\do\/\do-}
-\begin{document}
-
+\begin{document} 
 
 	%title
 	\title{Developing a Chatbot to Answer\\ Wikipedia Queries}
@@ -62,6 +63,8 @@
 	\appendix
 	\addcontentsline{toc}{chapter}{Appendices}
 	\input{backmatter/appenda}
+	\input{backmatter/appendb}
+	
 	
 	\bibliography{references}
 

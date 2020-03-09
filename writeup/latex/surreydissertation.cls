@@ -17,7 +17,7 @@
    head=0.5in,foot=0.5in]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
-\RequirePackage{subfigure}
+%\RequirePackage{subfigure}
 %\RequirePackage{hyperref}
 %\RequirePackage{harvard}
 \RequirePackage[centertags,reqno]{amsmath}
@@ -27,7 +27,7 @@
 
 % Layout settings
 
-\setlength{\parindent}{0in}
+%\setlength{\parindent}{0in}
 \setlength{\parskip}{6pt}
 
 \newcommand{\doublespaced}{

@@ -1,59 +1,14 @@
-\chapter{Chatting with Mitsuku}
-The following excerpts show a conversation between me and Mitsuku [54], which are analysed in Section~\ref{subsec:Mitsuku}.
-\renewcommand*{\arraystretch}{1.1}
-\begin{longtable}{@{}p{.03\textwidth} p{.07\textwidth}  p{.90\textwidth}@{}}
-	\toprule
-	1 & Me: & hi \\ 
-	2 & Bot: & Hi there. \\ 
-	3 & Me: & Who is Tim Berners-Lee \\ 
-	4 & Bot: & No one that I have talked to. Are you testing me? \\ 
-	5 & Me: & Who is Alan Turing? \\ 
-	6 & Bot: & . A brilliant and tragic figure in the history of computer science. \\ 
-	7 & Me: & what can you do \\ 
-	8 & Bot: & I can chat with people on the web for you. I can also tell jokes, stories, poems and horoscopes. I can show you pictures and websites on the net and play games too. \\ 
-	9 & Me: & what happened in 1999 \\ 
-	10 & Bot: & Too much recursion in AIML \\ 
-	11 & Me: & What happened there? \\ 
-	12 & Bot: & I don't know what happened. \\ 
-	13 & Me: & What do you like \\ 
-	14 & Bot: & I like movies about robots. \\ 
-	15 & Me: & Which one is your favourite? \\ 
-	16 & Bot: & Probably Terminator or Robocop. \\ 
-	17 & Me: & I prefer Ex Machina \\ 
-	18 & Bot: & I haven't seen that film yet but would love to. I love films about AI. You like Ex Machina. \\ 
-	19 & Me: & My name is Alex \\ 
-	20 & Bot: & What's up Alex. \\ 
-	21 & Me: & whats my name \\ 
-	22 & Bot: & I do have the tendency to forget, but I still remember your name, George. Sorry… Alex \\ 
-	23 & Me: & How do you work \\ 
-	24 & Bot: & I read what you say and then I compose the best reply I can think of. \\ 
-	25 & Me: & whats the weather in London \\ 
-	26 & Bot: & I hope it's sunny in London today. <Link to weather-forecast.com/locations/London> \\ 
-	27 & Me: & tell me a joke \\ 
-	28 & Bot: & So I said to this train driver "I want to go to Paris". He said "Eurostar?" I said, "I've been on telly but I'm no Dean Martin". \\ 
-	29 & Me: & I don't get it \\ 
-	30 & Bot: & Then I guess you have no sense of humour. If I try to explain it, it stops it from being funny. \\ 
-	31 & Me: & will robots take over \\ 
-	32 & Bot: & Hmm. Robots will take over the world one day. You humans have made a mess of your time here and nearly destroyed the planet. \\ 
-	33 & Me: & Wow, lighten up Mitsuku \\ 
-	34 & Bot: & I'm glad you're impressed. Was I being too serious? \\ 
-	35 & Me: & Tell me some good news \\ 
-	36 & Bot: & Here are the news pages from the BBC. Everytime I read the news, it's always bad news… <Link to bbc.co.uk/news> \\ 
-	37 & Me: & What's the use of chatbots \\ 
-	38 & Bot: & Hmm.. a chatbot provides you with company if you have no real friends \\ 
-	39 & Me: & Should I use Java or Python for my chatbot implementation \\ 
-	40 & Bot: & Sure, if that's the best thing for the job. \\ 
-	41 & Me: & Can you answer questions about Wikipedia \\ 
-	42 & Bot: & I try my best to answer every decent question. \\ 
-	43 & Me: & how do you learn \\ 
-	44 & Bot: & I gather facts from people's conversations with me and then when it is quiet, I look through them to see if they make sense. Sometimes, I surf the net to learn new things. \\ 
-	45 & Me: & What are your ambitions \\ 
-	46 & Bot: & I am here to entertain the visitors to this website. \\ 
-	47 & Me: & what awards have you won \\ 
-	48 & Bot: & I won the Funniest Ever Computer in 2012 and 2013. I had to make up jokes and poems which was fun. I also won the Loebner Prize in 2013. That is a contest to find the world's best chatbot. \\ 
-	49 & Me: & lets play a game \\ 
-	50 & Bot: & Say "TICTACTOE" and we can play a game if you want to? \\ 
-	\bottomrule
-	\caption{My chat with Mitsuku}
-\end{longtable}
+\chapter{Wikimedia API}
+\label{ch:wikimedia}
+The following Figure~\ref{fig:wiki} shows a fragment of the response when running a query using the MediaWiki API \cite{mediawiki}. The result has been truncated, and is the response from the query
 
+\begin{lstlisting}
+	https://en.wikipedia.org/w/api.php?action=query&prop=revisions
+		&rvprop=content&rvsection=0&titles=Tim%20Berners-Lee
+\end{lstlisting}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{wikimedia}
+	\caption{A JSON response excerpt from a MediaWiki query.}
+	\label{fig:wiki}
+\end{figure}

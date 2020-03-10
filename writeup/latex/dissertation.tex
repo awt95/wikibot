@@ -1,7 +1,9 @@
 \documentclass{surreydissertation}
 
+\usepackage[british]{babel}
 \usepackage{url}
 \usepackage{color}
+\usepackage{hyperref}
 \usepackage[toc]{appendix}
 \usepackage{titlesec}
 \usepackage[square,numbers]{natbib}
@@ -13,11 +15,26 @@
 \usepackage[justification=centering]{caption}
 \usepackage{pdfpages}
 \usepackage{subfig}
+\usepackage{listings}
+\usepackage{courier}
 
+%hyphenation rules
+\hyphenation{internet}
+\hyphenation{interaction}
+
+%code fragments
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	language=xml,
+	columns=flexible,
+	breaklines=true,
+	tabsize=2,
+	breakatwhitespace=true,
+}
 
 \graphicspath{ {./figures/} }
 
-\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtranN}
 
 \newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
 \def\UrlBreaks{\do\/\do-}
@@ -64,6 +81,7 @@
 	\addcontentsline{toc}{chapter}{Appendices}
 	\input{backmatter/appenda}
 	\input{backmatter/appendb}
+	\input{backmatter/appendc}
 	
 	
 	\bibliography{references}

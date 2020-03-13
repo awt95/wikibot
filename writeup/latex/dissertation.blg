@@ -1,4 +1,6 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: dissertation.aux
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: dissertation.aux
 The style file: IEEEtranN.bst
 A level-1 auxiliary file: frontmatter/abstract.aux
 A level-1 auxiliary file: frontmatter/acknowledgements.aux
@@ -11,6 +13,11 @@ A level-1 auxiliary file: chapters/5_implementation.aux
 A level-1 auxiliary file: chapters/6_testing.aux
 A level-1 auxiliary file: chapters/7_conclusion.aux
 A level-1 auxiliary file: chapters/8_ethics.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
 Repeated entry---line 662 of file references.bib
  : @misc{paplauskaite2016
@@ -20,12 +27,56 @@ Repeated entry---line 687 of file references.bib
  : @inproceedings{ramngongausbeck2018
  :                                   ,
 I'm skipping whatever remains of this entry
--- IEEEtranN.bst version 1.13 (2008/09/30) by Michael Shell.
+-- IEEEtranN.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 ** Natbib version - not for normal IEEE work.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Warning--empty journal in winston1986lisp
 Warning--missing publisher in tulshan2019survey
 
 Done.
+You've used 88 entries,
+            4855 wiz_defined-function locations,
+            1382 strings with 23285 characters,
+and the built_in function-call counts, 62583 in all, are:
+= -- 5410
+> -- 1934
+< -- 299
++ -- 945
+- -- 474
+* -- 3296
+:= -- 9927
+add.period$ -- 178
+call.type$ -- 88
+change.case$ -- 177
+chr.to.int$ -- 663
+cite$ -- 90
+duplicate$ -- 4252
+empty$ -- 4845
+format.name$ -- 625
+if$ -- 13888
+int.to.chr$ -- 5
+int.to.str$ -- 89
+missing$ -- 770
+newline$ -- 358
+num.names$ -- 264
+pop$ -- 2352
+preamble$ -- 1
+purify$ -- 88
+quote$ -- 2
+skip$ -- 4536
+stack$ -- 0
+substring$ -- 1626
+swap$ -- 2748
+text.length$ -- 51
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 1299
+warning$ -- 2
+while$ -- 280
+width$ -- 0
+write$ -- 1015
 (There were 2 error messages)

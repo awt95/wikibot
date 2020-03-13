@@ -16,7 +16,8 @@ public class MessageItem {
 
     public MessageItem() {}
 
-    public MessageItem(String content) {
+    public MessageItem(String uri, String content) {
+        this.uri = uri;
         this.content = content;
     }
 

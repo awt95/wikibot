@@ -2,6 +2,7 @@ package com3001.at00672.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com3001.at00672.model.*;
 import org.apache.commons.text.WordUtils;
@@ -27,14 +28,14 @@ public class ChatbotService {
     }
 
     public Message chatbotRequest(Message request) {
-        Message response = new Message(chatSession.multisentenceRespond(request.getContent()), Sender.BOT);
+        Message botMessage = new Message(chatSession.multisentenceRespond(request.getContent()), Sender.BOT);
         UserQuery userQuery = new UserQuery(chatSession.predicates);
-        String serverResponse = "Fix me";//processResponse(userQuery, response.getContent());
-        response.setContent(serverResponse);
-        return response;
+        processResponse(userQuery, botMessage);
+        return botMessage;
     }
 
-    public String processResponse(UserQuery userQuery, String response) {
+    public Message processResponse(UserQuery userQuery, Message botMessage) {
+        List<MessageItem> result = new ArrayList<>();
         if (queryKeywords.contains(userQuery.get("function"))) {
             String serverResponse = "";
             System.out.println(userQuery.toString());
@@ -44,13 +45,11 @@ public class ChatbotService {
             System.out.println(dbQuery);
 
             if (userQuery.getQueryString() != "")
-                serverResponse = DBPedia.executeQuery(userQuery);
+                botMessage.setMessageItems(DBPedia.executeQuery(userQuery));
             else
                 serverResponse = "Sorry, I don't know";
-            return serverResponse;
-        } else {
-            return response;
+            botMessage.setContent(serverResponse); // Remove/Change to list
         }
-
+        return botMessage;
     }
 }

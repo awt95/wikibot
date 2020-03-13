@@ -24,11 +24,12 @@ public class QueryBuilder {
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(String.format(" SELECT DISTINCT ?r ?%s ?comment WHERE {", userQuery.get("property")));
-        sb.append(String.format("  ?r foaf:name ?name; a dbo:%s .", userQuery.get("topic")));
+        sb.append(String.format(" SELECT DISTINCT ?person ?%s ?comment WHERE {", userQuery.get("property")));
+        sb.append("  ?person a dbo:Person .");
+        sb.append("  ?person foaf:name ?name .");
         sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
-        sb.append(String.format("  ?%s rdfs:comment ?comment .", userQuery.get("topic")));
-        sb.append(String.format("  ?%s %s ?%s .", userQuery.get("topic"), userQuery.get("iri"), userQuery.get("property")));
+        sb.append("  ?person rdfs:comment ?comment .");
+        sb.append(String.format("  ?person %s ?%s .", userQuery.get("iri"), userQuery.get("property")));
         sb.append(" FILTER  langMatches(lang(?comment), 'en')");
         sb.append(String.format("} LIMIT %s", (userQuery.get("rlimit") == "") ? "1" : userQuery.get("rlimit")));
 

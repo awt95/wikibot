@@ -1,7 +1,6 @@
 package com3001.at00672;
 
-import com3001.at00672.model.ChatContext;
-import com3001.at00672.model.UserQuery;
+import com3001.at00672.model.*;
 import com3001.at00672.service.ChatbotService;
 import org.apache.commons.text.WordUtils;
 import org.alicebot.ab.*;
@@ -12,12 +11,12 @@ import java.util.HashMap;
 public class ChatbotTerminal {
 
     //private static UserQuery userQuery;
-    //private static ChatbotService chatbotService;
+    private static ChatbotService chatbotService;
     private static ChatContext chatContext;
 
     public static void main(String[] args) {
         try {
-            ChatbotService chatbotService = new ChatbotService();
+            chatbotService = new ChatbotService();
             chatContext = new ChatContext();
             org.apache.log4j.BasicConfigurator.configure();
             //org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -35,23 +34,23 @@ public class ChatbotTerminal {
                 System.out.print("You: ");
                 textLine = IOUtils.readInputTextLine();
                 String request = textLine;
+                Message message = new Message(request, Sender.USER);
                 //if (MagicBooleans.trace_mode)
                 //  System.out.println("STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0) + ":TOPIC=" + chatSession.predicates.get("topic"));
-                String response = chatbotService.chatSession.multisentenceRespond(request);
+                //String response = chatbotService.chatSession.multisentenceRespond(request);
                 UserQuery userQuery = new UserQuery(chatbotService.chatSession.predicates);
                 if (request.equals("quit") || request.equals("exit")) {
                     System.exit(0);
                 }
-
+                Message response = chatbotService.chatbotRequest(message);
                 // TODO: Expand to rich content, pictures etc
-                response = chatbotService.processResponse(userQuery, response);
-                while (response.contains("&lt;"))
-                    response = response.replace("&lt;", "<");
-                while (response.contains("&gt;"))
-                    response = response.replace("&gt;", ">");
                 System.out.println();
                 System.out.println("Bot: ");
-                System.out.println(WordUtils.wrap(response, 80));
+                // Loop through response
+                for (MessageItem item : response.getMessageItems() ) {
+                    System.out.println(WordUtils.wrap(item.getContent() + ", " + item.getUri(), 80));
+                }
+                //System.out.println(WordUtils.wrap(response.getContent(), 80));
                 System.out.println();
             }
 

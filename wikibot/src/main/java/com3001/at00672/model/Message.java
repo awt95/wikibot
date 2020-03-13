@@ -1,9 +1,10 @@
 package com3001.at00672.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
-@Entity
+//@Entity
 public class Message {
 
     @Id
@@ -16,7 +17,7 @@ public class Message {
     private MessageType messageType;
 
     @OneToMany
-    private Set<MessageItem> messageItems;
+    private List<MessageItem> messageItems;
 
     public Message() {}
 
@@ -24,6 +25,7 @@ public class Message {
         this.content = content;
         this.sender = sender;
     }
+
 
     public Long getId() {
         return id;
@@ -65,11 +67,11 @@ public class Message {
         this.messageType = messageType;
     }
 
-    public Set<MessageItem> getMessageItems() {
+    public List<MessageItem> getMessageItems() {
         return messageItems;
     }
 
-    public void setMessageItems(Set<MessageItem> messageItems) {
+    public void setMessageItems(List<MessageItem> messageItems) {
         this.messageItems = messageItems;
     }
 }

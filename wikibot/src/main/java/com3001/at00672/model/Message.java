@@ -1,6 +1,7 @@
 package com3001.at00672.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Message {
@@ -11,6 +12,11 @@ public class Message {
     @Lob
     private String content;
     private Sender sender;
+    private String imageUrl;
+    private MessageType messageType;
+
+    @OneToMany
+    private Set<MessageItem> messageItems;
 
     public Message() {}
 
@@ -41,5 +47,29 @@ public class Message {
 
     public void setSender(Sender sender) {
         this.sender = sender;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public MessageType getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(MessageType messageType) {
+        this.messageType = messageType;
+    }
+
+    public Set<MessageItem> getMessageItems() {
+        return messageItems;
+    }
+
+    public void setMessageItems(Set<MessageItem> messageItems) {
+        this.messageItems = messageItems;
     }
 }

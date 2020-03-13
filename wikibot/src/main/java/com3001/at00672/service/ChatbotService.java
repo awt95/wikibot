@@ -44,7 +44,7 @@ public class ChatbotService {
             System.out.println(dbQuery);
 
             if (userQuery.getQueryString() != "")
-                DBPedia.executeQuery(userQuery);
+                serverResponse = DBPedia.executeQuery(userQuery);
             else
                 serverResponse = "Sorry, I don't know";
             return serverResponse;

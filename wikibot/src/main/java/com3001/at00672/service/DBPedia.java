@@ -41,7 +41,7 @@ public class DBPedia {
         }
     }
 
-    public static void executeQuery(UserQuery userQuery) {
+    public static String executeQuery(UserQuery userQuery) {
         String returnString = "";
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -59,22 +59,24 @@ public class DBPedia {
                     //context.setSubjectURI(resource.asResource().getURI());
                     //context.setSubject(resource.asResource().getLocalName());
                 }
-                //String result = processResource(node);
+                String result = processResource(node);
                 //processResource(node);
-                //resultsList.add(result);
+                resultsList.add(result);
             }
             if (resultsList.size() == 0) {
                 resultsList.add("I don't know yet.");
+            } else {
+                returnString = resultsList.toString();
             }
-            returnString = resultsList.toString();
 
         } catch (Exception e) {
             returnString = "Something went wrong.";
         }
         // Chatcontext stuff
+        return returnString;
     }
 
-    private static String[] processResource(RDFNode node) throws ParseException {
+    private static String processResource(RDFNode node) throws ParseException {
         String result = "";
         //String uri = node.ge;
         // Check if it as resource
@@ -105,9 +107,9 @@ public class DBPedia {
         } else {
             result = "Error occurred parsing node";
         }
-        //return result;
-        String[] results = new String[]{"test", "test"};
-        return results;
+        return result;
+        //String[] results = new String[]{"test", "test"};
+        //return results;
     }
 
     public static void ExampleQuery() {

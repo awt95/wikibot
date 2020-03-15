@@ -5,18 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity
+//@Entity
 public class MessageItem {
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private Long id;
-    @Lob
+    //@Lob
     private String content;
     private String uri;
 
     public MessageItem() {}
 
     public MessageItem(String content) {
+        this.content = content;
+    }
+
+    public MessageItem(String uri, String content) {
+        this.uri = uri;
         this.content = content;
     }
 
@@ -43,4 +48,5 @@ public class MessageItem {
     public void setUri(String uri) {
         this.uri = uri;
     }
+
 }

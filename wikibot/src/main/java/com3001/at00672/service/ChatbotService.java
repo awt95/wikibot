@@ -34,7 +34,7 @@ public class ChatbotService {
         return response;
     }
 
-    public String processResponse(UserQuery userQuery, String response) {
+    public void processResponse(UserQuery userQuery, Message botResponse) {
         if (queryKeywords.contains(userQuery.get("function"))) {
             String serverResponse = "";
             System.out.println(userQuery.toString());
@@ -44,12 +44,12 @@ public class ChatbotService {
             System.out.println(dbQuery);
 
             if (userQuery.getQueryString() != "")
-                serverResponse = DBPedia.executeQuery(userQuery);
-            else
-                serverResponse = "Sorry, I don't know";
-            return serverResponse;
+                botResponse.setMessageItems(DBPedia.executeQuery(userQuery));
+            else {
+                botResponse.addMessageItem(new MessageItem("Sorry, I don't know"));
+            }
         } else {
-            return response;
+            botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
         }
 
     }

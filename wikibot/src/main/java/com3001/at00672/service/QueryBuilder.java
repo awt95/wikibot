@@ -2,9 +2,15 @@ package com3001.at00672.service;
 
 import com3001.at00672.model.UserQuery;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.eclipse.rdf4j.sparqlbuilder.rdf.Rdf.iri;
 
+
 public class QueryBuilder {
+    public static ArrayList<String> predicates = new ArrayList<>(Arrays.asList("influenced", "influencedBy"));
+
     public static String generateQuery(UserQuery userQuery) {
         String result = "";
         switch (userQuery.get("function")) {
@@ -29,7 +35,12 @@ public class QueryBuilder {
         sb.append("?person foaf:name ?name .");
         sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
         sb.append("  ?person rdfs:comment ?comment .");
-        sb.append(String.format("  ?person %s ?%s .", userQuery.get("iri"), userQuery.get("property")));
+        // 'of' property e.g. influencedBy
+        if (predicates.contains(userQuery.get("property"))) {
+            sb.append(String.format("  ?%s %s ?person .", userQuery.get("property"), userQuery.get("iri")));
+        } else {
+            sb.append(String.format("  ?person %s ?%s .", userQuery.get("iri"), userQuery.get("property")));
+        }
         sb.append(" FILTER  langMatches(lang(?comment), 'en')");
         sb.append(String.format("} LIMIT %s", (userQuery.get("rlimit") == "") ? "1" : userQuery.get("rlimit")));
 

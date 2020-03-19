@@ -12,7 +12,7 @@
                     <srai><star/> BIRTHDATE</srai>
                 </li>
                 <li value="dbo:birthPlace">
-                    <srai><star/> BIRTHPLACE</srai>
+                    <srai><star/> BIRTHPLACE</srai> <!-- TODO: Add remaining values -->
                 </li>
                 <li>
                     I've gotten a bit confused, there. Let's start again.
@@ -172,9 +172,27 @@
 
     <!-- dbo:deathDate -->
 
-    <!-- influeced by -->
+    <!-- influenced by -->
+    <!-- TODO: Fix influenced by -->
+    <category>
+        <pattern>WHO WAS * INFLUENCED BY</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:influencedBy</set>
+                <set name="property">influencedBy</set>
+                <set name="rlimit">5</set>
+
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
 
     <!-- influenced -->
+
+
+    <!-- dbo:Field -->
 
     <category>
         <pattern>BOT_QUERY_CONTEXT *</pattern>

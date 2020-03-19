@@ -1,6 +1,6 @@
 package com3001.at00672.service;
 
-import com3001.at00672.model.ChatContext;
+import com3001.at00672.model.MessageItem;
 import com3001.at00672.model.UserQuery;
 import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.datatypes.xsd.impl.XSDDateType;
@@ -16,6 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DBPedia {
 
@@ -41,7 +42,8 @@ public class DBPedia {
         }
     }
 
-    public static void executeQuery(UserQuery userQuery) {
+    public static List<MessageItem> executeQuery(UserQuery userQuery) {
+        List<MessageItem> resultsList = new ArrayList<>();
         String returnString = "";
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -50,31 +52,31 @@ public class DBPedia {
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
             // TODO: loop through all results
-            ArrayList<String> resultsList = new ArrayList();
             while (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 RDFNode node = solution.get(userQuery.get("property"));
-                RDFNode resource = solution.get("r");
+                RDFNode resource = solution.get("person");
+                String resourceURI = null;
                 if (resource != null && resource.isResource()) {
                     //context.setSubjectURI(resource.asResource().getURI());
                     //context.setSubject(resource.asResource().getLocalName());
+                    resourceURI = resource.asResource().getURI();
                 }
-                //String result = processResource(node);
+                String result = processResource(node);
                 //processResource(node);
-                //resultsList.add(result);
+                resultsList.add(new MessageItem(resourceURI, result));
             }
             if (resultsList.size() == 0) {
-                resultsList.add("I don't know yet.");
+                resultsList.add(new MessageItem("I don't know yet."));
             }
-            returnString = resultsList.toString();
-
         } catch (Exception e) {
-            returnString = "Something went wrong.";
+            resultsList.add(new MessageItem("Something went wrong."));
         }
         // Chatcontext stuff
+        return resultsList;
     }
 
-    private static String[] processResource(RDFNode node) throws ParseException {
+    private static String processResource(RDFNode node) throws ParseException {
         String result = "";
         //String uri = node.ge;
         // Check if it as resource
@@ -105,9 +107,9 @@ public class DBPedia {
         } else {
             result = "Error occurred parsing node";
         }
-        //return result;
-        String[] results = new String[]{"test", "test"};
-        return results;
+        return result;
+        //String[] results = new String[]{"test", "test"};
+        //return results;
     }
 
     public static void ExampleQuery() {

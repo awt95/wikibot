@@ -1,7 +1,6 @@
 package com3001.at00672;
 
-import com3001.at00672.model.ChatContext;
-import com3001.at00672.model.UserQuery;
+import com3001.at00672.model.*;
 import com3001.at00672.service.ChatbotService;
 import org.apache.commons.text.WordUtils;
 import org.alicebot.ab.*;
@@ -37,21 +36,21 @@ public class ChatbotTerminal {
                 String request = textLine;
                 //if (MagicBooleans.trace_mode)
                 //  System.out.println("STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0) + ":TOPIC=" + chatSession.predicates.get("topic"));
-                String response = chatbotService.chatSession.multisentenceRespond(request);
+                Message botResponse = new Message(chatbotService.chatSession.multisentenceRespond(request), Sender.BOT);
                 UserQuery userQuery = new UserQuery(chatbotService.chatSession.predicates);
                 if (request.equals("quit") || request.equals("exit")) {
                     System.exit(0);
                 }
 
                 // TODO: Expand to rich content, pictures etc
-                response = chatbotService.processResponse(userQuery, response);
-                while (response.contains("&lt;"))
-                    response = response.replace("&lt;", "<");
-                while (response.contains("&gt;"))
-                    response = response.replace("&gt;", ">");
+                chatbotService.processResponse(userQuery, botResponse);
+
                 System.out.println();
                 System.out.println("Bot: ");
-                System.out.println(WordUtils.wrap(response, 80));
+                for (MessageItem item : botResponse.getMessageItems()) {
+                    System.out.println(WordUtils.wrap(item.getContent() + ", " + item.getUri(), 80));
+
+                }
                 System.out.println();
             }
 

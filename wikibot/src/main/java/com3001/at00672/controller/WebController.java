@@ -15,7 +15,6 @@ public class WebController {
 
     private final ChatRepository chatRepository;
 
-    @Autowired
     ChatbotService chatbotService;
 
     @Autowired

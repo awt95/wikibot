@@ -2129,8 +2129,9 @@ FUNCTION {misc}
   format.address "address" bibinfo.check output
   format.pages output
   format.date output
-  format.note output
   format.url output
+  %rearranged note for misc Alex Turner 2020
+  format.note output
   fin.entry
   empty.entry.warn
   if.url.std.interword.spacing
@@ -2258,6 +2259,13 @@ FUNCTION {unpublished}
   if.url.std.interword.spacing
 }
 
+% Modification by Alex Turner 2020 to add dateaccessed field
+FUNCTION {format.urldate}
+{ urldate empty$
+   { "" }
+   {new.block  "[Accessed on: " urldate * "]" * }
+  if$
+}
 
 % The special entry type which provides the user interface to the
 % BST controls

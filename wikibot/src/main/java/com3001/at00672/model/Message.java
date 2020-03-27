@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-//@Entity
+@Entity
 public class Message {
 
     @Id
@@ -17,7 +17,7 @@ public class Message {
     private String imageUrl;
     private MessageType messageType;
 
-    //@OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<MessageItem> messageItems = new ArrayList<>();
 
     public Message() {}

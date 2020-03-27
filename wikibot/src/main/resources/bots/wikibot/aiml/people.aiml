@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>LIST <set>person_type</set></pattern>
+        <template>
+            <think>
+                <set name="function">list</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star/></map></set>
+                <set name="property">name</set>
+                <set name="value">unknown</set>
+            </think>
+            FOUND <get name="property"/>
+        </template>
+    </category>
+
+    <!-- TODO: conditional list -->
+    <category>
+        <pattern><set>person_type</set> BORN IN *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
+                <set name="property">name</set>
+                <set name="condition_property">dbo:birthDate</set>
+                <set name="condition_property_type">date</set>
+                <set name="condition_operator">EQUALS</set>
+                <set name="condition_value"><star index="2"/></set>
+            </think>
+
+        </template>
+    </category>
+    <category>
+        <pattern><set>person_type</set> BORN BEFORE *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
+                <set name="property">name</set>
+                <set name="condition_property">dbo:birthDate</set>
+                <set name="condition_property_type">date</set>
+                <set name="condition_operator">LESS_THAN</set>
+                <set name="condition_value"><star index="2"/></set>
+            </think>
+
+        </template>
+    </category>
+    <category>
+        <pattern><set>person_type</set> BORN AFTER *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
+                <set name="property">name</set>
+                <set name="condition_property">dbo:birthDate</set>
+                <set name="condition_property_type">date</set>
+                <set name="condition_operator">GREATER_THAN</set>
+                <set name="condition_value"><star index="2"/></set>
+            </think>
+
+        </template>
+    </category>
+
+    <category>
+        <pattern>SIMILAR TO *</pattern>
+        <template>
+            PEOPLE SIMILAR TO <star/>
+        </template>
+    </category>
+
+    <category>
+        <pattern>RELATED *</pattern>
+        <template>
+
+        </template>
+    </category>
+</aiml>

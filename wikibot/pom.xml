@@ -12,6 +12,8 @@
     <groupId>com3001.at00672</groupId>
     <artifactId>wikibot</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
 
     <properties>
         <java.version>11</java.version>
@@ -48,6 +50,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
         </dependency>
 
 
@@ -130,6 +138,11 @@
             <version>5.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.atteo</groupId>
+            <artifactId>evo-inflector</artifactId>
+            <version>1.2.2</version>
+        </dependency>
 
     </dependencies>
     <build>

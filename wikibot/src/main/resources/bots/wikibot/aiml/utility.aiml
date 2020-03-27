@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>^ CLEAR ^</pattern>
+        <template>
+            <think>
+                <set name="topic">unknown</set>
+                <set name="property">unknown</set>
+                <set name="function">unknown</set>
+                <set name="value">unknown</set>
+            </think>
+            Okay, let's stop talking about that.
+        </template>
+    </category>
+    <category>
+        <pattern>^ STOP ^</pattern>
+        <template>
+            <srai>CLEAR</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>BOT_CLEAR_ALL</pattern>
+        <template>
+            <think>
+                <set name="topic">unknown</set>
+                <set name="property">unknown</set>
+                <set name="function">unknown</set>
+                <set name="value">unknown</set>
+            </think>
+        </template>
+    </category>
+</aiml>

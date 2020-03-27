@@ -1,22 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aiml>
+<aiml version="2.0">
+
+    <!-- TODO: * context -->
+    <!-- Second response from user when there is no subject -->
     <category>
-        <pattern>WHO IS *</pattern>
+        <pattern>*</pattern>
+        <that>WHO ARE WE TALKING ABOUT</that>
         <template>
-            <think><set name="topic">Person</set></think>
-            <think><set name="property">rdfs:comment</set></think>
-            <think><set name="value"><star/></set></think>
-            Here's what I found about
+            <condition name="property">
+                <li value="dbo:birthDate">
+                    <srai><star/> BIRTHDATE</srai>
+                </li>
+                <li value="dbo:birthPlace">
+                    <srai><star/> BIRTHPLACE</srai> <!-- TODO: Add remaining values -->
+                </li>
+                <li>
+                    I've gotten a bit confused, there. Let's start again.
+                    <srai>BOT_CLEAR_ALL</srai>
+                </li>
+            </condition>
+
         </template>
     </category>
 
     <category>
+        <pattern>GET_CONTEXT</pattern>
+        <template>
+            <think>
+                <set name="function">wait</set>
+            </think>
+            Who are we talking about?
+        </template>
+    </category>
+
+    <!-- rdfs:comment -->
+    <category>
+        <pattern>WHO IS *</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">rdfs:comment</set>
+                <set name="property">comment</set>
+                <set name="limit">1</set>
+
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>TELL ME ABOUT *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>LETS TALK ABOUT *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+
+    <!-- dbo:birthDate -->
+    <!-- TODO: Pronoun subsitution/condition  -->
+    <category>
         <pattern>* BIRTHDATE</pattern>
         <template>
-            <think><set name="topic">Person</set></think>
-            <think><set name="property">dbo:birthDate</set></think>
-            <think><set name="value"><star/></set></think>
-            response
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:birthDate</set>
+                <set name="property">birthDate</set>
+                <set name="rlimit">1</set>
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
+    <!-- Synonyms -->
+    <category>
+        <pattern>* BIRTHDAY</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
         </template>
     </category>
     <category>
@@ -26,61 +90,136 @@
         </template>
     </category>
     <category>
-        <pattern>WHEN * BORN</pattern>
+        <pattern>WHEN WERE * BORN</pattern>
         <template>
             <srai><star/> BIRTHDATE</srai>
         </template>
     </category>
     <category>
-        <pattern>* BIRTHDAY</pattern>
+        <pattern>WHAT IS * BIRTHDATE</pattern>
         <template>
             <srai><star/> BIRTHDATE</srai>
         </template>
     </category>
-    <!--<category>
-        <pattern>*</pattern>
+    <category>
+        <pattern>WHAT YEAR WAS * BORN</pattern>
         <template>
-            <condition name="property">
-                <li value="dbo:birthDate"><srai><star/> BIRTHDATE</srai></li>
-                <li value="dbo:birthPlace"><srai><star/> BIRTHDATE</srai></li>
-                <li value="*"><srai>WHO IS <star/></srai></li>
-            </condition>
+            <srai><star/> BIRTHDATE</srai>
         </template>
-    </category>-->
+    </category>
 
+    <!-- dbo:birthPlace -->
     <category>
         <pattern>* BIRTHPLACE</pattern>
         <template>
-            <think><set name="topic">Person</set></think>
-            <think><set name="property">dbo:birthPlace</set></think>
-            <think><set name="value"><star/></set></think>
-            Here's what I found about
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:birthPlace</set>
+                <set name="property">birthPlace</set>
+                <set name="rlimit">3</set>
+
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHERE WAS * BORN</pattern>
+        <template>
+            <srai><star/> BIRTHPLACE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHERE WERE * BORN</pattern>
+        <template>
+            <srai><star/> BIRTHPLACE</srai>
         </template>
     </category>
     <category>
         <pattern>WHERE * BORN</pattern>
         <template>
-            <srai><star/> BIRTHDATE</srai>
+            <srai><star/> BIRTHPLACE</srai>
+        </template>
+    </category>
+
+    <!-- dbo:knownFor -->
+    <category>
+        <pattern>* KNOWN FOR</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:knownFor</set>
+                <set name="property">knownFor</set>
+                <set name="rlimit">5</set>
+
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
     </category>
 
     <category>
-        <pattern>PEOPLE BORN IN *</pattern>
+        <pattern>NOT WHO I MEANT</pattern>
         <template>
-            <think><set name="topic">Person</set></think>
-            <think><set name="property">dbo:birthDate</set></think>
-            <think><set name="queryType">list</set></think>
-            <think><set name="value"><star/></set></think>
+            <think>
+                <set name="function">conversation</set>
+            </think>
+            Who did you mean
+
         </template>
     </category>
 
-    <!--
-    <topic name="Person">
-        <category>
-            <pattern> * </pattern>
-            <template>
-              <srai>WHO IS <star/></srai>
-            </template>
-        </category>
-    </topic> -->
+    <!-- dbo:deathDate -->
+
+    <!-- influenced by -->
+    <!-- TODO: Fix influenced by -->
+    <category>
+        <pattern>WHO WAS * INFLUENCED BY</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:influencedBy</set>
+                <set name="property">influencedBy</set>
+                <set name="rlimit">5</set>
+
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
+
+    <!-- influenced -->
+
+
+    <!-- dbo:Field -->
+
+    <category>
+        <pattern>BOT_QUERY_CONTEXT *</pattern>
+        <template>
+            <think>
+                <set name="subject"><map name="pronouns"><star/></map></set>
+            </think>
+            <condition name="subject">
+                <li value="they">
+                    <condition name="value">
+                        <li value="unknown">
+                            <srai>GET_CONTEXT</srai>
+                        </li>
+                        <li>
+                            <!-- Outputting this initially for testing -->
+                            RUN_QUERY on <get name="topic"/>, <get name="property"/> subject= <get name="value"/>
+                        </li>
+                    </condition>
+                </li>
+                <li>
+                    <think>
+                        <set name="value"><star/></set>
+                    </think>
+                    RUN_QUERY on <get name="topic"/>, <get name="property"/> subject= <get name="value"/>
+                </li>
+            </condition>
+        </template>
+    </category>
+
 </aiml>

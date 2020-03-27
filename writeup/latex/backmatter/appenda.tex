@@ -1,0 +1,14 @@
+\chapter{MediaWiki API}
+\label{app:mediawiki}
+The following Figure~\ref{fig:wiki} shows a fragment of the response when running a query using the MediaWiki API \cite{mediawiki}. The result has been truncated, and is the response from the query
+
+\begin{lstlisting}
+	https://en.wikipedia.org/w/api.php?action=query&prop=revisions
+		&rvprop=content&rvsection=0&titles=Tim%20Berners-Lee
+\end{lstlisting}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{wikimedia}
+	\caption{A JSON response excerpt from a MediaWiki query.}
+	\label{fig:wiki}
+\end{figure}

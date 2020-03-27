@@ -33,3 +33,97 @@
 
         }
         ORDER BY ASC(?label)
+
+
+         PREFIX dbo: <http://dbpedia.org/ontology/>
+         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+        SELECT distinct ?label WHERE {
+          ?class rdfs:subClassOf dbo:Person .
+          ?class rdfs:label ?label .
+          FILTER langMatches(lang(?label), 'en') .
+        }
+
+        BIND (STR(?title)  AS ?stripped_title)
+
+        PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+        PREFIX dbo:<http://dbpedia.org/ontology/>
+        PREFIX vrank:<http://purl.org/voc/vrank#>
+
+        SELECT ?s ?v
+        FROM <http://dbpedia.org>
+        FROM <http://people.aifb.kit.edu/ath/#DBpedia_PageRank>
+        WHERE {
+        ?s rdf:type dbo:University.
+        ?s vrank:hasRank/vrank:rankValue ?v.
+        }
+        ORDER BY DESC(?v) LIMIT 50
+
+
+        SELECT ?philosopher ?pName ?influence (SAMPLE(?iName) as ?iName)
+        WHERE {
+          # This subquery selects all the philosophers and
+          # selects just one of their names .
+          {
+            SELECT ?philosopher (SAMPLE(?pName) as ?pName) WHERE {
+              ?philosopher a dbpedia-owl:Philosopher ;
+                           foaf:name ?pName .
+            }
+            GROUP BY ?philosopher
+          }
+
+          # This main query selects the influence of the
+          # philosophers and select their names.  The GROUP
+          # BY on the outer query puts all the
+          # (?philosopher,?pName,?influence,?iName) tuples
+          # that have the same ?philosopher, ?pName, and
+          # influence together, and the (SAMPLE(?iName) as ?iName)
+          # in the outer SELECT combines them all, choosing an
+          # arbitrary representative ?iName.
+          ?influence dbpedia-owl:influenced ?philosopher ;
+                     a dbpedia-owl:Philosopher ;
+                     foaf:name ?iName .
+        }
+        GROUP BY ?philosopher ?pName ?influence
+
+
+        SELECT ?person ?name
+        WHERE {
+          # This subquery selects all the persons and
+          # selects just one of their names .
+          {
+            SELECT ?person (SAMPLE(?name) as ?name) WHERE {
+              ?person a dbo:Philosopher ;
+                           foaf:name ?name .
+            }
+            GROUP BY ?person
+          }
+        }
+        GROUP BY ?person
+        ORDER BY ?name
+        LIMIT 100
+
+        PREFIX vrank:<http://purl.org/voc/vrank#>
+
+        SELECT ?person ?name ?v
+        FROM <http://dbpedia.org>
+        FROM <http://people.aifb.kit.edu/ath/#DBpedia_PageRank>
+        WHERE {
+          # This subquery selects all the persons and
+          # selects just one of their names .
+          {
+            SELECT ?person (SAMPLE(?names) as ?name) WHERE {
+              ?person a dbo:Actor . ?person foaf:name ?names .
+            }
+            GROUP BY ?person
+          }
+          ?person vrank:hasRank/vrank:rankValue ?v .
+        }
+        GROUP BY ?person
+        ORDER BY DESC(?v)
+        LIMIT 10
+
+        SELECT ?person ?name WHERE {
+          ?person a dbo:Person .
+          ?person foaf:name ?name .
+          ?person dbo:influencedBy <http://dbpedia.org/resource/Alan_Turing>
+        }

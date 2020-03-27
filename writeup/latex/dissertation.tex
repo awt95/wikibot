@@ -1,0 +1,89 @@
+\documentclass{surreydissertation}
+
+\usepackage[british]{babel}
+\usepackage{url}
+\usepackage{color}
+\usepackage[hidelinks]{hyperref}
+\usepackage[toc]{appendix}
+\usepackage{titlesec}
+\usepackage[square,numbers]{natbib}
+\usepackage{notoccite}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[justification=centering]{caption}
+\usepackage{pdfpages}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{courier}
+
+%hyphenation rules
+\hyphenation{internet}
+\hyphenation{interaction}
+
+%code fragments
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	language=xml,
+	columns=flexible,
+	breaklines=true,
+	tabsize=2,
+	breakatwhitespace=true,
+}
+
+\graphicspath{ {./figures/} }
+
+\bibliographystyle{IEEEtranN}
+
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+\def\UrlBreaks{\do\/\do-}
+\begin{document} 
+
+	%title
+	\title{Developing a Chatbot to Answer\\ Wikipedia Queries}
+	% front matter
+	\author{Alex Turner}
+	\urn{6436302}
+	\date{May 2020}
+	\degree{Bachelor of Science in Computer Science}
+	\supervisor{Stephan Wesemeyer}
+	
+	\maketitle
+	\pagenumbering{roman}
+	\setcounter{page}{1}
+	\include{frontmatter/abstract}
+	\include{frontmatter/acknowledgements}
+	\include{frontmatter/abbreviations}
+
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	%\include{frontmatter/glossary}
+	%\include{frontmatter/abbreviations}
+	
+	%content
+	\cleardoublepage
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	\include{chapters/1_introduction}
+	\include{chapters/2_review}
+	\include{chapters/3_analysis}
+	\include{chapters/4_design}
+	\include{chapters/5_implementation}
+	\include{chapters/6_testing}
+	\include{chapters/7_conclusion}
+	\include{chapters/8_ethics}
+	
+	% back matter
+
+	\appendix
+	\addcontentsline{toc}{chapter}{Appendices}
+	\input{backmatter/appenda}
+	\input{backmatter/appendb}
+	\input{backmatter/appendc}
+	
+	
+	\bibliography{references}
+
+\end{document}

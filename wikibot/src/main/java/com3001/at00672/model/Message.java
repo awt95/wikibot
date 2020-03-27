@@ -1,6 +1,7 @@
 package com3001.at00672.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class Message {
     private MessageType messageType;
 
     //@OneToMany
-    private List<MessageItem> messageItems;
+    private List<MessageItem> messageItems = new ArrayList<>();
 
     public Message() {}
 

@@ -4,9 +4,9 @@
     <title>Wikibot</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
-    <!-- Custom css -->
-    <link href="../static/css/style.css" rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <link rel="stylesheet" href="../static/css/bootstrap.css" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" th:href="@{/css/style.css}"/>
 
 </head>
 <body>
@@ -29,6 +29,7 @@
             <div class="h-100 d-flex flex-column">
                 <div class="row bg-chat flex-grow-1 overflow-auto p-4" id="messages_div">
                     <!-- Messages-->
+                    <!-- TODO: Fragment each message by type -->
                     <ul class="list-group w-100">
                         <li th:each="m : ${chat}">
                             <div th:switch="${m.sender}">
@@ -39,14 +40,44 @@
                                 </div>
                                 <div th:case="${T(com3001.at00672.model.Sender).BOT}" class="card chat-recv shadow-sm rounded">
                                     <div class="card-body py-3">
-                                        <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
-                                        <span th:unless="${m.messageItems.size() == 0}">
-                                            <ul>
-                                                <li th:each="item: ${m.messageItems}">
-                                                    <p th:text="${item.content}"/>
-                                                </li>
-                                            </ul>
-                                        </span>
+                                        <div th:switch="${m.messageType}">
+                                            <div th:case="${T(com3001.at00672.model.MessageType).ABSTRACT}" class="abstract-wrapper">
+                                                <div class="abstract-img-wrapper">
+                                                    <img class="abstract-img" src="img/avatar.png" alt="A photo here"/>
+                                                </div>
+                                                <div class="abstract-text">
+                                                    <h5 class="card-title">Person Name</h5>
+                                                    <p class="card-text">
+                                                        <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
+                                                        <span th:unless="${m.messageItems.size() == 0}" th:text="${m.messageItems.get(0).content}"/>
+
+                                                    </p>
+                                                    <ul>
+                                                        <li><a href="card-link">Wikipedia</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div th:case="${T(com3001.at00672.model.MessageType).LIST}">
+                                                <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
+                                                <span th:unless="${m.messageItems.size() == 0}">
+                                                    <ul>
+                                                        <li th:each="item: ${m.messageItems}">
+                                                            <p th:text="${item.content}"/>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                            <div th:case="*">
+                                                <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
+                                                <span th:unless="${m.messageItems.size() == 0}">
+                                                    <ul>
+                                                        <li th:each="item: ${m.messageItems}">
+                                                            <p th:text="${item.content}"/>
+                                                        </li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

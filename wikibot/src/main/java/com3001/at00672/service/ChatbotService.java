@@ -32,6 +32,9 @@ public class ChatbotService {
 
     public void processResponse(UserQuery userQuery, Message botResponse) {
         if (queryKeywords.contains(userQuery.get("function"))) {
+            if (userQuery.get("messagetype").equalsIgnoreCase("ABSTRACT")) {
+                botResponse.setMessageType(MessageType.ABSTRACT);
+            }
             String serverResponse = "";
             System.out.println(userQuery.toString());
             // generate query
@@ -45,7 +48,7 @@ public class ChatbotService {
                 botResponse.addMessageItem(new MessageItem("Sorry, I don't know"));
             }
         } else {
-            botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
+           // botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
         }
 
     }

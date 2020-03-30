@@ -14,7 +14,7 @@ public class ChatbotService {
     public MessageRepository messageRepository;
     public Bot bot;
     public Chat chatSession;
-    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list", "list_conditional"));
+    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional"));
 
     public ChatbotService() {
         String botName = "wikibot";

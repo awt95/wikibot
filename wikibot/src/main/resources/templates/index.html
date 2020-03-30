@@ -43,7 +43,7 @@
                                         <div th:switch="${m.messageType}">
                                             <div th:case="${T(com3001.at00672.model.MessageType).ABSTRACT}" class="abstract-wrapper">
                                                 <div class="abstract-img-wrapper">
-                                                    <img class="abstract-img" src="img/avatar.png" alt="A photo here"/>
+                                                    <img class="abstract-img" th:src="${ m.messageItems.get(0).getImageURL()}" alt="A photo here"/>
                                                 </div>
                                                 <div class="abstract-text">
                                                     <h5 class="card-title">Person Name</h5>

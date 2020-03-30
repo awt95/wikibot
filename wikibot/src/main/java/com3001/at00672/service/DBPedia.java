@@ -41,6 +41,7 @@ public class DBPedia {
             qe.close();
         }
     }
+    // TODO: Abstract query
 
     public static List<MessageItem> executeQuery(UserQuery userQuery) {
         List<MessageItem> resultsList = new ArrayList<>();

@@ -15,6 +15,7 @@ public class Message {
     private String content;
     private Sender sender;
     private String imageUrl;
+    private String title;
     private MessageType messageType;
 
     @OneToMany(cascade = {CascadeType.ALL})
@@ -77,5 +78,13 @@ public class Message {
 
     public void addMessageItem(MessageItem messageItem) {
         messageItems.add(messageItem);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

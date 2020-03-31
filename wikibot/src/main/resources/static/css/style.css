@@ -44,3 +44,30 @@ html,body {
 .bg-chat {
     background-color: #eeeeee; !important;
 }
+.abstract-wrapper {
+    display:flex;
+}
+.abstract-img-wrapper {
+    display: inline-block;
+    max-width: 25%;
+}
+
+.abstract-img {
+    max-height:100%;
+    max-width: 100%;
+    padding:5px 5px 5px 5px;
+}
+
+.abstract-text {
+    display: inline-block;
+    max-width: 75%;
+    padding-left: 10px;
+}
+
+.ul-messages {
+    padding-inline-start: 0px;
+}
+
+.message-item {
+    padding-inline-start:0px;
+}

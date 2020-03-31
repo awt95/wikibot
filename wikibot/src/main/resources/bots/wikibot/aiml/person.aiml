@@ -38,10 +38,11 @@
         <pattern>WHO IS *</pattern>
         <template>
             <think>
-                <set name="function">query</set>
+                <set name="function">abstract</set>
                 <set name="topic">Person</set>
                 <set name="iri">rdfs:comment</set>
                 <set name="property">comment</set>
+                <set name="messagetype">ABSTRACT</set>
                 <set name="limit">1</set>
 
             </think>

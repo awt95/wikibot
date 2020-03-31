@@ -93,8 +93,6 @@ public class DBPedia {
                 RDFNode resource = solution.get("person");
                 String resourceURI = null;
                 if (resource != null && resource.isResource()) {
-                    //context.setSubjectURI(resource.asResource().getURI());
-                    //context.setSubject(resource.asResource().getLocalName());
                     resourceURI = resource.asResource().getURI();
                 }
                 String result = processResource(node);
@@ -134,6 +132,7 @@ public class DBPedia {
                 DateFormat inFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = inFormat.parse(node.asLiteral().getLexicalForm());
                 DateFormat outFormat = new SimpleDateFormat("dd MMM yyyy");
+                result = outFormat.format(date);
             } else {
                 result = node.asLiteral().getString();
             }

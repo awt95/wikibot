@@ -59,9 +59,9 @@
                                             <div th:case="${T(com3001.at00672.model.MessageType).LIST}">
                                                 <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
                                                 <span th:unless="${m.messageItems.size() == 0}">
-                                                    <ul>
-                                                        <li th:each="item: ${m.messageItems}">
-                                                            <p th:text="${item.content}"/>
+                                                    <ul class="ul-messages">
+                                                        <li th:each="item: ${m.messageItems}" class="message-item">
+                                                            <span th:text="${item.content}"/>
                                                         </li>
                                                     </ul>
                                                 </span>
@@ -69,9 +69,9 @@
                                             <div th:case="*">
                                                 <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
                                                 <span th:unless="${m.messageItems.size() == 0}">
-                                                    <ul>
-                                                        <li th:each="item: ${m.messageItems}">
-                                                            <p th:text="${item.content}"/>
+                                                    <ul class="ul-messages">
+                                                        <li th:each="item: ${m.messageItems}" class="message-item">
+                                                            <span th:text="${item.content}"/>
                                                         </li>
                                                     </ul>
                                                 </span>

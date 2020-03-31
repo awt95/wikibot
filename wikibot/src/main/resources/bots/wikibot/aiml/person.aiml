@@ -173,6 +173,20 @@
 
     <!-- dbo:deathDate -->
 
+    <category>
+        <pattern>HOW OLD IS *</pattern>
+        <template>
+            <think>
+                <set name="function">calculateAge</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:birthDate</set>
+                <set name="property">birthDate</set>
+                <set name="rlimit">1</set>
+            </think>
+
+        </template>
+    </category>
+
     <!-- influenced by -->
     <!-- TODO: Fix influenced by -->
     <category>

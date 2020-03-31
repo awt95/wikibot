@@ -11,7 +11,6 @@ import static com3001.at00672.service.QueryBuilder.generateQuery;
 
 //@Service
 public class ChatbotService {
-    public MessageRepositoryInterface messageRepository;
     public Bot bot;
     public Chat chatSession;
     public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional"));

@@ -1,7 +1,6 @@
 package com3001.at00672.controller;
 
 import com3001.at00672.model.MessageRepository;
-import com3001.at00672.model.MessageRepositoryInterface;
 import com3001.at00672.model.Message;
 import com3001.at00672.model.Sender;
 import com3001.at00672.service.ChatbotService;

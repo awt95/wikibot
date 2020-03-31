@@ -43,13 +43,12 @@
                                         <div th:switch="${m.messageType}">
                                             <div th:case="${T(com3001.at00672.model.MessageType).ABSTRACT}" class="abstract-wrapper">
                                                 <div class="abstract-img-wrapper">
-                                                    <img class="abstract-img" th:src="${ m.messageItems.get(0).getImageURL()}" alt="A photo here"/>
+                                                    <img class="abstract-img" th:src="*{ m.getImageURL()}" alt="A photo here"/>
                                                 </div>
                                                 <div class="abstract-text">
-                                                    <h5 class="card-title">Person Name</h5>
+                                                    <h5 class="card-title" th:text="*{ m.getTitle()}"/>
                                                     <p class="card-text">
-                                                        <span th:if="${m.messageItems.size() == 0}" th:text="${m.content}"/>
-                                                        <span th:unless="${m.messageItems.size() == 0}" th:text="${m.messageItems.get(0).content}"/>
+                                                        <span th:text="${m.content}"/>
 
                                                     </p>
                                                     <ul>

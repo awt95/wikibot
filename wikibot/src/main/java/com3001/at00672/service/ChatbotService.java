@@ -11,7 +11,7 @@ import static com3001.at00672.service.QueryBuilder.generateQuery;
 
 //@Service
 public class ChatbotService {
-    public MessageRepository messageRepository;
+    public MessageRepositoryInterface messageRepository;
     public Bot bot;
     public Chat chatSession;
     public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional"));
@@ -24,28 +24,32 @@ public class ChatbotService {
     }
 
     public Message chatbotRequest(Message request) {
-        Message response = new Message(chatSession.multisentenceRespond(request.getContent()), Sender.BOT);
+        String responseString = chatSession.multisentenceRespond(request.getContent());
         UserQuery userQuery = new UserQuery(chatSession.predicates);
+        Message response;
+        if (chatSession.predicates.get("function").equalsIgnoreCase("abstract")) {
+            response = new Message(responseString, Sender.BOT, MessageType.ABSTRACT);
+        } else if (chatSession.predicates.get("function").contains("list")) {
+            response = new Message(responseString, Sender.BOT, MessageType.LIST);
+        } else {
+            response = new Message(responseString, Sender.BOT, MessageType.TEXT);
+        }
         processResponse(userQuery, response);
         return response;
     }
 
     public void processResponse(UserQuery userQuery, Message botResponse) {
         if (queryKeywords.contains(userQuery.get("function"))) {
-            if (userQuery.get("messagetype").equalsIgnoreCase("ABSTRACT")) {
-                botResponse.setMessageType(MessageType.ABSTRACT);
-            }
-            String serverResponse = "";
             System.out.println(userQuery.toString());
             // generate query
             String dbQuery = generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
             System.out.println(dbQuery);
 
-            if (userQuery.getQueryString() != "")
-                botResponse.setMessageItems(DBPedia.executeQuery(userQuery));
-            else {
-                botResponse.addMessageItem(new MessageItem("Sorry, I don't know"));
+            if (userQuery.getQueryString() != "") {
+                DBPedia.executeQuery(userQuery, botResponse);
+            } else {
+                botResponse.setContent("Sorry, I don't know");
             }
         } else {
            // botResponse.addMessageItem(new MessageItem(botResponse.getContent()));

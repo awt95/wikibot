@@ -10,22 +10,30 @@ public class Message {
 
     @Id
     @GeneratedValue
-    private Long id;
+    protected Long id;
     @Lob
-    private String content;
-    private Sender sender;
-    private String imageUrl;
+    protected String content;
+    protected Sender sender;
+    protected MessageType messageType = MessageType.TEXT;
+
     private String title;
-    private MessageType messageType;
+    private String imageURL;
+    private String wikipediaURL;
 
     @OneToMany(cascade = {CascadeType.ALL})
-    private List<MessageItem> messageItems = new ArrayList<>();
+    protected List<MessageItem> messageItems = new ArrayList<>();
 
     public Message() {}
 
     public Message(String content, Sender sender) {
         this.content = content;
         this.sender = sender;
+    }
+
+    public Message(String content, Sender sender, MessageType messageType) {
+        this.content = content;
+        this.sender = sender;
+        this.messageType = messageType;
     }
 
     public Long getId() {
@@ -50,14 +58,6 @@ public class Message {
 
     public void setSender(Sender sender) {
         this.sender = sender;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public MessageType getMessageType() {
@@ -86,5 +86,21 @@ public class Message {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getWikipediaURL() {
+        return wikipediaURL;
+    }
+
+    public void setWikipediaURL(String wikipediaURL) {
+        this.wikipediaURL = wikipediaURL;
     }
 }

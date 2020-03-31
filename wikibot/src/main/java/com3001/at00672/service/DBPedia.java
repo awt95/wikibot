@@ -1,9 +1,6 @@
 package com3001.at00672.service;
 
-import com3001.at00672.model.Message;
-import com3001.at00672.model.MessageItem;
-import com3001.at00672.model.MessageItemAbstract;
-import com3001.at00672.model.UserQuery;
+import com3001.at00672.model.*;
 import org.apache.catalina.User;
 import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.datatypes.xsd.impl.XSDDateType;
@@ -47,16 +44,15 @@ public class DBPedia {
         }
     }
 
-    public static List<MessageItem> executeQuery(UserQuery userQuery) {
-        if (userQuery.get("messagetype").equalsIgnoreCase("ABSTRACT")) {
-            return executeAbstractPersonQuery(userQuery);
+    public static void executeQuery(UserQuery userQuery, Message botResponse) {
+        if (botResponse.getMessageType().equals(MessageType.ABSTRACT)) {
+            executeAbstractPersonQuery(userQuery, botResponse);
         } else {
-            return executePersonQuery(userQuery);
+            executePersonQuery(userQuery, botResponse);
         }
     }
 
-    public static List<MessageItem> executeAbstractPersonQuery(UserQuery userQuery) {
-        List<MessageItem> resultsList = new ArrayList<>();
+    public static void executeAbstractPersonQuery(UserQuery userQuery, Message botResponse) {
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
             //System.out.println(queryString);
@@ -64,33 +60,26 @@ public class DBPedia {
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
             // TODO: loop through all results
-            while (results.hasNext()) {
-                MessageItemAbstract messageItem = new MessageItemAbstract();
+            if (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 RDFNode resource = solution.get("person");
                 String resourceURI = resource.asResource().getURI();
                 String name = solution.get("name").asLiteral().getString();
                 String content = solution.get("comment").asLiteral().getString();
                 String thumbnail = solution.get("thumbnail").asResource().getURI(); //?
-                messageItem.setUri(resourceURI);
-                messageItem.setName(name);
-                messageItem.setContent(content);
-                messageItem.setImageURL(thumbnail);
-                resultsList.add(messageItem);
-            }
-            if (resultsList.size() == 0) {
-                resultsList.add(new MessageItem("I don't know yet."));
+                botResponse.setTitle(name);
+                botResponse.setContent(content);
+                botResponse.setImageURL(thumbnail);
+            } else {
+                botResponse.setContent("Something went wrong");
             }
         } catch (Exception e) {
-            resultsList.add(new MessageItem("Something went wrong."));
+            botResponse.setContent("Something went wrong");
+            e.printStackTrace();
         }
-        // Chatcontext stuff
-        return resultsList;
     }
 
-    public static List<MessageItem> executePersonQuery(UserQuery userQuery) {
-        List<MessageItem> resultsList = new ArrayList<>();
-        String returnString = "";
+    public static void executePersonQuery(UserQuery userQuery, Message botResponse) {
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
             //System.out.println(queryString);
@@ -110,16 +99,14 @@ public class DBPedia {
                 }
                 String result = processResource(node);
                 //processResource(node);
-                resultsList.add(new MessageItem(resourceURI, result));
+                botResponse.addMessageItem(new MessageItem(resourceURI, result));
             }
-            if (resultsList.size() == 0) {
-                resultsList.add(new MessageItem("I don't know yet."));
+            if (botResponse.getMessageItems().size() == 0) {
+                botResponse.addMessageItem(new MessageItem("I don't know yet."));
             }
         } catch (Exception e) {
-            resultsList.add(new MessageItem("Something went wrong."));
+            botResponse.addMessageItem(new MessageItem("Something went wrong."));
         }
-        // Chatcontext stuff
-        return resultsList;
     }
 
     private static String processResource(RDFNode node) throws ParseException {

@@ -1,1 +1,0 @@
-INSERT INTO MESSAGE(ID, CONTENT, SENDER) VALUES (0, 'Hi there! Start typing below to ask something.', 1)

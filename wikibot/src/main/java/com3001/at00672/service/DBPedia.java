@@ -144,6 +144,35 @@ public class DBPedia {
         //return results;
     }
 
+    public static void  executeAgeQuery(UserQuery userQuery, Message botResponse) {
+        try {
+            org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+            //System.out.println(queryString);
+            Query query = QueryFactory.create(userQuery.getQueryString());
+            QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
+            ResultSet results = qexec.execSelect();
+            // TODO: loop through all results
+            if (results.hasNext()) {
+                QuerySolution solution = results.nextSolution();
+                RDFNode resource = solution.get("person");
+                Resource birthDate = solution.getResource("birthDate");
+                Resource deathDate = solution.getResource("deathDate");
+                // Convert values
+
+                // If they have died
+
+                // Calculate age today
+
+                // Generate response
+            } else {
+                botResponse.setContent("Something went wrong");
+            }
+        } catch (Exception e) {
+            botResponse.setContent("Something went wrong");
+            e.printStackTrace();
+        }
+    }
+    
     public static void ExampleQuery() {
         //org.apache.log4j.BasicConfigurator.configure();
 

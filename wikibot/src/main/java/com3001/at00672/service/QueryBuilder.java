@@ -18,6 +18,7 @@ public class QueryBuilder {
             case "abstract": result = generateAbstractQuery(userQuery); break;
             case "list": result = generateListQuery(userQuery); break;
             case "list_conditional": result = generateListConditionalQuery(userQuery); break;
+            case "age": result = generateAgeQuery(userQuery); break;
             default: result = "";
         }
         return result;
@@ -42,6 +43,23 @@ public class QueryBuilder {
 
         System.out.println(sb.toString());
 
+        return sb.toString();
+    }
+
+    public static String generateAgeQuery(UserQuery userQuery) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
+        sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
+        sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
+        sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        sb.append("SELECT ?birthDate ?deathDate WHERE {");
+        sb.append("?person a dbo:Person .");
+        sb.append("?person foaf:name ?name .");
+        sb.append(String.format("?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
+        sb.append("?person dbo:birthDate ?birthDate .");
+        sb.append(  "OPTIONAL{?person dbo:deathDate ?deathDate} .");
+        sb.append("FILTER langMatches(lang(?name), 'en')");
+        sb.append("} LIMIT 1");
         return sb.toString();
     }
 

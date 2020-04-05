@@ -51,7 +51,7 @@ public class DBPedia {
             executePersonQuery(userQuery, botResponse);
         }
     }
-
+    // TODO: Get infobox from wikipedia?
     public static void executeAbstractPersonQuery(UserQuery userQuery, Message botResponse) {
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -172,7 +172,7 @@ public class DBPedia {
             e.printStackTrace();
         }
     }
-    
+
     public static void ExampleQuery() {
         //org.apache.log4j.BasicConfigurator.configure();
 

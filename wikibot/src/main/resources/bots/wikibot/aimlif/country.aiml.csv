@@ -1,0 +1,3 @@
+0,IS <SET>COUNTRIES</SET> A COUNTRY,*,*,Yes#Comma <star/> is a country.,country.aiml
+0,IS * A COUNTRY,*,*,No#Comma <star/> is not a country.,country.aiml
+0,WHERE IS *,*,*,Here it is,country.aiml

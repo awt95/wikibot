@@ -51,7 +51,7 @@ public class ChatbotService {
                 botResponse.setContent("Sorry, I don't know");
             }
         } else {
-           // botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
+           botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
         }
 
     }

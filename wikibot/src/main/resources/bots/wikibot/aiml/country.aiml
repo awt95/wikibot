@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>IS <set>countries</set> A COUNTRY</pattern>
+        <think><set name="topic">country</set></think>
+        <template>Yes, <star/> is a country.</template>
+    </category>
+
+    <category>
+        <pattern>IS * A COUNTRY</pattern>
+        <think><set name="topic">country</set></think>
+        <template>No, <star/> is not a country.</template>
+    </category>
+
+    <category>
+        <pattern>WHERE IS *</pattern>
+        <think><set name="topic">country</set></think>
+        <template>Here it is</template>
+    </category>
+</aiml>

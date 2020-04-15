@@ -10,10 +10,41 @@ import java.util.ArrayList;
 
 public class ChatbotUtils {
     public static void main(String[] args) {
-        loadPersonSubclasses();
-
+        //loadPersonSubclasses();
+        loadCountries();
     }
 
+    public static void loadCountries() {
+        Writer writer;
+        try {
+            String people = System.getProperty("user.dir") + "/src/main/resources/bots/wikibot/sets/countries.txt";
+            File file = new File(people);
+            writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(people)));
+            org.apache.log4j.BasicConfigurator.configure();
+            String queryString = " PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
+                    " PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+                    " SELECT DISTINCT ?country ?name\n" +
+                    " WHERE {\n" +
+                    " ?country a dbo:Country.\n" +
+                    " ?country dbo:capital ?capital.\n" +
+                    " ?country rdfs:label ?name\n" +
+                    " FILTER NOT EXISTS { ?country dbo:dissolutionYear ?yearEnd }\n" +
+                    " FILTER langMatches(lang(?name), 'en')\n" +
+                    "} ORDER BY ?country";
+            Query query = QueryFactory.create(queryString);
+            QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
+            ResultSet results = qexec.execSelect();
+            // TODO: loop through all results
+            while (results.hasNext()) {
+                QuerySolution soln = results.nextSolution();
+                String country = soln.getLiteral("name").getLexicalForm();
+                writer.write(country + "\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void loadPersonSubclasses() {
         Writer writer;

@@ -14,10 +14,7 @@ import org.apache.log4j.varia.NullAppender;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class DBPedia {
     public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list", "list_conditional"));
@@ -155,8 +152,15 @@ public class DBPedia {
             if (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 RDFNode resource = solution.get("person");
-                Resource birthDate = solution.getResource("birthDate");
-                Resource deathDate = solution.getResource("deathDate");
+                RDFNode birthDate = solution.get("birthDate");
+                RDFNode deathDate = solution.get("deathDate");
+                if ((birthDate.asLiteral().getDatatype() instanceof XSDDateType) && (deathDate.asLiteral().getDatatype() instanceof XSDDateType)) {
+                    DateFormat xsdFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+                } else {
+                    throw new IllegalArgumentException("Date is wrong type");
+                }
+
                 // Convert values
 
                 // If they have died

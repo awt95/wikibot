@@ -42,10 +42,16 @@ public class DBPedia {
     }
 
     public static void executeQuery(UserQuery userQuery, Message botResponse) {
-        if (botResponse.getMessageType().equals(MessageType.ABSTRACT)) {
-            executeAbstractPersonQuery(userQuery, botResponse);
+
+        if (userQuery.get("topic").equalsIgnoreCase("person")) {
+            if (botResponse.getMessageType().equals(MessageType.ABSTRACT))
+                executeAbstractPersonQuery(userQuery, botResponse);
+            else
+                executePersonQuery(userQuery, botResponse);
+        } else if (userQuery.get("topic").equalsIgnoreCase("country")) {
+            executeCountryQuery(userQuery, botResponse);
         } else {
-            executePersonQuery(userQuery, botResponse);
+            botResponse.setContent("Something went wrong");
         }
     }
     // TODO: Get infobox from wikipedia?
@@ -95,6 +101,28 @@ public class DBPedia {
                 String result = processResource(node);
                 //processResource(node);
                 botResponse.addMessageItem(new MessageItem(resourceURI, result));
+            }
+            if (botResponse.getMessageItems().size() == 0) {
+                botResponse.addMessageItem(new MessageItem("I don't know yet."));
+            }
+        } catch (Exception e) {
+            botResponse.addMessageItem(new MessageItem("Something went wrong."));
+        }
+    }
+
+    //TODO: Some country comments get truncated
+    public static void executeCountryQuery(UserQuery userQuery, Message botResponse) {
+        try {
+            org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+            //System.out.println(queryString);
+            Query query = QueryFactory.create(userQuery.getQueryString());
+            QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext()) {
+                QuerySolution solution = results.nextSolution();
+                RDFNode node = solution.get(userQuery.get("property"));
+                String result = processResource(node);
+                botResponse.addMessageItem(new MessageItem(result));
             }
             if (botResponse.getMessageItems().size() == 0) {
                 botResponse.addMessageItem(new MessageItem("I don't know yet."));

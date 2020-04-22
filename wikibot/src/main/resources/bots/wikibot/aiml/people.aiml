@@ -14,6 +14,12 @@
         </template>
     </category>
 
+    <category>
+        <pattern>LIST OF <set>person_type</set></pattern>
+        <template><srai>LIST <star/></srai></template>
+    </category>
+
+
     <!-- TODO: conditional list -->
     <category>
         <pattern><set>person_type</set> BORN IN *</pattern>

@@ -48,7 +48,19 @@
     </category>
 
     <!-- Capital of -->
+    <category>
+        <pattern>CAPITAL OF *</pattern>
+        <template>
+            <think>
+                <set name="topic">Country</set>
+                <set name="function">query</set>
+                <set name="property">capital</set>
+                <set name="iri">dbo:capital</set>
+                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+            </think>
+        </template>
+    </category>
 
     <!-- Population of  -->
-    
+
 </aiml>

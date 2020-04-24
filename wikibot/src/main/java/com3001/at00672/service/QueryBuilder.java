@@ -109,7 +109,8 @@ public class QueryBuilder {
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
         sb.append("SELECT * WHERE {\n");
         sb.append(String.format("%s %s ?%s\n",userQuery.get("value"),userQuery.get("iri"),userQuery.get("property")));
-        sb.append("FILTER  langMatches(lang(?comment), 'en')\n");
+        if (userQuery.get("property").equalsIgnoreCase("comment"))
+            sb.append(String.format("FILTER  langMatches(lang(?%s), 'en')\n", userQuery.get("property")));
         sb.append("}");
         return sb.toString();
     }

@@ -3,3 +3,4 @@
 0,TELL ME ABOUT <SET>COUNTRIES</SET>,*,*,<think>#Newline                <set name="topic">Country</set>#Newline                <set name="function">query</set>#Newline                <set name="property">comment</set>#Newline                <set name="iri">rdfs:comment</set>#Newline                <set name="value">dbr:<map name="country2dbr"><star/></map></set>#Newline            </think>,country.aiml
 0,<SET>COUNTRIES</SET>,*,*,<srai>TELL ME ABOUT <star/> </srai>,country.aiml
 0,WHERE IS *,*,*,Here it is,country.aiml
+0,CAPITAL OF *,*,*,<think>#Newline                <set name="topic">Country</set>#Newline                <set name="function">query</set>#Newline                <set name="property">capital</set>#Newline                <set name="iri">dbo:capital</set>#Newline                <set name="value">dbr:<map name="country2dbr"><star/></map></set>#Newline            </think>,country.aiml

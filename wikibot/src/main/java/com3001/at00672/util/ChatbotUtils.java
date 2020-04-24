@@ -1,5 +1,6 @@
 package com3001.at00672.util;
 
+import org.alicebot.ab.utils.IOUtils;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
@@ -11,9 +12,23 @@ import java.util.ArrayList;
 
 public class ChatbotUtils {
     public static void main(String[] args) {
-        //loadPersonSubclasses();
-        //loadCountries();
-        loadCountryDbr();
+        while(true) {
+            System.out.println("Select option");
+            System.out.println("Note this will overwrite existing files");
+            System.out.println("[1] : Load Countries");
+            System.out.println("[2] : Load Country Resources");
+            System.out.println("[3] : Load Person subclasses");
+            System.out.print("Option: ");
+
+            String input = IOUtils.readInputTextLine();
+            System.out.println();
+            switch (input) {
+                case "1": loadCountries();break;
+                case "2": loadCountryDbr();break;
+                case "3": loadPersonSubclasses(); break;
+                default: System.out.println("Invalid option");break;
+            }
+        }
     }
 
     public static void loadCountries() {

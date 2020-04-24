@@ -89,7 +89,6 @@ East Timor
 Ecuador
 Egypt
 El Salvador
-England
 Equatorial Guinea
 Eritrea
 Estonia
@@ -143,7 +142,6 @@ Indonesia
 Iran
 Iraq
 Iraqi Kurdistan
-Ireland
 Isle of Man
 Israel
 Italy
@@ -225,7 +223,6 @@ Norfolk Island
 North Borneo Federation
 North Korea
 Northern Cyprus
-Northern Ireland
 Northern Mariana Islands
 Northern Region, Nigeria
 Norway

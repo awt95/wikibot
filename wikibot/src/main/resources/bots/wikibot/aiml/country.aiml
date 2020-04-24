@@ -62,5 +62,16 @@
     </category>
 
     <!-- Population of  -->
-
+    <category>
+        <pattern>POPULATION OF *</pattern>
+        <template>
+            <think>
+                <set name="topic">Country</set>
+                <set name="function">query</set>
+                <set name="property">population</set>
+                <set name="iri">dbo:populationTotal</set>
+                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+            </think>
+        </template>
+    </category>
 </aiml>

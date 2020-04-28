@@ -38,8 +38,8 @@ public class ChatbotService {
     }
 
     public void processResponse(UserQuery userQuery, Message botResponse) {
+        System.out.println(userQuery.toString());
         if (queryKeywords.contains(userQuery.get("function"))) {
-            System.out.println(userQuery.toString());
             // generate query
             String dbQuery = generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
@@ -51,7 +51,7 @@ public class ChatbotService {
                 botResponse.setContent("Sorry, I don't know");
             }
         } else {
-           // botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
+           botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
         }
 
     }

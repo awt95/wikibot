@@ -16,17 +16,6 @@ public class UserQuery {
         this.predicates.putAll(predicates);
     }
 
-    @Override
-    public String toString() {
-        Iterator it = predicates.entrySet().iterator();
-        StringBuilder sb = new StringBuilder();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry)it.next();
-            sb.append(pair.getKey() + " = " + pair.getValue() + "\n");
-        }
-        return sb.toString();
-    }
-
     public String get(String key) {
         return (predicates.containsKey(key)) ? predicates.get(key) : "";
     }
@@ -37,5 +26,16 @@ public class UserQuery {
 
     public void setQueryString(String queryString) {
         this.queryString = queryString;
+    }
+
+    @Override
+    public String toString() {
+        Iterator it = predicates.entrySet().iterator();
+        StringBuilder sb = new StringBuilder();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            sb.append(pair.getKey() + " = " + pair.getValue() + "\n");
+        }
+        return sb.toString();
     }
 }

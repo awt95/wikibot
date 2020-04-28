@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>IS <set>countries</set> A COUNTRY</pattern>
+        <template>
+            <think>
+                <set name="topic">conversation</set>
+            </think>
+            Yes, <star/> is a country.
+        </template>
+    </category>
+
+    <category>
+        <pattern>IS * A COUNTRY</pattern>
+        <template>
+            <think>
+                <set name="topic">conversation</set>
+            </think>
+            No, <star/> is not a country.
+        </template>
+    </category>
+
+    <!-- TODO: Option when country is not in list to search -->
+    <category>
+        <pattern>TELL ME ABOUT <set>countries</set></pattern>
+        <template>
+            <think>
+                <set name="topic">Country</set>
+                <set name="function">query</set>
+                <set name="property">comment</set>
+                <set name="iri">rdfs:comment</set>
+                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+            </think>
+        </template>
+    </category>
+
+    <category>
+        <pattern><set>countries</set></pattern>
+        <template>
+            <srai>TELL ME ABOUT <star/> </srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHERE IS *</pattern>
+        <think><set name="topic">Country</set></think>
+        <template>Here it is</template>
+    </category>
+
+    <!-- Capital of -->
+    <category>
+        <pattern>CAPITAL OF *</pattern>
+        <template>
+            <think>
+                <set name="topic">Country</set>
+                <set name="function">query</set>
+                <set name="property">capital</set>
+                <set name="iri">dbo:capital</set>
+                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+            </think>
+        </template>
+    </category>
+
+    <!-- Population of  -->
+    <category>
+        <pattern>POPULATION OF *</pattern>
+        <template>
+            <think>
+                <set name="topic">Country</set>
+                <set name="function">query</set>
+                <set name="property">population</set>
+                <set name="iri">dbo:populationTotal</set>
+                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+            </think>
+        </template>
+    </category>
+</aiml>

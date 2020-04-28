@@ -4,20 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import com3001.at00672.model.*;
-import org.apache.commons.text.WordUtils;
 
 import org.alicebot.ab.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import static com3001.at00672.service.QueryBuilder.generateQuery;
 
 //@Service
 public class ChatbotService {
-    public ChatRepository chatRepository;
     public Bot bot;
     public Chat chatSession;
-    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "list", "list_conditional"));
+    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional"));
 
     public ChatbotService() {
         String botName = "wikibot";
@@ -27,29 +23,35 @@ public class ChatbotService {
     }
 
     public Message chatbotRequest(Message request) {
-        Message response = new Message(chatSession.multisentenceRespond(request.getContent()), Sender.BOT);
+        String responseString = chatSession.multisentenceRespond(request.getContent());
         UserQuery userQuery = new UserQuery(chatSession.predicates);
-        String serverResponse = "Fix me";//processResponse(userQuery, response.getContent());
-        response.setContent(serverResponse);
+        Message response;
+        if (chatSession.predicates.get("function").equalsIgnoreCase("abstract")) {
+            response = new Message(responseString, Sender.BOT, MessageType.ABSTRACT);
+        } else if (chatSession.predicates.get("function").contains("list")) {
+            response = new Message(responseString, Sender.BOT, MessageType.LIST);
+        } else {
+            response = new Message(responseString, Sender.BOT, MessageType.TEXT);
+        }
+        processResponse(userQuery, response);
         return response;
     }
 
     public void processResponse(UserQuery userQuery, Message botResponse) {
+        System.out.println(userQuery.toString());
         if (queryKeywords.contains(userQuery.get("function"))) {
-            String serverResponse = "";
-            System.out.println(userQuery.toString());
             // generate query
             String dbQuery = generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
             System.out.println(dbQuery);
 
-            if (userQuery.getQueryString() != "")
-                botResponse.setMessageItems(DBPedia.executeQuery(userQuery));
-            else {
-                botResponse.addMessageItem(new MessageItem("Sorry, I don't know"));
+            if (userQuery.getQueryString() != "") {
+                DBPedia.executeQuery(userQuery, botResponse);
+            } else {
+                botResponse.setContent("Sorry, I don't know");
             }
         } else {
-            botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
+           botResponse.addMessageItem(new MessageItem(botResponse.getContent()));
         }
 
     }

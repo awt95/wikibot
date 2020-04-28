@@ -1,0 +1,366 @@
+Abkhazia:Abkhazia
+Abyei:Abyei
+Adjara:Adjara
+Aerican Empire:Aerican_Empire
+Afghanistan:Afghanistan
+Akrotiri and Dhekelia:Akrotiri_and_Dhekelia
+Albania:Albania
+Alderney:Alderney
+Algeria:Algeria
+American Samoa:American_Samoa
+Andorra:Andorra
+Angola:Angola
+Anguilla:Anguilla
+Anjouan:Anjouan
+Antigua and Barbuda:Antigua_and_Barbuda
+Argentina:Argentina
+Armenia:Armenia
+Aruba:Aruba
+Ascension Island:Ascension_Island
+Ashanti Empire:Ashanti_Empire
+Austenasia:Austenasia
+Australia:Australia
+Australian Antarctic Territory:Australian_Antarctic_Territory
+Austria:Austria
+Autonomous Province of Kosovo and Metohija:Autonomous_Province_of_Kosovo_and_Metohija
+Autonomous Republic of Crimea:Autonomous_Republic_of_Crimea
+Awdalland:Awdalland
+Azerbaijan:Azerbaijan
+Bahrain:Bahrain
+Bangladesh:Bangladesh
+Barbados:Barbados
+Barony of Caux:Barony_of_Caux
+Belarus:Belarus
+Belgium:Belgium
+Belize:Belize
+Benin:Benin
+Bermuda:Bermuda
+Bhutan:Bhutan
+Bolivia:Bolivia
+Bosnia and Herzegovina:Bosnia_and_Herzegovina
+Boys Nation:Boys_Nation
+Brazil:Brazil
+British Antarctic Territory:British_Antarctic_Territory
+British Virgin Islands:British_Virgin_Islands
+Brunei:Brunei
+Bulgaria:Bulgaria
+Bunyoro:Bunyoro
+Burkina Faso:Burkina_Faso
+Burundi:Burundi
+CEN 1789:CEN_1789
+Cambodia:Cambodia
+Cameroon:Cameroon
+Canada:Canada
+Canton 10:Canton_10
+Cape Verde:Cape_Verde
+Carriacou and Petite Martinique:Carriacou_and_Petite_Martinique
+Cayman Islands:Cayman_Islands
+Central African Republic:Central_African_Republic
+Central Bosnia Canton:Central_Bosnia_Canton
+Central Regions State:Central_Regions_State
+Chad:Chad
+Cherokee Nation:Cherokee_Nation
+Chile:Chile
+China:China
+Christmas Island:Christmas_Island
+Cocos (Keeling) Islands:Cocos_(Keeling)_Islands
+Collectivity of Saint Martin:Collectivity_of_Saint_Martin
+Colombia:Colombia
+Comoros:Comoros
+Cook Islands:Cook_Islands
+Costa Rica:Costa_Rica
+Cricket Samoa:Cricket_Samoa
+Croatia:Croatia
+Cuba:Cuba
+Curaçao:Curaçao
+Cyprus:Cyprus
+Czech Republic:Czech_Republic
+Dao (state):Dao_(state)
+Darfur:Darfur
+Democratic Republic of the Congo:Democratic_Republic_of_the_Congo
+Denmark:Denmark
+Djibouti:Djibouti
+Dominica:Dominica
+Dominican Republic:Dominican_Republic
+Donetsk People's Republic:Donetsk_People's_Republic
+Duchy of Perugia:Duchy_of_Perugia
+Duchy of the Pentapolis:Duchy_of_the_Pentapolis
+East Timor:East_Timor
+Ecuador:Ecuador
+Egypt:Egypt
+El Salvador:El_Salvador
+Equatorial Guinea:Equatorial_Guinea
+Eritrea:Eritrea
+Estonia:Estonia
+Ethiopia:Ethiopia
+European Union:European_Union
+Fadhli Sultanate:Fadhli_Sultanate
+Falkland Islands:Falkland_Islands
+Faroe Islands:Faroe_Islands
+Federal Government of Somalia:Federal_Government_of_Somalia
+Federated States of Micronesia:Federated_States_of_Micronesia
+Federation of Bosnia and Herzegovina:Federation_of_Bosnia_and_Herzegovina
+Fiji:Fiji
+Finland:Finland
+France:France
+French Fifth Republic:French_Fifth_Republic
+French Polynesia:French_Polynesia
+French Southern and Antarctic Lands:French_Southern_and_Antarctic_Lands
+Gabon:Gabon
+Gagauzia:Gagauzia
+Galmudug:Galmudug
+Gangaridai:Gangaridai
+Gay and Lesbian Kingdom of the Coral Sea Islands:Gay_and_Lesbian_Kingdom_of_the_Coral_Sea_Islands
+Geography of Saint Pierre and Miquelon:Geography_of_Saint_Pierre_and_Miquelon
+Georgia (country):Georgia_(country)
+Germany:Germany
+Ghana:Ghana
+Gibraltar:Gibraltar
+Government of the Autonomous Republic of Abkhazia:Government_of_the_Autonomous_Republic_of_Abkhazia
+Grand Duchy of Westarctica:Grand_Duchy_of_Westarctica
+Grande Comore:Grande_Comore
+Greece:Greece
+Grenada:Grenada
+Guam:Guam
+Guatemala:Guatemala
+Guernsey:Guernsey
+Guinea:Guinea
+Guinea-Bissau:Guinea-Bissau
+Guyana:Guyana
+Gwalior State:Gwalior_State
+Haiti:Haiti
+Herzegovina-Neretva Canton:Herzegovina-Neretva_Canton
+Himan and Heeb:Himan_and_Heeb
+History of the Philippines (1986–present):History_of_the_Philippines_(1986–present)
+Honduras:Honduras
+Hungarian occupation of Vidin:Hungarian_occupation_of_Vidin
+Hungary:Hungary
+ISIL territorial claims:ISIL_territorial_claims
+Iceland:Iceland
+India:India
+Indonesia:Indonesia
+Iran:Iran
+Iraq:Iraq
+Iraqi Kurdistan:Iraqi_Kurdistan
+Isle of Man:Isle_of_Man
+Israel:Israel
+Italy:Italy
+Ivory Coast:Ivory_Coast
+Jamaica:Jamaica
+Japan:Japan
+Jersey:Jersey
+Jordan:Jordan
+Jubaland:Jubaland
+Karakalpakstan:Karakalpakstan
+Kathiri:Kathiri
+Kazakhstan:Kazakhstan
+Kenya:Kenya
+Khatumo State:Khatumo_State
+Kingdom of Dagbon:Kingdom_of_Dagbon
+Kingdom of Khana:Kingdom_of_Khana
+Kingdom of Toledo:Kingdom_of_Toledo
+Kingdom of Wallachia:Kingdom_of_Wallachia
+Kingdom of the Netherlands:Kingdom_of_the_Netherlands
+Kiribati:Kiribati
+Kolathunadu:Kolathunadu
+Kosovo:Kosovo
+Kuwait:Kuwait
+Kyrgyzstan:Kyrgyzstan
+Laos:Laos
+Latvia:Latvia
+Lebanon:Lebanon
+Lesotho:Lesotho
+Liberia:Liberia
+Libya:Libya
+Liechtenstein:Liechtenstein
+List of Zambians:List_of_Zambians
+Lithuania:Lithuania
+Lordship of Chios:Lordship_of_Chios
+Luhansk People's Republic:Luhansk_People's_Republic
+Luxembourg:Luxembourg
+Lü (state):Lü_(state)
+Madagascar:Madagascar
+Mahra Sultanate:Mahra_Sultanate
+Malawi:Malawi
+Malaysia:Malaysia
+Maldives:Maldives
+Mali:Mali
+Malta:Malta
+Marshall Islands:Marshall_Islands
+Mauritania:Mauritania
+Mauritius:Mauritius
+Mexico:Mexico
+Middle Saxons:Middle_Saxons
+Mitanni:Mitanni
+Mohegan Indian Tribe:Mohegan_Indian_Tribe
+Mohéli:Mohéli
+Moldova:Moldova
+Monaco:Monaco
+Mongolia:Mongolia
+Montenegro:Montenegro
+Montserrat:Montserrat
+Morocco:Morocco
+Mount Athos:Mount_Athos
+Mozambique:Mozambique
+Mthwakazi:Mthwakazi
+Murrawarri Republic:Murrawarri_Republic
+Myanmar:Myanmar
+Nagorno-Karabakh Republic:Nagorno-Karabakh_Republic
+Nakhchivan Autonomous Republic:Nakhchivan_Autonomous_Republic
+Namibia:Namibia
+Naraka dynasty:Naraka_dynasty
+Nauru:Nauru
+Nepal:Nepal
+Netherlands:Netherlands
+Nevis:Nevis
+New Caledonia:New_Caledonia
+New Zealand:New_Zealand
+Nicaragua:Nicaragua
+Niger:Niger
+Nigeria:Nigeria
+Niue:Niue
+Norfolk Island:Norfolk_Island
+North Borneo Federation:North_Borneo_Federation
+North Korea:North_Korea
+Northern Cyprus:Northern_Cyprus
+Northern Mariana Islands:Northern_Mariana_Islands
+Northern Region, Nigeria:Northern_Region,_Nigeria
+Norway:Norway
+Oman:Oman
+Pakistan:Pakistan
+Palau:Palau
+Palestinian National Authority:Palestinian_National_Authority
+Panama:Panama
+Panchala:Panchala
+Papua New Guinea:Papua_New_Guinea
+Paraguay:Paraguay
+Paraguayan architecture:Paraguayan_architecture
+Peru:Peru
+Philippines:Philippines
+Pi (state):Pi_(state)
+Pitcairn Islands:Pitcairn_Islands
+Poland:Poland
+Portuguese Empire:Portuguese_Empire
+Posavina Canton:Posavina_Canton
+Principality of Hutt River:Principality_of_Hutt_River
+Principality of Peremyshl:Principality_of_Peremyshl
+Principality of Terebovlia:Principality_of_Terebovlia
+Provisional Administration of South Ossetia:Provisional_Administration_of_South_Ossetia
+Puerto Rico:Puerto_Rico
+Puntland:Puntland
+Qatar:Qatar
+Qu'aiti:Qu'aiti
+Reichskommissariat Don-Wolga:Reichskommissariat_Don-Wolga
+Reichskommissariat Kaukasus:Reichskommissariat_Kaukasus
+Reichskommissariat Moskowien:Reichskommissariat_Moskowien
+Republic of Ireland:Republic_of_Ireland
+Republic of Lakotah:Republic_of_Lakotah
+Republic of Macedonia:Republic_of_Macedonia
+Republic of Saugeais:Republic_of_Saugeais
+Republic of the Congo:Republic_of_the_Congo
+Republika Srpska:Republika_Srpska
+Rojava:Rojava
+Romania:Romania
+Ross Dependency:Ross_Dependency
+Royal Lao Government in Exile:Royal_Lao_Government_in_Exile
+Russia:Russia
+Rwanda:Rwanda
+Sahrawi Arab Democratic Republic:Sahrawi_Arab_Democratic_Republic
+Saint Barthélemy:Saint_Barthélemy
+Saint Helena:Saint_Helena
+Saint Helena, Ascension and Tristan da Cunha:Saint_Helena,_Ascension_and_Tristan_da_Cunha
+Saint Kitts and Nevis:Saint_Kitts_and_Nevis
+Saint Lucia:Saint_Lucia
+Saint Pierre and Miquelon:Saint_Pierre_and_Miquelon
+Saint Vincent and the Grenadines:Saint_Vincent_and_the_Grenadines
+Samoa:Samoa
+San Marino:San_Marino
+Saudi Arabia:Saudi_Arabia
+Savoy:Savoy
+Seneca Nation of Indians:Seneca_Nation_of_Indians
+Senegal:Senegal
+Serbia:Serbia
+Seychelles:Seychelles
+Sierra Leone:Sierra_Leone
+Singapore:Singapore
+Sint Maarten:Sint_Maarten
+Slovakia:Slovakia
+Slovenia:Slovenia
+Socialist Republic of Serbia:Socialist_Republic_of_Serbia
+Solomon Islands:Solomon_Islands
+Somalia:Somalia
+Somaliland:Somaliland
+South Africa:South_Africa
+South Georgia and the South Sandwich Islands:South_Georgia_and_the_South_Sandwich_Islands
+South Korea:South_Korea
+South Ossetia:South_Ossetia
+South Sudan:South_Sudan
+South West State of Somalia:South_West_State_of_Somalia
+Sovereign Military Order of Malta:Sovereign_Military_Order_of_Malta
+Spain:Spain
+Sri Lanka:Sri_Lanka
+State of Palestine:State_of_Palestine
+Subanon people:Subanon_people
+Sudan:Sudan
+Sui (state):Sui_(state)
+Sultanate of Sulu:Sultanate_of_Sulu
+Sultanate of Ternate:Sultanate_of_Ternate
+Suriname:Suriname
+Svalbard:Svalbard
+Swaziland:Swaziland
+Sweden:Sweden
+Switzerland:Switzerland
+Syria:Syria
+Syrian Interim Government:Syrian_Interim_Government
+São Tomé and Príncipe:São_Tomé_and_Príncipe
+Taiwan:Taiwan
+Taiwan under Japanese rule:Taiwan_under_Japanese_rule
+Tajikistan:Tajikistan
+Tanzania:Tanzania
+Thailand:Thailand
+The Bahamas:The_Bahamas
+The Gambia:The_Gambia
+Third Hellenic Republic:Third_Hellenic_Republic
+Tobago:Tobago
+Togo:Togo
+Tonga:Tonga
+Torres Strait Islands:Torres_Strait_Islands
+Torres Strait Regional Authority:Torres_Strait_Regional_Authority
+Transnistria:Transnistria
+Transnistria autonomous territorial unit with special legal status:Transnistria_autonomous_territorial_unit_with_special_legal_status
+Trinidad and Tobago:Trinidad_and_Tobago
+Tristan da Cunha:Tristan_da_Cunha
+Tunisia:Tunisia
+Turkey:Turkey
+Turkmenistan:Turkmenistan
+Turks and Caicos Islands:Turks_and_Caicos_Islands
+Tuvalu:Tuvalu
+Twente:Twente
+Ukraine:Ukraine
+Una-Sana Canton:Una-Sana_Canton
+Union of Sovereign States:Union_of_Sovereign_States
+United Arab Emirates:United_Arab_Emirates
+United Kingdom:United_Kingdom
+United Nations Interim Administration Mission in Kosovo:United_Nations_Interim_Administration_Mission_in_Kosovo
+United States:United_States
+United States Virgin Islands:United_States_Virgin_Islands
+Upper Mustang:Upper_Mustang
+Uruguay:Uruguay
+Uzbekistan:Uzbekistan
+Vanuatu:Vanuatu
+Venezuela:Venezuela
+Videha:Videha
+Vietnam:Vietnam
+Vojvodina:Vojvodina
+Wa State:Wa_State
+Wallis (island):Wallis_(island)
+Wallis and Futuna:Wallis_and_Futuna
+West Herzegovina Canton:West_Herzegovina_Canton
+Yemen:Yemen
+Zambia:Zambia
+Zanzibar:Zanzibar
+Zeila & Lughaya State:Zeila_&_Lughaya_State
+Zeta under the Balšići:Zeta_under_the_Balšići
+Zimbabwe:Zimbabwe
+Åland Islands:Åland_Islands
+Îles des Saintes:Îles_des_Saintes

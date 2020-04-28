@@ -14,15 +14,65 @@ public class QueryBuilder {
     public static String generateQuery(UserQuery userQuery) {
         String result = "";
         switch (userQuery.get("function")) {
-            case "query": result = generatePersonQuery(userQuery); break;
+            case "query": result = generateUserQuery(userQuery); break;
+            case "abstract": result = generateAbstractQuery(userQuery); break;
             case "list": result = generateListQuery(userQuery); break;
             case "list_conditional": result = generateListConditionalQuery(userQuery); break;
+            case "age": result = generateAgeQuery(userQuery); break;
             default: result = "";
         }
         return result;
 
     }
 
+    public static String generateUserQuery(UserQuery userQuery) {
+        String result = "";
+        if (userQuery.get("topic").equalsIgnoreCase("country")) {
+            result = generateCountryQuery(userQuery);
+        } else if (userQuery.get("topic").equalsIgnoreCase("person")) {
+            result = generatePersonQuery(userQuery);
+        }
+        return result;
+    }
+
+    public static String generateAbstractQuery(UserQuery userQuery) {
+        System.out.println("Abstract query");
+        StringBuilder sb = new StringBuilder();
+        sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
+        sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
+        sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
+        sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        sb.append(" SELECT DISTINCT ?person ?thumbnail ?name ?comment WHERE {");
+        sb.append("  ?person a dbo:Person .");
+        sb.append("?person foaf:name ?name .");
+        sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
+        sb.append("  ?person rdfs:comment ?comment .");
+        sb.append("  ?person dbo:thumbnail ?thumbnail .");
+        sb.append(" FILTER  langMatches(lang(?comment), 'en')");
+        sb.append("} LIMIT 1");
+
+        System.out.println(sb.toString());
+
+        return sb.toString();
+    }
+
+    // TODO: Implementation of age
+    public static String generateAgeQuery(UserQuery userQuery) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
+        sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
+        sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
+        sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        sb.append("SELECT ?birthDate ?deathDate WHERE {");
+        sb.append("?person a dbo:Person .");
+        sb.append("?person foaf:name ?name .");
+        sb.append(String.format("?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
+        sb.append("?person dbo:birthDate ?birthDate .");
+        sb.append(  "OPTIONAL{?person dbo:deathDate ?deathDate} .");
+        sb.append("FILTER langMatches(lang(?name), 'en')");
+        sb.append("} LIMIT 1");
+        return sb.toString();
+    }
     public static String generatePersonQuery(UserQuery userQuery) {
         System.out.println("Person query");
         StringBuilder sb = new StringBuilder();
@@ -46,6 +96,22 @@ public class QueryBuilder {
 
         System.out.println(sb.toString());
 
+        return sb.toString();
+    }
+
+    public static String generateCountryQuery(UserQuery userQuery) {
+        System.out.println("Country query");
+        StringBuilder sb = new StringBuilder();
+        sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
+        sb.append(" PREFIX dbr: <http://dbpedia.org/resource/>");
+        sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
+        sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
+        sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
+        sb.append("SELECT * WHERE {\n");
+        sb.append(String.format("%s %s ?%s\n",userQuery.get("value"),userQuery.get("iri"),userQuery.get("property")));
+        if (userQuery.get("property").equalsIgnoreCase("comment"))
+            sb.append(String.format("FILTER  langMatches(lang(?%s), 'en')\n", userQuery.get("property")));
+        sb.append("}");
         return sb.toString();
     }
 
@@ -117,56 +183,4 @@ public class QueryBuilder {
         System.out.println(sb.toString());
         return sb.toString();
     }
-
-
-        /*
-
-    //TODO: Come back to trying to use rdf4j sparqlbuilder
-
-    protected static final Prefix dbo   =  SparqlBuilder.prefix("dbo", iri("http://dbpedia.org/ontology/"));
-    protected static final Prefix prop   =  SparqlBuilder.prefix("prop", iri("http://dbpedia.org/property/"));
-    protected static final Prefix foaf   =  SparqlBuilder.prefix("foaf", iri("http://xmlns.com/foaf/0.1/"));
-    protected static final Prefix rdfs  =  SparqlBuilder.prefix("rdfs", iri("http://www.w3.org/2000/01/rdf-schema#"));
-    protected static final Iri bifContains = iri("bif:contains");
-    protected static SelectQuery selectQuery;
-    public static void main(String[] args) {
-        SelectQuery("Person", "comment", "alex");
-    }
-
-
-    public static String GenerateQuery(String topic, String query, String value) {
-        switch(topic) {
-            case "person": return PersonQuery(query, value);
-            default: return null;
-        }
-    }
-
-
-    public static String SelectQuery(String topicString, String propertyString, String valueString) {
-        selectQuery = Queries.SELECT();
-        Variable topic = SparqlBuilder.var(topicString);
-        Variable property =  SparqlBuilder.var(propertyString);
-        Variable value = SparqlBuilder.var(valueString);
-        Variable label = SparqlBuilder.var("label");
-        TriplePattern p1 = GraphPatterns.tp(topic, rdfs.iri("label"), label)
-                                        .andIsA(dbo.iri((topicString)));
-        TriplePattern p2 = label.has(bifContains, valueString);
-        //Expression<?> concat = Expressions.cu(Rdf.literalOf("langMatches(lang(?comment)"),Rdf.literalOf("'en'"));
-        GraphPattern optionalInner1 = GraphPatterns.tp(topic, rdfs.iri(propertyString), property);
-        //TriplePattern optionalFilter = GraphPatterns.tp(SparqlBuilder.var("FILTER"), iri(""), Rdf.literalOf("langMatches(lang(?comment), 'en'"));
-        GraphPatternNotTriples optional = GraphPatterns.optional(optionalInner1,GraphPatterns.tp(new RdfBlankNode.PropertiesBlankNode()));
-        selectQuery.prefix(dbo,prop,foaf,rdfs)
-            .select(property)
-            .where(p1,p2, optional);
-
-        /*
-
-        SELECT ?comment WHERE {
-          ?person rdfs:label ?label; a dbo:Person .
-          ?label <bif:contains> "'alan turing'".
-          ?uri rdfs:label ?txt .
-          OPTIONAL { ?person rdfs:comment ?comment .
-             FILTER  langMatches(lang(?comment), 'en') }
-        } LIMIT 1
-        */
 }

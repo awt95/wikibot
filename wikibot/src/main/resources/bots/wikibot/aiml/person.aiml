@@ -38,10 +38,11 @@
         <pattern>WHO IS *</pattern>
         <template>
             <think>
-                <set name="function">query</set>
+                <set name="function">abstract</set>
                 <set name="topic">Person</set>
                 <set name="iri">rdfs:comment</set>
                 <set name="property">comment</set>
+                <set name="messagetype">ABSTRACT</set>
                 <set name="limit">1</set>
 
             </think>
@@ -171,6 +172,20 @@
     </category>
 
     <!-- dbo:deathDate -->
+
+    <category>
+        <pattern>HOW OLD IS *</pattern>
+        <template>
+            <think>
+                <set name="function">calculateAge</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:birthDate</set>
+                <set name="property">birthDate</set>
+                <set name="rlimit">1</set>
+            </think>
+
+        </template>
+    </category>
 
     <!-- influenced by -->
     <!-- TODO: Fix influenced by -->

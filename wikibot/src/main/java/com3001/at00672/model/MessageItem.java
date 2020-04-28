@@ -5,12 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-//@Entity
+@Entity
 public class MessageItem {
-    //@Id
-    //@GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-    //@Lob
+    @Lob
     private String content;
     private String uri;
 

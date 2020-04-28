@@ -13,7 +13,7 @@ import static com3001.at00672.service.QueryBuilder.generateQuery;
 public class ChatbotService {
     public Bot bot;
     public Chat chatSession;
-    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional"));
+    public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional", "calculateAge"));
 
     public ChatbotService() {
         String botName = "wikibot";
@@ -41,7 +41,7 @@ public class ChatbotService {
         System.out.println(userQuery.toString());
         if (queryKeywords.contains(userQuery.get("function"))) {
             // generate query
-            String dbQuery = generateQuery(userQuery);
+            String dbQuery = QueryBuilder.generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
             System.out.println(dbQuery);
 

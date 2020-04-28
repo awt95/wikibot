@@ -14,6 +14,9 @@ import org.apache.log4j.varia.NullAppender;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class DBPedia {
@@ -42,10 +45,12 @@ public class DBPedia {
     }
 
     public static void executeQuery(UserQuery userQuery, Message botResponse) {
-
+        // TODO: Calculate age
         if (userQuery.get("topic").equalsIgnoreCase("person")) {
             if (botResponse.getMessageType().equals(MessageType.ABSTRACT))
                 executeAbstractPersonQuery(userQuery, botResponse);
+            else if (userQuery.get("function").equalsIgnoreCase("calculateAge"))
+                executeAgeQuery(userQuery, botResponse);
             else
                 executePersonQuery(userQuery, botResponse);
         } else if (userQuery.get("topic").equalsIgnoreCase("country")) {
@@ -176,24 +181,31 @@ public class DBPedia {
             Query query = QueryFactory.create(userQuery.getQueryString());
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            // TODO: loop through all results
+            // TODO: Text '1912-6-23' could not be parsed at index 5 = error with date conversion
             if (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
-                RDFNode resource = solution.get("person");
-                RDFNode birthDate = solution.get("birthDate");
-                RDFNode deathDate = solution.get("deathDate");
-                if ((birthDate.asLiteral().getDatatype() instanceof XSDDateType) && (deathDate.asLiteral().getDatatype() instanceof XSDDateType)) {
-                    DateFormat xsdFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String personName = solution.get("name").asLiteral().getString();
+                RDFNode rdfBirthDate = solution.get("birthDate");
+                RDFNode rdfDeathDate = solution.get("deathDate");
+                DateTimeFormatter xsdFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate todayDate = LocalDate.now();
+                int age;
 
-                } else {
-                    throw new IllegalArgumentException("Date is wrong type");
+                if (rdfBirthDate.asLiteral().getDatatype() instanceof XSDDateType) {
+                    LocalDate birthDate = LocalDate.parse(rdfBirthDate.asLiteral().getLexicalForm(), xsdFormat);
+                    if (rdfDeathDate == null) {
+                        // Still alive
+                        age = Period.between(birthDate, todayDate).getYears();
+                        botResponse.addMessageItem(new MessageItem(String.format("%s is %s years old", personName, age)));
+                    } else if (rdfDeathDate.asLiteral().getDatatype() instanceof XSDDateType) {
+                        // Dead
+                        LocalDate deathDate = LocalDate.parse(rdfDeathDate.asLiteral().getLexicalForm(), xsdFormat);
+                        age = Period.between(birthDate, deathDate).getYears();
+                        botResponse.addMessageItem(new MessageItem(String.format("%s was %s years old when they died in %s", personName, age, deathDate.getYear())));
+                    } else {
+                        throw new IllegalArgumentException("Date is wrong type");
+                    }
                 }
-
-                // Convert values
-
-                // If they have died
-
-                // Calculate age today
 
                 // Generate response
             } else {

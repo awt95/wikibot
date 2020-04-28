@@ -183,7 +183,21 @@
                 <set name="property">birthDate</set>
                 <set name="rlimit">1</set>
             </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
 
+    <category>
+        <pattern>HOW OLD WAS *</pattern>
+        <template>
+            <srai>HOW OLD IS <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>* AGE</pattern>
+        <template>
+            <srai>HOW OLD IS <star/></srai>
         </template>
     </category>
 

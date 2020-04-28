@@ -31,6 +31,7 @@ public class ChatbotUtils {
         }
     }
 
+    //TODO: Rewrite to include certain countries e.g. England
     public static void loadCountries() {
         Writer writer;
         try {
@@ -51,7 +52,6 @@ public class ChatbotUtils {
             Query query = QueryFactory.create(queryString);
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            // TODO: loop through all results
             while (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
                 String country = soln.getLiteral("name").getLexicalForm();

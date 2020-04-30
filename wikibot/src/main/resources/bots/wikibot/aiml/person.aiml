@@ -8,11 +8,17 @@
         <that>WHO ARE WE TALKING ABOUT</that>
         <template>
             <condition name="property">
-                <li value="dbo:birthDate">
+                <li value="birthDate">
                     <srai><star/> BIRTHDATE</srai>
                 </li>
-                <li value="dbo:birthPlace">
+                <li value="birthPlace">
                     <srai><star/> BIRTHPLACE</srai> <!-- TODO: Add remaining values -->
+                </li>
+                <li value="comment">
+                    <srai>WHO IS <star/></srai>
+                </li>
+                <li value="knownFor">
+                    <srai><star/> KNOWN FOR</srai>
                 </li>
                 <li>
                     I've gotten a bit confused, there. Let's start again.

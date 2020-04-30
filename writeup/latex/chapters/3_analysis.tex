@@ -1,7 +1,7 @@
 \chapter{Analysis}
 \label{ch:analysis}
 \section{Introduction}
-Following the structure of the Software Development Life Cycle (SDLC) \hilight{ref?}, the analysis section ensures that the proposed application meets the requirements of the end user. Once the requirements are gathered, a list of requirements is proposed and accepted by the end users, and the requirements are prioritised according to how important each is for the user to accept as a minimum functional system. \hilight{rephrase this}
+Following the structure of the Software Development Life Cycle (SDLC) \hilight{ref?}, the analysis section ensures that the proposed application meets the requirements of the end user. Once the requirements are gathered, a list of requirements is proposed and accepted by the end users, and the requirements are prioritised according to how important each is for the user to meet a minimum functional system.
 
 \section{Requirements Gathering}
 In order to build a successful solution, the requirements of the system are first gathered. This begins with assessing current solutions and related works to establish what makes them successful, as well as identifying any shortcomings in these solutions. I then communicate with the end users, to determine the features the chatbot system should have.
@@ -14,6 +14,7 @@ For this project, I enlisted three end users to aid the development and testing 
 
 \newpage
 \section{System Requirements}
+\label{sec:requirements}
 This section defines the functional and non-functional requirements the system must meet. This specification was produced in collaboration with the three test users across a number of conversations with them. We also determined how important each requirement is, and a breakdown of the priorities will be analysed in Section~\ref{sec:priority}.
 
 \subsection{Functional Requirements}
@@ -21,30 +22,30 @@ This section defines the functional and non-functional requirements the system m
 \begin{itemize}
 	\item User Interaction
 	\begin{enumerate}[label*=F\arabic*.]
-		\item The application should allow the user to interact with the chat bot
-		\item The user should be able to access the chatbot in a browser
-		\item The user should have a text box to type their query
-		\item The user should clearly see the response of the chatbot in the webpage
-		\item The user should be able to clearly see their conversation with the chatbot in the 
+		\item User Interaction - The application should allow the user to interact with the chat bot
+		\item Browser Access - The user should be able to access the chatbot in a browser
+		\item Text Input - The user should have a text box to type their query
+		\item Responses on Page - The user should clearly see the response of the chatbot in the webpage
+		\item Conversation History - The user should be able to clearly see their conversation history with the chatbot in the webpage
 	\end{enumerate}
 	\item Basic Queries
 	\begin{itemize}
 		\item The chatbot can answer basic questions about Person articles
 		\begin{enumerate}[resume*]
-			\item The application should take a user query about a person - ‘who is X’ - and respond with a description of that person.
-			\item The application should take a user query about the birthdate of a person – ‘when was X born’ and return the birthday of the given person.
-			\item The application should take a user query about the age of a person - ‘how old is X’ - and return the age of the given person.
-			\item The application should take a user query about the birth place of a person – ‘where was X born’ -  and return the birth place of the given person. 
-			\item The application should take a user query about the death date of a person – ‘when did X die’ and return the birth place of the given person. 
-			\item The application should take a user query about what a person is known for – ‘what is X known for’ and return a description of what the given person is known for.
-			\item The application should take a user query about what a person looks like – ‘photo of X’ or ‘what does X look like’ - and return a photo of the person
-			\item The application should take a user query about linking to the Wikipedia page of a person, and return a link to that page.
+			\item Person Description Query - The application should take a user query about a person - ‘who is X’ - and respond with a description of that person.
+			\item Person Birthdate Query - The application should take a user query about the birthdate of a person – ‘when was X born’ and return the birthday of the given person.
+			\item Person Age Query - The application should take a user query about the age of a person - ‘how old is X’ - and return the age of the given person.
+			\item Person Birthplace Query -The application should take a user query about the birth place of a person – ‘where was X born’ -  and return the birth place of the given person. 
+			\item Person Death Date Query - The application should take a user query about the death date of a person – ‘when did X die’ and return the birth place of the given person. 
+			\item Person Known For Query - The application should take a user query about what a person is known for – ‘what is X known for’ and return a description of what the given person is known for.
+			\item Person Photo Query - The application should take a user query about what a person looks like – ‘photo of X’ or ‘what does X look like’ - and return a photo of the person
+			\item Person Wikipedia Link Query - The application should take a user query about linking to the Wikipedia page of a person, and return a link to that page.
 		\end{enumerate}
 		\item The chatbot can answer questions about countries
 		\begin{enumerate}[resume*]
-			\item The application should take a query about a country, and return the description of that given country.
-			\item The application should take a query about the population of a country, and return the population of that given country.
-			\item The application should take a query about the capital of a country, and return the capital of the country.
+			\item Country Description Query - The application should take a query about a country, and return the description of that given country.
+			\item Country Population Query - The application should take a query about the population of a country, and return the population of that given country.
+			\item Country Capital Query - The application should take a query about the capital of a country, and return the capital of the country.
 			
 		\end{enumerate}
 	\end{itemize}
@@ -52,15 +53,15 @@ This section defines the functional and non-functional requirements the system m
 	\begin{itemize}
 		\item The chatbot can answer advanced queries about Person articles:
 		\begin{enumerate}[resume*]
-			\item The user should be able to combine queries using ‘AND’ to find people who satisfy two conditions. \\For example, "People who were born in 1980 AND were born in London"
-			\item Context-awareness: The user should be able to ask sequential queries about a topic and the chatbot will be able to answer queries within that context. \\ For example, the user first asks ‘Where was X born’, the chatbot responds, and the user asks a follow up question ‘What about Y?’. The chatbot will then respond to the second query with an answer that satisfies the query ‘where was Y born’.
+			\item Person AND Query - The user should be able to combine queries using ‘AND’ to find people who satisfy two conditions. \\For example, "People who were born in 1980 AND were born in London"
+			\item Context-aware Conversation - The user should be able to ask sequential queries about a topic and the chatbot will be able to answer queries within that context. \\ For example, the user first asks ‘Where was X born’, the chatbot responds, and the user asks a follow up question ‘What about Y?’. The chatbot will then respond to the second query with an answer that satisfies the query ‘where was Y born’.
 		\end{enumerate}
 	\end{itemize}
 	\item Conversation
 	\begin{enumerate}[resume*]
-		\item The user should greet the chat bot and be returned with a similar greeting – e.g. Hello.
-		\item The user should be able to ask for example queries and the chat bot returns a number of working example queries
-		\item The user should be able to ask for help using the chatbot and be returned with a statement about how to use the chat bot.
+		\item Chatbot Greeting - The user should greet the chat bot and be returned with a similar greeting – e.g. Hello.
+		\item Chatbot Examples - The user should be able to ask for example queries and the chat bot returns a number of working example queries
+		\item Chatbot Help - The user should be able to ask for help using the chatbot and be returned with a statement about how to use the chat bot.
 	\end{enumerate}
 \end{itemize}
 
@@ -77,9 +78,48 @@ This section defines the functional and non-functional requirements the system m
 		\item Any errors that do occur during normal operation should be logged, and the user should be clearly informed that an error has occurred.
 	\end{enumerate}
 \end{itemize}
-\hilight{mobile requirement?}
 
 \section{Requirement Prioritisation}
 \label{sec:priority}
+In order to meet the deadline of the project, some features may not be implemented. In order to prepare for this, it is important to define which requirements are the highest priority for the chatbot, and which could be considered optional and implemented in the future. To do this, I met with my three testers to discuss how the requirements should be prioritised. The following table outlines the priority of each requirement, as well as some notes or justification that was posited in this discussion.
+
+\begin{table}[h]
+	\centering
+	\begin{tabularx}{\textwidth}{{@{}lcX@{}}}
+		\toprule
+		Requirement & Priority & Justification \\
+		\midrule
+		F1.  User Interaction & High & User has to interact with chatbot \\
+		F2.  Browser Access & High & Browser more user-friendly than command-line \\
+		F3.  Text Input & High & Required for user interaction \\
+		F4.  Responses on Page & High & \\
+		F5.  Conversation History & & \\
+		F6.  Person Description Query & & \\
+		F7.  Person Birthdate Query & & \\
+		F8.  Person Age Query & & \\
+		F9.  Person Birthplace Query & & \\
+		F10. Person Death Date Query  & & \\
+		F11. Person Known For Query & & \\
+		F12. Person Photo Query & & \\
+		F13. Person Wikipedia Link Query & & \\
+		F14. Country Description Query & & \\
+		F15. Country Population Query & & \\
+		F16. Country Capital Query & & \\
+		F17. Person AND Query & & \\
+		F18. Context-aware Conversation & & \\
+		F19. Chatbot Greeting & & \\
+		F20. Chatbot Examples & & \\
+		F21. Chatbot Help & & \\
+		
+	\end{tabularx}
+	\caption{Software requirements prioritisation.}
+	\label{tab:priority}
+\end{table}
 
 \section{Project Scope}
+As conversations with chatbots can be open-ended, it will be necessary to restrict the scope of the project to the requirements specified in Section~\ref{sec:requirements}. While it may be tempting to add a variety of features and conversation topics with the chatbot, a successful result will be that the requirements of the system are met and can be successfully validated.
+
+One of the main aims of the project from Section~\ref{sec:aims} was to develop a successful system that can be expanded in the future. Based on the current requirements, it is feasible that future extensions to the project will be possible, based on the system implemented in this stage of the project.
+
+\section{Summary}
+This chapter has determined the requirements of the proposed system, as well as how those requirements will be met by a successful implementation. While the initial system may be basic, the project will be further extensible in the future. The next chapter will outline the design of the proposed chatbot.

@@ -81,41 +81,42 @@ This section defines the functional and non-functional requirements the system m
 
 \section{Requirement Prioritisation}
 \label{sec:priority}
-In order to meet the deadline of the project, some features may not be implemented. In order to prepare for this, it is important to define which requirements are the highest priority for the chatbot, and which could be considered optional and implemented in the future. To do this, I met with my three testers to discuss how the requirements should be prioritised. The following table outlines the priority of each requirement, as well as some notes or justification that was posited in this discussion.
+In order to meet the deadline of the project, some features may not be implemented. In order to prepare for this, it is important to define which requirements are the highest priority for the chatbot, and which could be considered optional and implemented in the future. To do this, I met with my three testers to discuss how the requirements should be prioritised. Table~\ref{tab:priority} outlines the priority of each requirement, as well as some notes or justification that was posited in this discussion.
 
-\begin{table}[h]
+\begin{table}[h!]
 	\centering
 	\begin{tabularx}{\textwidth}{{@{}lcX@{}}}
 		\toprule
 		Requirement & Priority & Justification \\
 		\midrule
-		F1.  User Interaction & High & User has to interact with chatbot \\
-		F2.  Browser Access & High & Browser more user-friendly than command-line \\
-		F3.  Text Input & High & Required for user interaction \\
-		F4.  Responses on Page & High & \\
-		F5.  Conversation History & & \\
-		F6.  Person Description Query & & \\
-		F7.  Person Birthdate Query & & \\
-		F8.  Person Age Query & & \\
-		F9.  Person Birthplace Query & & \\
-		F10. Person Death Date Query  & & \\
-		F11. Person Known For Query & & \\
-		F12. Person Photo Query & & \\
-		F13. Person Wikipedia Link Query & & \\
-		F14. Country Description Query & & \\
-		F15. Country Population Query & & \\
-		F16. Country Capital Query & & \\
-		F17. Person AND Query & & \\
-		F18. Context-aware Conversation & & \\
-		F19. Chatbot Greeting & & \\
-		F20. Chatbot Examples & & \\
-		F21. Chatbot Help & & \\
+		F1.  User Interaction & High & User has to interact with chatbot. \\
+		F2.  Browser Access & High & Browser more user-friendly than command-line. \\
+		F3.  Text Input & High & Required for user interaction. \\
+		F4.  Responses on Page & High & Required for user interaction. \\
+		F5.  Conversation History & High & Useful for having multi-line interaction with bot. \\
+		F6.  Person Description Query & High & Useful to get information about given person. \\
+		F7.  Person Birthdate Query & High & Probably a highly requested query. \\
+		F8.  Person Age Query & Medium & Useful to find out quickly a person's age. \\
+		F9.  Person Birthplace Query & Medium & May be useful when finding many people from the same place. \\
+		F10. Person Death Date Query  & Low & Could be helpful for historical figures. \\
+		F11. Person Known For Query & Medium & A useful query for scientists and historical figures. \\
+		F12. Person Photo Query & Medium & Helpful to have a visual reference for a person. \\
+		F13. Person Wikipedia Link Query & Medium & User would be able to find out more about the given person. \\
+		F14. Country Description Query & Low & Testers were unsure whether a description of a country is useful. They would probably use it more for facts and figures. \\
+		F15. Country Population Query & Medium & This statistic may be useful for comparing countries. \\
+		F16. Country Capital Query & High & Testers said this would likely be the most sought-after information. \\
+		F17. Person AND Query & Low & Could be useful for more advanced searches. \\
+		F18. Context-aware Conversation & Medium & Helpful for usability of bot, could be a standout feature for system. \\
+		F19. Chatbot Greeting & Medium & Helps with `friendliness' of bot. \\
+		F20. Chatbot Examples & High & Useful to know what the users could ask. \\
+		F21. Chatbot Help & High & Helpful if users get stuck or are using the system for the first time. \\
 		
 	\end{tabularx}
 	\caption{Software requirements prioritisation.}
 	\label{tab:priority}
 \end{table}
 
+\newpage
 \section{Project Scope}
 As conversations with chatbots can be open-ended, it will be necessary to restrict the scope of the project to the requirements specified in Section~\ref{sec:requirements}. While it may be tempting to add a variety of features and conversation topics with the chatbot, a successful result will be that the requirements of the system are met and can be successfully validated.
 

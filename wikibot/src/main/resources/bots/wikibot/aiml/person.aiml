@@ -178,6 +178,19 @@
     </category>
 
     <!-- dbo:deathDate -->
+    <category>
+        <pattern>* DEATHDATE</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:deathDate</set>
+                <set name="property">deathDate</set>
+                <set name="rlimit">1</set>
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
 
     <category>
         <pattern>HOW OLD IS *</pattern>

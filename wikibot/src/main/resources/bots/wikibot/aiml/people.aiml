@@ -45,6 +45,8 @@
         </template>
     </category>
 
+    <!-- Named -->
+
     <!-- Born before -->
     <category>
         <pattern><set>person_type</set> BORN BEFORE *</pattern>

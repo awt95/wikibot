@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2019/W32TeX)
+This is BibTeX, Version 0.99d (TeX Live 2020/W32TeX)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: dissertation.aux
 The style file: IEEEtranN.bst
@@ -19,11 +19,11 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
-Repeated entry---line 1373 of file references.bib
+Repeated entry---line 687 of file references.bib
  : @misc{paplauskaite2016
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1425 of file references.bib
+Repeated entry---line 713 of file references.bib
  : @inproceedings{ramngongausbeck2018
  :                                   ,
 I'm skipping whatever remains of this entry
@@ -36,47 +36,48 @@ Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Warning--empty journal in winston1986lisp
 Warning--missing publisher in tulshan2019survey
+Warning--empty journal in shawar2011corpus
 
 Done.
-You've used 91 entries,
+You've used 94 entries,
             4855 wiz_defined-function locations,
-            1394 strings with 23695 characters,
-and the built_in function-call counts, 64219 in all, are:
-= -- 5579
-> -- 1955
-< -- 302
-+ -- 956
-- -- 480
-* -- 3361
-:= -- 10232
-add.period$ -- 185
-call.type$ -- 91
-change.case$ -- 187
-chr.to.int$ -- 667
-cite$ -- 93
-duplicate$ -- 4369
-empty$ -- 4970
-format.name$ -- 634
-if$ -- 14238
+            1406 strings with 24155 characters,
+and the built_in function-call counts, 65621 in all, are:
+= -- 5716
+> -- 1976
+< -- 305
++ -- 968
+- -- 486
+* -- 3418
+:= -- 10488
+add.period$ -- 191
+call.type$ -- 94
+change.case$ -- 193
+chr.to.int$ -- 670
+cite$ -- 97
+duplicate$ -- 4480
+empty$ -- 5087
+format.name$ -- 643
+if$ -- 14538
 int.to.chr$ -- 4
-int.to.str$ -- 92
-missing$ -- 795
-newline$ -- 373
-num.names$ -- 273
-pop$ -- 2428
+int.to.str$ -- 95
+missing$ -- 812
+newline$ -- 384
+num.names$ -- 282
+pop$ -- 2486
 preamble$ -- 1
-purify$ -- 91
+purify$ -- 94
 quote$ -- 2
-skip$ -- 4663
+skip$ -- 4771
 stack$ -- 0
-substring$ -- 1642
-swap$ -- 2811
+substring$ -- 1651
+swap$ -- 2859
 text.length$ -- 51
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1345
-warning$ -- 2
-while$ -- 286
+type$ -- 1392
+warning$ -- 3
+while$ -- 292
 width$ -- 0
-write$ -- 1055
+write$ -- 1086
 (There were 2 error messages)

@@ -5,6 +5,7 @@
         <template>
             <think>
                 <set name="function">list</set>
+                <set name="topic">Person</set>
                 <set name="value"><star/></set>
                 <set name="iri">dbo:<map name="person2dbo"><star/></map></set>
                 <set name="property">name</set>
@@ -20,12 +21,13 @@
     </category>
 
 
-    <!-- TODO: conditional list -->
+    <!-- Born in -->
     <category>
         <pattern><set>person_type</set> BORN IN *</pattern>
         <template>
             <think>
                 <set name="function">list_conditional</set>
+                <set name="topic">Person</set>
                 <set name="value"><star/></set>
                 <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
                 <set name="property">name</set>
@@ -37,11 +39,47 @@
 
         </template>
     </category>
+
+    <category>
+        <pattern>WHICH <set>person_type</set> WERE BORN IN *</pattern>
+        <template>
+            <srai><star index="1"/> BORN IN <star index="2"/></srai>
+        </template>
+    </category>
+
+    <!-- Named -->
+    <category>
+        <pattern><set>person_type</set> NAMED *</pattern>
+        <template>
+            <think>
+                <set name="function">list_conditional</set>
+                <set name="topic">Person</set>
+                <set name="value"><star/></set>
+                <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
+                <set name="property">name</set>
+                <set name="condition_property">foaf:name</set>
+                <set name="condition_property_type">string</set>
+                <set name="condition_operator">EQUALS</set>
+                <set name="condition_value"><star index="2"/></set>
+            </think>
+
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIST <set>person_type</set> NAMED *</pattern>
+        <template>
+            <srai><star index="1"/> NAMED <star index="2"/></srai>
+        </template>
+    </category>
+
+    <!-- Born before -->
     <category>
         <pattern><set>person_type</set> BORN BEFORE *</pattern>
         <template>
             <think>
                 <set name="function">list_conditional</set>
+                <set name="topic">Person</set>
                 <set name="value"><star/></set>
                 <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
                 <set name="property">name</set>
@@ -58,6 +96,7 @@
         <template>
             <think>
                 <set name="function">list_conditional</set>
+                <set name="topic">Person</set>
                 <set name="value"><star/></set>
                 <set name="iri">dbo:<map name="person2dbo"><star index="1"/></map></set>
                 <set name="property">name</set>

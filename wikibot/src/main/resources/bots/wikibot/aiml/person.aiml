@@ -8,11 +8,17 @@
         <that>WHO ARE WE TALKING ABOUT</that>
         <template>
             <condition name="property">
-                <li value="dbo:birthDate">
+                <li value="birthDate">
                     <srai><star/> BIRTHDATE</srai>
                 </li>
-                <li value="dbo:birthPlace">
+                <li value="birthPlace">
                     <srai><star/> BIRTHPLACE</srai> <!-- TODO: Add remaining values -->
+                </li>
+                <li value="comment">
+                    <srai>WHO IS <star/></srai>
+                </li>
+                <li value="knownFor">
+                    <srai><star/> KNOWN FOR</srai>
                 </li>
                 <li>
                     I've gotten a bit confused, there. Let's start again.
@@ -172,6 +178,19 @@
     </category>
 
     <!-- dbo:deathDate -->
+    <category>
+        <pattern>* DEATHDATE</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:deathDate</set>
+                <set name="property">deathDate</set>
+                <set name="rlimit">1</set>
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
 
     <category>
         <pattern>HOW OLD IS *</pattern>
@@ -183,7 +202,21 @@
                 <set name="property">birthDate</set>
                 <set name="rlimit">1</set>
             </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
 
+    <category>
+        <pattern>HOW OLD WAS *</pattern>
+        <template>
+            <srai>HOW OLD IS <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>* AGE</pattern>
+        <template>
+            <srai>HOW OLD IS <star/></srai>
         </template>
     </category>
 

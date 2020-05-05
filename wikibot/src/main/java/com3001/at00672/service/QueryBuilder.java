@@ -160,6 +160,9 @@ public class QueryBuilder {
         sb.append("   {");
         sb.append("     SELECT ?person (SAMPLE(?names) as ?name) WHERE {");
         sb.append(String.format(" ?person a %s . ?person foaf:name ?names .", userQuery.get("iri")));
+        if (userQuery.get("condition_property").equals("foaf:name")) { // filter by name
+            sb.append(String.format(" ?names <bif:contains> \"'%s'\"", userQuery.get("condition_value")));
+        }
         sb.append(" FILTER (langMatches(lang(?names), \"EN\"))");
         sb.append("     } GROUP BY ?person");
         sb.append("   }");

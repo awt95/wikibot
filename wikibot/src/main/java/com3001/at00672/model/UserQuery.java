@@ -16,6 +16,10 @@ public class UserQuery {
         this.predicates.putAll(predicates);
     }
 
+    public UserQuery() {
+
+    }
+
     public String get(String key) {
         return (predicates.containsKey(key)) ? predicates.get(key) : "";
     }

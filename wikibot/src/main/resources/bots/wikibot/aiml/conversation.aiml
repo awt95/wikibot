@@ -17,4 +17,33 @@
             <srai>HELLO</srai>
         </template>
     </category>
+
+    <category>
+        <pattern>HELP</pattern>
+        <template>
+            <think><set name="topic">conversation</set></think>
+            I can answer Wikipedia queries you ask me. You can ask me about people and countries at the moment. Here are some examples:
+            - Who is Barack Obama?
+            - What is he known for?
+            - How old was Abraham Lincoln?
+            - List of athletes named John
+            - Actors born in 1980
+            - What is the capital of Peru?
+        </template>
+    </category>
+
+    <category>
+        <pattern>EXAMPLES</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>WHAT CAN YOU DO</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>WHAT ARE YOUR FUNCTIONS</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
 </aiml>

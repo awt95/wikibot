@@ -45,7 +45,6 @@ public class DBPedia {
     }
 
     public static void executeQuery(UserQuery userQuery, Message botResponse) {
-        // TODO: Calculate age
         if (userQuery.get("topic").equalsIgnoreCase("person")) {
             if (botResponse.getMessageType().equals(MessageType.ABSTRACT))
                 executeAbstractPersonQuery(userQuery, botResponse);
@@ -59,7 +58,6 @@ public class DBPedia {
             botResponse.setContent("Something went wrong");
         }
     }
-    // TODO: Get infobox from wikipedia?
     public static void executeAbstractPersonQuery(UserQuery userQuery, Message botResponse) {
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -67,7 +65,6 @@ public class DBPedia {
             Query query = QueryFactory.create(userQuery.getQueryString());
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            // TODO: loop through all results
             if (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 RDFNode resource = solution.get("person");
@@ -94,7 +91,6 @@ public class DBPedia {
             Query query = QueryFactory.create(userQuery.getQueryString());
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            // TODO: loop through all results
             while (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 RDFNode node = solution.get(userQuery.get("property"));
@@ -115,7 +111,6 @@ public class DBPedia {
         }
     }
 
-    //TODO: Some country comments get truncated
     public static void executeCountryQuery(UserQuery userQuery, Message botResponse) {
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
@@ -181,33 +176,32 @@ public class DBPedia {
             Query query = QueryFactory.create(userQuery.getQueryString());
             QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
             ResultSet results = qexec.execSelect();
-            // TODO: Text '1912-6-23' could not be parsed at index 5 = error with date conversion
             if (results.hasNext()) {
                 QuerySolution solution = results.nextSolution();
                 String personName = solution.get("name").asLiteral().getString();
                 RDFNode rdfBirthDate = solution.get("birthDate");
                 RDFNode rdfDeathDate = solution.get("deathDate");
-                DateTimeFormatter xsdFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
                 LocalDate todayDate = LocalDate.now();
                 int age;
 
                 if (rdfBirthDate.asLiteral().getDatatype() instanceof XSDDateType) {
-                    LocalDate birthDate = LocalDate.parse(rdfBirthDate.asLiteral().getLexicalForm(), xsdFormat);
+                    String birthDateString = rdfBirthDate.asLiteral().getLexicalForm();
+                    LocalDate birthDate = parseDateString(birthDateString);
                     if (rdfDeathDate == null) {
                         // Still alive
                         age = Period.between(birthDate, todayDate).getYears();
                         botResponse.addMessageItem(new MessageItem(String.format("%s is %s years old", personName, age)));
                     } else if (rdfDeathDate.asLiteral().getDatatype() instanceof XSDDateType) {
                         // Dead
-                        LocalDate deathDate = LocalDate.parse(rdfDeathDate.asLiteral().getLexicalForm(), xsdFormat);
+                        String deathDateString = rdfDeathDate.asLiteral().getLexicalForm();
+                        LocalDate deathDate = parseDateString(deathDateString);
                         age = Period.between(birthDate, deathDate).getYears();
                         botResponse.addMessageItem(new MessageItem(String.format("%s was %s years old when they died in %s", personName, age, deathDate.getYear())));
                     } else {
                         throw new IllegalArgumentException("Date is wrong type");
                     }
                 }
-
-                // Generate response
             } else {
                 botResponse.setContent("Something went wrong");
             }
@@ -215,6 +209,17 @@ public class DBPedia {
             botResponse.setContent("Something went wrong");
             e.printStackTrace();
         }
+    }
+
+    private static LocalDate parseDateString(String dateString) {
+        String[] dateSplit = dateString.split("-");
+        if (dateSplit.length != 3)
+            throw new IllegalArgumentException("Date is wrong type");
+        // Manually parse date because of error caused by inconsistent lengths
+        int year = Integer.parseInt(dateSplit[0]);
+        int month = Integer.parseInt(dateSplit[1]);
+        int day = Integer.parseInt(dateSplit[2]);
+        return LocalDate.of(year, month, day);
     }
 
     public static void ExampleQuery() {

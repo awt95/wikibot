@@ -414,7 +414,8 @@ M.~Odersky, L.~Spoon, and B.~Venners, \emph{Programming in scala}.\hskip 1em
   plus 0.5em minus 0.4em\relax Artima Inc, 2008.
 
 \bibitem[Winston and Horn(1986)]{winston1986lisp}
-P.~H. Winston and B.~K. Horn, ``Lisp,'' 1986.
+P.~H. Winston and B.~K. Horn, \emph{Lisp}.\hskip 1em plus 0.5em minus
+  0.4em\relax Addison Wesley Pub., Reading, MA, 1986.
 
 \bibitem[Hickey(2008)]{hickey2008clojure}
 R.~Hickey, ``The clojure programming language,'' in \emph{Proceedings of the

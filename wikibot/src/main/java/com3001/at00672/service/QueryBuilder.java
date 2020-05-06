@@ -116,7 +116,6 @@ public class QueryBuilder {
     }
 
     public static String generateListQuery(UserQuery userQuery) {
-        // TODO: FIX me
         StringBuilder sb = new StringBuilder();
         sb.append(" PREFIX dbo: <http://dbpedia.org/ontology/>");
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");

@@ -19,7 +19,7 @@
                 </li>
                 <li value="knownFor">
                     <srai><star/> KNOWN FOR</srai>
-                </li>
+                </li>how
                 <li>
                     I've gotten a bit confused, there. Let's start again.
                     <srai>BOT_CLEAR_ALL</srai>
@@ -143,6 +143,7 @@
             <srai><star/> BIRTHPLACE</srai>
         </template>
     </category>
+
     <category>
         <pattern>WHERE * BORN</pattern>
         <template>
@@ -165,6 +166,21 @@
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
     </category>
+
+    <category>
+        <pattern>WHAT IS * KNOWN FOR</pattern>
+        <template>
+            <srai><star/> KNOWN FOR</srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHAT IS * FAMOUS FOR</pattern>
+        <template>
+            <srai><star/> KNOWN FOR</srai>
+        </template>
+    </category>
+
 
     <category>
         <pattern>NOT WHO I MEANT</pattern>

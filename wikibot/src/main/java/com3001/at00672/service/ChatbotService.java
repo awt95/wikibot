@@ -1,11 +1,16 @@
 package com3001.at00672.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import com3001.at00672.model.*;
 
 import org.alicebot.ab.*;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import static com3001.at00672.service.QueryBuilder.generateQuery;
 
@@ -15,10 +20,10 @@ public class ChatbotService {
     public Chat chatSession;
     public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional", "calculateAge"));
 
-    public ChatbotService() {
+    public ChatbotService() throws IOException {
         String botName = "wikibot";
-        String dir = System.getProperty("user.dir");
-        bot = new Bot(botName, dir + "/src/main/resources");
+        File botFolder = new ClassPathResource("").getFile();
+        bot = new Bot(botName, botFolder.getPath(), "chat");
         chatSession = new Chat(bot);
     }
 

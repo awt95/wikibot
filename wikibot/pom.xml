@@ -138,6 +138,13 @@
             <version>5.1.0</version>
         </dependency>
 
+        <!-- Tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.atteo</groupId>
             <artifactId>evo-inflector</artifactId>
@@ -146,6 +153,7 @@
 
     </dependencies>
     <build>
+        <finalName>${artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

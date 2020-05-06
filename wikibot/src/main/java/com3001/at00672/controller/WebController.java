@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Controller
 public class WebController {
 
@@ -18,7 +20,7 @@ public class WebController {
     ChatbotService chatbotService = new ChatbotService();
 
     @Autowired
-    public WebController(MessageRepository messageRepository) {
+    public WebController(MessageRepository messageRepository) throws IOException {
         this.messageRepository = messageRepository;
     }
 

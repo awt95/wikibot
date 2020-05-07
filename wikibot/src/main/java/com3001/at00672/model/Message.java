@@ -16,6 +16,8 @@ public class Message {
     protected Sender sender;
     protected MessageType messageType = MessageType.TEXT;
 
+    private String session;
+
     private String title;
     private String imageURL;
     private String wikipediaURL;
@@ -102,5 +104,13 @@ public class Message {
 
     public void setWikipediaURL(String wikipediaURL) {
         this.wikipediaURL = wikipediaURL;
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
     }
 }

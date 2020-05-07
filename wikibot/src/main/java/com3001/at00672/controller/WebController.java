@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -25,24 +26,29 @@ public class WebController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
-        model.addAttribute("message", new Message());
-        model.addAttribute("chat", messageRepository.findAll());
+    public String index(Model model, HttpSession session){
+        System.out.println("Session: " + session.getId());
+        Message message = new Message();
+        message.setSession(session.getId());
+        model.addAttribute("message", message);
+        model.addAttribute("chat", messageRepository.findBySessionEquals(session.getId()));
         return "index";
     }
 
     @PostMapping("/")
-    public String submitMessage(@ModelAttribute Message message, BindingResult result, Model model) {
+    public String submitMessage(@ModelAttribute Message message, BindingResult result, Model model, HttpSession session) {
         message.setSender(Sender.USER);
+        message.setSession(session.getId());
         messageRepository.save(message);
         // get response
         //Message response = new Message("Response to: " + message.getContent(), Sender.BOT);
         Message response = chatbotService.chatbotRequest(message);
+        response.setSession(session.getId());
         //UserQuery query = new UserQuery(chatbotService.chatSession.predicates);
 
         //chatbotService.processResponse(query, response);
         messageRepository.save(response);
-        model.addAttribute("chat", messageRepository.findAll());
+        model.addAttribute("chat", messageRepository.findBySessionEquals(session.getId()));
         return "index";
     }
 

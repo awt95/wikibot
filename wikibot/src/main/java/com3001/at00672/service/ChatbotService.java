@@ -9,12 +9,18 @@ import java.util.Arrays;
 import com3001.at00672.model.*;
 
 import org.alicebot.ab.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.SessionScope;
 
 import static com3001.at00672.service.QueryBuilder.generateQuery;
 
-//@Service
+@Component
+@Scope("session")
 public class ChatbotService {
     public Bot bot;
     public Chat chatSession;

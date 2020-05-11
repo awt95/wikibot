@@ -31,8 +31,6 @@ public class ChatbotTerminal {
                 System.out.print("You: ");
                 textLine = IOUtils.readInputTextLine();
                 String request = textLine;
-                //if (MagicBooleans.trace_mode)
-                //  System.out.println("STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0) + ":TOPIC=" + chatSession.predicates.get("topic"));
                 Message botResponse = new Message(chatbotService.chatSession.multisentenceRespond(request), Sender.BOT);
                 UserQuery userQuery = new UserQuery(chatbotService.chatSession.predicates);
                 if (request.equals("quit") || request.equals("exit")) {

@@ -1,17 +1,43 @@
 \chapter{Implementation}
 \label{ch:implementation}
 \section{Introduction}
+This chapter describes the planning and implementation phases.
+
+\section{Software Development Methodology}
+\subsection{Waterfall Model}
+\subsection{}
 
 \section{Planning}
-As the timeline of the project is restricted and has a fixed deadline, it is important that the project is planned carefully in order to deliver a complete solution. 
+As the timeline of the project is restricted and has a fixed deadline, it is important that the project is planned carefully in order to deliver a complete solution.
+
+Gantt
+
 
 \section{Version Control}
 Git - branches
 
-\section{Experimentation}
-Python - python programy
+\section{Dependency Management}
 
-\section{Milestones}
+\section{Implementation Process}
+Following the Gantt chart, ...
+
+\subsection{Initialisation}
+The first step of the implementation was to initialise a Git repository and a Java environment with Maven dependency management. Since the project would depend on many libraries for displaying and processing data, Maven is able to manage versioning and interdependencies of these libraries.
+
+\subsection{Program AB}
+As a result of the research in earlier phases, it was decided that this system would use a rule-based chatbot architecture, namely AIML as it is widely used in current chatbot systems. Program AB is a Java implementation of AIML 2.0 provided by ALICE A.I. Foundation \cite{programab_2013}. While this repository is no longer being developed, the choice for this project was to use a fork of this source, which is provided as a Maven dependency \cite{lumenrobot2016}.
+
+Once the Maven dependency had been loaded into the project's {\it{pom.xml}} file, I was able to experiment with the chatbot. The {\it{program-ab}} source contains the original AIML implementation of a bot named S.U.P.E.R. created by \citeauthor{wallace2009anatomy}, which gives examples of the many elements of the AIML style.
+
+
+\subsection{Web Interface}
+
+\subsection{DBPedia}
+
+\subsection{AIML}
+
+\subsection{Hibernate Database}
+
 
 
 \section{Challenges}

@@ -3,6 +3,7 @@ package com3001.at00672;
 import com3001.at00672.model.*;
 import com3001.at00672.service.ChatbotService;
 import org.apache.commons.text.WordUtils;
+import org.apache.log4j.varia.NullAppender;
 import org.alicebot.ab.*;
 import org.alicebot.ab.utils.IOUtils;
 import org.springframework.core.io.ClassPathResource;
@@ -20,8 +21,7 @@ public class ChatbotTerminal {
         try {
             ChatbotService chatbotService = new ChatbotService();
             chatContext = new ChatContext();
-            org.apache.log4j.BasicConfigurator.configure();
-            //org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+            org.apache.log4j.BasicConfigurator.configure(new NullAppender());
             chatbotService.bot.brain.nodeStats();
             System.out.println("Starting chatbot");
             String textLine = "";
@@ -43,7 +43,7 @@ public class ChatbotTerminal {
                 System.out.println();
                 System.out.println("Bot: ");
                 for (MessageItem item : botResponse.getMessageItems()) {
-                    System.out.println(WordUtils.wrap(item.getContent() + ", " + item.getUri(), 80));
+                    System.out.println(WordUtils.wrap(item.getContent(), 80));
 
                 }
                 System.out.println();

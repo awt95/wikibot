@@ -27,7 +27,7 @@ public class ChatbotService {
     public ArrayList<String> queryKeywords = new ArrayList<>(Arrays.asList("query", "abstract", "list", "list_conditional", "calculateAge"));
 
     public ChatbotService() throws IOException {
-        String botName = "super";
+        String botName = "wikibot";
         File botFolder = new ClassPathResource("").getFile();
         bot = new Bot(botName, botFolder.getPath(), "chat");
         chatSession = new Chat(bot);
@@ -49,7 +49,6 @@ public class ChatbotService {
     }
 
     public void processResponse(UserQuery userQuery, Message botResponse) {
-        System.out.println(userQuery.toString());
         if (queryKeywords.contains(userQuery.get("function"))) {
             // generate query
             String dbQuery = QueryBuilder.generateQuery(userQuery);

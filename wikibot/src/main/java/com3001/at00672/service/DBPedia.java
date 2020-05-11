@@ -24,12 +24,11 @@ public class DBPedia {
 
     public static void main(String[] args) {
         //TestConnection();
-        //ExampleQuery();
+        ExampleQuery();
     }
 
     public static void TestConnection() {
-        //org.apache.log4j.BasicConfigurator.configure();
-        org.apache.log4j.BasicConfigurator.configure(new NullAppender());
+        org.apache.log4j.BasicConfigurator.configure();
         String service = "http://dbpedia.org/sparql";
         String query = "ASK { }";
         QueryExecution qe = QueryExecutionFactory.sparqlService(service, query);
@@ -223,25 +222,31 @@ public class DBPedia {
     }
 
     public static void ExampleQuery() {
-        //org.apache.log4j.BasicConfigurator.configure();
-
-        String str = "Turing";
-        String queryString = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
-                " PREFIX foaf: <http://xmlns.com/foaf/0.1/>" +
-                " PREFIX dbo: <http://dbpedia.org/ontology/>" +
-                " SELECT ?uri ?txt WHERE {" +
-                " ?uri rdfs:label ?txt ." +
-                " ?txt <bif:contains> \"'" + str + "'\" . } LIMIT 10";
+        org.apache.log4j.BasicConfigurator.configure();
+        String queryString =
+                "PREFIX dbo: <http://dbpedia.org/ontology/>" +
+                "PREFIX dbr: <http://dbpedia.org/resource/>" +
+                "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+                "SELECT ?person ?birthPlace ?name WHERE {" +
+                "?person a dbo:MusicalArtist ." +
+                "?person rdfs:label ?name ." +
+                "?person dbo:birthPlace ?birthPlace ." +
+                "filter(?birthPlace = dbr:Manchester)" +
+                "filter(langMatches(lang(?name), 'en'))" +
+                "} LIMIT 50 ";
 
         Query query = QueryFactory.create(queryString);
         QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query);
 
         try {
             ResultSet results = qexec.execSelect();
-            for (; results.hasNext(); ) {
+            while (results.hasNext()) {
                 QuerySolution soln = results.nextSolution();
-                System.out.println(soln);
+                String name = soln.getLiteral("name").getString();
+                System.out.println(name);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             qexec.close();
         }

@@ -5,7 +5,9 @@ import com3001.at00672.service.ChatbotService;
 import org.apache.commons.text.WordUtils;
 import org.alicebot.ab.*;
 import org.alicebot.ab.utils.IOUtils;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
 import java.util.HashMap;
 
 public class ChatbotTerminal {
@@ -20,13 +22,8 @@ public class ChatbotTerminal {
             chatContext = new ChatContext();
             org.apache.log4j.BasicConfigurator.configure();
             //org.apache.log4j.BasicConfigurator.configure(new NullAppender());
-
+            chatbotService.bot.brain.nodeStats();
             System.out.println("Starting chatbot");
-            String botName = "wikibot";
-
-            String dir = System.getProperty("user.dir");
-            Bot bot = new Bot(botName, dir + "/src/main/resources");
-            //bot.brain.nodeStats();
             String textLine = "";
 
             while (true) {

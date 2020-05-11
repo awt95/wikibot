@@ -30,9 +30,4 @@
             </think>
         </template>
     </category>
-
-    <category>
-        <pattern></pattern>
-    </category>
-
 </aiml>

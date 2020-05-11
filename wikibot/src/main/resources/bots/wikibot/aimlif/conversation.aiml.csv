@@ -1,2 +1,6 @@
 0,HELLO ^,*,*,<think><set name="topic">conversation</set></think>#Newline            <random>#Newline                <li> Hello! </li>#Newline                <li> Hi there </li>#Newline                <li> Hi#Comma how can I help? </li>#Newline            </random>,conversation.aiml
 0,HI ^,*,*,<srai>HELLO</srai>,conversation.aiml
+0,HELP,*,*,<think><set name="topic">conversation</set></think>#Newline            I can answer Wikipedia queries you ask me. You can ask me about people and countries at the moment. Here are some examples:#Newline            Who is Barack Obama?#Newline            What is he known for?#Newline            How old was Abraham Lincoln?#Newline            List of athletes named John.#Newline            Actors born in 1980.#Newline            What is the capital of Peru?,conversation.aiml
+0,EXAMPLES,*,*,<srai>HELP</srai>,conversation.aiml
+0,WHAT CAN YOU DO,*,*,<srai>HELP</srai>,conversation.aiml
+0,WHAT ARE YOUR FUNCTIONS,*,*,<srai>HELP</srai>,conversation.aiml

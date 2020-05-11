@@ -73,6 +73,27 @@
         </template>
     </category>
 
+    <category>
+        <pattern>LIST OF <set>person_type</set> NAMED *</pattern>
+        <template>
+            <srai><star index="1"/> NAMED <star index="2"/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIST <set>person_type</set> CALLED *</pattern>
+        <template>
+            <srai><star index="1"/> NAMED <star index="2"/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIST OF <set>person_type</set> CALLED *</pattern>
+        <template>
+            <srai><star index="1"/> NAMED <star index="2"/></srai>
+        </template>
+    </category>
+
     <!-- Born before -->
     <category>
         <pattern><set>person_type</set> BORN BEFORE *</pattern>

@@ -12,8 +12,12 @@
                     <srai><star/> BIRTHDATE</srai>
                 </li>
                 <li value="birthPlace">
-                    <srai><star/> BIRTHPLACE</srai> <!-- TODO: Add remaining values -->
+                    <srai><star/> BIRTHPLACE</srai>
                 </li>
+                <li value="deathDate">
+                    <srai><star/> DEATHDATE</srai>
+                </li>
+
                 <li value="comment">
                     <srai>WHO IS <star/></srai>
                 </li>

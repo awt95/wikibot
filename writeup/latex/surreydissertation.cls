@@ -112,7 +112,7 @@
 
    \vspace{\stretch{1}}
 
-   Department of Computing\\
+   Department of Computer Science\\
    University of Surrey\\
    Guildford GU2 7XH
    \end{center}

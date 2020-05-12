@@ -15,9 +15,7 @@ public class Message {
     protected String content;
     protected Sender sender;
     protected MessageType messageType = MessageType.TEXT;
-
     private String session;
-
     private String title;
     private String imageURL;
     private String wikipediaURL;

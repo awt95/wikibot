@@ -168,7 +168,7 @@ public class DBPedia {
         //return results;
     }
 
-    public static void  executeAgeQuery(UserQuery userQuery, Message botResponse) {
+    public static void executeAgeQuery(UserQuery userQuery, Message botResponse) {
         try {
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
             //System.out.println(queryString);

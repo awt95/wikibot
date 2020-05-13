@@ -53,6 +53,8 @@ This section defines the functional and non-functional requirements the system m
 	\begin{itemize}
 		\item The chatbot can answer advanced queries about Person articles:
 		\begin{enumerate}[resume*]
+			\item Person List Query - The user should be able to find a list of people who meet a certain criteria. \\
+			e.g. ``People born in 1980'' or ``List of actors born in London''
 			\item Person AND Query - The user should be able to combine queries using ‘AND’ to find people who satisfy two conditions. \\For example, "People who were born in 1980 AND were born in London"
 			\item Context-aware Conversation - The user should be able to ask sequential queries about a topic and the chatbot will be able to answer queries within that context. \\ For example, the user first asks ‘Where was X born’, the chatbot responds, and the user asks a follow up question ‘What about Y?’. The chatbot will then respond to the second query with an answer that satisfies the query ‘where was Y born’.
 		\end{enumerate}
@@ -105,11 +107,12 @@ In order to meet the deadline of the project, some features may not be implement
 		F14. Country Description Query & Low & Testers were unsure whether a description of a country is useful. They would probably use it more for facts and figures. \\
 		F15. Country Population Query & Medium & This statistic may be useful for comparing countries. \\
 		F16. Country Capital Query & High & Testers said this would likely be the most sought-after information. \\
-		F17. Person AND Query & Low & Could be useful for more advanced searches. \\
-		F18. Context-aware Conversation & Medium & Helpful for usability of bot, could be a standout feature for system. \\
-		F19. Chatbot Greeting & Medium & Helps with `friendliness' of bot. \\
-		F20. Chatbot Examples & High & Useful to know what the users could ask. \\
-		F21. Chatbot Help & High & Helpful if users get stuck or are using the system for the first time. \\
+		F17. Person List Query & Medium & Provides unique functionality for the user \\
+		F18. Person AND Query & Low & Could be useful for more advanced searches. \\
+		F19. Context-aware Conversation & Medium & Helpful for usability of bot, could be a standout feature for system. \\
+		F20. Chatbot Greeting & Medium & Helps with `friendliness' of bot. \\
+		F21. Chatbot Examples & High & Useful to know what the users could ask. \\
+		F22. Chatbot Help & High & Helpful if users get stuck or are using the system for the first time. \\
 		
 	\end{tabularx}
 	\caption{Software requirements prioritisation.}

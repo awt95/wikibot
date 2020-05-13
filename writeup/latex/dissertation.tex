@@ -18,7 +18,8 @@
 \usepackage{listings}
 \usepackage{courier}
 \usepackage{outlines}
-
+\usepackage{pdflscape}
+\usepackage{ltablex}
 %hyphenation rules
 \hyphenation{internet}
 \hyphenation{interaction}
@@ -32,6 +33,12 @@
 	tabsize=2,
 	breakatwhitespace=true,
 }
+
+%% New column, define the width as #1, the m-column will align all
+%% content in ther vertical middle, \centering will align it in the
+%% horizontal middle.
+\newcolumntype{C}[1]{%
+	>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \graphicspath{ {./figures/} }
 

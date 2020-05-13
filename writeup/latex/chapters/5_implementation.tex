@@ -91,7 +91,7 @@ There are a number of online resources which allow us to experiment with queryin
 	\label{fig:sparql1}
 \end{figure}
 
-Executing this query returns a list of the first 50 results of musicians born in Manchester, as shown in Figure~\ref{fig:sparql1}. The format of SPARQL queries has some similarities with SQL queries, using keywords such as \code{SELECT} and \code{WHERE}. In this query, we are filtering to find each person that has the property \code{dbo:MusicalArtist}, which is shorthand for \url{http://dbpedia.org/ontology/MusicalArtist}, referencing the DBPedia ontology. We are setting the variable \code{?name} to the property \code{rdfs:label} which contains the name attribute of the person; the same applies for \code{dbo:birthPlace} references their birth place. Finally, we are filtering the results. First, we are filtering the results to only musicians whose birth place is Manchester. Secondly, we are filtering the \code{?name} results by language, to remove any duplicate results where the name is given in multiple languages.
+Executing this query returns a list of the first 50 results of musicians born in Manchester, as shown in Figure~\ref{fig:sparql1}. The format of SPARQL queries has some similarities with SQL queries, using keywords such as \code{SELECT} and \code{WHERE}. In this query, we are filtering to find each person that has the property \code{dbo:MusicalArtist}, which is shorthand for \url{http://dbpedia.org/ontology/MusicalArtist}, referencing the DBPedia ontology. We are setting the variable \code{?name} to the property \code{rdfs:label} which contains the name attribute of the person; the same applies for \code{dbo:birthPlace} referencing their birth place. Finally, we are filtering the results; we want the results to only contain musicians whose birth place is Manchester; next we filter the \code{?name} results by language, to remove any duplicate results where the name is given in multiple languages.
 
 \begin{figure}[h]
 	\centering
@@ -111,7 +111,7 @@ In our Java system, these queries have to be constructed and executed programmat
 	\label{fig:testrdf}
 \end{figure}
 
-For executing and processing more functional queries, we have to first generate a query string. As an example, we will use the query we saw in Figure~\ref{fig:sparql}. Once the query has been executed, we have to loop through the results and do some processing, such as printing to the console. The process for this is shown in Figure~\ref{fig:querysparql}. Here, our query string requires the \code{PREFIX} keyword to define the names of the prefixes for the ontologies we are using. The result from this execution exactly matches the result from the experimentation in Figure~\ref{fig:sparql2}.
+For executing and processing more functional queries, we have to first generate a query string. As an example, we will use the query we saw in Figure~\ref{fig:sparql1}. Once the query has been executed, we have to loop through the results and do some processing, such as printing to the console. The process for this is shown in Figure~\ref{fig:querysparql}. Here, our query string requires the \code{PREFIX} keyword to define the names of the prefixes for the ontologies we are using. The result from this execution exactly matches the result from the experimentation in Figure~\ref{fig:sparql2}.
 
 \begin{figure}[h]
 	\centering
@@ -129,10 +129,10 @@ Now that we have a basis for querying the DBPedia dataset, the chatbot now has t
 	\item A query builder to convert the user input into a SPARQL query
 	\item A service to execute the function and process the results
 \end{enumerate}
-The next sections explain how these were implemented and connected in the final system to achieve the required functionality.
+These functions align with the system architecture design seen previously in Section~\ref{sec:systemdesign}. The next sections explain how these were implemented and connected in the final system to achieve the required functionality.
 
 \subsubsection{AIML Patterns}
-One of the key functions of this chatbot is to match input patterns to desired queries. There are a number of challenges that arise here. Firstly, a query can be asked in many different ways. For example, to find out the date of birth of a person, a user may ask: {\it`What is *'s' birthdate?', `When was * born?', `* birth date', `Tell me when * was born'}. The bot must then distinguish between these queries and `how old is *' as those are two distinct functions.
+One of the key functions of this chatbot is to match input patterns to desired queries. There are a number of challenges that arise here. Firstly, a query can be asked in many different ways. For example, to find out the date of birth of a person, a user may ask: {\it`What is *s birthdate?', `When was * born?', `* birth date', `Tell me when * was born'}. The bot must then distinguish between these queries and {\it`how old is *'} as those are two distinct functions.
 
 Furthermore, one of the requirements of the system is that is can deal with pronouns and maintain context. As such, the user should be able to ask follow-up questions by continuing a conversation, e.g. {\it `When was he born?'} - the chatbot must remember who {\it `he'} is, and if that is not known, the chatbot must ask for more information to continue the query.
 
@@ -172,8 +172,10 @@ This template determines whether or not a pronoun has been used - {\it{`Who is A
 \subsubsection{Query Builder}
 We can build a query based on the predicates that we set in the AIML patterns. Most of the simple queries follow a similar pattern to that seen in Figure~\ref{fig:sparql1} - selecting a property given a set of conditions. For these queries we can build a query string, inserting the values provided by the user from the AIML predicates.
 
+In the final system ... UserQuery ... \hilight{continue}
+
 \subsubsection{DBPedia Service}
-The role of the \code{DBPedia} class is to execute queries and return a result. This class is divided into a number of methods for each type of query, for example executing a query about a person in \code{executePersonQuery()} requires different logic to \code{executeAgeQuery()} where further processing has to take place. Each method makes changes to the \code{Message} instance which contains the chatbot's response. The \code{Message} object has a number of attributes relating to the content and information stored in the message. It also has a list of \code{MessageItems}, where a \code{Message} may contain a list of multiple items. The information stored here is processed by the web interface in order to display the information in the correct format, as discussed in the next section.
+The role of the \code{DBPedia} class is to execute queries and return a result. This class is divided into a number of methods for each type of query. For example, executing a query about a person in \code{executePersonQuery()} requires different logic to \code{executeAgeQuery()} where further processing has to take place. Each method makes changes to the \code{Message} instance which contains the chatbot's response. The \code{Message} object has a number of attributes relating to the content and information stored in the message. It also has a list of \code{MessageItems}, where a \code{Message} may contain a list of multiple items. The information stored here is processed by the web interface in order to display the information in the correct format, as discussed in the next section.
 
 \subsection{Web Interface}
 Spring Boot \cite{springmanual} was used in this project has the web framework, mainly because of its popularity and configurability for web-based Java projects. To initalise this, the required dependencies are added to the project's \code{pom.xml} file. The \code{org.springframework.boot} provides many helper classes for configuring a Spring Boot application.
@@ -226,13 +228,30 @@ Spring Data can provide CRUD operations (create, read, update, delete) for an OR
 This section discusses some of the challenges encountered during the implementation of this project. It describes some of the solutions used to overcome these obstacles.
 
 \subsection{Limitations of AIML}
-One of the fundamental challenges of using the pattern-based AIML is handling synonyms. I discovered that there are many ways that a particular question can be asked.
+One of the fundamental challenges of using the pattern-based AIML is handling synonyms. I discovered that there are many ways that a particular question can be asked. Furthermore, since the requirements of the system pertain to both Person queries and Country queries, the system must be able to distinguish between the two topics of conversation.
 
-Sets and maps
+The use of sets and maps was key to solving this problem. In order to `teach' the chatbot what a country is, a set was created named \code{countries.txt} with a list of every country from the DBPedia dataset. These were loaded programatically using a DBPedia query in the \code{ChatbotUtils} class. One issue here was that simply querying a list of all records belonging to \code{dbo:Country} also included every historic kingdom, dominion, dynasty, caliphate, as well as some bizarre outliers - a further discussion of inconsistencies of the dataset is given in Section~\ref{sec:dataset}. Therefore to return useable data, the results had to be filtered to exclude results with a \code{dbo:dissolutionYear}, as well as include countries that included a \code{dbo:Capital}.
 
+The final query used in this utility is given in Figure~\ref{fig:sparqlcountry}. Given a list of all countries, we can then map the country to its Uniform Resource Locator (URI) to easily query that exact country - this is mapped in the file \code{country2dbr.txt}.
+
+\begin{figure}[h]
+	\begin{lstlisting}
+		SELECT DISTINCT ?country ?name
+		WHERE {
+		  ?country a dbo:Country.
+		  ?country dbo:capital ?capital .
+		  ?country rdfs:label ?name 
+		  FILTER NOT EXISTS { ?country dbo:dissolutionYear ?yearEnd }
+		  FILTER langMatches(lang(?name), 'en')
+		} ORDER BY ?country
+	\end{lstlisting}
+	\caption{SPARQL for listing every country}
+	\label{fig:sparqlcountry}
+\end{figure}
 
 
 \subsection{SPARQL Queries}
+One of the challenges with querying the DBPedia dataset derives from the requirement for generating lists (requirement F17). While it is trivial to list every actor using a basic query, it is important to give meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~, the user will not get much use out of those results. The solution here was to use 
 \begin{itemize}
 	\item Searching
 	\item Lists - return order - vrank
@@ -241,6 +260,7 @@ Sets and maps
 \subsection{Spring Framework}
 
 \subsection{Dataset Inconsistencies}
+\label{sec:dataset}
 \begin{itemize}
 	\item Actors 
 	\item Countries - England displayed as a dbo:MusicalArtist

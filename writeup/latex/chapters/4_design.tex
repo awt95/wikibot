@@ -65,6 +65,7 @@ Table here
 \newpage
 \section{Architecture}
 \subsection{System Design}
+\label{sec:systemdesign}
 The overall implementation will have a number of interacting modules in order to accept user input, perform processing, and generate an output based on information from the DBPedia database. Figure~\ref{fig:design_system} provides a visual representation of this. The user input is matched against the set of chatbot AIML patterns, which determine the query requirements. The query is then built based on the values provided by the user and set by the AIML system. The SPARQL query is executed against the DBPedia live database, and the results are received and processed by the response builder. The response is displayed to the user. Although the architecture is simple, many considerations have to be made by each module, especially when dealing with users who may ask a range of questions in several different ways.
 
 \begin{figure}[h]

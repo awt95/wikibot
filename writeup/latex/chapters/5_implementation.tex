@@ -220,10 +220,20 @@ Spring Data can provide CRUD operations (create, read, update, delete) for an OR
 	\qquad
 	\subfloat[WebController logic \label{subfig:webcontroller}]{{\includegraphics[width=\textwidth]{webcontroller} }}%
 	\caption{Controller logic}
-	\label{fig:aiml-pronouns}
+	\label{fig:controller}
 \end{figure}
 
 \newpage
+\section{Additional Queries}
+Once the initial system had been implemented, it became clear that adding additional queries for attributes was trivial. For example, the query pattern seen in Figure~\ref{fig:aiml1}, which queries \code{rdfs:label} could be easily replicated for the remaining attributes in the requirements specification. This allowed us to easily add additional queries beyond the scope of the requirements. As such, additional functions were added that could be useful for the user which were not identified in the specification. These include:
+\begin{itemize}
+	\item Person known for
+	\item Person influences
+	\item Person influenced by
+\end{itemize}
+Although this contradicts the scope of the project outlined in the specification and Section~\ref{sec:scope}, I believe these extensions provide a more complete final implementation, and act as a proof-of-concept for future development of the system.
+
+
 \section{Challenges}
 This section discusses some of the challenges encountered during the implementation of this project. It describes some of the solutions used to overcome these obstacles.
 
@@ -251,22 +261,66 @@ The final query used in this utility is given in Figure~\ref{fig:sparqlcountry}.
 
 
 \subsection{SPARQL Queries}
-One of the challenges with querying the DBPedia dataset derives from the requirement for generating lists (requirement F17). While it is trivial to list every actor using a basic query, it is important to give meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~, the user will not get much use out of those results. The solution here was to use 
-\begin{itemize}
-	\item Searching
-	\item Lists - return order - vrank
-\end{itemize}
+One of the challenges with querying the DBPedia dataset derives from the requirement for generating lists (requirement F17). While it is trivial to list every actor using a basic query, it is important to give meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~\ref{subfig:unranked}. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~\ref{subfig:unrankedresults}, the user will not get much use out of those results, especially because named beginning with special characters such as brackets are shown first.
 
-\subsection{Spring Framework}
+The solution here was to use a computed PageRank \cite{rank2014}. These PageRank scores can be integrated into our query using the vRank implementation by \citet{rank2012} to provide a numerical PageRank value for DBPedia resources. The query and results are shown in Figure~\ref{fig:ranked}, which provides considerably more `useful' responses because the highest ranked results are shown first.
+
+\newsavebox\unrankbox
+\begin{lrbox}{\unrankbox}
+	\begin{lstlisting}
+		SELECT * WHERE {
+		?person a dbo:Actor .
+		?person foaf:name ?name .
+		} ORDER BY ASC(?name)
+		LIMIT 10
+	\end{lstlisting}
+\end{lrbox}
+
+\begin{figure}[p]
+	\centering
+	\subfloat[SPARQL query for sorted list \label{subfig:unranked}]{\usebox\unrankbox} \qquad
+	\subfloat[Results of query \label{subfig:unrankedresults}]{{\includegraphics[width=.4\textwidth, valign=m]{vrank1} }}
+	\caption{Ordering a list alphabetically}
+	\label{fig:unranked}
+\end{figure}
+
+\newsavebox\rankbox
+\begin{lrbox}{\rankbox}
+	\begin{lstlisting}
+		PREFIX vrank:<http://purl.org/voc/vrank#>
+		SELECT DISTINCT ?person ?v
+		FROM <http://dbpedia.org>
+		FROM <http://people.aifb.kit.edu/ath/#DBpedia_PageRank>
+		WHERE {
+		?person a dbo:Actor .
+		?person foaf:name ?name .
+		?person vrank:hasRank/vrank:rankValue ?v .
+		} ORDER BY DESC(?v)
+		LIMIT 10
+	\end{lstlisting}
+\end{lrbox}
+
+\begin{figure}[p]
+	\centering
+	\subfloat[SPARQL query for ranked list \label{subfig:ranked}]{\usebox\rankbox} \qquad
+	\subfloat[Results of query \label{subfig:rankedresults}]{{\includegraphics[width=.25\textwidth, valign=m]{vrank2} }}
+	\caption{Ordering a list by PageRank}
+	\label{fig:ranked}
+\end{figure}
 
 \subsection{Dataset Inconsistencies}
 \label{sec:dataset}
-\begin{itemize}
-	\item Actors 
-	\item Countries - England displayed as a dbo:MusicalArtist
-\end{itemize}
+One of the challenges I encountered working with DBPedia is inconsistencies in the dataset. For example, when working with the Country ontology, one of the tasks was to extract a list of all countries. While testing this function, however, England was not appearing in the list. Upon investigation, this was caused by an error in the dataset - the England resource was flagged as belonging to the \code{MusicalArtist} ontology as opposed to the \code{Country} ontology (Figure~\ref{fig:england}).
 
+The quick-fix solution here was to simply add this value manually to the list of known countries. However, it highlighted the importance of understanding the drawbacks of an automated, community-drived project. More robust solutions for the future may be to select countries by a different condition, but again there are some drawbacks here. For example, member states of the United Nations (\code{yago:WikicatMemberStatesOfTheUnitedNations}) would group England under United Kingdom. The YAGO\footnote{https://github.com/yago-naga/yago3} Country ontology contains England, but also many historical kingdoms and counties. I highlighted this error to the DBPedia community, but it is important to note that the dataset may not be completely correct.
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=.5\textwidth]{england}
+	\caption{Inconsistency with England resource}
+	\label{fig:england}
+\end{figure}
 
 \section{Conclusion}
-
+Overall, the implementation phase of this project was broadly successful. Some phases were easier than expected and did not take as much time as expected in the plan, such as initialising the chatbot. Also, once the system for answering one query was implemented, it was simple to extend this to many other queries. However, being able to distinguish query topics between people and countries did provide a challenge, and the solution for this is not without issue. In the next chapter we test the entire system to determine how effective it is, and whether the users accept it as a working, valid system.
 

@@ -70,10 +70,12 @@ public class DBPedia {
                 String resourceURI = resource.asResource().getURI();
                 String name = solution.get("name").asLiteral().getString();
                 String content = solution.get("comment").asLiteral().getString();
-                String thumbnail = solution.get("thumbnail").asResource().getURI(); //?
+                String thumbnail = solution.get("thumbnail").asResource().getURI();
+                String wikipediaURL = solution.get("url").asResource().getURI();
                 botResponse.setTitle(name);
                 botResponse.setContent(content);
                 botResponse.setImageURL(thumbnail);
+                botResponse.setWikipediaURL(wikipediaURL);
             } else {
                 botResponse.setContent("Something went wrong");
             }

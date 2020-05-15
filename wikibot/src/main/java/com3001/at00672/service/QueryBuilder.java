@@ -42,12 +42,13 @@ public class QueryBuilder {
         sb.append(" PREFIX prop: <http://dbpedia.org/property/>");
         sb.append(" PREFIX foaf: <http://xmlns.com/foaf/0.1/>");
         sb.append(" PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>");
-        sb.append(" SELECT DISTINCT ?person ?thumbnail ?name ?comment WHERE {");
+        sb.append(" SELECT DISTINCT ?person ?thumbnail ?name ?comment ?url WHERE {");
         sb.append("  ?person a dbo:Person .");
         sb.append("?person foaf:name ?name .");
         sb.append(String.format("  ?name <bif:contains> \"'%s'\" .", userQuery.get("value")));
         sb.append("  ?person rdfs:comment ?comment .");
         sb.append("  ?person dbo:thumbnail ?thumbnail .");
+        sb.append("?person foaf:isPrimaryTopicOf ?url .");
         sb.append(" FILTER  langMatches(lang(?comment), 'en')");
         sb.append("} LIMIT 1");
 

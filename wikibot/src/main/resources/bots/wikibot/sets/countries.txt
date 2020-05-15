@@ -89,6 +89,7 @@ East Timor
 Ecuador
 Egypt
 El Salvador
+England
 Equatorial Guinea
 Eritrea
 Estonia
@@ -223,6 +224,7 @@ Norfolk Island
 North Borneo Federation
 North Korea
 Northern Cyprus
+Northern Ireland
 Northern Mariana Islands
 Northern Region, Nigeria
 Norway
@@ -277,6 +279,7 @@ Samoa
 San Marino
 Saudi Arabia
 Savoy
+Scotland
 Seneca Nation of Indians
 Senegal
 Serbia

@@ -19,7 +19,7 @@
     </category>
 
     <category>
-        <pattern>HELP</pattern>
+        <pattern>EXAMPLES</pattern>
         <template>
             <think><set name="topic">conversation</set></think>
             I can answer Wikipedia queries you ask me. You can ask me about people and countries at the moment. Here are some examples:
@@ -33,17 +33,19 @@
     </category>
 
     <category>
-        <pattern>EXAMPLES</pattern>
-        <template><srai>HELP</srai></template>
-    </category>
-
-    <category>
         <pattern>WHAT CAN YOU DO</pattern>
-        <template><srai>HELP</srai></template>
+        <template><srai>EXAMPLES</srai></template>
     </category>
 
     <category>
         <pattern>WHAT ARE YOUR FUNCTIONS</pattern>
-        <template><srai>HELP</srai></template>
+        <template><srai>EXAMPLES</srai></template>
+    </category>
+
+    <category>
+        <pattern>HELP</pattern>
+        <template>
+            I can answer your Wikipedia queries. If you want to see examples, ask me 'Examples'. If I get stuck, you can reset with 'CLEAR'.
+        </template>
     </category>
 </aiml>

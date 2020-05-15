@@ -21,13 +21,6 @@ public class WebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         org.apache.log4j.BasicConfigurator.configure();
-        // initialise chatbot
-        String botName = "wikibot";
-        // TODO: Cleanup unused vars
-        String dir = System.getProperty("user.dir");
-        Bot bot = new Bot(botName, dir + "/src/main/resources");
-        Chat chatSession = new Chat(bot);
-
         // start web app
         SpringApplication.run(WebApplication.class, args);
     }

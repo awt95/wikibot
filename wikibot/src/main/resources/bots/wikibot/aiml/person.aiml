@@ -12,8 +12,12 @@
                     <srai><star/> BIRTHDATE</srai>
                 </li>
                 <li value="birthPlace">
-                    <srai><star/> BIRTHPLACE</srai> <!-- TODO: Add remaining values -->
+                    <srai><star/> BIRTHPLACE</srai>
                 </li>
+                <li value="deathDate">
+                    <srai><star/> DEATHDATE</srai>
+                </li>
+
                 <li value="comment">
                     <srai>WHO IS <star/></srai>
                 </li>
@@ -67,9 +71,26 @@
             <srai>WHO IS <star/></srai>
         </template>
     </category>
-
+    <!-- TODO: Replace with photo query -->
+    <category>
+        <pattern>PICTURE OF *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>PHOTO OF *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT DOES * LOOK LIKE</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
     <!-- dbo:birthDate -->
-    <!-- TODO: Pronoun subsitution/condition  -->
     <category>
         <pattern>* BIRTHDATE</pattern>
         <template>
@@ -207,7 +228,24 @@
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
     </category>
-
+    <category>
+        <pattern>* DEATH DATE</pattern>
+        <template>
+            <srai><star/> DEATHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHEN DID * DIE</pattern>
+        <template>
+            <srai><star/> DEATHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* DIED</pattern>
+        <template>
+            <srai><star/> DEATHDATE</srai>
+        </template>
+    </category>
     <category>
         <pattern>HOW OLD IS *</pattern>
         <template>
@@ -254,7 +292,20 @@
     </category>
 
     <!-- influenced -->
+    <category>
+        <pattern>WHO DID * INFLUENCE</pattern>
+        <template>
+            <think>
+                <set name="function">query</set>
+                <set name="topic">Person</set>
+                <set name="iri">dbo:influenced</set>
+                <set name="property">influenced</set>
+                <set name="rlimit">5</set>
 
+            </think>
+            <srai>BOT_QUERY_CONTEXT <star/></srai>
+        </template>
+    </category>
 
     <!-- dbo:Field -->
 

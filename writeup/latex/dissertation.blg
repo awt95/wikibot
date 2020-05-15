@@ -30,45 +30,45 @@ Warning--missing publisher in tulshan2019survey
 Warning--empty journal in shawar2011corpus
 
 Done.
-You've used 94 entries,
+You've used 100 entries,
             4855 wiz_defined-function locations,
-            1406 strings with 24155 characters,
-and the built_in function-call counts, 65616 in all, are:
-= -- 5707
-> -- 1976
-< -- 305
-+ -- 968
-- -- 486
-* -- 3416
-:= -- 10486
-add.period$ -- 191
-call.type$ -- 94
-change.case$ -- 192
-chr.to.int$ -- 670
-cite$ -- 96
-duplicate$ -- 4477
-empty$ -- 5102
-format.name$ -- 643
-if$ -- 14543
-int.to.chr$ -- 4
-int.to.str$ -- 95
-missing$ -- 812
-newline$ -- 384
-num.names$ -- 282
-pop$ -- 2487
+            1436 strings with 24969 characters,
+and the built_in function-call counts, 70019 in all, are:
+= -- 6124
+> -- 2071
+< -- 329
++ -- 1017
+- -- 508
+* -- 3638
+:= -- 11179
+add.period$ -- 203
+call.type$ -- 100
+change.case$ -- 204
+chr.to.int$ -- 711
+cite$ -- 102
+duplicate$ -- 4793
+empty$ -- 5445
+format.name$ -- 678
+if$ -- 15543
+int.to.chr$ -- 5
+int.to.str$ -- 101
+missing$ -- 862
+newline$ -- 406
+num.names$ -- 300
+pop$ -- 2625
 preamble$ -- 1
-purify$ -- 94
+purify$ -- 100
 quote$ -- 2
-skip$ -- 4773
+skip$ -- 5120
 stack$ -- 0
-substring$ -- 1650
-swap$ -- 2859
-text.length$ -- 51
+substring$ -- 1769
+swap$ -- 3070
+text.length$ -- 58
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1384
+type$ -- 1478
 warning$ -- 2
-while$ -- 292
+while$ -- 312
 width$ -- 0
-write$ -- 1086
+write$ -- 1157
 (There were 2 warnings)

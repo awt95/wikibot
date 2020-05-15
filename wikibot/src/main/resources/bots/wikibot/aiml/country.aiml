@@ -49,28 +49,28 @@
 
     <!-- Capital of -->
     <category>
-        <pattern>CAPITAL OF *</pattern>
+        <pattern>^ CAPITAL OF *</pattern>
         <template>
             <think>
                 <set name="topic">Country</set>
                 <set name="function">query</set>
                 <set name="property">capital</set>
                 <set name="iri">dbo:capital</set>
-                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+                <set name="value">dbr:<map name="country2dbr"><star index="2"/></map></set>
             </think>
         </template>
     </category>
 
     <!-- Population of  -->
     <category>
-        <pattern>POPULATION OF *</pattern>
+        <pattern>^ POPULATION OF *</pattern>
         <template>
             <think>
                 <set name="topic">Country</set>
                 <set name="function">query</set>
                 <set name="property">population</set>
                 <set name="iri">dbo:populationTotal</set>
-                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+                <set name="value">dbr:<map name="country2dbr"><star index="2"/></map></set>
             </think>
         </template>
     </category>

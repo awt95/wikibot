@@ -49,12 +49,11 @@ public class ChatbotService {
     }
 
     public void processResponse(UserQuery userQuery, Message botResponse) {
-        System.out.println(userQuery.toString());
         if (queryKeywords.contains(userQuery.get("function"))) {
             // generate query
             String dbQuery = QueryBuilder.generateQuery(userQuery);
             userQuery.setQueryString(dbQuery);
-            System.out.println(dbQuery);
+            //System.out.println(dbQuery);
 
             if (userQuery.getQueryString() != "") {
                 DBPedia.executeQuery(userQuery, botResponse);

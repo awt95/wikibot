@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Long> {
-    public List<Message> findBySessionEquals(String sessionId);
+    List<Message> findBySessionEquals(String sessionId);
 }

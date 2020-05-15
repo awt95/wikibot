@@ -89,6 +89,7 @@ East Timor:East_Timor
 Ecuador:Ecuador
 Egypt:Egypt
 El Salvador:El_Salvador
+England:England
 Equatorial Guinea:Equatorial_Guinea
 Eritrea:Eritrea
 Estonia:Estonia
@@ -277,6 +278,7 @@ Samoa:Samoa
 San Marino:San_Marino
 Saudi Arabia:Saudi_Arabia
 Savoy:Savoy
+Scotland:Scotland
 Seneca Nation of Indians:Seneca_Nation_of_Indians
 Senegal:Senegal
 Serbia:Serbia

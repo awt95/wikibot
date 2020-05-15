@@ -41,7 +41,7 @@ Based on the research in Chapter~\ref{ch:lit}, there are a number of candidates 
 			& Chatbot techniques survey by \citet{abdul2015survey}.
 			& Shopping chatbot by \citet{horzyk2009intelligent}.
 			\\
-  
+  			\bottomrule
 				
 	\end{tabularx}
 	\caption{Comparison of programming language candidates.}
@@ -65,6 +65,7 @@ Table here
 \newpage
 \section{Architecture}
 \subsection{System Design}
+\label{sec:systemdesign}
 The overall implementation will have a number of interacting modules in order to accept user input, perform processing, and generate an output based on information from the DBPedia database. Figure~\ref{fig:design_system} provides a visual representation of this. The user input is matched against the set of chatbot AIML patterns, which determine the query requirements. The query is then built based on the values provided by the user and set by the AIML system. The SPARQL query is executed against the DBPedia live database, and the results are received and processed by the response builder. The response is displayed to the user. Although the architecture is simple, many considerations have to be made by each module, especially when dealing with users who may ask a range of questions in several different ways.
 
 \begin{figure}[h]
@@ -88,7 +89,7 @@ Figure~\ref{fig:design_activity} shows the flow of events through the system, fr
 \end{figure}
 
 \section{Conversation Flowchart}
-One of the requirements of the system is maintaining the context of the conversation through multiple lines of dialogue. This means that if a user has asked a question about a person -- ``Who is Alan Turing?'' --, they can then ask follow-up questions -- ``What is he known for?''. This prevents the user having to repeat the subject of each question, allowing for a more natural conversation flow. Figure~\ref{fig:flowchart} shows a flowchart for this conversation flow, and how the chatbot will set and maintain the conversation context.
+One of the requirements of the system is maintaining the context of the conversation through multiple lines of dialogue. This means that if a user has asked a question about a person -- ``Who is Alan Turing?'' -- they can then ask follow-up questions, such as ``What is he known for?''. This prevents the user having to repeat the subject of each question, allowing for a more natural conversation flow. Figure~\ref{fig:flowchart} shows a flowchart for this conversation flow, and how the chatbot will set and maintain the conversation context.
 
 \begin{figure}[h]
 	\begin{center}

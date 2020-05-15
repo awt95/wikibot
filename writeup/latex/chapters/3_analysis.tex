@@ -1,7 +1,7 @@
 \chapter{Analysis}
 \label{ch:analysis}
 \section{Introduction}
-Following the structure of the Software Development Life Cycle (SDLC) \hilight{ref?}, the analysis section ensures that the proposed application meets the requirements of the end user. Once the requirements are gathered, a list of requirements is proposed and accepted by the end users, and the requirements are prioritised according to how important each is for the user to meet a minimum functional system.
+Following the structure of the Software Development Life Cycle (SDLC) \cite{sdlc2010}, the analysis section ensures that the proposed application meets the requirements of the end user. Once the requirements are gathered, a list of requirements is proposed and accepted by the end users, and the requirements are prioritised according to how important each is for the user to meet a minimum functional system.
 
 \section{Requirements Gathering}
 In order to build a successful solution, the requirements of the system are first gathered. This begins with assessing current solutions and related works to establish what makes them successful, as well as identifying any shortcomings in these solutions. I then communicate with the end users, to determine the features the chatbot system should have.
@@ -53,6 +53,8 @@ This section defines the functional and non-functional requirements the system m
 	\begin{itemize}
 		\item The chatbot can answer advanced queries about Person articles:
 		\begin{enumerate}[resume*]
+			\item Person List Query - The user should be able to find a list of people who meet a certain criteria. \\
+			e.g. ``People born in 1980'' or ``List of actors born in London''
 			\item Person AND Query - The user should be able to combine queries using ‘AND’ to find people who satisfy two conditions. \\For example, "People who were born in 1980 AND were born in London"
 			\item Context-aware Conversation - The user should be able to ask sequential queries about a topic and the chatbot will be able to answer queries within that context. \\ For example, the user first asks ‘Where was X born’, the chatbot responds, and the user asks a follow up question ‘What about Y?’. The chatbot will then respond to the second query with an answer that satisfies the query ‘where was Y born’.
 		\end{enumerate}
@@ -105,11 +107,12 @@ In order to meet the deadline of the project, some features may not be implement
 		F14. Country Description Query & Low & Testers were unsure whether a description of a country is useful. They would probably use it more for facts and figures. \\
 		F15. Country Population Query & Medium & This statistic may be useful for comparing countries. \\
 		F16. Country Capital Query & High & Testers said this would likely be the most sought-after information. \\
-		F17. Person AND Query & Low & Could be useful for more advanced searches. \\
-		F18. Context-aware Conversation & Medium & Helpful for usability of bot, could be a standout feature for system. \\
-		F19. Chatbot Greeting & Medium & Helps with `friendliness' of bot. \\
-		F20. Chatbot Examples & High & Useful to know what the users could ask. \\
-		F21. Chatbot Help & High & Helpful if users get stuck or are using the system for the first time. \\
+		F17. Person List Query & Medium & Provides unique functionality for the user \\
+		F18. Person AND Query & Low & Could be useful for more advanced searches. \\
+		F19. Context-aware Conversation & Medium & Helpful for usability of bot, could be a standout feature for system. \\
+		F20. Chatbot Greeting & Medium & Helps with `friendliness' of bot. \\
+		F21. Chatbot Examples & High & Useful to know what the users could ask. \\
+		F22. Chatbot Help & High & Helpful if users get stuck or are using the system for the first time. \\
 		
 	\end{tabularx}
 	\caption{Software requirements prioritisation.}
@@ -118,6 +121,7 @@ In order to meet the deadline of the project, some features may not be implement
 
 \newpage
 \section{Project Scope}
+\label{sec:scope}
 As conversations with chatbots can be open-ended, it will be necessary to restrict the scope of the project to the requirements specified in Section~\ref{sec:requirements}. While it may be tempting to add a variety of features and conversation topics with the chatbot, a successful result will be that the requirements of the system are met and can be successfully validated.
 
 One of the main aims of the project from Section~\ref{sec:aims} was to develop a successful system that can be expanded in the future. Based on the current requirements, it is feasible that future extensions to the project will be possible, based on the system implemented in this stage of the project.

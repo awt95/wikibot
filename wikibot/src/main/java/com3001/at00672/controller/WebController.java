@@ -41,12 +41,8 @@ public class WebController {
         message.setSession(session.getId());
         messageRepository.save(message);
         // get response
-        //Message response = new Message("Response to: " + message.getContent(), Sender.BOT);
         Message response = chatbotService.chatbotRequest(message);
         response.setSession(session.getId());
-        //UserQuery query = new UserQuery(chatbotService.chatSession.predicates);
-
-        //chatbotService.processResponse(query, response);
         messageRepository.save(response);
         model.addAttribute("chat", messageRepository.findBySessionEquals(session.getId()));
         return "index";

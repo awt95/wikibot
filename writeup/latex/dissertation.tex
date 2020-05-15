@@ -17,6 +17,10 @@
 \usepackage{subfig}
 \usepackage{listings}
 \usepackage{courier}
+\usepackage{outlines}
+\usepackage{pdflscape}
+\usepackage{ltablex}
+\usepackage[export]{adjustbox}
 
 %hyphenation rules
 \hyphenation{internet}
@@ -32,12 +36,19 @@
 	breakatwhitespace=true,
 }
 
+%% New column, define the width as #1, the m-column will align all
+%% content in ther vertical middle, \centering will align it in the
+%% horizontal middle.
+\newcolumntype{C}[1]{%
+	>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 \graphicspath{ {./figures/} }
 
 \bibliographystyle{IEEEtranN}
 
 \newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
 \def\UrlBreaks{\do\/\do-}
+\def\code#1{\texttt{#1}}
 \begin{document} 
 
 	%title

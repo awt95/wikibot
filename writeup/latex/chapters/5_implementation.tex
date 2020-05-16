@@ -53,7 +53,7 @@ An initial program was written for experimenting with AIML and the example bot, 
 \end{figure}
 
 \newpage
-Having experimented with the example chatbot, my next task was to initialise my own chatbot. The Program AB Bot has a number of functions to load its required files from a directory. The file structure is as follows:
+Having experimented with the example chatbot, the next task was to initialise a new chatbot. The Program AB Bot has a number of functions to load its required files from a directory. The file structure is as follows:
 
 \begin{outline}
 	\1 \textbf{bots} The parent bots directory
@@ -85,7 +85,7 @@ So in our `hello' example, the given pattern will match any of the following inp
 
 \newpage
 \subsection{DBPedia}
-Now that the basic chatbot system has been set up, we need to provide functionality to the system by querying our datasource. DBPedia was selected based on the research in Section~\ref{sec:dbpedia}, because it provides an organised dataset from Wikipedia articles. It can be queried via a SPARQL endpoint, and returns data in an RDF format, which can be processed by our system.
+Now that the basic chatbot system has been set up, we need to provide functionality to the system by querying our datasource. DBPedia was selected based on the research in Section~\ref{sec:dbpedia}, because it provides an organised dataset extracted from Wikipedia articles. It can be queried via a SPARQL endpoint\footnote{http://dbpedia.org/sparql}, and returns data in an RDF format, which can be processed by our system.
 
 There are a number of online resources which allow us to experiment with querying DBPedia. My preferred resource is SPARQL Explorer \footnote{http://dbpedia.org/snorql/}, which allows us to write queries and see the result in several formats, including a tabular format. For example, if we want to find musicians born in Manchester, we can construct the following SPARQL query:
 \begin{figure}[h]
@@ -103,12 +103,12 @@ There are a number of online resources which allow us to experiment with queryin
 	\label{fig:sparql1}
 \end{figure}
 
-Executing this query returns a list of the first 50 results of musicians born in Manchester, as shown in Figure~\ref{fig:sparql1}. The format of SPARQL queries has some similarities with SQL queries, using keywords such as \code{SELECT} and \code{WHERE}. In this query, we are filtering to find each person that has the property \code{dbo:MusicalArtist}, which is shorthand for \url{http://dbpedia.org/ontology/MusicalArtist}, referencing the DBPedia ontology. We are setting the variable \code{?name} to the property \code{rdfs:label} which contains the name attribute of the person; the same applies for \code{dbo:birthPlace} referencing their birth place. Finally, we are filtering the results; we want the results to only contain musicians whose birth place is Manchester; next we filter the \code{?name} results by language, to remove any duplicate results where the name is given in multiple languages.
+Executing this query returns a list of the first 50 results of musicians born in Manchester, as shown in Figure~\ref{fig:sparql1}. The format of SPARQL queries has some similarities with SQL queries, using keywords such as \code{SELECT} and \code{WHERE}. In this query, we are filtering to find each person that has the property \code{dbo:MusicalArtist}, which is shorthand for \url{http://dbpedia.org/ontology/MusicalArtist}, which references the DBPedia ontology. We are setting the variable \code{?name} to the property \code{rdfs:label} which contains the name attribute of the person; the same applies for \code{dbo:birthPlace} referencing the birth place attribute. Finally, we are filtering the results; we want the results to only contain musicians whose birth place is Manchester. We also filter the \code{?name} results by language, to remove any duplicate results where the name is given in multiple languages.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=8cm]{snorql}
-	\caption{SPARQL query results}
+	\caption{SPARQL query results (truncated)}
 	\label{fig:sparql2}
 \end{figure}
 
@@ -130,12 +130,12 @@ For executing and processing more functional queries, we have to first generate 
 	\subfloat[Testing query code]{{\includegraphics[width=.70\textwidth]{sparql1} }}%
 	\qquad
 	\subfloat[Result]{{\includegraphics[width=.20\textwidth]{sparql2} }}%
-	\caption{Querying the SPARQL endpoint}
+	\caption{Querying the SPARQL endpoint in Java}
 	\label{fig:querysparql}
 \end{figure}
 
 \subsection{Linking the Chatbot}
-Now that we have a basis for querying the DBPedia dataset, the chatbot now has to be able to query the endpoint. For this we need to implement the following:
+Now that we have a basis for querying the DBPedia dataset, the chatbot now has to be able to query the endpoint. For this we need to implement the following functions:
 \begin{enumerate}
 	\item AIML patterns to match user input to a query
 	\item A query builder to convert the user input into a SPARQL query
@@ -146,13 +146,13 @@ These functions align with the system architecture design seen previously in Sec
 \subsubsection{AIML Patterns}
 One of the key functions of this chatbot is to match input patterns to desired queries. There are a number of challenges that arise here. Firstly, a query can be asked in many different ways. For example, to find out the date of birth of a person, a user may ask: {\it`What is *s birthdate?', `When was * born?', `* birth date', `Tell me when * was born'}. The bot must then distinguish between these queries and {\it`how old is *'} as those are two distinct functions.
 
-Furthermore, one of the requirements of the system is that is can deal with pronouns and maintain context. As such, the user should be able to ask follow-up questions by continuing a conversation, e.g. {\it `When was he born?'} - the chatbot must remember who {\it `he'} is, and if that is not known, the chatbot must ask for more information to continue the query.
+Furthermore, one of the requirements of the system is that it can handle pronouns and maintain context. As such, the user should be able to ask follow-up questions by continuing a conversation, e.g. {\it `When was he born?'} - the chatbot must remember who {\it `he'} is, and if that is not known, the chatbot must ask for more information to continue the query.
 
-As such, the AIML patterns become more complex as the system develops to include more functions. For example, Figure~\ref{fig:aiml-comment} shows a fragment of the code for giving a description of a person (Requirement F6). The template uses a number of key features of AIML to achieve the desired functionality.
-First, the wildcard (*) is used to match the user's input into the query. Next, the \code{<think>} allows us to programatically set the {\it{predicates}} of the conversation, which act in essence as variables that can be set and retrieved throughout the conversation. These predicates are sent to the \code{ChatbotService} module to process them into a meaningful result.
+The AIML patterns become more complex as the system develops to include more functions. For example, Figure~\ref{fig:aiml-comment} shows a fragment of the code for giving a description of a person (Requirement F6). The template uses a number of key features of AIML to achieve the desired functionality.
+First, the wildcard (*) is used to match the query value. Next, the \code{<think>} tag allows us to programatically set the {\it{predicates}} of the conversation, which act in essence as variables that can be set and retrieved throughout the conversation. These predicates are used within the \code{ChatbotService} module to process them into a meaningful result.
 
 Line 14 redirects to \code{BOT\_QUERY\_CONTEXT}, the logic for which is shown in Figure~\ref{subfig:aiml1}.
-This template determines whether or not a pronoun has been used - {\it{`Who is Alan Turing?'}} versus {\it{`When was he born?'}}. Line 5 uses the \code{<map>} function. Maps can be used to link an input to a result. In this example, our bot has a file named \code{pronouns.txt} in the \code{maps} folder of the bot resources, the contents of which is shown in Figure~\ref{fig:pronouns}. The map simply maps all pronouns to \code{they}. This means that if any pronoun was used, we determine this conditionally, as in Line 9. If the value of \code{subject} is \code{they}, we then check if the context has been set. If it has, we run the query using the subject that has been previously set. If not, we then ask the user for more information by redirecting to the template shown in Figure~\ref{subfig:aiml2}.
+This template determines whether or not a pronoun has been used - {\it{`Who is Alan Turing?'}} versus {\it{`When was he born?'}}. Line 5 uses the \code{<map>} function. Maps can be used to link an input to a result. In this example, our bot has a file named \code{pronouns.txt} in the \code{maps} directory of the bot resources; the contents of which is shown in Figure~\ref{fig:pronouns}. The map simply transforms any pronoun to \code{they}. This means that if a pronoun was used, we determine this conditionally, as in Line 9. If the value of \code{subject} is \code{they}, we then check if the context has been set. If it has, we run the query using the subject that has been previously set. If not, we then ask the user for more information by redirecting to the template shown in Figure~\ref{subfig:aiml2}.
 
 \begin{figure}[h]
 	\centering
@@ -175,7 +175,7 @@ This template determines whether or not a pronoun has been used - {\it{`Who is A
 	\label{fig:aiml-comment}
 	\subfloat[AIML to decide query context\label{subfig:aiml1}]{{\includegraphics[width=.6\textwidth]{aiml-context} }}%
 	\qquad
-	\subfloat[AIML to redirect pronoun queries\label{subfig:aiml2}]{{\includegraphics[width=.4\textwidth]{aiml-redirect} }}%
+	\subfloat[AIML to redirect pronominal queries\label{subfig:aiml2}]{{\includegraphics[width=.4\textwidth]{aiml-redirect} }}%
 	\caption{AIML logic to handle pronouns}
 	\label{fig:aiml-pronouns}
 \end{figure}
@@ -184,7 +184,7 @@ This template determines whether or not a pronoun has been used - {\it{`Who is A
 \subsubsection{Query Builder}
 We can build a query based on the predicates that we set in the AIML patterns. Most of the simple queries follow a similar pattern to that seen in Figure~\ref{fig:sparql1} - selecting a property given a set of conditions. For these queries we can build a query string, inserting the values provided by the user from the AIML predicates.
 
-In the final system ... UserQuery ... \hilight{continue}
+In the final system, an instance of the UserQuery class is used to maintain the attributes of the user's query. We store the predicates in a \code{HashMap}, which are retrieved from the \code{alicebot.ab.Chat} instance. We can then make decisions about how the query is built in the \code{QueryBuilder} class. Based on these predicates, the \code{QueryBuilder} can construct an appropriate query for the \code{DBPedia} service to execute. One of the issues for future extension of the project is that some queries must have separate methods for execution. For example, a list query has to be generated and executed differently from an abstract query. The final solution has been developed to handle the queries established in the requirements, but adding further features would require manually adding AIML patterns and query functions - this drawback is discussed at length in Chapter~\ref{ch:conclusion}.
 
 \subsubsection{DBPedia Service}
 The role of the \code{DBPedia} class is to execute queries and return a result. This class is divided into a number of methods for each type of query. For example, executing a query about a person in \code{executePersonQuery()} requires different logic to \code{executeAgeQuery()} where further processing has to take place. Each method makes changes to the \code{Message} instance which contains the chatbot's response. The \code{Message} object has a number of attributes relating to the content and information stored in the message. It also has a list of \code{MessageItems}, where a \code{Message} may contain a list of multiple items. The information stored here is processed by the web interface in order to display the information in the correct format, as discussed in the next section.
@@ -201,7 +201,7 @@ In order to manage the web application, our \code{WebController} routes requests
 
 For displaying the web views, Thymeleaf \footnote{https://www.thymeleaf.org/} is used in this project because it integrates well with Spring, and gives us a lot of flexibility with conditionally styling and displaying elements. Bootstrap \footnote{https://getbootstrap.com/} is also used as a CSS library to homogenize the front-end design, and allow for quickly configuring elements.
 
-The final user interface is shown in Figure~\ref{fig:final-ui}. The layout is simple, with a \code{navbar} element at the top and the main body containing the chat window, which contains the messages sent between the user and the bot. The messages are retrieved from the \code{MessageRepository} by the controller, which are iterated over by the Thymeleaf function in the \code{index.html} page. These messages are conditionally formatted, based on the \code{Sender} attribute of the message. We can see that the larger message is formatted to contain an image and a link - this is based on the \code{MessageType} attribute being equal to \code{ABSTRACT} - this was initially flagged by the bot AIML pattern when the user entered the query `who is alan turing'.
+The final user interface is shown in Figure~\ref{fig:final-ui}. The layout is simple, with a \code{navbar} element at the top and the main body containing the chat window, which contains the messages sent between the user and the bot. The messages are retrieved from the \code{MessageRepository} by the controller, which are iterated over by the Thymeleaf function in the \code{index.html} page. These messages are conditionally formatted, based on the \code{Sender} attribute of the message. We can see that the larger message is formatted to contain an image and a link - this is based on the \code{MessageType} attribute being equal to \code{ABSTRACT} - this was initially flagged by the bot AIML pattern when the user entered the query {\it`who is alan turing'}.
 
 \begin{figure}[h]
 	\centering
@@ -212,7 +212,7 @@ The final user interface is shown in Figure~\ref{fig:final-ui}. The layout is si
 
 \newpage
 \subsection{Hibernate Database}
-In order to maintain a conversation history with the chatbot, as well as manage multiple users, a database is required to store messages. However, storing user data has legal and ethical considerations - this is discussed in detail in Chapter~\ref{ch:ethics}. For this implementation, I made a conscious effort to store as little information about the user as possible. Hibernate H2 \footnote{http://www.h2database.com/html/main.html} allows us to persist data in our web application, as well as provide object-relational mapping (ORM) to the database. H2 allows us to create an in-memory database, so that data is not stored and is lost when the application is restarted.
+In order to maintain a conversation history with the chatbot, as well as manage multiple users, a database is required to store messages. However, storing user data has legal and ethical considerations - this is discussed in detail in Chapter~\ref{ch:ethics}. For this implementation, I made a conscious effort to store as little information about the user as possible. Hibernate H2 \footnote{http://www.h2database.com/html/main.html} allows us to persist data in our web application, as well as provide object-relational mapping (ORM) between the objects and the database. H2 allows us to create an in-memory database, so that data is not stored on the disk and is lost when the application is restarted.
 
 The schema of the database is automatically generated on start-up, based on the Spring \code{Entities} in our application. For this application we have the \code{Message} entity, which stores the content and metadata of each message. We also have the \code{MessageItem} entity, which can form the basis of a \code{LIST} message, where each \code{MessageItem} may have metadata such as a URI. In the \code{Message} entity, we define the relationship between \code{Message} and \code{MessageItem} as \code{OneToMany}, as we can have multiple \code{MessageItems} in a single \code{Message}. The attributes of \code{Message} are shown in Figure~\ref{fig:message}, which shows the tags used to achieve this objective.
 
@@ -224,7 +224,7 @@ The schema of the database is automatically generated on start-up, based on the 
 \end{figure}
 
 
-Spring Data can provide CRUD operations (create, read, update, delete) for an ORM using a repository interface; here we are using \code{CrudRepository}. This allows us to easily add messages to the conversation. This interface is provided by the \code{MessageRepository} class - a similar one is required for \code{MessageItemRepository} to provide an interface for the \code{MessageItem} entities. The \code{MessageRepository} interface provides functionality to the \code{WebController}, including adding additional functions such as finding messages by Session ID. The code for this is shown in Figure~\ref{subfig:message}, and is used in Figure~\ref{subfig:webcontroller} to save messages to the database.
+Spring Data provides CRUD operations (create, read, update, delete) for the ORM using a repository interface; here we are using \code{CrudRepository}. This allows us to easily add messages to the conversation. This interface is provided by the \code{MessageRepository} class - a similar one is required for \code{MessageItemRepository} to provide an interface for the \code{MessageItem} entities. The \code{MessageRepository} interface provides functionality to the \code{WebController}, including adding additional functions such as finding messages by Session ID. The code for this is shown in Figure~\ref{subfig:message}, and is used in Figure~\ref{subfig:webcontroller} to save messages to the database.
 
 \begin{figure}[h]
 	\centering
@@ -252,9 +252,9 @@ This section discusses some of the challenges encountered during the implementat
 \subsection{Limitations of AIML}
 One of the fundamental challenges of using the pattern-based AIML is handling synonyms. I discovered that there are many ways that a particular question can be asked. Furthermore, since the requirements of the system pertain to both Person queries and Country queries, the system must be able to distinguish between the two topics of conversation.
 
-The use of sets and maps was key to solving this problem. In order to `teach' the chatbot what a country is, a set was created named \code{countries.txt} with a list of every country from the DBPedia dataset. These were loaded programatically using a DBPedia query in the \code{ChatbotUtils} class. One issue here was that simply querying a list of all records belonging to \code{dbo:Country} also included every historic kingdom, dominion, dynasty, caliphate, as well as some bizarre outliers - a further discussion of inconsistencies of the dataset is given in Section~\ref{sec:dataset}. Therefore to return useable data, the results had to be filtered to exclude results with a \code{dbo:dissolutionYear}, as well as include countries that included a \code{dbo:Capital}.
+The use of sets and maps was key to solving this problem. In order to `teach' the chatbot what a country is, a set was created named \code{countries.txt} with a list of every country from the DBPedia dataset. These were loaded programatically using a DBPedia query in the \code{ChatbotUtils} class. One issue here was that simply querying a list of all records belonging to \code{dbo:Country} also included every historic kingdom, dominion, dynasty, caliphate, as well as some bizarre outliers - a further discussion of inconsistencies of the dataset is given in Section~\ref{sec:dataset}. Therefore, to return valid data, the results had to be filtered to exclude records with a \code{dbo:dissolutionYear}, as well as include countries that had a \code{dbo:Capital}.
 
-The final query used in this utility is given in Figure~\ref{fig:sparqlcountry}. Given a list of all countries, we can then map the country to its Uniform Resource Locator (URI) to easily query that exact country - this is mapped in the file \code{country2dbr.txt}.
+The final query used in this function is given in Figure~\ref{fig:sparqlcountry}. Given a list of all countries, we can then map the country to its Uniform Resource Locator (URI) to easily query that exact country - this is handled in the file \code{country2dbr.txt}.
 
 \begin{figure}[h]
 	\begin{lstlisting}
@@ -273,7 +273,7 @@ The final query used in this utility is given in Figure~\ref{fig:sparqlcountry}.
 
 
 \subsection{SPARQL Queries}
-One of the challenges with querying the DBPedia dataset derives from the requirement for generating lists (requirement F17). While it is trivial to list every actor using a basic query, it is important to give meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~\ref{subfig:unranked}. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~\ref{subfig:unrankedresults}, the user will not get much use out of those results, especially because named beginning with special characters such as brackets are shown first.
+One of the challenges with querying the DBPedia dataset arises from the requirement for generating lists (requirement F17). While it is trivial to list every actor using a basic query, it is important to return meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~\ref{subfig:unranked}. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~\ref{subfig:unrankedresults}, the user will not get much use out of those results, especially because named beginning with special characters such as brackets are shown first.
 
 The solution here was to use a computed PageRank \cite{rank2014}. These PageRank scores can be integrated into our query using the vRank implementation by \citet{rank2012} to provide a numerical PageRank value for DBPedia resources. The query and results are shown in Figure~\ref{fig:ranked}, which provides considerably more `useful' responses because the highest ranked results are shown first.
 
@@ -324,7 +324,7 @@ The solution here was to use a computed PageRank \cite{rank2014}. These PageRank
 \label{sec:dataset}
 One of the challenges I encountered working with DBPedia is inconsistencies in the dataset. For example, when working with the Country ontology, one of the tasks was to extract a list of all countries. While testing this function, however, England was not appearing in the list. Upon investigation, this was caused by an error in the dataset - the England resource was flagged as belonging to the \code{MusicalArtist} ontology as opposed to the \code{Country} ontology (Figure~\ref{fig:england}).
 
-The quick-fix solution here was to simply add this value manually to the list of known countries. However, it highlighted the importance of understanding the drawbacks of an automated, community-drived project. More robust solutions for the future may be to select countries by a different condition, but again there are some drawbacks here. For example, member states of the United Nations (\code{yago:WikicatMemberStatesOfTheUnitedNations}) would group England under United Kingdom. The YAGO\footnote{https://github.com/yago-naga/yago3} Country ontology contains England, but also many historical kingdoms and counties. This led to the distinction between a {\it country} and a {\it sovereign state} and how each is defined\cite{fowler1996}; however, geopolitics is beyond the scope of this chatbot project.
+The quick-fix solution here was to simply add this value manually to the list of known countries. However, it highlighted the importance of understanding the drawbacks of an automated, community-drived project. More robust solutions for the future may be to select countries by a different condition, but again there are some shortcomings here. For example, member states of the United Nations (\code{yago:WikicatMemberStatesOfTheUnitedNations}) would group England under United Kingdom. The YAGO\footnote{https://github.com/yago-naga/yago3} Country ontology contains England, but also many historical kingdoms and counties. This led to the distinction between a {\it country} and a {\it sovereign state} and how each is defined \cite{fowler1996}; however, geopolitics is beyond the scope of this chatbot project.
 
 \begin{figure}[p]
 	\centering

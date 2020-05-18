@@ -55,12 +55,13 @@ Given the scale and scope of this project, many of the nuances and disadvantages
 In the case of Java, there are several web frameworks that can be used to handle webpage design, routing, and configuration.
 
 \subsection{Chatbot Model}
-
+\hilight{continue}
 
 \subsection{Libraries and Tools}
 This section describes the libraries and tools required to implement the chatbot system in Java. Table~ describes each library and its function.
 
 Table here
+\hilight{continue}
 
 \newpage
 \section{Architecture}
@@ -122,3 +123,37 @@ The proposed system will be a web application for a number of reasons. Firstly, 
 \end{figure}
 
 \section{Data}
+This section discusses the data design for the system. This includes a database for storing conversations, as well as introduces the AIML pattern designs that will be required for the chatbot to match inputs to responses.
+
+\subsection{Database}
+For the chatbot to be able to maintain a conversation with the user, there must be an element of storage within the system. The storage requirements are simple, as we only need to store one entity - messages. This is because the message entity will store all of the metadata, including who sent it and its contents. Therefore, the database design shown in Figure~ is simple, and maps directly to the Messages object shown in Figure~\ref{fig:class_diagram}.
+\hilight{continue}
+
+\subsection{AIML}
+The majority of the conversational logic is found in the AIML patterns. This is where the user input is matched to a pattern to produce the expected result. One of the main issues to contend with here is that a user may ask a question in many different ways. For example, to meet requirement F8 (Person Age Query), the user could ask:
+\begin{itemize}
+	\item How old is X?
+	\item What is X's age?
+	\item Age of X
+	\item X age
+	\item Tell me X's age
+\end{itemize}
+
+Therefore, the system must be able to distinguish these phrases to match to the correct output. As such, one helpful feature in AIML is \code{<srai/>}, which allows us to link a pattern to an existing one. This prevents redundant code being added and we can add many synonymous phrases to match to the same query. Table~ lists some of the AIML patterns that will be required to meet the requirements identified in Section~\ref{sec:requirements}.
+\hilight{continue}
+
+\begin{table}[h]
+	\centering
+	\begin{tabularx}{\textwidth}{XX}
+		\toprule
+		Requirement & Pattern \\
+		\midrule
+		\bottomrule
+		
+	\end{tabularx}
+	\caption{AIML patterns matched against requirements}
+	\label{tab:aiml}
+\end{table}
+
+\subsection{Conclusion}
+This section established a thorough design document from which to implement the system. This allows us to visualise how the final system should operate, and how the user should be able to interact with the chatbot. The next section documents the planning and implementation of the project.

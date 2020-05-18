@@ -1,22 +1,57 @@
 \chapter{Implementation}
 \label{ch:implementation}
 \section{Introduction}
-This chapter describes the planning and implementation phases.
+This chapter describes the planning and implementation phases. Software development methodologies are reviewed and discussed. Then, the planning steps for the project are outlined. Finally, the implementation process of the project is documented, and challenges faced during the phase are discussed and analysed.
 
 \section{Software Development Methodology}
-There are a number of methodologies we can follow to develop this system \cite{sdlc2010}, each with its own advantages in certain use cases. It is important to consider the relatively short timeframe for this project, especially with the fixed deadline. Furthermore, we have already established an initial requirements specification based on user feedback.
+There are a number of methodologies we can follow to develop this system \cite{sdlc2010}, each with its own advantages in certain use cases. It is important to consider the relatively short time frame for this project, especially with the fixed deadline. Furthermore, we have already established an initial requirements specification based on user feedback. This section reviews several development models, and justifies the selected model for this system.
+
 \subsection{Waterfall Model}
+The waterfall model \cite{royce1987managing} is characterised by its distinct phase design, starting with evaluation and ending with deployment, where one phase follows the other sequentially. The basic model is shown in Figure~\ref{fig:waterfall}, but there have been iterations of the model by \citet{royce1987managing} which provide feedback loops between the phases.
+
+This design works well where the requirements can be established at the start of the project, which would be effective in this project. However, it does not cope well when there are complications in later phases which can cause time delays; nor does it cope well when requirements are not yet known or may change throughout the process \cite{sdlc2010}.
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\linewidth]{waterfall}
+		\caption{Waterfall model \cite{sdlc2010}}
+		\label{fig:waterfall}
+	\end{figure}
+
+\subsection{V-Model}
+\hilight{continue}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{vmodel}
+	\caption{V-Model}
+	\label{fig:vmodel}
+\end{figure}
+
 \subsection{Spiral Model}
-\subsection{Iterative Model}
+\hilight{continue}
+	\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{spiral}
+	\caption{Spiral Model}
+	\label{fig:spiral}
+\end{figure}
 
 \subsection{Chosen Methodology}
+There are many methodologies not explored in this section, such as Agile, which are effective in environments with multiple team members \cite{agile}. In this project, we will be using the V-Model. This is because having distinct phases will allow for logical planning steps. It shares similarities with the waterfall model, but divides the testing and integration phases into manageable steps. Methodologies with continual user feedback, such as the spiral model, would be harder to implement because the test users for this project have other commitments, so waiting constant communication with them may delay the project.
 
-\newpage
 \section{Planning}
-As the timeline of the project is restricted and has a fixed deadline, it is important that the project is planned carefully in order to deliver a complete solution.
+As the timeline of the project is restricted and has a fixed deadline, it is important that the project is planned carefully in order to deliver a complete solution. To achieve this, a Gantt chart was produced as an effective method to visualise the tasks of the project, with associated time scales \cite{wilson2003gantt}. The completed Gantt chart is shown in Figure~\ref{fig:gantt} (note that this chart is taken from after the project was completed, where red slots are tasks which overran - this is discussed further in Chapter~\ref{ch:conclusion}). The tasks were divided in a logical manner, where the implementation tasks are associated with the functional requirements from the specification in Section~\ref{sec:requirements}. This proved to be an effective visual plan to ensure that the requirements were met in a timely manner.
+
+\section{Version Control}
+During this implementation phase, it is important to manage the source code and maintain a consistent code base. As new features are added to meet the requirements, a version control system can keep records of file changes, so that we can recall previous versions, as well as develop new features without effecting previous versions.
+
+For this project, Git will be used because of its popularity and personal familiarity with the tool. Git allows for branching, which will be useful when implementing a new function, merging, and comments to allow for a maintainable repository.
+
+\section{Dependency Management}
+As the project will depend on a number of external libraries, it is important to manage these dependencies in a consistent and repeatable way. For this project, Apache Maven\footnote{https://maven.apache.org/} is used because of the high availability of the required repositories for this project, including Spring and Program AB. Maven also provides a number of tools for building and deploying the project, which becomes important during the testing phase when the project is deployed to an external web server.
 
 \begin{landscape}
-	\begin{figure}
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.9\hsize]{gantt}
 		\caption{Gantt chart for planning}
@@ -24,14 +59,10 @@ As the timeline of the project is restricted and has a fixed deadline, it is imp
 	\end{figure}
 \end{landscape}
 
-\newpage
-\section{Version Control}
-Git - branches
 
-\section{Dependency Management}
 
 \section{Implementation Process}
-Following the Gantt chart, ...
+Following the Gantt chart and the development methodology, the implementation process was carried out iteratively. This section documents some of the key steps in the development process, how these were achieved, and gives some explanation to how the logic was created to meet the requirements of the system.
 
 \subsection{Initialisation}
 The first step of the implementation was to initialise a Git repository and a Java environment with Maven dependency management. Since the project would depend on many libraries for displaying and processing data, Maven is able to manage versioning and interdependencies of these libraries.
@@ -43,7 +74,7 @@ Once the Maven dependency had been loaded into the project's \code{pom.xml} file
 
 An initial program was written for experimenting with AIML and the example bot, as seen in Figure~\ref{fig:super}. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\subfloat[Initial code]{{\includegraphics[width=12cm]{code1} }}%
 	\qquad
@@ -52,7 +83,6 @@ An initial program was written for experimenting with AIML and the example bot, 
 	\label{fig:super}
 \end{figure}
 
-\newpage
 Having experimented with the example chatbot, the next task was to initialise a new chatbot. The Program AB Bot has a number of functions to load its required files from a directory. The file structure is as follows:
 
 \begin{outline}
@@ -83,7 +113,6 @@ So in our `hello' example, the given pattern will match any of the following inp
 	\label{fig:aiml1}
 \end{figure}
 
-\newpage
 \subsection{DBPedia}
 Now that the basic chatbot system has been set up, we need to provide functionality to the system by querying our datasource. DBPedia was selected based on the research in Section~\ref{sec:dbpedia}, because it provides an organised dataset extracted from Wikipedia articles. It can be queried via a SPARQL endpoint\footnote{http://dbpedia.org/sparql}, and returns data in an RDF format, which can be processed by our system.
 

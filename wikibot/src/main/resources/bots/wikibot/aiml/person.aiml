@@ -71,6 +71,18 @@
             <srai>WHO IS <star/></srai>
         </template>
     </category>
+    <category>
+        <pattern>* WIKIPEDIA</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* WIKIPEDIA ^</pattern>
+        <template>
+            <srai>WHO IS <star index="1"/></srai>
+        </template>
+    </category>
     <!-- TODO: Replace with photo query -->
     <category>
         <pattern>PICTURE OF *</pattern>
@@ -131,6 +143,18 @@
     </category>
     <category>
         <pattern>WHAT YEAR WAS * BORN</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* BIRTH DATE</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* BORN DATE</pattern>
         <template>
             <srai><star/> BIRTHDATE</srai>
         </template>

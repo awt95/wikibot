@@ -41,6 +41,13 @@
     </category>
 
     <category>
+        <pattern>LIST OF <set>person_type</set> BORN IN *</pattern>
+        <template>
+            <srai><star index="1"/> BORN IN <star index="2"/></srai>
+        </template>
+    </category>
+
+    <category>
         <pattern>WHICH <set>person_type</set> WERE BORN IN *</pattern>
         <template>
             <srai><star index="1"/> BORN IN <star index="2"/></srai>

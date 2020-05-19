@@ -3,5 +3,9 @@
 0,EXAMPLES,*,*,<think><set name="topic">conversation</set></think>#Newline            I can answer Wikipedia queries you ask me. You can ask me about people and countries at the moment. Here are some examples:#Newline            Who is Barack Obama?#Newline            What is he known for?#Newline            How old was Abraham Lincoln?#Newline            List of athletes named John.#Newline            Actors born in 1980.#Newline            What is the capital of Peru?,conversation.aiml
 0,WHAT CAN YOU DO,*,*,<srai>EXAMPLES</srai>,conversation.aiml
 0,WHAT ARE YOUR FUNCTIONS,*,*,<srai>EXAMPLES</srai>,conversation.aiml
+0,WHAT TO ASK,*,*,<srai>EXAMPLES</srai>,conversation.aiml
 0,HELP,*,*,<think><set name="topic">conversation</set></think>#Newline            I can answer your Wikipedia queries. If you want to see examples#Comma ask me 'Examples'. If I get stuck#Comma you can reset with 'CLEAR'.,conversation.aiml
 0,^ HELP ^,*,*,<srai>HELP</srai>,conversation.aiml
+0,I DONT KNOW WHAT TO DO,*,*,<srai>HELP</srai>,conversation.aiml
+0,WHAT TO DO,*,*,<srai>HELP</srai>,conversation.aiml
+0,HOW ARE YOU,*,*,I'm great! What did you want to ask?,conversation.aiml

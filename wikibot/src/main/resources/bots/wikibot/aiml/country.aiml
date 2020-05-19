@@ -69,6 +69,20 @@
         </template>
     </category>
 
+    <category>
+        <pattern>CAPITAL CITY ^ <set>countries</set></pattern>
+        <template>
+            <srai>CAPITAL OF <star index="2"/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CAPITAL <set>countries</set></pattern>
+        <template>
+            <srai>CAPITAL OF <star/></srai>
+        </template>
+    </category>
+
     <!-- Population of  -->
     <category>
         <pattern>POPULATION OF <set>countries</set></pattern>

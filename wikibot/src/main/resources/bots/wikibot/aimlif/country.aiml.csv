@@ -5,5 +5,7 @@
 0,WHERE IS <SET>COUNTRIES</SET>,*,*,<srai>TELL ME ABOUT <star/></srai>,country.aiml
 0,^ CAPITAL OF *,*,*,<think>#Newline                <set name="topic">Country</set>#Newline                <set name="function">query</set>#Newline                <set name="property">capital</set>#Newline                <set name="iri">dbo:capital</set>#Newline                <set name="value">dbr:<map name="country2dbr"><star index="2"/></map></set>#Newline            </think>,country.aiml
 0,<SET>COUNTRIES</SET> CAPITAL,*,*,<srai>CAPITAL OF <star/></srai>,country.aiml
+0,CAPITAL CITY ^ <SET>COUNTRIES</SET>,*,*,<srai>CAPITAL OF <star index="2"/></srai>,country.aiml
+0,CAPITAL <SET>COUNTRIES</SET>,*,*,<srai>CAPITAL OF <star/></srai>,country.aiml
 0,POPULATION OF <SET>COUNTRIES</SET>,*,*,<think>#Newline                <set name="topic">Country</set>#Newline                <set name="function">query</set>#Newline                <set name="property">population</set>#Newline                <set name="iri">dbo:populationTotal</set>#Newline                <set name="value">dbr:<map name="country2dbr"><star/></map></set>#Newline            </think>,country.aiml
 0,^ POPULATION OF *,*,*,<think>#Newline                <set name="topic">Country</set>#Newline                <set name="function">query</set>#Newline                <set name="property">population</set>#Newline                <set name="iri">dbo:populationTotal</set>#Newline                <set name="value">dbr:<map name="country2dbr"><star index="2"/></map></set>#Newline            </think>,country.aiml

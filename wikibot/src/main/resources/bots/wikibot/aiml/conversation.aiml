@@ -69,4 +69,9 @@
         <pattern>WHAT TO DO</pattern>
         <template><srai>HELP</srai></template>
     </category>
+
+    <category>
+        <pattern>HOW ARE YOU</pattern>
+        <template>I'm great! What did you want to ask?</template>
+    </category>
 </aiml>

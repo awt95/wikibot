@@ -97,6 +97,12 @@
         </template>
     </category>
     <category>
+        <pattern>WHAT DID * LOOK LIKE</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
         <pattern>WHAT DOES * LOOK LIKE</pattern>
         <template>
             <srai>WHO IS <star/></srai>
@@ -175,7 +181,12 @@
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
     </category>
-
+    <category>
+        <pattern>* BIRTH PLACE</pattern>
+        <template>
+            <srai><star/> BIRTHPLACE</srai>
+        </template>
+    </category>
     <category>
         <pattern>WHERE WAS * BORN</pattern>
         <template>

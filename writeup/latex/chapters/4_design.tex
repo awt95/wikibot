@@ -10,6 +10,8 @@ This section outlines the technologies that will be used for the project, and gi
 \label{sec:lang}
 Based on the research in Chapter~\ref{ch:lit}, there are a number of candidates for developing a chatbot system. Table~\ref{tab:lang} summarises the main features of each, and how they might be effective for this project.
 
+Given the scale and scope of this project, many of the nuances and disadvantages seen in Section~\ref{sec:langreview} are irrelevant to a smaller project such as this. There appears to be libraries and frameworks in most languages that will allow the development of this system. As such, personal preference can also be considered in the choice, such as familiarity and confidence with given languages and libraries. Therefore, the project will be developed in Java, because of personal experience and familiarity with the language.
+
 \begin{table}[h]
 	\centering
 	\begin{tabularx}{\textwidth}{{@{}lXXX@{}}}
@@ -20,6 +22,7 @@ Based on the research in Chapter~\ref{ch:lit}, there are a number of candidates 
 			& Popular object-oriented language used in many enterprise solutions.
 			& A well-established language in data science and machine learning communities.
 			& Interpreted language commonly combined with Rails in web applications. \\
+					\midrule
 		Advantages
 			& Popular language with a large community.
 			
@@ -31,11 +34,13 @@ Based on the research in Chapter~\ref{ch:lit}, there are a number of candidates 
 			
 			& Inherently web-based, Ruby on Rails design principles such as `Convention over Configuration' allow for
 			  rapid development of web applications. \\
+			  		\midrule
   		Disadvantages
   			& Web-based applications require additional libraries.
   			& Not inherently web-based, although frameworks exist such as Django \cite{django2020}.
   			& Less maintainable than other web frameworks \cite{plekhanova2009evaluating}.
   			\\
+  					\midrule
 		Examples
 			& Corpus-training an ALICE chatbot by \citet{shawar2011corpus}.
 			& Chatbot techniques survey by \citet{abdul2015survey}.
@@ -48,20 +53,29 @@ Based on the research in Chapter~\ref{ch:lit}, there are a number of candidates 
 	\label{tab:lang}
 \end{table}
 
-Given the scale and scope of this project, many of the nuances and disadvantages seen in Section~\ref{sec:langreview} are irrelevant to a smaller project such as this. There appears to be libraries and frameworks in most languages that will allow the development of this system. As such, personal preference can also be considered in the choice, such as familiarity and confidence with given languages and libraries. Therefore, the project will be developed in Java, because of personal experience and familiarity with the language.
-
-
-\subsection{Web Frameworks}
-In the case of Java, there are several web frameworks that can be used to handle webpage design, routing, and configuration.
-
-\subsection{Chatbot Model}
-\hilight{continue}
-
+\newpage
 \subsection{Libraries and Tools}
-This section describes the libraries and tools required to implement the chatbot system in Java. Table~ describes each library and its function.
+This section describes the libraries and tools required to implement the chatbot system in Java. Table~\ref{tab:libraries} describes each library and its function.
 
-Table here
-\hilight{continue}
+\begin{table}[h]
+	\begin{tabularx}{\textwidth}{XXX}
+		\toprule
+		Library & Description & Link \\
+		\midrule
+		Spring Boot & Web framework for Java applications & \url{https://spring.io/projects/spring-boot} [Accessed 3 April 2020] \\
+		\midrule
+		Apache Jena & Provides functionality for SPARQL queries and linked data support & \url{https://jena.apache.org/} [Accessed 3 April 2020]\\
+		\midrule
+		Program AB & Provides chatbot functionality & \url{https://code.google.com/archive/p/program-ab/} [Accessed 3 April 2020]\\
+		\midrule
+		H2 Database & Provides database storage for the Spring Boot application & \url{http://www.h2database.com/html/main.html} [Accessed 3 April 2020] \\
+		\midrule
+		JUnit & Unit Testing & \url{https://junit.org/junit5/} [Accessed 3 April 2020] \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Required libraries}
+	\label{tab:libraries}
+\end{table}
 
 \newpage
 \section{Architecture}

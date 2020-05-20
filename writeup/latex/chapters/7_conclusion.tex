@@ -1,7 +1,41 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 \section{Overview}
+In this chapter we evaluate the system as a whole, by assessing the objectives described in Section~\ref{sec:aims}. We also evaluate the overall successes in the implementation and testing phases. Suggestions for future work on the project are provided, and a final conclusion is given which evaluates the project as a whole.
 \section{Evaluation}
+This section will evaluate the objectives defined at the start of the project in Section~\ref{sec:aims}. Each objective is discussed, and evidence is given for the success of failure of the objective. 
+
+\subsection{Discuss and explore current and future uses of chatbots}
+In the research phase in Chapter~\ref{ch:lit}, chatbots were discussed at great length, including past and future developments. One key factor of this research is the distinction between chatbot models; some chatbots can be considered rule- or pattern-based, where some are learning-based.
+
+Existing chatbot solutions were reviewed in this section, including Google Assistant and Mitsuku. It also became clear that there exists a DBPedia Chatbot solution, but upon investigation it did not appear to be fully functional. This gave some indication of the direction of this project, allowing us to draw inspiration from certain elements of existing chatbots -- for example, the Google Assistant Continued Conversation \cite{googleassistant} would make user experience more natural by allowing them to have multi-turn conversations with the bot.
+
+This objective was achieved by the thorough research discussed in this report. The findings from the research allowed the project to progress with a strong basis of understanding of the current technologies used in chatbots.
+
+\subsection{Gather user requirements for a chatbot}
+This objective was completed in Section~\ref{sec:requirements}, where discussions took place with three test users to determine a set of initial requirements for a system. These requirements were used as a framework for the implementation of the system.
+
+\subsection{Implement a novel chatbot application to resolve user queries}
+The final implementation of the chatbot application is examined in Chapter~\ref{ch:implementation}. While there were a number of challenges encountered throughout the development (Section~\ref{sec:challenges}), the overall system is relatively successful. This is reinforced by the positive feedback from the users in Section~\ref{sec:uat}.
+
+Although the system is limited in its scope, the aim for the system was to provide a basis for future expansion of its capabilities. ---
+
+\subsection{Test the implementation against the requirements}
+The testing phase of the project was overall successful. The main conclusion of this phase was that the system resolved queries reasonably well. There were some common issues encountered by the users. Firstly, the users could not inform the chatbot of incorrect or unexpected results. Secondly, the resolution of input patterns needs improvement -- not all synonymous phrases were added to the system. Finally, the system for resolving lists could not manage a lot of user queries.
+
+In terms of the objective, 20 out of 22 functional requirements were fully implemented (Section \ref{sec:reqtesting}). All three test users accepted the solution as a valid system. Therefore, the objective was successful, although we have discovered many future improvements that can be made.
+
+\subsection{Evaluate the success of the system and provide suggestions for future}
+The overall system is generally successful. As noted in the previous section, there were a number of common issues faced by the users in the testing phase. Normally, these improvements would be made to the system incrementally, however due to the time constraints they will be noted as future improvements in Section~\ref{sec:future}. As such, this objective can be deemed successful.
+
+\subsection{Results}
+Each of the five objectives were deemed successful in this section. The system itself is not without flaws, many of which were discovered when the system was opened up to the test users. However, this highlighted the importance of testing, especially when dealing with chatbots and natural language; it is impossible to predict what a user is going to ask. In terms of specification, the system does overall fit the intial requirements.
+
+Upon reflection, it would have been beneficial to have user involvement earlier in the project, using an incremental model as seen in Section~\ref{sec:spiral}. This would have allowed the system to be more resilient to the variation in language used in user queries. There are a number of improvements that can be made to the system in future, which are discussed in the next section.
+
 \section{Future Work}
+\label{sec:future}
+
+
 \section{Conclusion}
 \section{Final Statement}

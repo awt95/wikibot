@@ -19,7 +19,7 @@ This design works well where the requirements can be established at the start of
 	\end{figure}
 
 \subsection{V-Model}
-The V-Model shares similarities with the Waterfall model
+The V-Model shares similarities with the Waterfall model insofar as phases of the software life cycle are distinct \cite{agile}. Importantly, the integration and validation phases are decomposed into individual phases, which link back to the left `leg' of the `V'. This ensure that the requirements are measurable in a SMART (Specific, Measurable, Achievable, Realistic and Time-bound) \cite{smart} manner \cite{sdlc2010}.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{vmodel}
@@ -28,27 +28,21 @@ The V-Model shares similarities with the Waterfall model
 \end{figure}
 
 \subsection{Spiral Model}
-\hilight{continue}
+\label{sec:spiral}
+\citet{boehm} introduced the Spiral model as an alternative development model which can accommodate variation of goals, objectives, and risks changing over the lifetime of the project. As shown in Figure~\ref{fig:spiral}, the model takes the iterative approach, where each iteration `spirals' out from the centre, passing each phase of risk analysis, prototyping, development and integration. This continual prototyping and reviewing allows risk to be managed throughout the project. For this project, however, the spiral model would require significant involvement from the stakeholders at each iteration, which, given the time constraints of the project, may not be efficient. Furthermore, given the fact that some initial requirements have been specified already, the project may benefit from a more specification-driven approach.
+
 	\begin{figure}
 	\centering
-	\includegraphics[width=0.6\linewidth]{spiral}
-	\caption{Spiral Model}
+	\includegraphics[width=0.8\linewidth]{spiral}
+	\caption{Boehm's Spiral model \cite{boehm}}
 	\label{fig:spiral}
-\end{figure}
+	\end{figure}
 
 \subsection{Chosen Methodology}
-There are many methodologies not explored in this section, such as Agile, which are effective in environments with multiple team members \cite{agile}. In this project, we will be using the V-Model. This is because having distinct phases will allow for logical planning steps. It shares similarities with the waterfall model, but divides the testing and integration phases into manageable steps. Methodologies with continual user feedback, such as the spiral model, would be harder to implement because the test users for this project have other commitments, so waiting constant communication with them may delay the project.
+There are many methodologies not explored in this section, such as agile methods, which are effective in environments with multiple team members \cite{agile}. In this project, we will be using the V-Model. This is because having distinct phases will allow for logical planning steps. It shares similarities with the waterfall model, but divides the testing and integration phases into manageable steps. Methodologies with continual user feedback, such as the spiral model, would be harder to implement because the test users for this project have other commitments, so waiting constant communication with them may delay the project.
 
 \section{Planning}
 As the timeline of the project is restricted and has a fixed deadline, it is important that the project is planned carefully in order to deliver a complete solution. To achieve this, a Gantt chart was produced as an effective method to visualise the tasks of the project, with associated time scales \cite{wilson2003gantt}. The completed Gantt chart is shown in Figure~\ref{fig:gantt} (note that this chart is taken from after the project was completed, where red slots are tasks which overran - this is discussed further in Chapter~\ref{ch:conclusion}). The tasks were divided in a logical manner, where the implementation tasks are associated with the functional requirements from the specification in Section~\ref{sec:requirements}. This proved to be an effective visual plan to ensure that the requirements were met in a timely manner.
-
-\section{Version Control}
-During this implementation phase, it is important to manage the source code and maintain a consistent code base. As new features are added to meet the requirements, a version control system can keep records of file changes, so that we can recall previous versions, as well as develop new features without effecting previous versions.
-
-For this project, Git will be used because of its popularity and personal familiarity with the tool. Git allows for branching, which will be useful when implementing a new function, merging, and comments to allow for a maintainable repository.
-
-\section{Dependency Management}
-As the project will depend on a number of external libraries, it is important to manage these dependencies in a consistent and repeatable way. For this project, Apache Maven\footnote{https://maven.apache.org/} is used because of the high availability of the required repositories for this project, including Spring and Program AB. Maven also provides a number of tools for building and deploying the project, which becomes important during the testing phase when the project is deployed to an external web server.
 
 \begin{landscape}
 	\begin{figure}[h]
@@ -59,7 +53,13 @@ As the project will depend on a number of external libraries, it is important to
 	\end{figure}
 \end{landscape}
 
+\section{Version Control}
+During this implementation phase, it is important to manage the source code and maintain a consistent code base. As new features are added to meet the requirements, a version control system can keep records of file changes, so that we can recall previous versions, as well as develop new features without effecting previous versions.
 
+For this project, Git will be used because of its popularity and personal familiarity with the tool. Git allows for branching, which will be useful when implementing a new function, merging, and comments to allow for a maintainable repository.
+
+\section{Dependency Management}
+As the project will depend on a number of external libraries, it is important to manage these dependencies in a consistent and repeatable way. For this project, Apache Maven\footnote{https://maven.apache.org/} is used because of the high availability of the required repositories for this project, including Spring and Program AB. Maven also provides a number of tools for building and deploying the project, which becomes important during the testing phase when the project is deployed to an external web server.
 
 \section{Implementation Process}
 Following the Gantt chart and the development methodology, the implementation process was carried out iteratively. This section documents some of the key steps in the development process, how these were achieved, and gives some explanation to how the logic was created to meet the requirements of the system.
@@ -276,6 +276,7 @@ Although this contradicts the scope of the project outlined in the specification
 
 
 \section{Challenges}
+\label{sec:challenges}
 This section discusses some of the challenges encountered during the implementation of this project. It describes some of the solutions used to overcome these obstacles.
 
 \subsection{Limitations of AIML}

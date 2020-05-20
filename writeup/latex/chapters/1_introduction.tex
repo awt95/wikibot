@@ -3,37 +3,40 @@
 \section{Background}
 The prevalence of chatbots in modern life is unmistakable. Open up your smartphone, your computer; query your smart home device. Information is available almost instantly, a few keypresses or utterances away. How we interact with computers is evolving towards natural language; virtual assistants such as Google Assistant are automating our lives. Industries, too, such as customer service and healthcare, are seeing a similar trend towards natural language systems \cite{gvr2017}.
 
-As our interaction with computer systems shifts towards semantics, so too does the information itself. In 2001, Tim Berners-Lee envisaged a new era for the Web \cite{berners2001semantic}; content on the {\it Semantic Web} will have structure and meaning, allowing systems to effectively manipulate this homogenous data in an increasingly automated world. Almost two decades later, Tim-Berners Lee is becoming realised; in 2019, over 37\% of all indexable HTML pages on the web contained structured data \cite{wdc2019crawl}. Systems are 
+As our interactions with computer systems shift towards semantics, so too does the information itself. In 2001, Tim Berners-Lee envisaged a new era for the Web \cite{berners2001semantic}; content on the {\it Semantic Web} will have structure and meaning, allowing systems to effectively manipulate this homogenous data in an increasingly automated world. Almost two decades later, Tim Berners-Lee's vision is becoming realised; in 2019, over 37\% of all indexable HTML pages on the web contained structured data \cite{wdc2019crawl}. Linked Data refers to structured data on the Web that can be queried using semantic queries, as in SPARQL query language. Data is expressed using the RDF model, such that data is in the form of {\it subject, predicate, object} triples \cite{bizer2011linked}. These triples allow us to form relationships and links between data entities.
 
-\hilight{[...]}
-
+Linked Data can be used to model advanced relationships between data, across many datasets. One of the largest linked datasets is DBPedia \cite{dbpedia2019about}, which extracts structured data from Wikimedia projects, including Wikipedia. This allows for complex queries to be performed on the dataset about any Wikipedia page.
 
 \section{Overview}
-This project will explore how chatbots are being implemented, and the technologies that are being applied in these systems.
+This project will explore how chatbots are implemented, and the technologies that can be applied to create an effective chatbot solution.
 
-For this, 
+First, chatbot models are researched to find the best method for implementing a chatbot solution. The results of this research led to the use of a pattern-based model, using AIML (Artificial Intelligence Markup Language) to define input-output patterns between the user and the bot.
 
-\section{Background}
+For a dataset, DBPedia \cite{dbpedia2019about} is used in this project, as it provides Linked Data representations of Wikipedia articles. The system must then convert the user input into a SPARQL query to retrieve information from the DBPedia endpoint to return to the user.
+
+The main purpose of this project is to explore the concepts of chatbots and Linked Data, and how effectively the two can interoperate. At the end of the project, we will evaluate how successful the solution is, and how adaptable the solution is to other datasets.
 
 \section{Motivation}
-My personal motivation for this project derives primarily from my placement year during my studies at university. Working in a large technology corporation, I had the opportunity to 
+My personal motivation for this project derives primarily from my placement year during my studies at university. Working in a large technology corporation, I had the opportunity to contribute to a chatbot project using a Software as a Service (SaaS) chatbot tool. This gave me exposure to the benefits and uses of chatbots, and also their prevalence in business. Without realising, I had been using chatbots online for customer support and banking; in many cases I had assumed I was talking to a real person.
+
+Working with this chatbot platform gave me experience with how chatbots operate, but also highlighted some drawbacks of this specific tool. While conversation patterns and structures were easy to implement, the chatbot did not cope well with open conversation. Also, attaching a dataset was particularly difficult, and most data had to be loaded in manually using CSV (Comma-separated values) files. This inspired me to focus on a chatbot application for this project, to explore how easily we can automate this process of extracting data from a datasource.
 
 \newpage
 \section{Aims and Objectives}
 \label{sec:aims}
-The primary aim of the project is to investigate the increasingly prevailing uses of chatbots in industry and research. Additionally, this project will explore the numerous technologies used for implementing a chatbot which queries a knowledge base and evaluate the feasibility of using these technologies in chatbot development projects. Finally, the project will aim to implement a successful system such that it may be adapted to gather information from additional datasets in the future. The following list outlines the measurable objectives of the project, against which the success of the project will be assessed.
+The primary aim of the project is to investigate the increasingly prevailing uses of chatbots in industry and research. Additionally, this project will explore the numerous technologies used for implementing a chatbot which queries a knowledge base and evaluate the feasibility of using these technologies in chatbot development projects. Finally, the project will aim to implement a successful system such that it may be adapted to gather information from additional datasets in the future. The following list outlines the measurable objectives of the project, against which the success of the project will be assessed. These objectives are written to be SMART (Specific, Measurable, Achievable, Realistic and Time-bound) \cite{smart}, so that we can effectively evaluate the objectives during the evaluation phase in Chapter~\ref{ch:conclusion}.
 
 \begin{itemize}
 	\itemsep0em 
 	\item Discuss and explore current and future uses of chatbots in research and industry environments.
-	\item Gather and discuss user requirements for a chatbot knowledge base implementation within the scope of the project.
+	\item Gather user requirements for a chatbot knowledge base implementation within the scope of the project.
 	\item Implement a novel chatbot application to resolve user queries and provide worthwhile responses automatically.
 	\item Test the implementation against the requirements set out by the users.
-	\item Evaluate the success of the system and the implementation of the technologies with regards to the scope and requirements of the project, and provide suggestions for future development.
-
+	\item Evaluate the success of the implementation of the system with regards to the scope and requirements of the project, and provide suggestions for future development.
 \end{itemize}
 
 \section{Success Criteria}
+The success of the system will be determined by evaluating the objectives shown above. Furthermore, three test users will be involved throughout the project. As such, the user acceptance testing phase will allow us to gather feedback from the users, who will determine whether the system meets their requirements, and allow them to make suggestions for future improvement.
 
 \newpage
 \section{Outline of Chapters}

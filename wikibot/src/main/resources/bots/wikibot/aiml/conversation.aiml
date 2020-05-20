@@ -43,9 +43,35 @@
     </category>
 
     <category>
+        <pattern>WHAT TO ASK</pattern>
+        <template><srai>EXAMPLES</srai></template>
+    </category>
+
+    <category>
         <pattern>HELP</pattern>
         <template>
+            <think><set name="topic">conversation</set></think>
             I can answer your Wikipedia queries. If you want to see examples, ask me 'Examples'. If I get stuck, you can reset with 'CLEAR'.
         </template>
+    </category>
+
+    <category>
+        <pattern>^ HELP ^</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>I DONT KNOW WHAT TO DO</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>WHAT TO DO</pattern>
+        <template><srai>HELP</srai></template>
+    </category>
+
+    <category>
+        <pattern>HOW ARE YOU</pattern>
+        <template>I'm great! What did you want to ask?</template>
     </category>
 </aiml>

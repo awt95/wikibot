@@ -3,8 +3,11 @@
 0,WHO IS *,*,*,<think>#Newline                <set name="function">abstract</set>#Newline                <set name="topic">Person</set>#Newline                <set name="iri">rdfs:comment</set>#Newline                <set name="property">comment</set>#Newline                <set name="messagetype">ABSTRACT</set>#Newline                <set name="limit">1</set>#Newline#Newline            </think>#Newline            <srai>BOT_QUERY_CONTEXT <star/></srai>,person.aiml
 0,TELL ME ABOUT *,*,*,<srai>WHO IS <star/></srai>,person.aiml
 0,LETS TALK ABOUT *,*,*,<srai>WHO IS <star/></srai>,person.aiml
+0,* WIKIPEDIA,*,*,<srai>WHO IS <star/></srai>,person.aiml
+0,* WIKIPEDIA ^,*,*,<srai>WHO IS <star index="1"/></srai>,person.aiml
 0,PICTURE OF *,*,*,<srai>WHO IS <star/></srai>,person.aiml
 0,PHOTO OF *,*,*,<srai>WHO IS <star/></srai>,person.aiml
+0,WHAT DID * LOOK LIKE,*,*,<srai>WHO IS <star/></srai>,person.aiml
 0,WHAT DOES * LOOK LIKE,*,*,<srai>WHO IS <star/></srai>,person.aiml
 0,* BIRTHDATE,*,*,<think>#Newline                <set name="function">query</set>#Newline                <set name="topic">Person</set>#Newline                <set name="iri">dbo:birthDate</set>#Newline                <set name="property">birthDate</set>#Newline                <set name="rlimit">1</set>#Newline            </think>#Newline            <srai>BOT_QUERY_CONTEXT <star/></srai>,person.aiml
 0,* BIRTHDAY,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
@@ -12,7 +15,10 @@
 0,WHEN WERE * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
 0,WHAT IS * BIRTHDATE,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
 0,WHAT YEAR WAS * BORN,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,* BIRTH DATE,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
+0,* BORN DATE,*,*,<srai><star/> BIRTHDATE</srai>,person.aiml
 0,* BIRTHPLACE,*,*,<think>#Newline                <set name="function">query</set>#Newline                <set name="topic">Person</set>#Newline                <set name="iri">dbo:birthPlace</set>#Newline                <set name="property">birthPlace</set>#Newline                <set name="rlimit">3</set>#Newline#Newline            </think>#Newline            <srai>BOT_QUERY_CONTEXT <star/></srai>,person.aiml
+0,* BIRTH PLACE,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml
 0,WHERE WAS * BORN,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml
 0,WHERE WERE * BORN,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml
 0,WHERE * BORN,*,*,<srai><star/> BIRTHPLACE</srai>,person.aiml

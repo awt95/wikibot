@@ -41,6 +41,13 @@
     </category>
 
     <category>
+        <pattern>LIST OF <set>person_type</set> BORN IN *</pattern>
+        <template>
+            <srai><star index="1"/> BORN IN <star index="2"/></srai>
+        </template>
+    </category>
+
+    <category>
         <pattern>WHICH <set>person_type</set> WERE BORN IN *</pattern>
         <template>
             <srai><star index="1"/> BORN IN <star index="2"/></srai>
@@ -112,6 +119,13 @@
 
         </template>
     </category>
+
+    <category>
+        <pattern>LIST OF <set>person_type</set> BORN BEFORE *</pattern>
+        <template>
+            <srai><star index="1"/> BORN BEFORE <star index="2"/></srai>
+        </template>
+    </category>
     <category>
         <pattern><set>person_type</set> BORN AFTER *</pattern>
         <template>
@@ -127,6 +141,13 @@
                 <set name="condition_value"><star index="2"/></set>
             </think>
 
+        </template>
+    </category>
+
+    <category>
+        <pattern>LIST OF <set>person_type</set> BORN AFTER *</pattern>
+        <template>
+            <srai><star index="1"/> BORN AFTER <star index="2"/></srai>
         </template>
     </category>
 

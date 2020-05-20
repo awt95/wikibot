@@ -42,9 +42,10 @@
     </category>
 
     <category>
-        <pattern>WHERE IS *</pattern>
-        <think><set name="topic">Country</set></think>
-        <template>Here it is</template>
+        <pattern>WHERE IS <set>countries</set></pattern>
+        <template>
+            <srai>TELL ME ABOUT <star/></srai>
+        </template>
     </category>
 
     <!-- Capital of -->
@@ -61,7 +62,41 @@
         </template>
     </category>
 
+    <category>
+        <pattern><set>countries</set> CAPITAL</pattern>
+        <template>
+            <srai>CAPITAL OF <star/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CAPITAL CITY ^ <set>countries</set></pattern>
+        <template>
+            <srai>CAPITAL OF <star index="2"/></srai>
+        </template>
+    </category>
+
+    <category>
+        <pattern>CAPITAL <set>countries</set></pattern>
+        <template>
+            <srai>CAPITAL OF <star/></srai>
+        </template>
+    </category>
+
     <!-- Population of  -->
+    <category>
+        <pattern>POPULATION OF <set>countries</set></pattern>
+        <template>
+            <think>
+                <set name="topic">Country</set>
+                <set name="function">query</set>
+                <set name="property">population</set>
+                <set name="iri">dbo:populationTotal</set>
+                <set name="value">dbr:<map name="country2dbr"><star/></map></set>
+            </think>
+        </template>
+    </category>
+
     <category>
         <pattern>^ POPULATION OF *</pattern>
         <template>

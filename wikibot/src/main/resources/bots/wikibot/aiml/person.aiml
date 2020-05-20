@@ -71,6 +71,18 @@
             <srai>WHO IS <star/></srai>
         </template>
     </category>
+    <category>
+        <pattern>* WIKIPEDIA</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* WIKIPEDIA ^</pattern>
+        <template>
+            <srai>WHO IS <star index="1"/></srai>
+        </template>
+    </category>
     <!-- TODO: Replace with photo query -->
     <category>
         <pattern>PICTURE OF *</pattern>
@@ -80,6 +92,12 @@
     </category>
     <category>
         <pattern>PHOTO OF *</pattern>
+        <template>
+            <srai>WHO IS <star/></srai>
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT DID * LOOK LIKE</pattern>
         <template>
             <srai>WHO IS <star/></srai>
         </template>
@@ -135,6 +153,18 @@
             <srai><star/> BIRTHDATE</srai>
         </template>
     </category>
+    <category>
+        <pattern>* BIRTH DATE</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
+    <category>
+        <pattern>* BORN DATE</pattern>
+        <template>
+            <srai><star/> BIRTHDATE</srai>
+        </template>
+    </category>
 
     <!-- dbo:birthPlace -->
     <category>
@@ -151,7 +181,12 @@
             <srai>BOT_QUERY_CONTEXT <star/></srai>
         </template>
     </category>
-
+    <category>
+        <pattern>* BIRTH PLACE</pattern>
+        <template>
+            <srai><star/> BIRTHPLACE</srai>
+        </template>
+    </category>
     <category>
         <pattern>WHERE WAS * BORN</pattern>
         <template>

@@ -5,14 +5,12 @@ The prevalence of chatbots in modern life is unmistakable. Open up your smartpho
 
 As our interactions with computer systems shift towards semantics, so too does the information itself. In 2001, Tim Berners-Lee envisaged a new era for the Web \cite{berners2001semantic}; content on the {\it Semantic Web} will have structure and meaning, allowing systems to effectively manipulate this homogenous data in an increasingly automated world. Almost two decades later, Tim Berners-Lee's vision is becoming realised; in 2019, over 37\% of all indexable HTML pages on the web contained structured data \cite{wdc2019crawl}. Linked Data refers to structured data on the Web that can be queried using semantic queries, as in SPARQL query language. Data is expressed using the RDF model, such that data is in the form of {\it subject, predicate, object} triples \cite{bizer2011linked}. These triples allow us to form relationships and links between data entities.
 
-Linked Data can be used to model advanced relationships between data, across many datasets. One of the largest linked datasets is DBPedia \cite{dbpedia2019about}, which extracts structured data from Wikimedia projects, including Wikipedia. This allows for complex queries to be performed on the dataset about any Wikipedia page.
+Linked Data can be used to model advanced relationships between data, across many datasets. One of the largest linked datasets is DBPedia \cite{dbpedia2019about}, which extracts structured data from Wikimedia projects, including Wikipedia. This allows for complex queries to be performed on the dataset about any Wikipedia page. This project aims to explore how a chatbot can be used to query Linked Data from DBPedia. 
 
 \section{Overview}
 This project will explore how chatbots are implemented, and the technologies that can be applied to create an effective chatbot solution.
 
-First, chatbot models are researched to find the best method for implementing a chatbot solution. The results of this research led to the use of a pattern-based model, using AIML (Artificial Intelligence Markup Language) to define input-output patterns between the user and the bot.
-
-For a dataset, DBPedia \cite{dbpedia2019about} is used in this project, as it provides Linked Data representations of Wikipedia articles. The system must then convert the user input into a SPARQL query to retrieve information from the DBPedia endpoint to return to the user.
+First, chatbot models are researched to find the best method for implementing a chatbot solution. The results of this research led to the use of a pattern-based model, using AIML (Artificial Intelligence Markup Language) to define input-output patterns between the user and the bot. For a dataset, DBPedia \cite{dbpedia2019about} is used in this project, as it provides Linked Data representations of Wikipedia articles. The system must then convert the user input into a SPARQL query to retrieve information from the DBPedia endpoint to return to the user.
 
 The main purpose of this project is to explore the concepts of chatbots and Linked Data, and how effectively the two can interoperate. At the end of the project, we will evaluate how successful the solution is, and how adaptable the solution is to other datasets.
 
@@ -24,7 +22,7 @@ Working with this chatbot platform gave me experience with how chatbots operate,
 \newpage
 \section{Aims and Objectives}
 \label{sec:aims}
-The primary aim of the project is to investigate the increasingly prevailing uses of chatbots in industry and research. Additionally, this project will explore the numerous technologies used for implementing a chatbot which queries a knowledge base and evaluate the feasibility of using these technologies in chatbot development projects. Finally, the project will aim to implement a successful system such that it may be adapted to gather information from additional datasets in the future. The following list outlines the measurable objectives of the project, against which the success of the project will be assessed. These objectives are written to be SMART (Specific, Measurable, Achievable, Realistic and Time-bound) \cite{smart}, so that we can effectively evaluate the objectives during the evaluation phase in Chapter~\ref{ch:conclusion}.
+The primary aim of the project is to investigate the increasingly prevalent uses of chatbots in industry and research. Additionally, this project will explore the various technologies used for implementing a chatbot which queries a knowledge base and evaluate the feasibility of using these technologies in chatbot development projects. Finally, the project will aim to implement a successful system such that it may be adapted to gather information from additional datasets in the future. The following list outlines the measurable objectives of the project, against which the success of the project will be assessed. These objectives are written to be SMART (Specific, Measurable, Achievable, Realistic and Time-bound) \cite{smart}, so that we can effectively evaluate the objectives during the evaluation phase in Chapter~\ref{ch:conclusion}.
 
 \begin{itemize}
 	\itemsep0em 
@@ -40,7 +38,6 @@ The success of the system will be determined by evaluating the objectives shown 
 
 \newpage
 \section{Outline of Chapters}
-This section describes the contents and purpose of each chapter of this report.
 
 \subsection*{1 - Introduction}
 This chapter outlines an overview of the project, and describes the aims and objectives for this project. These objectives will be used to measure the success of the project in the evaluation.
@@ -61,13 +58,12 @@ This chapter examines some of the difficulties and experiences faced during the 
 This chapter documents the testing phase of the project. A number of testing strategies are discussed and implemented. The results of the testing are analysed in this section.
 
 \subsection*{7 - Conclusion}
-This summarises the overall successes of the project, by considering the initial objectives, the requirements of the system, and the result of the testing. The overall strategy of the project is considered in hindsight. Potential future work is discussed, and a final statement for the project is given.
+This summarises the overall successes of the project, by considering the initial objectives, the requirements of the system, and the result of the testing. The overall strategy of the project is considered in hindsight. Potential future work is discussed, and a final statement is given.
 
 \subsection*{8 - Ethics}
 This section explores potential legal, social, ethical and professional (LSEP) implications of the project. The chapter discusses ethical considerations surrounding the project, inline with guidelines provided by the University of Surrey \cite{surreyethics} and the British Computer Society (BCS) \cite{bcs2019conduct}.
 
 \subsection*{Appendix}
-Supplementary documents and addenda are appended to the document in this section.
 \begin{itemize}
 	\item Appendix A - WikiMedia API
 	\par This appendix displays the server response from the WikiMedia API. The impracticality of this method is discussed in Appendix~\ref{subsec:candidates}.
@@ -76,5 +72,9 @@ Supplementary documents and addenda are appended to the document in this section
 	\par This item logs a conversation between me and Mitsuku. This took place during my research into existing solutions, as explained and analysed in Section~\ref{subsec:Mitsuku}.
 	
 	\item Appendix C - SAGE Form
-	\par This document is the result of executing the University of Surrey Self-Assessment for Governance and Ethics (SAGE) as a requirement of the project. This self-assessment provides indication of whether further ethical review is requirement for the project; in this case further action is not required. A further discussion of this is given in \ref{ch:ethics}.
+	\par This document is the result of executing the University of Surrey Self-Assessment for Governance and Ethics (SAGE) as a requirement of the project. This self-assessment provides indication of whether further ethical review is requirement for the project.
+	
+	\item Appendix D - User Testing Results
+	\par This appendix shows the full testing results from the three users during the System Testing phase in Section~\ref{sec:systemtesting}.
 \end{itemize}
+

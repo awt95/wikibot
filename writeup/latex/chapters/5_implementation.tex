@@ -118,6 +118,7 @@ Now that the basic chatbot system has been set up, we need to provide functional
 
 There are a number of online resources which allow us to experiment with querying DBPedia. My preferred resource is SPARQL Explorer \footnote{http://dbpedia.org/snorql/}, which allows us to write queries and see the result in several formats, including a tabular format. For example, if we want to find musicians born in Manchester, we can construct the following SPARQL query:
 \begin{figure}[h]
+	\centering
 	\begin{lstlisting}
 		SELECT ?person ?birthPlace ?name
 		WHERE {
@@ -213,7 +214,7 @@ This template determines whether or not a pronoun has been used - {\it{`Who is A
 \subsubsection{Query Builder}
 We can build a query based on the predicates that we set in the AIML patterns. Most of the simple queries follow a similar pattern to that seen in Figure~\ref{fig:sparql1} - selecting a property given a set of conditions. For these queries we can build a query string, inserting the values provided by the user from the AIML predicates.
 
-In the final system, an instance of the UserQuery class is used to maintain the attributes of the user's query. We store the predicates in a \code{HashMap}, which are retrieved from the \code{alicebot.ab.Chat} instance. We can then make decisions about how the query is built in the \code{QueryBuilder} class. Based on these predicates, the \code{QueryBuilder} can construct an appropriate query for the \code{DBPedia} service to execute. One of the issues for future extension of the project is that some queries must have separate methods for execution. For example, a list query has to be generated and executed differently from an abstract query. The final solution has been developed to handle the queries established in the requirements, but adding further features would require manually adding AIML patterns and query functions - this drawback is discussed at length in Chapter~\ref{ch:conclusion}.
+In the final system, an instance of the \code{UserQuery} class is used to maintain the attributes of the user's query. We store the predicates in a \code{HashMap}, which are retrieved from the \code{alicebot.ab.Chat} instance. We can then make decisions about how the query is built in the \code{QueryBuilder} class. Based on these predicates, the \code{QueryBuilder} can construct an appropriate query for the \code{DBPedia} service to execute. One of the issues for future extension of the project is that some queries must have separate methods for execution. For example, a list query has to be generated and executed differently from an abstract query. The final solution has been developed to handle the queries established in the requirements, but adding further features would require manually adding AIML patterns and query functions - this drawback is discussed at length in Chapter~\ref{ch:conclusion}.
 
 \subsubsection{DBPedia Service}
 The role of the \code{DBPedia} class is to execute queries and return a result. This class is divided into a number of methods for each type of query. For example, executing a query about a person in \code{executePersonQuery()} requires different logic to \code{executeAgeQuery()} where further processing has to take place. Each method makes changes to the \code{Message} instance which contains the chatbot's response. The \code{Message} object has a number of attributes relating to the content and information stored in the message. It also has a list of \code{MessageItems}, where a \code{Message} may contain a list of multiple items. The information stored here is processed by the web interface in order to display the information in the correct format, as discussed in the next section.
@@ -259,12 +260,11 @@ Spring Data provides CRUD operations (create, read, update, delete) for the ORM 
 	\centering
 	\subfloat[MessageRepository interface \label{subfig:message}]{{\includegraphics[width=.6\textwidth]{messagerepo} }}%
 	\qquad
-	\subfloat[WebController logic \label{subfig:webcontroller}]{{\includegraphics[width=\textwidth]{webcontroller} }}%
+	\subfloat[WebController logic \label{subfig:webcontroller}]{{\includegraphics[width=.9\textwidth]{webcontroller} }}%
 	\caption{Controller logic}
 	\label{fig:controller}
 \end{figure}
 
-\newpage
 \section{Additional Queries}
 Once the initial system had been implemented, it became clear that adding additional queries for attributes was trivial. For example, the query pattern seen in Figure~\ref{fig:aiml1}, which queries \code{rdfs:label} could be easily replicated for the remaining attributes in the requirements specification. This allowed us to easily add additional queries beyond the scope of the requirements. As such, additional functions were added that could be useful for the user which were not identified in the specification. These include:
 \begin{itemize}
@@ -280,6 +280,7 @@ Although this contradicts the scope of the project outlined in the specification
 This section discusses some of the challenges encountered during the implementation of this project. It describes some of the solutions used to overcome these obstacles.
 
 \subsection{Limitations of AIML}
+\label{sec:aiml}
 One of the fundamental challenges of using the pattern-based AIML is handling synonyms. I discovered that there are many ways that a particular question can be asked. Furthermore, since the requirements of the system pertain to both Person queries and Country queries, the system must be able to distinguish between the two topics of conversation.
 
 The use of sets and maps was key to solving this problem. In order to `teach' the chatbot what a country is, a set was created named \code{countries.txt} with a list of every country from the DBPedia dataset. These were loaded programatically using a DBPedia query in the \code{ChatbotUtils} class. One issue here was that simply querying a list of all records belonging to \code{dbo:Country} also included every historic kingdom, dominion, dynasty, caliphate, as well as some bizarre outliers - a further discussion of inconsistencies of the dataset is given in Section~\ref{sec:dataset}. Therefore, to return valid data, the results had to be filtered to exclude records with a \code{dbo:dissolutionYear}, as well as include countries that had a \code{dbo:Capital}.

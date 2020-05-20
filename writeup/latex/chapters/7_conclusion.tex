@@ -13,12 +13,12 @@ Existing chatbot solutions were reviewed in this section, including Google Assis
 This objective was achieved by the thorough research discussed in this report. The findings from the research allowed the project to progress with a strong basis of understanding of the current technologies used in chatbots.
 
 \subsection{Gather user requirements for a chatbot}
-This objective was completed in Section~\ref{sec:requirements}, where discussions took place with three test users to determine a set of initial requirements for a system. These requirements were used as a framework for the implementation of the system.
+This objective was completed in Section~\ref{sec:requirements}, where discussions took place with three test users to determine a set of initial requirements for a system. These requirements were used as a framework for the implementation of the system. This phase was \hilight{what?}
 
 \subsection{Implement a novel chatbot application to resolve user queries}
 The final implementation of the chatbot application is examined in Chapter~\ref{ch:implementation}. While there were a number of challenges encountered throughout the development (Section~\ref{sec:challenges}), the overall system is relatively successful. This is reinforced by the positive feedback from the users in Section~\ref{sec:uat}.
 
-Although the system is limited in its scope, the aim for the system was to provide a basis for future expansion of its capabilities. ---
+Although the system is limited in its scope, the aim for the system was to provide a basis for future expansion of its capabilities. One of the drawback of the rule-based system of AIML is the very nature of rule-based systems. Each input pattern must be defined manually, and the system will not interpret undefined patterns. While a number of tricks were used to counteract this (Section~\ref{sec:aiml}), it is important to note this drawback. Therefore, adaptation to new datasets would be possible, but many of the functions would have to be manually written. 
 
 \subsection{Test the implementation against the requirements}
 The testing phase of the project was overall successful. The main conclusion of this phase was that the system resolved queries reasonably well. There were some common issues encountered by the users. Firstly, the users could not inform the chatbot of incorrect or unexpected results. Secondly, the resolution of input patterns needs improvement -- not all synonymous phrases were added to the system. Finally, the system for resolving lists could not manage a lot of user queries.
@@ -36,6 +36,16 @@ Upon reflection, it would have been beneficial to have user involvement earlier 
 \section{Future Work}
 \label{sec:future}
 
+\begin{itemize}
+	\item \textbf{Improved search functionality}
+		\par One of the main issues encountered by the users was when results were not what they were expecting. There is currently no system in place to get more results from the system. One possibility for resolving this could be to integrate DBPedia Lookup\footnote{\url{https://github.com/dbpedia/lookup} [Accessed 20 May 2020]} which provides weighted label lookup results \cite{bizer2009dbpedia}; this would be effective for giving relevant search results to the user.
+	\item \textbf{More robust filtering}
+		\par The list queries in the current system respond well to a small subset of expected values. When the user goes beyond these options, they are not recognised by the system. Future improvements include improving the person type list (could be extended to the YAGO ontology). 
+	\item \textbf{Extension to more datasets}
+		\par With the current foundation in place, the chatbot can be extended beyond DBPedia. Candidates include movie databases (Linked Movie DataBase \cite{linkedmdb}) or GeoNames\footnote{\url{http://www.geonames.org/} [Accessed 20 May 2020]} for geographical data.
+	\item \textbf{User feedback system}
+		\par In order to continually improve the accuracy of the chatbot, a system for users to provide feedback would be useful. The chatbot could integrate some element of machine learning to continually improve its vocabulary and understanding.
+\end{itemize}
 
-\section{Conclusion}
 \section{Final Statement}
+Upon reflection, the project as a whole was successful. The research phase was thorough and provided a lot of inspiration and motivation for the project. The feedback from the users in the design phase was helpful for directing the development of the system; the planning and design phases were critical to ensure time restrictions were met. There were many challenges in the development of the system, with some outcomes more successful than others. The testing was mixed, with a number of issues being realised in this phase. However, the system as a whole provides a solid foundation for future work to be implemented. Personally, it was an invaluable learning experience, especially working with new tools and libraries, and learning some transferable time management skills.

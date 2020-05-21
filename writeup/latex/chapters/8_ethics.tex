@@ -2,15 +2,21 @@
 \label{ch:ethics}
 
 \section{Introduction}
-There are legal, social, ethical and professional (LSEP) issues to consider in any software project. This statement of ethics evidences that these factors were  considered throughout this project, as well as discusses any implications that were encountered during the project. The Self-Assessment for Governance and Ethics (SAGE) was completed and reviewed by the project supervisor, and is attached in Appendix~\ref{app:sage}.
+There are legal, social, ethical and professional (LSEP) issues to consider in any software project. This statement of ethics evidences that these factors were considered throughout this project, in line with the BCS Code of Conduct \cite{bcs2019conduct} and the ACM Code of Ethics \cite{acm}, as well as discusses any implications that were encountered during the project. The Self-Assessment for Governance and Ethics (SAGE) was completed and reviewed by the project supervisor, and is attached in Appendix~\ref{app:sage}.
 
 \section{Do no harm}
+The project must do no harm, either intentional or otherwise. As an exploratory software project relating to chatbots, it was my professional responsibility to maintain best practices throughout the project. As a result, the project does not cause harm, and has been developed with regards to potential implications from the Computer Misuse Act \cite{cma}. The project was only accessible by the test users via a link, and the web server was shut down after the testing phase was completed. As such, this minimises the potential for consequences for unlawful access by third parties.
 
 \section{Confidentiality of Data}
-As the project contains some element of data retention, insofar as conversation history between the user and bot is retained, there are implications that the project must address. To protect individuals' privacy, no identifiable information is stored about the user
+\label{sec:confid}
+As the project contains some element of data retention, insofar as conversation history between the user and bot is retained temporarily, there are implications that the project must address. To protect individuals' privacy, no identifiable information is stored about the user. In order to distinguish user sessions, the \code{HttpSession} identifier is used to maintain a session across multiple page requests. Users have the option to clear their conversation with the chatbot in the application; the use of an in-memory database means that conversation history is destroyed when the servlet is restarted. Care was taken throughout this report to anonymise users, where any identifiable information about the test users was removed.
 
 \section{Social Responsibility}
+It is my responsibility to positively contribute to society. As such, the goal of this project has been to produce a system that contributes to my field. By implementing and documenting a novel solution, I believe this project achieves this by providing a new application of the researched topics.
+
+Furthermore, the project has due regard for the privacy of the users as explained in Section~\ref{sec:confid}, and relevant legislation was regarded throughout the development of the project, primarily the Computer Misuse Act \cite{cma} and the Data Protection Act \cite{dpa}.
 
 \section{Professional Competence and Integrity}
+As a member of the BCS, it is my professional duty to maintain integrity throughout this project. The BCS Code of Conduct states that ``members should seek out and observe good practice exemplified by rules, standard, conventions or protocols'' \cite{bcs2019conduct}. As a result, the relevant topics were researched and documented thoroughly in Chapter~\ref{ch:lit} before any implementation was undertaken. 
 
-\section{Conclusion}
+There are intellectual property implications during a software project such as this. The source code for the application itself is, by its very nature, my own intellectual property. However, it does connect to and process data from open sources. DBPedia publishes the information under the terms of the Creative Commons Attribution-ShareAlike 3.0 License\footnote{\url{https://creativecommons.org/licenses/by-sa/3.0/} [Accessed 21 May 2020]} and the GNU Free Documentation License\footnote{\url{https://www.gnu.org/licenses/fdl-1.3.en.html} [Accessed 21 May 2020]} \cite{dbpedia2019about}. This means that the information is free to use, adapt, and distribute, as long as attribution to the author is given. Furthermore, any inspiration or research has been thoroughly cited throughout the project.

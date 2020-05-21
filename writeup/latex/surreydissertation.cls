@@ -95,7 +95,7 @@
 	URN: \@urn
    
 	\vspace{\stretch{1.5}}
-	\includegraphics[width=.3\paperwidth]{coatofarms}
+	\includegraphics[width=.33\paperwidth]{coatofarms}
 
    \vspace{\stretch{1.5}}
 

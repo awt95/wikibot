@@ -56,10 +56,10 @@ As the timeline of the project is restricted and has a fixed deadline, it is imp
 \section{Version Control}
 During this implementation phase, it is important to manage the source code and maintain a consistent code base. As new features are added to meet the requirements, a version control system can keep records of file changes, so that we can recall previous versions, as well as develop new features without effecting previous versions.
 
-For this project, Git will be used because of its popularity and personal familiarity with the tool. Git allows for branching, which will be useful when implementing a new function, merging, and comments to allow for a maintainable repository.
+For this project, Git will be used because of its popularity and personal familiarity with the tool. Git allows for branching, which will be useful when implementing a new function, merging, and comments to allow for a maintainable repository\footnote{\url{https://gitlab.eps.surrey.ac.uk/at00672/com3001_at00672} [Accessed 20 May 2020]}.
 
 \section{Dependency Management}
-As the project will depend on a number of external libraries, it is important to manage these dependencies in a consistent and repeatable way. For this project, Apache Maven\footnote{https://maven.apache.org/} is used because of the high availability of the required repositories for this project, including Spring and Program AB. Maven also provides a number of tools for building and deploying the project, which becomes important during the testing phase when the project is deployed to an external web server.
+As the project will depend on a number of external libraries, it is important to manage these dependencies in a consistent and repeatable way. For this project, Apache Maven\footnote{\url{https://maven.apache.org/} [Accessed 20 May 2020]} is used because of the high availability of the required repositories for this project, including Spring and Program AB. Maven also provides a number of tools for building and deploying the project, which becomes important during the testing phase when the project is deployed to an external web server.
 
 \section{Implementation Process}
 Following the Gantt chart and the development methodology, the implementation process was carried out iteratively. This section documents some of the key steps in the development process, how these were achieved, and gives some explanation to how the logic was created to meet the requirements of the system.
@@ -114,9 +114,9 @@ So in our `hello' example, the given pattern will match any of the following inp
 \end{figure}
 
 \subsection{DBPedia}
-Now that the basic chatbot system has been set up, we need to provide functionality to the system by querying our datasource. DBPedia was selected based on the research in Section~\ref{sec:dbpedia}, because it provides an organised dataset extracted from Wikipedia articles. It can be queried via a SPARQL endpoint\footnote{http://dbpedia.org/sparql}, and returns data in an RDF format, which can be processed by our system.
+Now that the basic chatbot system has been set up, we need to provide functionality to the system by querying our datasource. DBPedia was selected based on the research in Section~\ref{sec:dbpedia}, because it provides an organised dataset extracted from Wikipedia articles. It can be queried via a SPARQL endpoint\footnote{\url{http://dbpedia.org/sparql} [Accessed 20 May 2020]}, and returns data in an RDF format, which can be processed by our system.
 
-There are a number of online resources which allow us to experiment with querying DBPedia. My preferred resource is SPARQL Explorer \footnote{http://dbpedia.org/snorql/}, which allows us to write queries and see the result in several formats, including a tabular format. For example, if we want to find musicians born in Manchester, we can construct the following SPARQL query:
+There are a number of online resources which allow us to experiment with querying DBPedia. My preferred resource is SPARQL Explorer \footnote{\url{http://dbpedia.org/snorql/} [Accessed 20 May 2020]}, which allows us to write queries and see the result in several formats, including a tabular format. For example, if we want to find musicians born in Manchester, we can construct the following SPARQL query:
 \begin{figure}[h]
 	\centering
 	\begin{lstlisting}
@@ -229,7 +229,7 @@ In order to manage the web application, our \code{WebController} routes requests
 	\item POST clear: Clears the chat history
 \end{itemize}
 
-For displaying the web views, Thymeleaf \footnote{https://www.thymeleaf.org/} is used in this project because it integrates well with Spring, and gives us a lot of flexibility with conditionally styling and displaying elements. Bootstrap \footnote{https://getbootstrap.com/} is also used as a CSS library to homogenize the front-end design, and allow for quickly configuring elements.
+For displaying the web views, Thymeleaf \footnote{\url{https://www.thymeleaf.org/} [Accessed 20 May 2020]} is used in this project because it integrates well with Spring, and gives us a lot of flexibility with conditionally styling and displaying elements. Bootstrap \footnote{\url{https://getbootstrap.com/} [Accessed 20 May 2020]} is also used as a CSS library to homogenize the front-end design, and allow for quickly configuring elements.
 
 The final user interface is shown in Figure~\ref{fig:final-ui}. The layout is simple, with a \code{navbar} element at the top and the main body containing the chat window, which contains the messages sent between the user and the bot. The messages are retrieved from the \code{MessageRepository} by the controller, which are iterated over by the Thymeleaf function in the \code{index.html} page. These messages are conditionally formatted, based on the \code{Sender} attribute of the message. We can see that the larger message is formatted to contain an image and a link - this is based on the \code{MessageType} attribute being equal to \code{ABSTRACT} - this was initially flagged by the bot AIML pattern when the user entered the query {\it`who is alan turing'}.
 
@@ -355,7 +355,7 @@ The solution here was to use a computed PageRank \cite{rank2014}. These PageRank
 \label{sec:dataset}
 One of the challenges I encountered working with DBPedia is inconsistencies in the dataset. For example, when working with the Country ontology, one of the tasks was to extract a list of all countries. While testing this function, however, England was not appearing in the list. Upon investigation, this was caused by an error in the dataset - the England resource was flagged as belonging to the \code{MusicalArtist} ontology as opposed to the \code{Country} ontology (Figure~\ref{fig:england}).
 
-The quick-fix solution here was to simply add this value manually to the list of known countries. However, it highlighted the importance of understanding the drawbacks of an automated, community-drived project. More robust solutions for the future may be to select countries by a different condition, but again there are some shortcomings here. For example, member states of the United Nations (\code{yago:WikicatMemberStatesOfTheUnitedNations}) would group England under United Kingdom. The YAGO\footnote{https://github.com/yago-naga/yago3} Country ontology contains England, but also many historical kingdoms and counties. This led to the distinction between a {\it country} and a {\it sovereign state} and how each is defined \cite{fowler1996}; however, geopolitics is beyond the scope of this chatbot project.
+The quick-fix solution here was to simply add this value manually to the list of known countries. However, it highlighted the importance of understanding the drawbacks of an automated, community-drived project. More robust solutions for the future may be to select countries by a different condition, but again there are some shortcomings here. For example, member states of the United Nations (\code{yago:WikicatMemberStatesOfTheUnitedNations}) would group England under United Kingdom. The YAGO\footnote{\url{https://github.com/yago-naga/yago3} [Accessed 20 May 2020]} Country ontology contains England, but also many historical kingdoms and counties. This led to the distinction between a {\it country} and a {\it sovereign state} and how each is defined \cite{fowler1996}; however, geopolitics is beyond the scope of this chatbot project.
 
 \begin{figure}[p]
 	\centering

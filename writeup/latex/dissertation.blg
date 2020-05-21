@@ -18,6 +18,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated field_info (elt_size=4) to 10014 items from 5000.
 Database file #1: references.bib
 I was expecting a `,' or a `}'---line 193 of file references.bib
  :  
@@ -33,45 +34,45 @@ Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 
 Done.
-You've used 107 entries,
+You've used 109 entries,
             4855 wiz_defined-function locations,
-            1495 strings with 26148 characters,
-and the built_in function-call counts, 77203 in all, are:
-= -- 6867
-> -- 2189
-< -- 384
-+ -- 1083
+            1501 strings with 26281 characters,
+and the built_in function-call counts, 77639 in all, are:
+= -- 6925
+> -- 2179
+< -- 378
++ -- 1079
 - -- 530
-* -- 4025
-:= -- 12386
-add.period$ -- 219
-call.type$ -- 107
-change.case$ -- 233
-chr.to.int$ -- 823
-cite$ -- 107
-duplicate$ -- 5288
-empty$ -- 5951
-format.name$ -- 714
-if$ -- 17195
+* -- 4028
+:= -- 12514
+add.period$ -- 222
+call.type$ -- 109
+change.case$ -- 238
+chr.to.int$ -- 801
+cite$ -- 109
+duplicate$ -- 5330
+empty$ -- 5988
+format.name$ -- 715
+if$ -- 17268
 int.to.chr$ -- 5
-int.to.str$ -- 108
-missing$ -- 923
-newline$ -- 429
-num.names$ -- 321
-pop$ -- 2690
+int.to.str$ -- 110
+missing$ -- 936
+newline$ -- 441
+num.names$ -- 327
+pop$ -- 2740
 preamble$ -- 1
-purify$ -- 107
+purify$ -- 109
 quote$ -- 2
-skip$ -- 5711
+skip$ -- 5743
 stack$ -- 0
-substring$ -- 2081
-swap$ -- 3452
-text.length$ -- 72
+substring$ -- 2033
+swap$ -- 3453
+text.length$ -- 71
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1581
+type$ -- 1610
 warning$ -- 0
 while$ -- 346
 width$ -- 0
-write$ -- 1267
+write$ -- 1293
 (There was 1 error message)

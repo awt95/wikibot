@@ -19,7 +19,7 @@ This design works well where the requirements can be established at the start of
 	\end{figure}
 
 \subsection{V-Model}
-The V-Model shares similarities with the Waterfall model insofar as phases of the software life cycle are distinct \cite{agile}. Importantly, the integration and validation phases are decomposed into individual phases, which link back to the left `leg' of the `V'. This ensure that the requirements are measurable in a SMART (Specific, Measurable, Achievable, Realistic and Time-bound) \cite{smart} manner \cite{sdlc2010}.
+The V-Model (Figure~\ref{fig:vmodel}) shares similarities with the Waterfall model insofar as phases of the software life cycle are distinct \cite{agile}. Importantly, the integration and validation phases are decomposed into individual phases, which link back to the left `leg' of the `V'. This ensure that the requirements are measurable in a SMART (Specific, Measurable, Achievable, Realistic and Time-bound) \cite{smart} manner \cite{sdlc2010}.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{vmodel}
@@ -39,7 +39,7 @@ The V-Model shares similarities with the Waterfall model insofar as phases of th
 	\end{figure}
 
 \subsection{Chosen Methodology}
-There are many methodologies not explored in this section, such as agile methods, which are effective in environments with multiple team members \cite{agile}. In this project, we will be using the V-Model. This is because having distinct phases will allow for logical planning steps. It shares similarities with the waterfall model, but divides the testing and integration phases into manageable steps. Methodologies with continual user feedback, such as the spiral model, would be harder to implement because the test users for this project have other commitments, so waiting constant communication with them may delay the project.
+There are many methodologies not explored in this section, such as agile methods, which are effective in environments with multiple team members \cite{agile}. In this project, we will be using the V-Model. This is because having distinct phases will allow for logical planning steps. It shares similarities with the waterfall model, but divides the testing and integration phases into manageable steps. Methodologies with continual user feedback, such as the spiral model, would be harder to implement because the test users for this project have other commitments, so planning communication with them may delay the project.
 
 \section{Planning}
 As the timeline of the project is restricted and has a fixed deadline, it is important that the project is planned carefully in order to deliver a complete solution. To achieve this, a Gantt chart was produced as an effective method to visualise the tasks of the project, with associated time scales \cite{wilson2003gantt}. The completed Gantt chart is shown in Figure~\ref{fig:gantt} (note that this chart is taken from after the project was completed, where red slots are tasks which overran - this is discussed further in Chapter~\ref{ch:conclusion}). The tasks were divided in a logical manner, where the implementation tasks are associated with the functional requirements from the specification in Section~\ref{sec:requirements}. This proved to be an effective visual plan to ensure that the requirements were met in a timely manner.
@@ -169,7 +169,7 @@ Now that we have a basis for querying the DBPedia dataset, the chatbot now has t
 \begin{enumerate}
 	\item AIML patterns to match user input to a query
 	\item A query builder to convert the user input into a SPARQL query
-	\item A service to execute the function and process the results
+	\item A service to execute the query and process the results
 \end{enumerate}
 These functions align with the system architecture design seen previously in Section~\ref{sec:systemdesign}. The next sections explain how these were implemented and connected in the final system to achieve the required functionality.
 
@@ -220,9 +220,9 @@ In the final system, an instance of the \code{UserQuery} class is used to mainta
 The role of the \code{DBPedia} class is to execute queries and return a result. This class is divided into a number of methods for each type of query. For example, executing a query about a person in \code{executePersonQuery()} requires different logic to \code{executeAgeQuery()} where further processing has to take place. Each method makes changes to the \code{Message} instance which contains the chatbot's response. The \code{Message} object has a number of attributes relating to the content and information stored in the message. It also has a list of \code{MessageItems}, where a \code{Message} may contain a list of multiple items. The information stored here is processed by the web interface in order to display the information in the correct format, as discussed in the next section.
 
 \subsection{Web Interface}
-Spring Boot \cite{springmanual} was used in this project has the web framework, mainly because of its popularity and configurability for web-based Java projects. To initalise this, the required dependencies are added to the project's \code{pom.xml} file. The \code{org.springframework.boot} provides many helper classes for configuring a Spring Boot application.
+Spring Boot \cite{springmanual} was used in this project as the web framework, mainly because of its popularity and configurability for web-based Java projects. To initalise this, the required dependencies are added to the project's \code{pom.xml} file. The \code{org.springframework.boot} provides many helper classes for configuring a Spring Boot application.
 
-In order to manage the web application, our \code{WebController} routes requests and manages state. The web application routing is simple, because there are only three mappings to deal with:
+In order to manage the web application, our \code{WebController} routes requests and manages state. The web application routing is simple, because there are only three mappings to handle:
 \begin{itemize}
 	\item GET index: Displays all messages between user and bot
 	\item POST submitMessage: User sends a new message to the bot
@@ -242,7 +242,7 @@ The final user interface is shown in Figure~\ref{fig:final-ui}. The layout is si
 
 \newpage
 \subsection{Hibernate Database}
-In order to maintain a conversation history with the chatbot, as well as manage multiple users, a database is required to store messages. However, storing user data has legal and ethical considerations - this is discussed in detail in Chapter~\ref{ch:ethics}. For this implementation, I made a conscious effort to store as little information about the user as possible. Hibernate H2 \footnote{http://www.h2database.com/html/main.html} allows us to persist data in our web application, as well as provide object-relational mapping (ORM) between the objects and the database. H2 allows us to create an in-memory database, so that data is not stored on the disk and is lost when the application is restarted.
+In order to maintain a conversation history with the chatbot, as well as manage multiple users, a database is required to store messages. However, storing user data has legal and ethical considerations -- this is discussed in detail in Chapter~\ref{ch:ethics}. For this implementation, a conscious effort was made to store as little information about the user as possible. Hibernate H2 \footnote{http://www.h2database.com/html/main.html} allows us to persist data in our web application, as well as provide object-relational mapping (ORM) between the objects and the database. H2 allows us to create an in-memory database, so that data is not stored on the disk and is lost when the application is restarted.
 
 The schema of the database is automatically generated on start-up, based on the Spring \code{Entities} in our application. For this application we have the \code{Message} entity, which stores the content and metadata of each message. We also have the \code{MessageItem} entity, which can form the basis of a \code{LIST} message, where each \code{MessageItem} may have metadata such as a URI. In the \code{Message} entity, we define the relationship between \code{Message} and \code{MessageItem} as \code{OneToMany}, as we can have multiple \code{MessageItems} in a single \code{Message}. The attributes of \code{Message} are shown in Figure~\ref{fig:message}, which shows the tags used to achieve this objective.
 
@@ -252,7 +252,6 @@ The schema of the database is automatically generated on start-up, based on the 
 	\caption{Message class}
 	\label{fig:message}
 \end{figure}
-
 
 Spring Data provides CRUD operations (create, read, update, delete) for the ORM using a repository interface; here we are using \code{CrudRepository}. This allows us to easily add messages to the conversation. This interface is provided by the \code{MessageRepository} class - a similar one is required for \code{MessageItemRepository} to provide an interface for the \code{MessageItem} entities. The \code{MessageRepository} interface provides functionality to the \code{WebController}, including adding additional functions such as finding messages by Session ID. The code for this is shown in Figure~\ref{subfig:message}, and is used in Figure~\ref{subfig:webcontroller} to save messages to the database.
 
@@ -283,7 +282,7 @@ This section discusses some of the challenges encountered during the implementat
 \label{sec:aiml}
 One of the fundamental challenges of using the pattern-based AIML is handling synonyms. I discovered that there are many ways that a particular question can be asked. Furthermore, since the requirements of the system pertain to both Person queries and Country queries, the system must be able to distinguish between the two topics of conversation.
 
-The use of sets and maps was key to solving this problem. In order to `teach' the chatbot what a country is, a set was created named \code{countries.txt} with a list of every country from the DBPedia dataset. These were loaded programatically using a DBPedia query in the \code{ChatbotUtils} class. One issue here was that simply querying a list of all records belonging to \code{dbo:Country} also included every historic kingdom, dominion, dynasty, caliphate, as well as some bizarre outliers - a further discussion of inconsistencies of the dataset is given in Section~\ref{sec:dataset}. Therefore, to return valid data, the results had to be filtered to exclude records with a \code{dbo:dissolutionYear}, as well as include countries that had a \code{dbo:Capital}.
+The use of sets and maps was key to solving this problem. In order to `teach' the chatbot what a country is, a set was created named \code{countries.txt} with a list of every country from the DBPedia dataset. These were loaded programatically using a DBPedia query in the \code{ChatbotUtils} class. One issue here was that simply querying a list of all records belonging to \code{dbo:Country} also included every historic kingdom, dominion, dynasty, caliphate, as well as some bizarre outliers -- a further discussion of inconsistencies of the dataset is given in Section~\ref{sec:dataset}. Therefore, to return valid data, the results had to be filtered to exclude records with a \code{dbo:dissolutionYear}, as well as include countries that had a \code{dbo:Capital}.
 
 The final query used in this function is given in Figure~\ref{fig:sparqlcountry}. Given a list of all countries, we can then map the country to its Uniform Resource Locator (URI) to easily query that exact country - this is handled in the file \code{country2dbr.txt}.
 
@@ -304,7 +303,7 @@ The final query used in this function is given in Figure~\ref{fig:sparqlcountry}
 
 
 \subsection{SPARQL Queries}
-One of the challenges with querying the DBPedia dataset arises from the requirement for generating lists (requirement F17). While it is trivial to list every actor using a basic query, it is important to return meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~\ref{subfig:unranked}. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~\ref{subfig:unrankedresults}, the user will not get much use out of those results, especially because named beginning with special characters such as brackets are shown first.
+One of the challenges with querying the DBPedia dataset arises from the requirement for generating lists (requirement F17). While it is trivial to list people using a basic query, it is important to return meaningful results to the user. For example, if the user wants a list of actors, we might use the query shown in Figure~\ref{subfig:unranked}. The challenge here is: what order should these results be displayed? If they are displayed alphabetically, as shown in Figure~\ref{subfig:unrankedresults}, the user will not get much use out of those results, especially because named beginning with special characters such as brackets are shown first.
 
 The solution here was to use a computed PageRank \cite{rank2014}. These PageRank scores can be integrated into our query using the vRank implementation by \citet{rank2012} to provide a numerical PageRank value for DBPedia resources. The query and results are shown in Figure~\ref{fig:ranked}, which provides considerably more `useful' responses because the highest ranked results are shown first.
 

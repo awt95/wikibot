@@ -11,9 +11,7 @@ Source code can be found in `wikibot` directory
 ### Requirements
 * [Java JRE >= 11](https://www.oracle.com/uk/java/technologies/javase-downloads.html)
 
-A pre-compiled `.war` file is found in `wikibot/target/wikibot.war`
 
-This can be run with either command-line arguments `java -jar target/wikibot.war` or deployed to a web server e.g. [Tomcat](https://tomcat.apache.org/)
 
 ## Compiling the code
 ### Prerequisites
@@ -25,5 +23,5 @@ The code can be built using Maven commands
 ```
 mvn clean install
 ```
-This will generate a new clean `.war` file to be either run using `java` commands or deployed to a server.
+This can be run with either command-line arguments `java -jar target/wikibot.war` or deployed to a web server e.g. [Tomcat](https://tomcat.apache.org/)
 

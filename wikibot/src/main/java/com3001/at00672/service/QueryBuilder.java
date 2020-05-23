@@ -1,3 +1,8 @@
+/**
+ * QueryBuilder
+ * - Functionality for building various queries for SPARQL
+ * @author Alex Turner
+ */
 package com3001.at00672.service;
 
 import com3001.at00672.model.UserQuery;

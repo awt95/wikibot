@@ -1,3 +1,8 @@
+/**
+ * UserQuery
+ * - Object to hold UserQuery context and data
+ * @author Alex Turner
+ */
 package com3001.at00672.model;
 
 import org.alicebot.ab.Predicates;
@@ -6,9 +11,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserQuery {
-    // TODO: Refactor to map for conciseness
 
-    private Map<String, String> predicates = new HashMap<>();
+    private final Map<String, String> predicates = new HashMap<>();
     private String queryString;
 
 

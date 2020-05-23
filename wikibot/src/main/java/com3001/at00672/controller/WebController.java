@@ -1,3 +1,8 @@
+/**
+ * WebController
+ * - Main controller for routing of Spring application
+ * @author Alex Turner
+ */
 package com3001.at00672.controller;
 
 import com3001.at00672.model.MessageRepository;
@@ -31,6 +36,7 @@ public class WebController {
         Message message = new Message();
         message.setSession(session.getId());
         model.addAttribute("message", message);
+        // Find all messages for current chat session
         model.addAttribute("chat", messageRepository.findBySessionEquals(session.getId()));
         return "index";
     }

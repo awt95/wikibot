@@ -1,3 +1,7 @@
+/**
+ * ChatbotUtils
+ * - Utility functions for loading data into sets/maps from DBPedia
+ */
 package com3001.at00672.util;
 
 import org.alicebot.ab.utils.IOUtils;

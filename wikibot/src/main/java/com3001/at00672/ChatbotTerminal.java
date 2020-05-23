@@ -1,3 +1,8 @@
+/**
+ * ChatbotTerminal
+ * - Terminal application for running chatbot
+ * @author Alex Turner
+ */
 package com3001.at00672;
 
 import com3001.at00672.model.*;
@@ -13,14 +18,10 @@ import java.util.HashMap;
 
 public class ChatbotTerminal {
 
-    //private static UserQuery userQuery;
-    //private static ChatbotService chatbotService;
-    private static ChatContext chatContext;
 
     public static void main(String[] args) {
         try {
             ChatbotService chatbotService = new ChatbotService();
-            chatContext = new ChatContext();
             org.apache.log4j.BasicConfigurator.configure(new NullAppender());
             chatbotService.bot.brain.nodeStats();
             System.out.println("Starting chatbot");
@@ -37,7 +38,6 @@ public class ChatbotTerminal {
                     System.exit(0);
                 }
 
-                // TODO: Expand to rich content, pictures etc
                 chatbotService.processResponse(userQuery, botResponse);
 
                 System.out.println();

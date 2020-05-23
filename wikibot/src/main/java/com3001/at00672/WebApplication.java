@@ -1,7 +1,11 @@
+/**
+ * WebApplication
+ * - Spring Boot web application main
+ * @author Alex Turner
+ *
+ */
 package com3001.at00672;
 import com3001.at00672.controller.WebController;
-import org.alicebot.ab.Bot;
-import org.alicebot.ab.Chat;
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

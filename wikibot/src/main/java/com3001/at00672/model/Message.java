@@ -1,9 +1,13 @@
+/**
+ * Message
+ * - Message object for messages between bot and user
+ * @author Alex Turner
+ */
 package com3001.at00672.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 public class Message {

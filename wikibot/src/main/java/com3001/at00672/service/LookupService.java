@@ -1,3 +1,9 @@
+/**
+ * LookupService
+ * - Currently not in use
+ * - Proof of concept for future work connection with DBPedia Search
+ * @author Alex Turner
+ */
 package com3001.at00672.service;
 
 import com.fasterxml.jackson.databind.JsonNode;

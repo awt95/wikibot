@@ -1,3 +1,8 @@
+/**
+ * DbPedia
+ * - Functionality for querying DBPedia endpoint
+ * @author Alex Turner
+ */
 package com3001.at00672.service;
 
 import com3001.at00672.model.*;

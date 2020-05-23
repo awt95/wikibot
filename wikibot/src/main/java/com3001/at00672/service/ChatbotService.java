@@ -1,23 +1,20 @@
+/**
+ * ChatbotService
+ * - Service class for chatbot functionality
+ * @authot Alex Turner
+ */
 package com3001.at00672.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import com3001.at00672.model.*;
-
 import org.alicebot.ab.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
 
-import static com3001.at00672.service.QueryBuilder.generateQuery;
 
 @Component
 @Scope("session")

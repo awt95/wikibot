@@ -1,3 +1,8 @@
+/**
+ * MessageItem
+ * - Object to hold metadata about items in a message
+ * @author Alex Turner
+ */
 package com3001.at00672.model;
 
 import javax.persistence.Entity;

@@ -1,9 +1,10 @@
 # COM3001 Professional Project
 
-This is the source code for COM3001.
+This is the source code for COM3001 Professional Project.
 
 Author: Alex Turner
 URN: 6436302
+Email: at00672@surrey.ac.uk
 
 ## Running the code
 Source code can be found in `wikibot` directory
@@ -21,6 +22,7 @@ Source code can be found in `wikibot` directory
 ### Building
 The code can be built using Maven commands
 ```
+cd wikibot
 mvn clean install
 ```
 This can be run with either command-line arguments `java -jar target/wikibot.war` or deployed to a web server e.g. [Tomcat](https://tomcat.apache.org/)
